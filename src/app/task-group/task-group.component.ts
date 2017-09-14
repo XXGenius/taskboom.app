@@ -19,4 +19,8 @@ export class TaskGroupComponent implements OnInit {
     this.tasks = this.taskService.tasks;
   }
 
+  addTask(string: string) {
+    this.taskService.tasks.push(new Task(string));
+  }
+
 }

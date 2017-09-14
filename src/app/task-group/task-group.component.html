@@ -1,8 +1,9 @@
-
-
-  <div class="panel panel-default">
+<div class="panel panel-default">
     <div class="panel-heading">{{ taskGroup.name }}</div>
-  </div>
-
+</div>
   <app-task-item *ngFor="let taskItem of tasks" [task]="taskItem"></app-task-item>
+<form>
+  <input type = "text" #myinput>
+  <button (click)="addTask(myinput.name)">Click</button>
+</form>
 
