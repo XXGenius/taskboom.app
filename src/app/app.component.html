@@ -1,2 +1,4 @@
-<div class = "container"><div class = "panel panel-default">Hello world!</div></div>
-<app-server></app-server>
+
+<div class="container">
+   <app-task-group *ngFor="let taskGroupItem of taskGroups" [taskGroup]="taskGroupItem"></app-task-group>
+</div>

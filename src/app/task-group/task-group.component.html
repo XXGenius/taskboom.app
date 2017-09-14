@@ -1,0 +1,8 @@
+
+
+  <div class="panel panel-default">
+    <div class="panel-heading">{{ taskGroup.name }}</div>
+  </div>
+
+  <app-task-item *ngFor="let taskItem of tasks" [task]="taskItem"></app-task-item>
+
