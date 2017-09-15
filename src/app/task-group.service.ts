@@ -28,6 +28,7 @@ export class TaskGroupService {
     //
     // );
     // this.taskGroups.push(this.currentTaskGroup);
+
   }
 
   onLeft() {
