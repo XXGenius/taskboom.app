@@ -12,7 +12,7 @@ import {TaskGroupService} from '../task-group.service';
 export class TaskGroupComponent implements OnInit {
   @Input() taskGroup: TaskGroup;
   tasks: Task[];
-  maxTaskNumber = 5;
+  maxTaskNumber = 4;
 
   constructor(private taskGroupService: TaskGroupService) { }
 

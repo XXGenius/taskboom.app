@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {TaskGroupService} from "../task-group.service";
+import {TaskGroupService} from '../task-group.service';
 
 @Component({
   selector: 'app-layout',

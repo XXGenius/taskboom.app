@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {TaskGroup} from './task-group.model';
-import {Task} from "./task-group/task.model";
+import {Task} from './task-group/task.model';
 
 @Injectable()
 export class TaskGroupService {
@@ -15,19 +15,23 @@ export class TaskGroupService {
     const yyyy = date.getFullYear();
     const today = dd + '.' + mm + '.' + yyyy;
 
-    this.currentTaskGroup = new TaskGroup(
-      today,
-      [
-        new Task(1, 'убрать квартиру'),
-        new Task(2, 'Забрал справку со старой работы'),
-        new Task(3, 'Отправил 10 резюме')
-      ]
-    );
-    this.taskGroups.push(this.currentTaskGroup);
+    this.taskGroups = [new TaskGroup(
+        today,
+        [
+          new Task(1, 'убрать квартиру'),
+          new Task(2, 'Забрал справку со старой работы'),
+          new Task(3, 'Отправил 10 резюме')
+        ]
+    )];
+    // this.currentTaskGroup = new TaskGroup(
+    //   today,
+    //
+    // );
+    // this.taskGroups.push(this.currentTaskGroup);
   }
 
   onLeft() {
-    //ToDo добавить переход на день влево, если его нет, то добавить в массив
+
   }
 
   onRight() {
