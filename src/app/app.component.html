@@ -1,4 +1,6 @@
 
+<app-header></app-header>
+<app-layout></app-layout>
 <div class="container">
-   <app-task-group *ngFor="let taskGroupItem of taskGroups" [taskGroup]="taskGroupItem"></app-task-group>
+   <app-task-group [taskGroup]="currentTaskGroup"></app-task-group>
 </div>

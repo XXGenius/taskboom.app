@@ -7,13 +7,12 @@ import {TaskGroupService} from './task-group.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
-  title = 'app';
-  taskGroups: TaskGroup[];
+export class AppComponent implements OnInit {
+  currentTaskGroup: TaskGroup;
 
   constructor(private taskGroupService: TaskGroupService) { }
 
-  ngOnInit(){
-    this.taskGroups = this.taskGroupService.taskGroups;
+  ngOnInit() {
+    this.currentTaskGroup = this.taskGroupService.currentTaskGroup;
   }
 }

@@ -1,0 +1,10 @@
+#layout-left-button{
+  position: absolute;
+  top: 50%;
+}
+#layout-right-button{
+  position: absolute;
+  left:100%;
+  margin-left: -30px;
+  top: 50%;
+}
