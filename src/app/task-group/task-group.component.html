@@ -2,7 +2,7 @@
 <div class="row">
     <div class="col-lg-offset-3 col-lg-6">
       <div class="panel panel-default">
-        <div class="panel-heading text-center">{{ taskGroup.name }}</div>
+        <div class="panel-heading text-center">{{ taskGroup.day }}.{{ taskGroup.month}}.{{ taskGroup.year}}</div>
         <div class="panel-body">
       <app-task-item *ngFor="let taskItem of tasks" [task]="taskItem"></app-task-item>
         </div>
@@ -24,7 +24,7 @@
 <ng-template #maxTask>
   <div class="row text-center">
     <div class="col-lg-offset-3 col-lg-6">
-      You can only add five tasks per day!
+      You can only add four tasks per day!
     </div>
   </div>
 </ng-template>

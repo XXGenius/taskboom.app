@@ -1,10 +1,14 @@
 import {Task} from './task-group/task.model';
 
 export class TaskGroup {
-  name: string;
+  day: number;
+  month: number;
+  year: number;
   tasks: Task[];
-  constructor(name: string, tasks: Task[]) {
-    this.name = name;
+  constructor(day: number, month: number, year: number, tasks: Task[]) {
+    this.day = day;
+    this.month = month;
+    this.year = year;
     this.tasks = tasks;
   }
 }
