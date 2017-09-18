@@ -66,8 +66,8 @@ export class TaskGroupService {
         ]
     )];
 
-    const i = 0;
-    this.currentTaskGroup = this.taskGroups[i];
+
+    this.currentTaskGroup = this.taskGroups[0];
   }
 
   onLeft() {
