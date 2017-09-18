@@ -1,0 +1,19 @@
+.navbar{
+    background-color: #BD3F40;
+
+}
+.navbar-text{
+    font-size: 18px;
+    color: white;
+}
+.progress{
+    margin-top: 17px;
+
+}
+.progress-success{
+    background-color: white;
+}
+#status{
+    margin-left: 300px;
+}
+
