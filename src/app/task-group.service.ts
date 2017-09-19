@@ -8,8 +8,6 @@ export class TaskGroupService {
 
   taskGroups: TaskGroup[] = [];
   currentTaskGroup: TaskGroup;
-  i = 3;
-
 
   constructor() {
     const date = new Date();
@@ -47,8 +45,6 @@ export class TaskGroupService {
         9,
         2017,
         [
-            new Task(4, 'Придумать новые таски теста'),
-            new Task(5, 'Заправить дерижабль'),
             new Task(7, 'Купить яйца')
         ]
     ), new TaskGroup(
@@ -70,17 +66,15 @@ export class TaskGroupService {
         ]
     )];
 
-
-    this.currentTaskGroup = this.taskGroups[this.i];
+    const i = 0;
+    this.currentTaskGroup = this.taskGroups[i];
   }
 
   onLeft() {
-      this.i = this.i - 1;
-      this.currentTaskGroup = this.taskGroups[this.i];
+
   }
 
   onRight() {
-      this.i = this.i + 1;
-      this.currentTaskGroup = this.taskGroups[this.i];
+
   }
 }
