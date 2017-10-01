@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {TaskGroup} from './task-group.model';
-import {Task} from './task-group/task.model';
+import {Task} from './task.model';
 import {forEach} from '@angular/router/src/utils/collection';
 
 @Injectable()

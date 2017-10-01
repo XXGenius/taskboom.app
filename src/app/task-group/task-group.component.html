@@ -2,7 +2,7 @@
 <div class="row">
     <div class="col-lg-offset-2 col-lg-8">
       <div class="panel panel-default">
-        <div class="panel-heading text-center"><h3>{{ taskGroup.day }}.{{ taskGroup.month}}.{{ taskGroup.year}}</h3></div>
+        <div class="panel-heading text-center"><h4>{{ taskGroup.day }}.{{ taskGroup.month}}.{{ taskGroup.year}}</h4></div>
         <div class="panel-body">
       <app-task-item *ngFor="let taskItem of tasks" [task]="taskItem"></app-task-item>
         </div>

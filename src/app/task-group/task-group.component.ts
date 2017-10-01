@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Task} from './task.model';
+import {Task} from '../task.model';
 
 import {TaskGroup} from '../task-group.model';
 import {TaskGroupService} from '../task-group.service';

@@ -1,4 +1,4 @@
-import {Task} from './task-group/task.model';
+import {Task} from './task.model';
 
 export class TaskGroup {
   day: number;
