@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {TaskGroupService} from '../task-group.service';
 
 @Component({
   selector: 'app-layout',
@@ -8,16 +7,18 @@ import {TaskGroupService} from '../task-group.service';
 })
 export class LayoutComponent implements OnInit {
 
-  constructor(private taskGroupService: TaskGroupService) { }
+  constructor() { }
 
   ngOnInit() {
   }
 
-  onLeft() {
-    this.taskGroupService.onLeft();
-  }
+  // onLeft() {
+  //   this.taskGroupService.onLeft();
+  // }
+  //
+  // onRight() {
+  //   this.taskGroupService.onRight();
+  // }
 
-  onRight() {
-    this.taskGroupService.onRight();
-  }
+
 }

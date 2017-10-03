@@ -1,30 +1,31 @@
-
-<div class="row">
-    <div class="col-lg-offset-2 col-lg-8">
-      <div class="panel panel-default">
-        <div class="panel-heading text-center"><h4>{{ taskGroup.day }}.{{ taskGroup.month}}.{{ taskGroup.year}}</h4></div>
-        <div class="panel-body">
-      <app-task-item *ngFor="let taskItem of tasks" [task]="taskItem"></app-task-item>
+<ng-template [ngIf]="day">
+  <div class="row">
+      <div class="col-lg-offset-2 col-lg-8">
+        <div class="panel panel-default">
+          <div class="panel-heading text-center"><h4>{{ day.day }}.{{ day.month}}.{{ day.year}}</h4></div>
+          <div class="panel-body">
+        <app-task-item *ngFor="let taskItem of tasks" [task]="taskItem"></app-task-item>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-<div class="row text-center" *ngIf="this.tasks.length < maxTaskNumber; else maxTask">
-  <form >
-    <div class="row">
-      <div class="form-group col-lg-offset-2 col-lg-8">
-        <input type="text" id="myinput" class="form-control" placeholder="Add your today's Goals" #myinput>
+  <div class="row text-center" *ngIf="this.tasks.length < maxTaskNumber; else maxTask">
+    <form >
+      <div class="row">
+        <div class="form-group col-lg-offset-2 col-lg-8">
+          <input type="text" id="myinput" class="form-control" placeholder="Add your today's Goals" #myinput>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary" (click)="addTask(myinput.value)">Add Boom!</button>
+    </form>
+  </div>
+  <ng-template #maxTask>
+    <div class="row text-center">
+      <div class="col-lg-offset-3 col-lg-6">
+        You can only add four tasks per day!
       </div>
     </div>
-
-    <button type="submit" class="btn btn-primary" (click)="addTask(myinput.value)">Add Boom!</button>
-  </form>
-</div>
-<ng-template #maxTask>
-  <div class="row text-center">
-    <div class="col-lg-offset-3 col-lg-6">
-      You can only add four tasks per day!
-    </div>
-  </div>
+  </ng-template>
 </ng-template>
