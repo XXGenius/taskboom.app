@@ -18,6 +18,7 @@ import { IndexComponent } from './views/index/index.component';
 import { OneDayComponent } from './partials/one-day/one-day.component';
 import {ApiService} from './services/api.service';
 import {StatusComponent} from './admin/status/status.component';
+import {DropdownDirective} from "./shared/dropdown.directive";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {StatusComponent} from './admin/status/status.component';
     ReversePipe,
     IndexComponent,
     OneDayComponent,
-    StatusComponent
+    StatusComponent,
+    DropdownDirective
   ],
   imports: [
     BrowserModule,
