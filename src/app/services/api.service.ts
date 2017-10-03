@@ -6,13 +6,13 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class ApiService {
 
-  private token: string = 'd7f6sd5a7854r85gasa6d5fg67sdg78df5gsf5gsd8';
+  private token = 'd7f6sd5a7854r85gasa6d5fg67sdg78df5gsf5gsd8';
   private tokenParam: string = 'token=' + this.token;
 
   getDays() {
-    return this.http.get('http://boomapi.acesspades.com/api/v1/days?'+this.tokenParam)
+    return this.http.get('http://boomapi.acesspades.com/api/v1/days?' + this.tokenParam)
         .map((res) => res.json())
-        .catch((error:any) => Observable.throw(error || 'Server error'));
+        .catch((error: any) => Observable.throw(error || 'Server error'));
   }
 
   // addTask(value: string) {
@@ -22,9 +22,9 @@ export class ApiService {
   // }
 
   getTasks() {
-    return this.http.get('http://boomapi.acesspades.com/api/v1/tasks?'+this.tokenParam)
+    return this.http.get('http://boomapi.acesspades.com/api/v1/mytasks?' + this.tokenParam + '&&taskgroup_id=1' )
       .map((res) => res.json())
-      .catch((error:any) => Observable.throw(error || 'Server error'));
+      .catch((error: any) => Observable.throw(error || 'Server error'));
   }
 //
 //   getTournament(id: number) {

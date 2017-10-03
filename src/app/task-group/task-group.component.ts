@@ -1,6 +1,6 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {ApiService} from '../services/api.service';
-import {ISubscription} from "rxjs/Subscription";
+import {ISubscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-task-group',
@@ -29,7 +29,7 @@ export class TaskGroupComponent implements OnInit, OnDestroy {
     this.tasksSubscription = this.apiService.getTasks().subscribe(
       (tasks) => {
         console.log(tasks);
-        this.tasks = tasks
+        this.tasks = tasks;
       }
     );
   }
