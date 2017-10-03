@@ -2,27 +2,26 @@ import { Injectable } from '@angular/core';
 import {Http, Response} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-import { Task } from './task.model';
+import { TaskGroup } from './task-group.model';
 
 @Injectable()
 export class ApiService {
-  getTasks(): Observable<Task[]> {
-    let tasks = this.http.post('http://boom-manager.app/api/v1/tasks')
-
+  getDay() {
+    const days = this.http.get('http://boom-manager.app/api/v1/days')
+        .map((res) => res.json().data);
+        // .catch((error) => Observable.throw(error || 'Server error'));
   }
 
-//   getMatch(id: number) {
-//     return this.http.get('/app/matches/' + id)
-//       .map((res) => res.json().data)
-//       .catch((error: any) => Observable.throw(error || 'Server error'));
-//   }
-//
-//   getTournaments(game: number) {
-//     const gameString = (game) ? '?game=' + game : '';
-//     return this.http.get('/app/tournaments' + gameString)
-//       .map((res) => res.json().data)
-//       .catch((error: any) => Observable.throw(error || 'Server error'));
-//   }
+  addTask(value: string) {
+    this.http.post('http://boom-manager.app/api/v1/task', value)
+      .map((res) => res.json().data);
+      // .catch((error: any) => Observable.throw(error || 'Server error'));
+  }
+
+  getTasks(token: string) {
+    return this.http.get('http://boom-manager.app/api/v1/tasks', token)
+      .map((res) => res.json().data);
+  }
 //
 //   getTournament(id: number) {
 //     return this.http.get('/app/tournaments/' + id)
