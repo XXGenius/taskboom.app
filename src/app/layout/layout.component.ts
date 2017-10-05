@@ -12,13 +12,13 @@ export class LayoutComponent implements OnInit {
   ngOnInit() {
   }
 
-  // onLeft() {
+  onLeft() {
   //   this.taskGroupService.onLeft();
-  // }
+  }
   //
-  // onRight() {
+  onRight() {
   //   this.taskGroupService.onRight();
-  // }
+  }
 
 
 }

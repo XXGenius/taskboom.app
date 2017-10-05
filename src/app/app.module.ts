@@ -18,7 +18,11 @@ import { IndexComponent } from './views/index/index.component';
 import { OneDayComponent } from './partials/one-day/one-day.component';
 import {ApiService} from './services/api.service';
 import {StatusComponent} from './admin/status/status.component';
-import {DropdownDirective} from "./shared/dropdown.directive";
+import {DropdownDirective} from './shared/dropdown.directive';
+import {AdminComponent} from './admin/admin.component';
+import {ProjectComponent} from './admin/project/project.component';
+import {RoleComponent} from './admin/role/role.component';
+import {UserComponent} from './admin/user/user.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +31,11 @@ import {DropdownDirective} from "./shared/dropdown.directive";
     TaskItemComponent,
     HeaderComponent,
     LayoutComponent,
+    AdminComponent,
+    ProjectComponent,
+    RoleComponent,
+    UserComponent,
+    StatusComponent,
     TimelineComponent,
     ReversePipe,
     IndexComponent,

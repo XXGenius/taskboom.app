@@ -26,6 +26,66 @@ export class ApiService {
       .map((res) => res.json())
       .catch((error: any) => Observable.throw(error || 'Server error'));
   }
+
+  getStatuses() {
+    return this.http.get('http://boomapi.acesspades.com/api/v1/statuses?' + this.tokenParam  )
+        .map((res) => res.json())
+        .catch((error: any) => Observable.throw(error || 'Server error'));
+  }
+
+  createStatus(title: string) {
+    return this.http.post('http://boomapi.acesspades.com/api/v1/status/',  {token : this.token, title : title  }  )
+        .map((res) => res.json())
+        .catch((error: any) => Observable.throw(error || 'Server error'));
+  }
+
+  getProjects() {
+    return this.http.get('http://boomapi.acesspades.com/api/v1/projects?' + this.tokenParam  )
+        .map((res) => res.json())
+        .catch((error: any) => Observable.throw(error || 'Server error'));
+  }
+
+  deleteProject(id: number) {
+    return this.http.delete('http://boomapi.acesspades.com/api/v1/project/' + id,  this.tokenParam  )
+        .map((res) => res.json())
+        .catch((error: any) => Observable.throw(error || 'Server error'));
+  }
+
+  createProject(title: string) {
+    return this.http.post('http://boomapi.acesspades.com/api/v1/project/',  {token : this.token, title : title  }  )
+        .map((res) => res.json())
+        .catch((error: any) => Observable.throw(error || 'Server error'));
+  }
+
+  getUsers() {
+    return this.http.get('http://boomapi.acesspades.com/api/v1/users?' + this.tokenParam  )
+        .map((res) => res.json())
+        .catch((error: any) => Observable.throw(error || 'Server error'));
+  }
+
+  getRoles() {
+    return this.http.get('http://boomapi.acesspades.com/api/v1/roles?' + this.tokenParam  )
+        .map((res) => res.json())
+        .catch((error: any) => Observable.throw(error || 'Server error'));
+  }
+
+  createRole(title: string) {
+    return this.http.post('http://boomapi.acesspades.com/api/v1/role/',  {token : this.token, title : title  }  )
+        .map((res) => res.json())
+        .catch((error: any) => Observable.throw(error || 'Server error'));
+  }
+
+  deleteStatus(id: number) {
+    return this.http.delete('http://boomapi.acesspades.com/api/v1/status/' + id, this.tokenParam  )
+        .map((res) => res.json())
+        .catch((error: any) => Observable.throw(error || 'Server error'));
+  }
+
+  deleteRole(id: number) {
+    return this.http.delete('http://boomapi.acesspades.com/api/v1/role/' + id, this.tokenParam  )
+        .map((res) => res.json())
+        .catch((error: any) => Observable.throw(error || 'Server error'));
+  }
 //
 //   getTournament(id: number) {
 //     return this.http.get('/app/tournaments/' + id)
