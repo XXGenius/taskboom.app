@@ -1,17 +1,21 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input, Inject} from '@angular/core';
 import {ApiService} from '../../services/api.service';
 import {ISubscription} from 'rxjs/Subscription';
+import {DOCUMENT} from "@angular/common";
 
 @Component({
     selector: 'app-status',
     templateUrl: './status.component.html'
 })
 export class StatusComponent implements OnInit {
-    @Input() status;
+
+    statuses = [];
+
     edit;
-    statuses;
+
     private statusesSubscription: ISubscription;
-    constructor(private apiService: ApiService) {
+    constructor(private apiService: ApiService,
+                @Inject(DOCUMENT) private doc: Document,) {
         this.statusesSubscription = this.apiService.getStatuses().subscribe(
                 (statuses) => {
                     console.log(statuses);
@@ -23,7 +27,7 @@ export class StatusComponent implements OnInit {
     ngOnInit() {
     }
 
-    deleteStatus(id: number) {
+    delete(id: number) {
         this.apiService.deleteStatus(id)
             .subscribe(
             (status) => {
@@ -33,7 +37,8 @@ export class StatusComponent implements OnInit {
         this.statuses = this.statuses.filter( status => status.id !== id);
     }
 
-    updateStatus(id) {
+    showUpdate(i) {
+      this.statuses[i].edit = true;
     }
 
     createStatus(title: string) {
@@ -46,11 +51,16 @@ export class StatusComponent implements OnInit {
     }
 
 
-    Save(title: string) {
-        this.apiService.updateStatus(title).subscribe(
+    update(i: number) {
+
+      const id = this.statuses[i].id;
+      const title = (<HTMLInputElement>this.doc.getElementById('input-title-'+id)).value;
+
+      this.statuses[i].title = '';
+        this.apiService.updateStatus( status.title).subscribe(
             (role) => {
-                console.log(role);
-                this.statuses.push({id: role.id, title: role.title});
+                this.statuses[i].title = title;
+                this.statuses[i].edit = false;
             }
         );
     }
