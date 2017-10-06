@@ -8,6 +8,7 @@ import {ProjectComponent} from './admin/project/project.component';
 import {RoleComponent} from './admin/role/role.component';
 import {UserComponent} from './admin/user/user.component';
 import {LevelComponent} from './admin/level/level.component';
+import {UserGroupComponent} from './admin/user-group/user-group.component';
 
 const today: string = ((new Date()).getUTCDate() + '-' + ((new Date()).getUTCMonth() + 1) + '-' + (new Date()).getUTCFullYear()).toString();
 
@@ -20,7 +21,8 @@ const appRoutes: Routes = [
   { path: 'projects', component: ProjectComponent},
   { path: 'roles', component: RoleComponent},
   { path: 'users', component: UserComponent},
-  { path: 'levels', component: LevelComponent}
+  { path: 'levels', component: LevelComponent},
+  { path: 'usergroups', component: UserGroupComponent}
 
 ];
 

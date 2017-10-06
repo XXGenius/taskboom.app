@@ -24,6 +24,7 @@ import {ProjectComponent} from './admin/project/project.component';
 import {RoleComponent} from './admin/role/role.component';
 import {UserComponent} from './admin/user/user.component';
 import {LevelComponent} from './admin/level/level.component';
+import {UserGroupComponent} from './admin/user-group/user-group.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import {LevelComponent} from './admin/level/level.component';
     UserComponent,
     StatusComponent,
     LevelComponent,
+    UserGroupComponent,
     TimelineComponent,
     ReversePipe,
     IndexComponent,
