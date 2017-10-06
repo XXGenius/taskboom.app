@@ -15,21 +15,26 @@
           <tbody >
           <tr>
             <td></td>
-            <td><input type="text" id="myinput" class="form-control crud-text" placeholder="Enter to title..." #myinput></td>
-            <td><button class="btn btn-small btn-primary" (click)="createStatus(myinput.value)"><i class="fa fa-plus"></i></button></td>
+            <td><input type="text" id="myinput" class="form-control crud-text" placeholder="Enter to title..." [(ngModel)]="inputCreate"></td>
+            <td><button class="btn btn-small btn-primary" (click)="create(inputCreate)" [disabled]="inputCreate === ''"><i class="fa fa-plus"></i></button></td>
           </tr>
-          <tr  *ngFor="let status of statuses; let i = index" id="tr{{ status.id }}">
+          <tr
+            *ngFor="let status of statuses; let i = index"
+            id="tr{{ status.id }}"
+            [@list]
+          >
               <td>{{ status.id}}</td>
               <td>
-                <span *ngIf="!status.edit" >{{ +status.title}}</span>
+                <span *ngIf="!status.edit">{{ +status.title}}</span>
                 <input *ngIf="status['edit']" type="text" id="input-title-{{ status.id }}"
                        class="form-control crud-text"
                        value="{{ status.title}}"
                        >
               </td>
               <td style="width: 100px">
-                  <a *ngIf="!status.edit" class="btn  btn-small btn-danger" (click)="delete(status.id)"><i class="fa fa-remove"></i> </a>
+                  <a *ngIf="!status.edit" class="btn  btn-small btn-danger" (click)="remove(i)"><i class="fa fa-trash"></i> </a>
                   <a *ngIf="!status.edit" class="btn  btn-small btn-info" (click)="showUpdate(i)"><i class="fa fa-pencil"></i></a>
+                  <button *ngIf="status.edit" class="btn btn-small btn-danger" (click)="cancel(i)"><i class="fa fa-ban"></i></button>
                   <button *ngIf="status.edit" class="btn btn-small btn-primary" (click)="update(i)"><i class="fa fa-save"></i></button>
               </td>
           </tr>

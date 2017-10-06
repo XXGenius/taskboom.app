@@ -137,10 +137,9 @@ export class ApiService {
         .catch((error: any) => Observable.throw(error || 'Server error'));
   }
 
-  updateStatus(title: string) {
-    console.log(JSON.stringify({ title: title }));
-    return this.http.put('http://boomapi.acesspades.com/api/v1/status?' + this.tokenParam,
-        {token: this.token, title: title }, this.headers)
+  updateStatus(id: number, title: string) {
+    return this.http.put('http://boomapi.acesspades.com/api/v1/status/'+id+'?' + this.tokenParam,
+        {title: title }, this.headers)
         .map((res) => res.json())
         .catch((error: any) => Observable.throw(error || 'Server error'));
   }

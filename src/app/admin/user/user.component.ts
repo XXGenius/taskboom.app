@@ -45,12 +45,12 @@ export class UserComponent implements OnInit {
     }
 
 
-    Save(title: string) {
-        this.apiService.updateStatus(title).subscribe(
-            (role) => {
-                console.log(role);
-                this.users.push({id: role.id, title: role.title});
-            }
-        );
-    }
+    // Save(title: string) {
+    //     this.apiService.updateStatus(title).subscribe(
+    //         (role) => {
+    //             console.log(role);
+    //             this.users.push({id: role.id, title: role.title});
+    //         }
+    //     );
+    // }
 }
