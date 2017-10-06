@@ -61,10 +61,67 @@ export class ApiService {
   }
 
   deleteLevel(id: number) {
-    return this.http.delete('http://boomapi.acesspades.com/api/v1/status/' + id + '?' + this.tokenParam )
+    return this.http.delete('http://boomapi.acesspades.com/api/v1/lvl/' + id + '?' + this.tokenParam )
         .map((res) => res.json())
         .catch((error: any) => Observable.throw(error || 'Server error'));
   }
+
+  getUserGroups() {
+    return this.http.get('http://boomapi.acesspades.com/api/v1/usergroups?' + this.tokenParam  )
+        .map((res) => res.json())
+        .catch((error: any) => Observable.throw(error || 'Server error'));
+  }
+
+  createUserGroup(title: string) {
+    console.log(JSON.stringify({ title: title }));
+    return this.http.post('http://boomapi.acesspades.com/api/v1/usergroup?' + this.tokenParam,
+        {token: this.token, title: title }, this.headers)
+        .map((res) => res.json())
+        .catch((error: any) => Observable.throw(error || 'Server error'));
+  }
+
+  updateUserGroup(title: string) {
+    console.log(JSON.stringify({ title: title }));
+    return this.http.put('http://boomapi.acesspades.com/api/v1/status?' + this.tokenParam,
+        {token: this.token, title: title }, this.headers)
+        .map((res) => res.json())
+        .catch((error: any) => Observable.throw(error || 'Server error'));
+  }
+
+  deleteUserGroup(id: number) {
+    return this.http.delete('http://boomapi.acesspades.com/api/v1/usergroup/' + id + '?' + this.tokenParam )
+        .map((res) => res.json())
+        .catch((error: any) => Observable.throw(error || 'Server error'));
+  }
+
+  getUsers() {
+    return this.http.get('http://boomapi.acesspades.com/api/v1/users?' + this.tokenParam  )
+        .map((res) => res.json())
+        .catch((error: any) => Observable.throw(error || 'Server error'));
+  }
+
+  createUser(username, email, password, user_role_id) {
+    console.log(JSON.stringify({ username: username, email: email, password: password, user_role_id: user_role_id }));
+    return this.http.post('http://boomapi.acesspades.com/api/v1/usergroup?' + this.tokenParam,
+        {token: this.token, username: username, email: email, password: password, user_role_id: user_role_id }, this.headers)
+        .map((res) => res.json())
+        .catch((error: any) => Observable.throw(error || 'Server error'));
+  }
+
+  updateUser(title: string) {
+    console.log(JSON.stringify({ title: title }));
+    return this.http.put('http://boomapi.acesspades.com/api/v1/status?' + this.tokenParam,
+        {token: this.token, title: title }, this.headers)
+        .map((res) => res.json())
+        .catch((error: any) => Observable.throw(error || 'Server error'));
+  }
+
+  deleteUser(id: number) {
+    return this.http.delete('http://boomapi.acesspades.com/api/v1/usergroup/' + id + '?' + this.tokenParam )
+        .map((res) => res.json())
+        .catch((error: any) => Observable.throw(error || 'Server error'));
+  }
+
 
   getStatuses() {
     return this.http.get('http://boomapi.acesspades.com/api/v1/statuses?' + this.tokenParam  )
@@ -110,12 +167,6 @@ export class ApiService {
     console.log(JSON.stringify({ title: title }));
     return this.http.post('http://boomapi.acesspades.com/api/v1/project?' + this.tokenParam,
         {token: this.token, title: title }, this.headers)
-        .map((res) => res.json())
-        .catch((error: any) => Observable.throw(error || 'Server error'));
-  }
-
-  getUsers() {
-    return this.http.get('http://boomapi.acesspades.com/api/v1/users?' + this.tokenParam  )
         .map((res) => res.json())
         .catch((error: any) => Observable.throw(error || 'Server error'));
   }

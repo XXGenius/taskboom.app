@@ -1,0 +1,44 @@
+<div class="container">
+    <h3>Users</h3>
+    <table class="table table-striped table-bordered">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Username</th>
+            <th>e-mail</th>
+            <th>password</th>
+            <th>Role</th>
+            <th>Level</th>
+            <th>Exp</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody >
+        <tr>
+            <td></td>
+            <td><input type="text" id="username" class="form-control crud-text" placeholder="Enter to title..." #username></td>
+            <td><input type="text" id="email" class="form-control crud-text" placeholder="Enter to title..." #email></td>
+            <td><input type="text" id="password" class="form-control crud-text" placeholder="Enter to title..." #password></td>
+            <td><input type="text" id="role" class="form-control crud-text" placeholder="Enter to title..." #role></td>
+            <td></td>
+            <td></td>
+            <td><button class="btn btn-small btn-primary" (click)="createUser(username.value, email.value, password.value, role.value)"><i class="fa fa-plus"></i></button></td>
+        </tr>
+        <tr  *ngFor="let user of users">
+            <td>{{ user.id }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.password }}</td>
+            <td>{{ user.user_role_id}}</td>
+            <td>{{ user.exp}}</td>
+            <td>{{ user.level}}</td>
+            <td style="width: 100px">
+                <a class="btn  btn-small btn-danger" (click)="deleteUser(user.id)"><i class="fa fa-remove"></i> </a>
+                <a class="btn  btn-small btn-info" (click)="updateUser(user.id)"><i class="fa fa-pencil"></i></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+</div>
