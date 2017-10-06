@@ -9,9 +9,10 @@ export class ApiService {
   private token = 'd7f6sd5a7854r85gasa6d5fg67sdg78df5gsf5gsd8';
   private tokenParam: string = 'token=' + this.token;
   private headers = new Headers({
+    'Access-Control-Expose-Headers': 'Authorization,DNT,User-Agent,Keep-Alive,Content-Type,accept,origin,X-Requested-With,Content-Disposition',
     'Content-Type': 'application/json;charset=utf-8',
     'Accept': '*/*',
-    'Cache-Control': 'no-cache'
+    'Cache-Control': 'no-cache',
   });
 
   getDays() {
@@ -40,7 +41,7 @@ export class ApiService {
 
   createStatus(title: string) {
     console.log(JSON.stringify({ title: title }));
-    return this.http.post('http://boomapi.acesspades.com/api/v1/status?'+this.tokenParam,  JSON.stringify({token: this.token, title: title }), this.headers)
+    return this.http.post('http://boomapi.acesspades.com/api/v1/status?'+this.tokenParam,  {token: this.token, title: title }, this.headers)
         .map((res) => res.json())
         .catch((error: any) => Observable.throw(error || 'Server error'));
   }
@@ -76,7 +77,7 @@ export class ApiService {
   }
 
   createRole(title: string) {
-    return this.http.post('http://boomapi.acesspades.com/api/v1/role/',  {token : this.token, title : title }, this.headers)
+    return this.http.post('http://boomapi.acesspades.com/api/v1/role',  {title : title }, this.headers)
         .map((res) => res.json())
         .catch((error: any) => Observable.throw(error || 'Server error'));
   }

@@ -29,6 +29,7 @@ export class StatusComponent implements OnInit {
                 console.log(status);
             }
         );
+        this.statuses = this.statuses.filter( status => status.id != id);
     }
 
     updateStatus(id: number) {
@@ -38,6 +39,7 @@ export class StatusComponent implements OnInit {
         this.apiService.createStatus(title).subscribe(
             (role) => {
                 console.log(role);
+                this.statuses.push({id: role.id, title: role.title});
             }
         );
     }
