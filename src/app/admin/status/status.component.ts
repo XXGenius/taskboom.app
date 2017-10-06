@@ -8,6 +8,7 @@ import {ISubscription} from 'rxjs/Subscription';
 })
 export class StatusComponent implements OnInit {
     @Input() status;
+    edit;
     statuses;
     private statusesSubscription: ISubscription;
     constructor(private apiService: ApiService) {
@@ -29,14 +30,24 @@ export class StatusComponent implements OnInit {
                 console.log(status);
             }
         );
-        this.statuses = this.statuses.filter( status => status.id != id);
+        this.statuses = this.statuses.filter( status => status.id !== id);
     }
 
-    updateStatus(id: number) {
+    updateStatus(id) {
     }
 
     createStatus(title: string) {
         this.apiService.createStatus(title).subscribe(
+            (role) => {
+                console.log(role);
+                this.statuses.push({id: role.id, title: role.title});
+            }
+        );
+    }
+
+
+    Save(title: string) {
+        this.apiService.updateStatus(title).subscribe(
             (role) => {
                 console.log(role);
                 this.statuses.push({id: role.id, title: role.title});

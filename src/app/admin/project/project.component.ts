@@ -22,11 +22,13 @@ export class ProjectComponent implements OnInit {
     }
 
     deleteProject(id: number) {
-        this.apiService.deleteProject(id).subscribe(
-            (project) => {
-                console.log(project);
-            }
-        );
+        this.apiService.deleteProject(id)
+            .subscribe(
+                (project) => {
+                    console.log(project);
+                }
+            );
+        this.projects = this.projects.filter( project => project.id !== id);
     }
 
     updateProject(id: number) {
@@ -36,6 +38,7 @@ export class ProjectComponent implements OnInit {
         this.apiService.createProject(title).subscribe(
             (project) => {
                 console.log(project);
+                this.projects.push({id: project.id, title: project.title});
             }
         );
     }

@@ -18,16 +18,15 @@
           <td><input type="text" id="myinput" class="form-control crud-text" placeholder="Enter to title..." #myinput></td>
           <td><button class="btn btn-small btn-primary" (click)="createStatus(myinput.value)"><i class="fa fa-plus"></i></button></td>
         </tr>
-        <tr  *ngFor="let status of statuses">
+        <tr  *ngFor="let status of statuses" id="{{ status.id }}">
             <td>{{ status.id}}</td>
-            <td>{{ status.title}}</td>
+            <td><span *ngIf="!edit" >{{ status.title}}</span><input *ngIf="edit" type="text" id="update" class="form-control crud-text" placeholder="{{ status.title}}" #inputforupdate></td>
             <td style="width: 100px">
-                <a class="btn  btn-small btn-danger" (click)="deleteStatus(status.id)"><i class="fa fa-remove"></i> </a>
-                <a class="btn  btn-small btn-info" (click)="updateStatus(status.id)"><i class="fa fa-pencil"></i></a>
+                <a *ngIf="!edit" class="btn  btn-small btn-danger" (click)="deleteStatus(status.id)"><i class="fa fa-remove"></i> </a>
+                <a *ngIf="!edit" class="btn  btn-small btn-info" (click)="updateStatus()"><i class="fa fa-pencil"></i></a>
+                <button *ngIf="edit" class="btn btn-small btn-primary" (click)="Save(inputforupdate.value)"><i class="fa fa-plus"></i></button>
             </td>
         </tr>
         </tbody>
     </table>
-
-
 </div>

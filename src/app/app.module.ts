@@ -23,6 +23,7 @@ import {AdminComponent} from './admin/admin.component';
 import {ProjectComponent} from './admin/project/project.component';
 import {RoleComponent} from './admin/role/role.component';
 import {UserComponent} from './admin/user/user.component';
+import {LevelComponent} from './admin/level/level.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import {UserComponent} from './admin/user/user.component';
     RoleComponent,
     UserComponent,
     StatusComponent,
+    LevelComponent,
     TimelineComponent,
     ReversePipe,
     IndexComponent,

@@ -22,11 +22,13 @@ export class RoleComponent implements OnInit {
         }
 
     deleteRole(id: number) {
-        this.apiService.deleteRole(id).subscribe(
-            (role) => {
-                console.log(role);
-            }
-        );
+        this.apiService.deleteRole(id)
+            .subscribe(
+                (role) => {
+                    console.log(role);
+                }
+            );
+        this.roles = this.roles.filter( status => status.id !== id);
     }
 
     updateRole(id: number) {
@@ -36,6 +38,7 @@ export class RoleComponent implements OnInit {
         this.apiService.createRole(title).subscribe(
             (role) => {
                 console.log(role);
+                this.roles.push({id: role.id, title: role.title});
             }
         );
     }
