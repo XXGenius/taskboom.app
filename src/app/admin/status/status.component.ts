@@ -70,12 +70,14 @@ export class StatusComponent implements OnInit {
     }
 
     create(title: string) {
-        this.apiService.createStatus(title).subscribe(
-            (role) => {
-                console.log(role);
-                this.statuses.push({id: role.id, title: role.title});
-            }
-        );
+      this.inputCreate = '';
+      this.apiService.createStatus(title).subscribe(
+          (role) => {
+              console.log(role);
+
+              this.statuses.push({id: role.id, title: role.title});
+          }
+      );
     }
 
     cancel(i: number) {
