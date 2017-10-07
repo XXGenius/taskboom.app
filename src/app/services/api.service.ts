@@ -52,10 +52,10 @@ export class ApiService {
         .catch((error: any) => Observable.throw(error || 'Server error'));
   }
 
-  updateLevel(title: string) {
-    console.log(JSON.stringify({ title: title }));
-    return this.http.put('http://boomapi.acesspades.com/api/v1/status?' + this.tokenParam,
-        {token: this.token, title: title }, this.headers)
+  updateLevel(id: number, level, exp) {
+    console.log(JSON.stringify({ level: level, exp: exp  }));
+    return this.http.put('http://boomapi.acesspades.com/api/v1/lvl/' + id + '?' + this.tokenParam,
+        {level: level, exp: exp }, this.headers)
         .map((res) => res.json())
         .catch((error: any) => Observable.throw(error || 'Server error'));
   }
@@ -170,6 +170,13 @@ export class ApiService {
         .catch((error: any) => Observable.throw(error || 'Server error'));
   }
 
+  updateProject(id: number, title: string) {
+    return this.http.put('http://boomapi.acesspades.com/api/v1/project/'+ id +' ?' + this.tokenParam,
+        {title: title }, this.headers)
+        .map((res) => res.json())
+        .catch((error: any) => Observable.throw(error || 'Server error'));
+  }
+
   getRoles() {
     return this.http.get('http://boomapi.acesspades.com/api/v1/roles?' + this.tokenParam  )
         .map((res) => res.json())
@@ -180,6 +187,13 @@ export class ApiService {
     console.log(JSON.stringify({ title: title }));
     return this.http.post('http://boomapi.acesspades.com/api/v1/role?' + this.tokenParam,
         {token: this.token, title: title }, this.headers)
+        .map((res) => res.json())
+        .catch((error: any) => Observable.throw(error || 'Server error'));
+  }
+
+  updateRole(id: number, title: string) {
+    return this.http.put('http://boomapi.acesspades.com/api/v1/role/'+id+'?' + this.tokenParam,
+        {title: title }, this.headers)
         .map((res) => res.json())
         .catch((error: any) => Observable.throw(error || 'Server error'));
   }

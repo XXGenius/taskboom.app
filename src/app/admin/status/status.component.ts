@@ -1,8 +1,8 @@
 import {Component, OnInit, Input, Inject, ViewChild} from '@angular/core';
 import {ApiService} from '../../services/api.service';
 import {ISubscription} from 'rxjs/Subscription';
-import {DOCUMENT} from "@angular/common";
-import {animate, state, style, transition, trigger} from "@angular/animations";
+import {DOCUMENT} from '@angular/common';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
     selector: 'app-status',
@@ -40,7 +40,7 @@ export class StatusComponent implements OnInit {
 
     private statusesSubscription: ISubscription;
     constructor(private apiService: ApiService,
-                @Inject(DOCUMENT) private doc: Document,) {
+                @Inject(DOCUMENT) private doc: Document, ) {
         this.statusesSubscription = this.apiService.getStatuses().subscribe(
                 (statuses) => {
                     console.log(statuses);
@@ -54,7 +54,7 @@ export class StatusComponent implements OnInit {
 
     remove(i: number) {
       const id = this.statuses[i].id;
-      if(confirm("Are you sure to delete: "+this.statuses[i].title)) {
+      if(confirm('Are you sure to delete: ' + this.statuses[i].title)) {
         this.apiService.deleteStatus(id)
           .subscribe(
             (status) => {
@@ -82,13 +82,13 @@ export class StatusComponent implements OnInit {
 
     cancel(i: number) {
       const id = this.statuses[i].id;
-      (<HTMLInputElement>this.doc.getElementById('input-title-'+id)).value = this.statuses[i].title;
+      (<HTMLInputElement>this.doc.getElementById('input-title-' + id)).value = this.statuses[i].title;
       this.statuses[i].edit = false;
     }
 
     update(i: number) {
       const id = this.statuses[i].id;
-      const title = (<HTMLInputElement>this.doc.getElementById('input-title-'+id)).value;
+      const title = (<HTMLInputElement>this.doc.getElementById('input-title-' + id)).value;
 
       this.statuses[i].title = '';
         this.apiService.updateStatus(id, title).subscribe(
