@@ -395,3 +395,8 @@ ul.submenu > li > a:hover {
 ul.menu > li:hover > ul.submenu {
   display: block;
 }
+
+input.crud-text{
+  width: 100%;
+  height: 100%;
+}
