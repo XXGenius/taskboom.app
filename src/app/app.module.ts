@@ -2,8 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { TaskGroupComponent } from './task-group/task-group.component';
-import { TaskItemComponent } from './task-group/task-item/task-item.component';
+import { DayComponent } from './day/day.component';
+import { TaskItemComponent } from './day/task-item/task-item.component';
 import {FormsModule} from '@angular/forms';
 
 import { HeaderComponent } from './header/header.component';
@@ -29,7 +29,7 @@ import {UserGroupComponent} from './admin/user-group/user-group.component';
 @NgModule({
   declarations: [
     AppComponent,
-    TaskGroupComponent,
+    DayComponent,
     TaskItemComponent,
     HeaderComponent,
     LayoutComponent,

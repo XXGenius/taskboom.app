@@ -1,37 +1,38 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {ApiService} from '../services/api.service';
 import {ISubscription} from 'rxjs/Subscription';
+import {ActivatedRoute} from "@angular/router";
+
 
 @Component({
-  selector: 'app-task-group',
-  templateUrl: './task-group.component.html',
-  styleUrls: ['./task-group.component.css']
+  selector: 'app-day',
+  templateUrl: './day.component.html'
 })
-export class TaskGroupComponent implements OnInit, OnDestroy {
+export class DayComponent implements OnInit, OnDestroy {
   @Input() taskGroup;
-  day;
+
   tasks = [];
   maxTaskNumber = 4;
 
-  id;
+  date;
+  private sub: any;
+
 
   private tasksSubscription: ISubscription;
   private daySubscription: ISubscription;
 
-  constructor(private apiService: ApiService) {
-    this.daySubscription = this.apiService.getDays().subscribe(
-      (days) => {
-        console.log(days);
-        this.day = days[0];
+  constructor(private apiService: ApiService,
+              private route: ActivatedRoute) {
+    this.sub = this.route.params.subscribe(params => {
+      this.date = params['date']; // (+) converts string 'id' to a number
 
-      }
-    );
-    this.tasksSubscription = this.apiService.getTasks().subscribe(
-      (tasks) => {
-        console.log(tasks);
-        this.tasks = tasks;
-      }
-    );
+      this.daySubscription = this.apiService.getDay(this.date).subscribe(
+        (tasks) => {
+          this.tasks = tasks;
+        }
+      );
+    });
+
   }
 
   ngOnInit() {
@@ -41,6 +42,7 @@ export class TaskGroupComponent implements OnInit, OnDestroy {
   }
 
   addTask(value: string) {
+    console.log(value);
     // const id = this.tasks.length + 1;
     // this.taskGroupService.currentTaskGroup.tasks.push(new Task(id, value));
     // this.apiService.addTask(value)
@@ -50,5 +52,6 @@ export class TaskGroupComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.daySubscription.unsubscribe();
     this.tasksSubscription.unsubscribe();
+    this.sub.unsubscribe();
   }
 }
