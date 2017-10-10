@@ -15,15 +15,13 @@ export class DayComponent implements OnInit, OnDestroy {
   maxTaskNumber = 4;
 
   date;
-  private sub: any;
 
-
-  private tasksSubscription: ISubscription;
+  private routeSubscription: ISubscription;
   private daySubscription: ISubscription;
 
   constructor(private apiService: ApiService,
               private route: ActivatedRoute) {
-    this.sub = this.route.params.subscribe(params => {
+    this.routeSubscription = this.route.params.subscribe(params => {
       this.date = params['date']; // (+) converts string 'id' to a number
 
       this.daySubscription = this.apiService.getDay(this.date).subscribe(
@@ -51,7 +49,6 @@ export class DayComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.daySubscription.unsubscribe();
-    this.tasksSubscription.unsubscribe();
-    this.sub.unsubscribe();
+    this.routeSubscription.unsubscribe();
   }
 }
