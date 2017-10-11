@@ -25,6 +25,7 @@ export class DayComponent implements OnInit, OnDestroy {
       this.date = params['date']; // (+) converts string 'id' to a number
       this.daySubscription = apiService.getDay(this.date).subscribe(
         (tasks) => {
+          console.log(tasks);
           this.tasks = tasks;
         }
       );

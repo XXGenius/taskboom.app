@@ -15,10 +15,11 @@ export class TaskItemComponent implements OnInit {
     this.active = this.task.checked;
   }
 
-  onCheck(id: number, active) {
-    this.apiService.checkTask(id, active)
+  onCheck() {
+    this.apiService.checkTask(this.task.id, !this.active)
         .subscribe(
         (task) => {
+          console.log(task);
           this.active = task;
         }
     );

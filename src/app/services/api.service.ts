@@ -175,9 +175,11 @@ export class ApiService {
       .catch((error: any) => Observable.throw(error || 'Server error'));
   }
 
-  checkTask(id: number, active) {
+  checkTask(id: number, checked: boolean) {
+    console.log(checked);
     return this.http.put('http://boomapi.acesspades.com/api/v1/check/' + id + '?' + this.tokenParam,
-        {checked: active }, this.headers)
+      { checked: checked },
+      this.headers)
         .map((res) => res.json())
         .catch((error: any) => Observable.throw(error || 'Server error'));
   }
