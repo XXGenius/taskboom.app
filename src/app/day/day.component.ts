@@ -23,8 +23,8 @@ export class DayComponent implements OnInit, OnDestroy {
               private route: ActivatedRoute) {
     this.routeSubscription = this.route.params.subscribe(params => {
       this.date = params['date']; // (+) converts string 'id' to a number
-
-      this.daySubscription = this.apiService.getDay(this.date).subscribe(
+      this.daySubscription = this.apiService.getDay((new Date()).getUTCFullYear() + '-' + ((new Date()).getUTCMonth() + 1) + '-' + (new Date()).getUTCDate())
+          .subscribe(
         (tasks) => {
           this.tasks = tasks;
         }
@@ -39,12 +39,15 @@ export class DayComponent implements OnInit, OnDestroy {
 
   }
 
-  addTask(value: string) {
-    console.log(value);
-    // const id = this.tasks.length + 1;
-    // this.taskGroupService.currentTaskGroup.tasks.push(new Task(id, value));
-    // this.apiService.addTask(value)
-    //     .subscribe( (task) => { this.tasks = task} );
+  addTask(text: string) {
+    let project = 8;
+    let date = (new Date()).getUTCFullYear() + '-' + ((new Date()).getUTCMonth() + 1) + '-' + (new Date()).getUTCDate();
+    this.apiService.createTask(text, date, project).subscribe(
+        (task) => {
+          console.log(task);
+          this.tasks.push({id: task.id, text: task.text, date: task.date});
+        }
+    );
   }
 
   ngOnDestroy() {

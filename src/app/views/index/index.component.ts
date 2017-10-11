@@ -9,7 +9,7 @@ export class IndexComponent implements OnInit {
 
   constructor(activatedRoute: ActivatedRoute,
               router: Router) {
-    if (activatedRoute.children.length == 0){ //To Date redirect
+    if (activatedRoute.children.length === 0) { //To Date redirect
       router.navigate(['/day/' + (new Date()).getUTCFullYear() + '-' + ((new Date()).getUTCMonth()+1) + '-' + (new Date()).getUTCDate()]);
     }
   }

@@ -72,6 +72,14 @@ export class ApiService {
 
 
   /********************************* Create ****************************/
+  createTask(text: string, date, project_id: number ) {
+    console.log(JSON.stringify({ text: text, date: date, project_id: project_id }));
+    return this.http.post('http://boomapi.acesspades.com/api/v1/task?' + this.tokenParam,
+        {token: this.token, text: text, date: date, project_id: project_id  }, this.headers)
+        .map((res) => res.json())
+        .catch((error: any) => Observable.throw(error || 'Server error'));
+  }
+
   createLevel(level: number, exp: number ) {
     console.log(JSON.stringify({ level: level, exp: exp  }));
     return this.http.post('http://boomapi.acesspades.com/api/v1/lvl?' + this.tokenParam,
