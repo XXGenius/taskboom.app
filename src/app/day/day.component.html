@@ -1,0 +1,23 @@
+<!--<app-layout></app-layout>-->
+<div class="row">
+  <div class="col-md-12 main">
+    <div class="tab-header">
+      <span>{{ date }}</span>
+    </div>
+    <app-task-item *ngFor="let taskItem of tasks" [task]="taskItem"></app-task-item>
+
+    <div class="tab-white">
+      <input type="text" id="myinput" class="" placeholder="Add your today's Goals" #myinput>
+      <span class="tab-white-push" (click)="addTask(myinput.value)">Add</span>
+    </div>
+  </div>
+</div>
+
+<ng-template #maxTask>
+  <div class="row text-center">
+    <div class="col-lg-offset-3 col-lg-6">
+      You can only add four tasks per day!
+    </div>
+  </div>
+</ng-template>
+
