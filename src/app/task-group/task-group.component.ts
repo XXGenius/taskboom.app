@@ -40,11 +40,13 @@ export class TaskGroupComponent implements OnInit, OnDestroy {
 
   }
 
-  addTask(value: string) {
-    // const id = this.tasks.length + 1;
-    // this.taskGroupService.currentTaskGroup.tasks.push(new Task(id, value));
-    // this.apiService.addTask(value)
-    //     .subscribe( (task) => { this.tasks = task} );
+  addTask(text: string) {
+    this.apiService.createTask(text, date).subscribe(
+        (task) => {
+          console.log(task);
+          this.tasks.push({id: task.id, text: task.text});
+        }
+    );
   }
 
   ngOnDestroy() {
