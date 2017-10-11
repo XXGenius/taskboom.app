@@ -31,6 +31,19 @@ export class TimelineComponent implements OnInit {
   state = 'normal';
 
   items = [
+    '06-09-2017',
+    '07-09-2017',
+    '08-09-2017',
+    '09-09-2017',
+    '10-09-2017',
+    '11-09-2017',
+    '12-09-2017',
+    '13-09-2017',
+    '14-09-2017',
+    '15-09-2017',
+    '16-09-2017',
+    '17-09-2017',
+    '18-09-2017',
     '19-09-2017',
     '20-09-2017',
     '21-09-2017',
@@ -57,11 +70,11 @@ export class TimelineComponent implements OnInit {
 
 
   animationStartedBefore(event) {
-    console.log(event);
+    // console.log(event);
   }
 
   animationEndedBefore(event) {
 
-    console.log(event)
+    // console.log(event)
   }
 }

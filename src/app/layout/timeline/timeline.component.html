@@ -1,14 +1,16 @@
 <div class="time-line-block">
-  <ul>
-    <li class="active-item" *ngFor="let item of items; let i = index"
-         (click)="onClickElement(i)"
-         [@goBefore]="state"
-         (@goBefore.start)="animationStartedBefore($event)"
-         (@goBefore.done)="animationEndedBefore($event)"
-    >
-      {{ item }}
-    </li>
-  </ul>
+  <div class="time-line">
+    <ul>
+      <li class="active-item" *ngFor="let item of items; let i = index"
+           (click)="onClickElement(i)"
+           [@goBefore]="state"
+           (@goBefore.start)="animationStartedBefore($event)"
+           (@goBefore.done)="animationEndedBefore($event)"
+      >
+        {{ item }}
+      </li>
+    </ul>
+  </div>
 </div>
 <div class="time-line-gradient">
 

@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('task-group App', () => {
+describe('day App', () => {
   let page: AppPage;
 
   beforeEach(() => {
