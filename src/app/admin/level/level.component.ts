@@ -7,6 +7,7 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 @Component({
     selector: 'app-level',
     templateUrl: './level.component.html',
+    styleUrls: ['../admin.component.css'],
     animations: [
         trigger('list', [
             state('in', style({
