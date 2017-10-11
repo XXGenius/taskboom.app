@@ -20,7 +20,7 @@ export class TaskItemComponent implements OnInit {
         .subscribe(
         (task) => {
           console.log(task);
-          this.active = task;
+          this.active = task.checked;
         }
     );
   }
