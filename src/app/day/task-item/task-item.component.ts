@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import {ApiService} from '../../services/api.service';
+import {ISubscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-task-item',
@@ -8,13 +10,22 @@ export class TaskItemComponent implements OnInit {
   @Input() task;
   active: boolean = false;
 
-  constructor() { }
+  private checkSubscribe: ISubscription;
+
+  constructor(private apiService: ApiService) { }
 
   ngOnInit() {
     this.active = this.task.checked;
   }
 
   onCheck() {
-    this.active = this.active ? false : true;
+    this.checkSubscribe = this.apiService.checkTask(this.task.id, !this.active)
+        .subscribe(
+        (task) => {
+          console.log(task);
+          this.active = task.checked;
+          this.checkSubscribe.unsubscribe();
+        }
+    );
   }
 }
