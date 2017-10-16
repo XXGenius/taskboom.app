@@ -25,6 +25,7 @@ import {RoleComponent} from './admin/role/role.component';
 import {UserComponent} from './admin/user/user.component';
 import {LevelComponent} from './admin/level/level.component';
 import {UserGroupComponent} from './admin/user-group/user-group.component';
+import {AuthComponent} from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import {UserGroupComponent} from './admin/user-group/user-group.component';
     IndexComponent,
     OneDayComponent,
     StatusComponent,
-    DropdownDirective
+    DropdownDirective,
+      AuthComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +58,7 @@ import {UserGroupComponent} from './admin/user-group/user-group.component';
     BrowserAnimationsModule
   ],
   providers: [
-    ApiService
+    ApiService,
   ],
   bootstrap: [AppComponent]
 })
