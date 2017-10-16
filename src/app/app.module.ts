@@ -47,7 +47,8 @@ import {AuthComponent} from './auth/auth.component';
     OneDayComponent,
     StatusComponent,
     DropdownDirective,
-      AuthComponent
+      AuthComponent,
+      TaskItemComponent
   ],
   imports: [
     BrowserModule,
