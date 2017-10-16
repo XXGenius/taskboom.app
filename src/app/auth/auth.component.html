@@ -1,0 +1,22 @@
+<div *ngIf="!auth">
+    <section class="container">
+        <div class="login">
+            <h1>Войти в личный кабинет</h1>
+            <form  #myForm="ngForm" novalidate (ngSubmit)="authenticate(myForm)">
+                <p><input  id="myinput" class="form-control inputmuform" placeholder="Enter to Email" name="email" ngModel required></p>
+                <p><input type="password" id="myinput1" class="form-control inputmuform" placeholder="Enter to Password" name="password" ngModel required></p>
+                <p class="remember_me">
+                    <label>
+                        <input type="checkbox" name="remember_me" id="remember_me">
+                        Запомнить меня
+                    </label>
+                </p>
+                <p class="submit"><input type="submit" name="commit" value="Войти" [disabled]="myForm.invalid"></p>
+            </form>
+        </div>
+        <div class="login-help">
+            <a>Регистрация</a>
+        </div>
+    </section>
+</div>
+<a *ngIf="auth" routerLink="" >ку</a>

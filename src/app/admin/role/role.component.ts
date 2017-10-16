@@ -3,10 +3,12 @@ import {ISubscription} from 'rxjs/Subscription';
 import {ApiService} from '../../services/api.service';
 import {DOCUMENT} from '@angular/common';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import {NgForm} from '@angular/forms';
 
 @Component({
     selector: 'app-role',
     templateUrl: './role.component.html',
+    styleUrls: ['../admin.component.css'],
     animations: [
         trigger('list', [
             state('in', style({
@@ -64,9 +66,9 @@ export class RoleComponent implements OnInit {
         this.roles[i].edit = true;
     }
 
-    create(title: string) {
+    create(form: NgForm) {
         this.inputCreate = '';
-        this.apiService.createRole(title).subscribe(
+        this.apiService.createRole(form.value.title).subscribe(
             (role) => {
                 console.log(role);
 
@@ -81,14 +83,11 @@ export class RoleComponent implements OnInit {
         this.roles[i].edit = false;
     }
 
-    update(i: number) {
+    update(form: NgForm, i: number) {
         const id = this.roles[i].id;
-        const title = (<HTMLInputElement>this.doc.getElementById('input-title-' + id)).value;
-
-        this.roles[i].title = '';
-        this.apiService.updateRole(id, title).subscribe(
+        this.apiService.updateRole(id, form.value.title).subscribe(
             (role) => {
-                this.roles[i].title = title;
+                this.roles[i].title = role.title;
                 this.roles[i].edit = false;
             }
         );

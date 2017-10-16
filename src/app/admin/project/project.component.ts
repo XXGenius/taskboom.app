@@ -3,10 +3,12 @@ import {ISubscription} from 'rxjs/Subscription';
 import {ApiService} from '../../services/api.service';
 import {DOCUMENT} from '@angular/common';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import {NgForm} from '@angular/forms';
 
 @Component({
     selector: 'app-project',
     templateUrl: './project.component.html',
+    styleUrls: ['../admin.component.css'],
     animations: [
         trigger('list', [
             state('in', style({
@@ -64,9 +66,9 @@ export class ProjectComponent implements OnInit {
         this.projects[i].edit = true;
     }
 
-    create(title: string) {
+    create(form: NgForm) {
         this.inputCreate = '';
-        this.apiService.createProject(title).subscribe(
+        this.apiService.createProject(form.value.title).subscribe(
             (role) => {
                 console.log(role);
 
@@ -81,14 +83,11 @@ export class ProjectComponent implements OnInit {
         this.projects[i].edit = false;
     }
 
-    update(i: number) {
+    update(form: NgForm, i: number) {
         const id = this.projects[i].id;
-        const title = (<HTMLInputElement>this.doc.getElementById('input-title-' + id)).value;
-
-        this.projects[i].title = '';
-        this.apiService.updateProject(id, title).subscribe(
-            (role) => {
-                this.projects[i].title = title;
+        this.apiService.updateProject(id, form.value.title).subscribe(
+            (project) => {
+                this.projects[i].title = project.title;
                 this.projects[i].edit = false;
             }
         );

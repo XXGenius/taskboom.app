@@ -2,6 +2,7 @@ import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {ApiService} from '../services/api.service';
 import {ISubscription} from 'rxjs/Subscription';
 import {ActivatedRoute} from "@angular/router";
+import {HeaderComponent} from '../header/header.component';
 
 
 @Component({
@@ -10,7 +11,7 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class DayComponent implements OnInit, OnDestroy {
   @Input() taskGroup;
-
+  auth;
   tasks = [];
   maxTaskNumber = 4;
 
@@ -20,7 +21,7 @@ export class DayComponent implements OnInit, OnDestroy {
   private daySubscription: ISubscription;
 
   constructor(private apiService: ApiService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,) {
     this.routeSubscription = this.route.params.subscribe(params => {
       this.date = params['date']; // (+) converts string 'id' to a number
       this.daySubscription = apiService.getDay(this.date).subscribe(

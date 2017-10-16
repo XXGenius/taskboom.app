@@ -1,13 +1,14 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {ISubscription} from 'rxjs/Subscription';
 import {ApiService} from '../../services/api.service';
+import {EmailValidator} from '@angular/forms';
 
 @Component({
     selector: 'app-user',
     templateUrl: './user.component.html'
 })
 export class UserComponent implements OnInit {
-    @Input() user;
+    edit;
     users;
     private usersSubscription: ISubscription;
     constructor(private apiService: ApiService) {

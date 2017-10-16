@@ -3,10 +3,12 @@ import {ApiService} from '../../services/api.service';
 import {ISubscription} from 'rxjs/Subscription';
 import {DOCUMENT} from '@angular/common';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import {NgForm} from '@angular/forms';
 
 @Component({
     selector: 'app-status',
     templateUrl: './status.component.html',
+    styleUrls: ['../admin.component.css'],
     animations: [
       trigger('list', [
         state('in', style({
@@ -69,13 +71,11 @@ export class StatusComponent implements OnInit {
       this.statuses[i].edit = true;
     }
 
-    create(title: string) {
-      this.inputCreate = '';
-      this.apiService.createStatus(title).subscribe(
-          (role) => {
-              console.log(role);
-
-              this.statuses.push({id: role.id, title: role.title});
+    create(form: NgForm) {
+        this.apiService.createStatus(form.value.title).subscribe(
+          (status) => {
+              console.log(status);
+              this.statuses.push({id: status.id, title: status.title});
           }
       );
     }
@@ -86,14 +86,11 @@ export class StatusComponent implements OnInit {
       this.statuses[i].edit = false;
     }
 
-    update(i: number) {
+    update(form: NgForm, i: number) {
       const id = this.statuses[i].id;
-      const title = (<HTMLInputElement>this.doc.getElementById('input-title-' + id)).value;
-
-      this.statuses[i].title = '';
-        this.apiService.updateStatus(id, title).subscribe(
-            (role) => {
-                this.statuses[i].title = title;
+      this.apiService.updateStatus(id, form.value.title).subscribe(
+            (status) => {
+                this.statuses[i].title = status.title;
                 this.statuses[i].edit = false;
             }
         );

@@ -3,6 +3,7 @@ import {ISubscription} from 'rxjs/Subscription';
 import {ApiService} from '../../services/api.service';
 import {DOCUMENT} from '@angular/common';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import {NgForm} from '@angular/forms';
 
 @Component({
     selector: 'app-level',
@@ -66,10 +67,8 @@ export class LevelComponent implements OnInit {
         this.levels[i].edit = true;
     }
 
-    create(level: number, exp: number) {
-        this.inputCreate = '';
-        this.inputCreateExp = '';
-        this.apiService.createLevel(level, exp).subscribe(
+    create(form: NgForm) {
+        this.apiService.createLevel(form.value.level, form.value.exp).subscribe(
             (lvl) => {
                 console.log(lvl);
                 this.levels.push({id: lvl.id, exp: lvl.exp, level: lvl.level});
@@ -83,29 +82,14 @@ export class LevelComponent implements OnInit {
         this.levels[i].edit = false;
     }
 
-    update(i: number) {
+    update(form: NgForm, i: number) {
         const id = this.levels[i].id;
-        const level = (<HTMLInputElement>this.doc.getElementById('input-level-' + id)).value;
-        const exp = (<HTMLInputElement>this.doc.getElementById('input-exp-' + id)).value;
-
-        this.levels[i].level = null;
-        this.levels[i].exp =  null;
-        this.apiService.updateLevel(id, level, exp).subscribe(
-            (role) => {
-                this.levels[i].exp = exp;
-                this.levels[i].level = level;
+        this.apiService.updateLevel(id, form.value.level, form.value.exp).subscribe(
+            (level) => {
+                this.levels[i].exp = level.exp;
+                this.levels[i].level = level.level;
                 this.levels[i].edit = false;
             }
         );
     }
-
-    // createLevel(level: number, exp: number) {
-    //     this.apiService.createLevel(level, exp).subscribe(
-    //         (lvl) => {
-    //             console.log(lvl);
-    //             this.levels.push({id: lvl.id, exp: lvl.exp, level: lvl.level});
-    //         }
-    //     );
-    // }
-
 }

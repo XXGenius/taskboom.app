@@ -8,36 +8,36 @@
                 <div>Exp</div>
                 <div></div>
             </div>
-            <div class="tr">
+            <form #myForm="ngForm" novalidate (ngSubmit)="create(myForm)">
                 <div></div>
-                <div><input type="number" id="myinput" class="form-control crud-text" placeholder="Enter to Level" [(ngModel)]="inputCreate"></div>
-                <div><input type="number" id="myinput1" class="form-control crud-text" placeholder="Enter to Exp" [(ngModel)]="inputCreateExp"></div>
-                <div><button class="btn btn-small btn-primary" (click)="create(inputCreate, inputCreateExp)" [disabled]="inputCreate === ''"><i class="fa fa-plus"></i></button></div>
-                </div>
-            <div class="tr" *ngFor="let level of levels; let i = index"
+                <div><input  id="myinput" class="form-control inputmuform" placeholder="Enter to Level" name="level" ngModel required></div>
+                <div><input id="myinput1" class="form-control inputmuform"  placeholder="Enter to Exp" name="exp" ngModel required></div>
+                <div><button class="btn btn-small btn-primary" [disabled]="myForm.invalid"><i class="fa fa-plus"></i></button></div>
+            </form>
+            <form *ngFor="let level of levels; let i = index"
                     id="tr{{level.id }}"
-                    [@list]>
+                    [@list] #myUpdateForm="ngForm" novalidate (ngSubmit)="update(myUpdateForm, i)">
                 <div>{{ level.id}}</div>
                 <div>
                     <span *ngIf="!level.edit">{{ +level.level}}</span>
-                    <input *ngIf="level['edit']" type="number" id="input-level-{{ level.id }}"
-                           class="form-control crud-text"
-                           value="{{level.level}}">
+                    <div *ngIf="level['edit']" >
+                    <input class="form-control"
+                           value="{{ +level.level}}" name="level" ngModel required/>
+                    </div>
                 </div>
                 <div>
                     <span *ngIf="!level.edit">{{ +level.exp}}</span>
-                    <input *ngIf="level['edit']" type="number" id="input-exp-{{ level.id }}"
-                           class="form-control crud-text"
-                           value="{{level.exp}}">
+                    <div *ngIf="level['edit']" >
+                    <input class="form-control"
+                            name="exp" ngModel required value="{{ +level.exp }}"></div>
                 </div>
                 <div style="width: 100px;">
                     <a *ngIf="!level.edit" class="btn  btn-small btn-danger" (click)="remove(i)"><i class="fa fa-trash"></i> </a>
                     <a *ngIf="!level.edit" class="btn  btn-small btn-info" (click)="showUpdate(i)"><i class="fa fa-pencil"></i></a>
-                    <button *ngIf="level.edit" class="btn btn-small btn-danger" (click)="cancel(i)"><i class="fa fa-ban"></i></button>
-                    <button *ngIf="level.edit" class="btn btn-small btn-primary" (click)="update(i)"><i class="fa fa-save"></i></button>
+                    <!--<button *ngIf="level.edit" class="btn btn-small btn-danger" (click)="cancel(i)"><i class="fa fa-ban"></i></button>-->
+                    <button *ngIf="level.edit" class="btn btn-small btn-danger" [disabled]="myUpdateForm.invalid"><i class="fa fa-save"></i></button>
                 </div>
-            </div>
-            </div>
-
+            </form>
+        </div>
     </div>
 </ng-template>
