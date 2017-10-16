@@ -2,16 +2,18 @@
   <div class="row">
     <div class="header">
       <div class="logo">
-        Boom!
+        <a routerLink="/">Boom!</a>
         <div class="btn-group dropdown-btns"
                                    appDropdown
         >
           <button type="button" class="btn btn-default dropdown-toggle"><i class="fa fa-cog fa-2x"></i><span class="fa fa-caret-down"></span></button>
           <ul class="dropdown-menu">
-            <li><a style="cursor: pointer;">User roles</a></li>
-            <li><a style="cursor: pointer;">Users</a></li>
-            <li><a style="cursor: pointer;">Projects</a></li>
-            <li><a style="cursor: pointer;">Projects status</a></li>
+            <li><a routerLink="/roles" style="cursor: pointer;">User roles</a></li>
+            <li><a routerLink="/users" style="cursor: pointer;">Users</a></li>
+            <li><a routerLink="/usergroups" style="cursor: pointer;">User Groups</a></li>
+            <li><a routerLink="/projects" style="cursor: pointer;">Projects</a></li>
+            <li><a routerLink="/statuses" style="cursor: pointer;">Status</a></li>
+            <li><a routerLink="/levels" style="cursor: pointer;">Level/Exp</a></li>
           </ul>
         </div>
       </div>

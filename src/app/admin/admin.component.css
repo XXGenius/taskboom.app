@@ -1,0 +1,17 @@
+div.table {
+    display: table;
+    border: 1px  solid black;
+}
+
+div.table div.tr {
+    display:table-row;
+    margin-left: 5px;
+    border-bottom: 1px  solid black;
+}
+
+div.table div.tr div {
+    display: table-cell;
+    border-bottom: 1px  solid black;
+    border-left: 1px  solid black ;
+    margin-left: 5px;
+}

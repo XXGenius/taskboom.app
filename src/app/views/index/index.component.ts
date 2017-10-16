@@ -1,17 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-index',
-  templateUrl: './index.component.html',
-  styleUrls: ['./index.component.css']
+  templateUrl: './index.component.html'
 })
 export class IndexComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
-    const m = new Date();
-    // console.log((new Date()).getUTCDate()+ "-"+ ((new Date()).getUTCMonth()+1) + '-'+ (new Date()).getUTCFullYear());
+  constructor(activatedRoute: ActivatedRoute,
+              router: Router) {
+    if (activatedRoute.children.length === 0) { //To Date redirect
+      router.navigate(['/day/' + (new Date()).getUTCFullYear() + '-' + ((new Date()).getUTCMonth()+1) + '-' + (new Date()).getUTCDate()]);
+    }
   }
+
+  ngOnInit() { }
 
 }

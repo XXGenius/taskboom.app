@@ -1,0 +1,43 @@
+<ng-template ngIf="levels">
+    <div class="container">
+        <h3>Levels</h3>
+        <div class="table">
+            <div class="tr" >
+                <div>Id</div>
+                <div>Level</div>
+                <div>Exp</div>
+                <div></div>
+            </div>
+            <div class="tr">
+                <div></div>
+                <div><input type="number" id="myinput" class="form-control crud-text" placeholder="Enter to Level" [(ngModel)]="inputCreate"></div>
+                <div><input type="number" id="myinput1" class="form-control crud-text" placeholder="Enter to Exp" [(ngModel)]="inputCreateExp"></div>
+                <div><button class="btn btn-small btn-primary" (click)="create(inputCreate, inputCreateExp)" [disabled]="inputCreate === ''"><i class="fa fa-plus"></i></button></div>
+                </div>
+            <div class="tr" *ngFor="let level of levels; let i = index"
+                    id="tr{{level.id }}"
+                    [@list]>
+                <div>{{ level.id}}</div>
+                <div>
+                    <span *ngIf="!level.edit">{{ +level.level}}</span>
+                    <input *ngIf="level['edit']" type="number" id="input-level-{{ level.id }}"
+                           class="form-control crud-text"
+                           value="{{level.level}}">
+                </div>
+                <div>
+                    <span *ngIf="!level.edit">{{ +level.exp}}</span>
+                    <input *ngIf="level['edit']" type="number" id="input-exp-{{ level.id }}"
+                           class="form-control crud-text"
+                           value="{{level.exp}}">
+                </div>
+                <div style="width: 100px;">
+                    <a *ngIf="!level.edit" class="btn  btn-small btn-danger" (click)="remove(i)"><i class="fa fa-trash"></i> </a>
+                    <a *ngIf="!level.edit" class="btn  btn-small btn-info" (click)="showUpdate(i)"><i class="fa fa-pencil"></i></a>
+                    <button *ngIf="level.edit" class="btn btn-small btn-danger" (click)="cancel(i)"><i class="fa fa-ban"></i></button>
+                    <button *ngIf="level.edit" class="btn btn-small btn-primary" (click)="update(i)"><i class="fa fa-save"></i></button>
+                </div>
+            </div>
+            </div>
+
+    </div>
+</ng-template>

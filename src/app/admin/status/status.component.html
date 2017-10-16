@@ -1,1 +1,41 @@
-<p>statuses</p>
+<ng-template ngIf="statuses">
+  <div class="container">
+    <h3>Statuses</h3>
+      <table class="table table-striped table-bordered">
+          <thead>
+          <tr>
+              <th>Id</th>
+              <th>Title</th>
+              <th></th>
+          </tr>
+          </thead>
+          <tbody >
+          <tr>
+            <td></td>
+            <td><input type="text" id="myinput" class="form-control crud-text" placeholder="Enter to title..." [(ngModel)]="inputCreate"></td>
+            <td><button class="btn btn-small btn-primary" (click)="create(inputCreate)" [disabled]="inputCreate === ''"><i class="fa fa-plus"></i></button></td>
+          </tr>
+          <tr
+            *ngFor="let status of statuses; let i = index"
+            id="tr{{ status.id }}"
+            [@list]
+          >
+              <td>{{ status.id}}</td>
+              <td>
+                <span *ngIf="!status.edit">{{ +status.title}}</span>
+                <input *ngIf="status['edit']" type="text" id="input-title-{{ status.id }}"
+                       class="form-control crud-text"
+                       value="{{ status.title}}"
+                       >
+              </td>
+              <td style="width: 100px">
+                  <a *ngIf="!status.edit" class="btn  btn-small btn-danger" (click)="remove(i)"><i class="fa fa-trash"></i> </a>
+                  <a *ngIf="!status.edit" class="btn  btn-small btn-info" (click)="showUpdate(i)"><i class="fa fa-pencil"></i></a>
+                  <button *ngIf="status.edit" class="btn btn-small btn-danger" (click)="cancel(i)"><i class="fa fa-ban"></i></button>
+                  <button *ngIf="status.edit" class="btn btn-small btn-primary" (click)="update(i)"><i class="fa fa-save"></i></button>
+              </td>
+          </tr>
+          </tbody>
+      </table>
+  </div>
+</ng-template>
