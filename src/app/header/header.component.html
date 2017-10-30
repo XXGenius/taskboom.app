@@ -17,7 +17,6 @@
           </ul>
         </div>
       </div>
-
       <div class="pr-bar">
         <div class="done-bar"></div>
       </div>
@@ -29,10 +28,14 @@
         Complete now!
       </div>
       <div class="account">
-        <span class="account-img"></span>
-        <span class="account-text">Igor Shkarin</span>
+        <ng-template [ngIf] = "!user">
+          <a  class="account-text" routerLink="/signup">Register</a>
+          <a class="account-text" routerLink="/signin">Login</a></ng-template>
+        <!--<span class="account-img"></span>-->
+        <span  class="account-text">{{ user.email }}</span>
       </div>
     </div>
   </div>
 </div>
+
 

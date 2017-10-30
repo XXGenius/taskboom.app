@@ -25,7 +25,11 @@ import {RoleComponent} from './admin/role/role.component';
 import {UserComponent} from './admin/user/user.component';
 import {LevelComponent} from './admin/level/level.component';
 import {UserGroupComponent} from './admin/user-group/user-group.component';
-import {AuthComponent} from './auth/auth.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { SigninComponent } from './auth/signin/signin.component';
+import {AuthService} from './services/auth.service';
+
+
 
 @NgModule({
   declarations: [
@@ -47,7 +51,9 @@ import {AuthComponent} from './auth/auth.component';
     OneDayComponent,
     StatusComponent,
     DropdownDirective,
-      AuthComponent
+    TaskItemComponent,
+    SignupComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +64,7 @@ import {AuthComponent} from './auth/auth.component';
     BrowserAnimationsModule
   ],
   providers: [
-    ApiService,
+    ApiService, SigninComponent, AuthService
   ],
   bootstrap: [AppComponent]
 })

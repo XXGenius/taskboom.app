@@ -22,6 +22,13 @@ export class ApiService {
 
   /********************************  GET  ****************************/
 
+  registration(email: string, password: string, user_role_id: number ) {
+    return this.http.get('http://boomapi.acesspades.com/api/v1/register' + '?' + this.tokenParam, {
+      params: { email: email, password: password, user_role_id: user_role_id }})
+        .map((res) => res.json())
+        .catch((error: any) => Observable.throw(error || 'Server error'));
+  }
+
   login(email, password) {
     return this.http.get('http://boomapi.acesspades.com/api/v1/login' + '?' + this.tokenParam, {
       params: { email: email, password: password }})
