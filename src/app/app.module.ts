@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {ChangeDetectorRef, NgModule} from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { DayComponent } from './day/day.component';
@@ -53,7 +53,8 @@ import {AuthService} from './services/auth.service';
     DropdownDirective,
     TaskItemComponent,
     SignupComponent,
-    SigninComponent
+    SigninComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -64,7 +65,7 @@ import {AuthService} from './services/auth.service';
     BrowserAnimationsModule
   ],
   providers: [
-    ApiService, SigninComponent, AuthService
+    ApiService, SigninComponent, AuthService, HeaderComponent
   ],
   bootstrap: [AppComponent]
 })

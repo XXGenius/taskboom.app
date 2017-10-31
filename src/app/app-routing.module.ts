@@ -14,7 +14,7 @@ import {SigninComponent} from './auth/signin/signin.component';
 
 
 const appRoutes: Routes = [
-  { path: '', pathMatch: 'full', component: SigninComponent },
+  { path: '', pathMatch: 'full', component: IndexComponent },
   { path: 'day', component: IndexComponent, children: [
     { path: ':date', component: DayComponent},
   ]},

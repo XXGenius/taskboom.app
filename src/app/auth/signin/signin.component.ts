@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {NgForm} from '@angular/forms';
-import {ApiService} from '../../services/api.service';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 
 @Component({
@@ -9,7 +7,6 @@ import {AuthService} from '../../services/auth.service';
   styleUrls: ['./signin.component.css']
 })
 export class SigninComponent implements OnInit {
-  public user;
 
   constructor(private authService: AuthService) {
     this.authService.setAuthHook();
@@ -17,20 +14,4 @@ export class SigninComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  // onSignin(form: NgForm) {
-  //   const email = form.value.email;
-  //   const password = form.value.password;
-  //   this.apiService.login(email, password).subscribe(
-  //       (user) => {
-  //         this.user = user;
-  //         console.log(this.user);
-  //       });
-
-  // }
-
-  // autheticate() {
-  //   return this.user != null;
-  // }
-
 }

@@ -84,6 +84,12 @@ export class ApiService {
       .catch((error: any) => Observable.throw(error || 'Server error'));
   }
 
+  loginAuth(token) {
+    return this.http.post('http://boomapi.acesspades.com/api/v1/oauth',
+        { token: token }, this.headers)
+        .map((res) => res.json())
+        .catch((error: any) => Observable.throw(error || 'Server error'));
+  }
 
   /********************************* Create ****************************/
   createTask(text: string, date, project_id: number ) {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-index',
@@ -7,7 +7,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class IndexComponent implements OnInit {
 
-  constructor(activatedRoute: ActivatedRoute,
+  constructor( activatedRoute: ActivatedRoute,
               router: Router) {
     if (activatedRoute.children.length === 0) {
       router.navigate(['/day/' + (new Date()).getUTCFullYear() + '-' + ((new Date()).getUTCMonth() + 1) + '-' + (new Date()).getUTCDate()]);
