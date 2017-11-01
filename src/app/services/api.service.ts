@@ -36,8 +36,8 @@ export class ApiService {
         .catch((error: any) => Observable.throw(error || 'Server error'));
   }
 
-  getDay(date: string) {
-    return this.http.get('http://boomapi.acesspades.com/api/v1/day/date/' + date + '?' + this.tokenParam)
+  getDay(date: string, user_id) {
+    return this.http.get('http://boomapi.acesspades.com/api/v1/day/date/' + date + '?' + this.tokenParam + '&&' + 'user_id=' + user_id )
         .map((res) => res.json())
         .catch((error: any) => Observable.throw(error || 'Server error'));
   }
@@ -92,10 +92,10 @@ export class ApiService {
   }
 
   /********************************* Create ****************************/
-  createTask(text: string, date, project_id: number ) {
-    console.log(JSON.stringify({ text: text, date: date, project_id: project_id }));
+  createTask(text: string, date, project_id: number, user_id ) {
+    console.log(JSON.stringify({ text: text, date: date, project_id: project_id, user_id: user_id }));
     return this.http.post('http://boomapi.acesspades.com/api/v1/task?' + this.tokenParam,
-        {token: this.token, text: text, date: date, project_id: project_id  }, this.headers)
+        {token: this.token, text: text, date: date, project_id: project_id, user_id: user_id }, this.headers)
         .map((res) => res.json())
         .catch((error: any) => Observable.throw(error || 'Server error'));
   }

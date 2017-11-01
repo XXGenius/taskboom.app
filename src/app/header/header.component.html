@@ -28,20 +28,15 @@
       <div class="account" *ngIf="isAuthorized">
         <span class="account-img"></span>
         <img class="account-img" src="{{ currentUser.photo}}" alt="">
-        <span  class="account-text "> <div class="btn-group dropdown-btns"  appDropdown>
-        <button  type="button" class="btn btn-default dropdown-toggle"><span  class="account-text ">{{ currentUser.first_name}}</span></button>
-        <ul class="dropdown-menu" >
-          <li><a  style="cursor: pointer;" (click)="exit()">Exit</a></li>
-        </ul>
-      </div></span>
-      </div>
+        <span  class="account-text ">{{ currentUser.first_name}}</span>
 
+      </div>
+      <a  class="account-text " *ngIf="isAuthorized" (click)="exit()">exit</a>
       <div class="account" *ngIf="!isAuthorized">
         <a  class="account-text" routerLink="/signup">Register</a>
         <a class="account-text" routerLink="/signin">Login</a>
       </div>
     </div>
-
   </div>
 </div>
 
