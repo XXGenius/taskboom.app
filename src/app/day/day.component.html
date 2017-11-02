@@ -5,9 +5,86 @@
       <span>{{ date }}</span>
     </div>
     <app-task-item *ngFor="let taskItem of tasks" [task]="taskItem"></app-task-item>
-    <div class="tab-white">
-      <input type="text" id="myinput" class="" placeholder="Add your today's Goals" #myinput>
-      <a  class="btn  btn-small btn-info" (click)="addTask(myinput.value)">Add</a>
+    <div class="mui-panel" style="width: 80%;">
+      <div class="mui-textfield mui-textfield--float-label">
+        <input type="text" id="myinput" class="" placeholder="Add your today's goals" #myinput>
+      </div>
+
+
+
+
+        <ul class="mui-list--inline pull-right">
+          <li>
+            <div class="mui--text-subhead ">+9% appro</div>
+          </li>
+          <li>
+            <div class="mui--text-caption">783 exp</div>
+          </li>
+          <li>
+            <a  class="mui-btn mui-btn--primary" (click)="addTask(myinput.value)">Add</a>
+          </li>
+        </ul>
+    </div>
+
+    <div class="col-md-12">
+      <div class="row">
+        <div class="mui-panel col-md-6">
+          <form>
+            <div class="mui-checkbox">
+              <label>
+                <input type="checkbox" value="">
+                Will u do it?
+              </label>
+            </div>
+            <div class="mui-chekbox">
+              <label>
+                <input type="checkbox" value="">
+                Make public?
+              </label>
+            </div>
+            <div class="mui-chekbox">
+              <label>
+                <input type="checkbox" value="">
+                Test field
+              </label>
+            </div>
+          </form>
+        </div>
+        <div class="mui-panel col-md-6">
+
+
+          <form class="mui-form--inline">
+            <div class="mui-checkbox">
+              <label>
+                <input type="time" id="myTime" value="01:00">
+                Will u do it?
+              </label>
+            </div>
+            <div class="mui-chekbox">
+              <label>
+                <div class="quantity">
+                  <input type="number" min="1" max="100" step="1" value="50">%
+                </div>
+                <!-- todo Сделаем вот так https://toster.ru/q/350012 не хватает стилей и нужно мне понять, как js и css подключать к компонентам. А еще лучше, где будем складывать сами компоненты, вроде такого инпута? Надо нам стилизовать уникально кнопку. Где будем хранить верстку, стиль и джс кнопки? -->
+                <!--<div class="counter">-->
+                <!--<button type="button" class="but counterBut dec">-</button>-->
+                <!--<input type="text" class="field fieldCount" value="1" data-min="1" data-max="20">-->
+                <!--<button type="button" class="but counterBut inc">+</button>-->
+                <!--</div>-->
+                Make public?
+              </label>
+            </div>
+            <div class="mui-chekbox">
+              <label>
+                <input type="checkbox" value="">
+                Test field
+              </label>
+            </div>
+          </form>
+
+
+        </div>
+      </div>
     </div>
   </div>
 </div>
