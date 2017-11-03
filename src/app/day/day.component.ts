@@ -17,7 +17,6 @@ export class DayComponent implements OnInit, OnDestroy {
   maxTaskNumber = 4;
 
   date;
-  
   currentUser;
 
   private routeSubscription: ISubscription;
