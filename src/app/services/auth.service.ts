@@ -17,11 +17,12 @@ export class AuthService {
         window['authHook']  = this.authHook;
         const uid = localStorage.getItem('uid');
         if (uid) {
-            this.isAuthorized.next(true);
             this.currentUserSubscribe = this.apiservice.getCurrentUser(uid)
                 .subscribe(user => {
                 this.currentUser = user['0'];
-            });
+                    this.isAuthorized.next(true);
+                    console.log(this.isAuthorized);
+                });
             router.navigate(['/']);
         } else {
             this.isAuthorized.next(false);
@@ -36,6 +37,7 @@ export class AuthService {
                 localStorage.setItem('uid', user['0'].uid);
                 this.currentUser = user['0'];
                 this.isAuthorized.next(true);
+                console.log(this.isAuthorized)
                 this.router.navigate(['/']);
             });
     }

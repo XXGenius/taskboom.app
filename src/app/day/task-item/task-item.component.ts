@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input, ChangeDetectorRef} from '@angular/core';
 import {ApiService} from '../../services/api.service';
 import {ISubscription} from 'rxjs/Subscription';
 
@@ -12,7 +12,7 @@ export class TaskItemComponent implements OnInit {
 
   private checkSubscribe: ISubscription;
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private ref: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.active = this.task.checked;
@@ -25,6 +25,7 @@ export class TaskItemComponent implements OnInit {
           console.log(task);
           this.active = task.checked;
           this.checkSubscribe.unsubscribe();
+            this.ref.detectChanges();
         }
     );
   }

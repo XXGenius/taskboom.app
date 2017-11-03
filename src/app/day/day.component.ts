@@ -23,7 +23,7 @@ export class DayComponent implements OnInit, OnDestroy {
   private daySubscription: ISubscription;
 
   constructor(private authService: AuthService, private apiService: ApiService,
-              private route: ActivatedRoute, ) {
+              private route: ActivatedRoute, private ref: ChangeDetectorRef ) {
     this.currentUser = this.authService.currentUser;
     console.log(this.currentUser);
     this.routeSubscription = this.route.params.subscribe(params => {
@@ -32,8 +32,10 @@ export class DayComponent implements OnInit, OnDestroy {
         (tasks) => {
           console.log(tasks);
           this.tasks = tasks;
+          this.ref.detectChanges();
         }
       );
+
     });
   }
 
@@ -49,6 +51,7 @@ export class DayComponent implements OnInit, OnDestroy {
         (task) => {
           console.log(task);
           this.tasks.push({id: task.id, text: task.text, date: task.date});
+          this.ref.detectChanges();
         }
     );
   }
