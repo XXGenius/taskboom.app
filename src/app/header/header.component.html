@@ -1,13 +1,11 @@
 <div class="container-fluid">
-  <div class="row">
+  <div class="row" >
     <div class="header">
       <div class="logo">
         <a routerLink="/">Boom!</a>
-        <div class="btn-group dropdown-btns"
-                                   appDropdown
-        >
-          <button type="button" class="btn btn-default dropdown-toggle"><i class="fa fa-cog fa-2x"></i><span class="fa fa-caret-down"></span></button>
-          <ul class="dropdown-menu">
+        <div  class="btn-group dropdown-btns"  appDropdown>
+          <button  type="button" class="btn btn-default dropdown-toggle"><i class="fa fa-cog fa-2x"></i><span class="fa fa-caret-down"></span></button>
+          <ul class="dropdown-menu" >
             <li><a routerLink="/roles" style="cursor: pointer;">User roles</a></li>
             <li><a routerLink="/users" style="cursor: pointer;">Users</a></li>
             <li><a routerLink="/usergroups" style="cursor: pointer;">User Groups</a></li>
@@ -17,20 +15,26 @@
           </ul>
         </div>
       </div>
-
-      <div class="pr-bar">
+      <div class="pr-bar" *ngIf="isAuthorized">
         <div class="done-bar"></div>
       </div>
-      <div class="pr-percent">
+      <div class="pr-percent" *ngIf="isAuthorized">
         <span class="pr-percent-img"></span>
-        <span class="pr-percent-text">57%</span>
+        <span class="pr-percent-text">{{ currentUser.level}} LVL</span>
       </div>
-      <div class="pr-complete">
+      <div class="pr-complete" *ngIf="isAuthorized">
         Complete now!
       </div>
-      <div class="account">
+      <div class="account" *ngIf="isAuthorized">
         <span class="account-img"></span>
-        <span class="account-text">Igor Shkarin</span>
+        <img class="account-img" src="{{ currentUser.photo}}" alt="">
+        <span  class="account-text ">{{ currentUser.first_name}}</span>
+
+      </div>
+      <a  class="account-text " *ngIf="isAuthorized" (click)="exit()">exit</a>
+      <div class="account" *ngIf="!isAuthorized">
+        <a  class="account-text" routerLink="/signup">Register</a>
+        <a class="account-text" routerLink="/signin">Login</a>
       </div>
     </div>
   </div>

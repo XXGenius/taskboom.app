@@ -151,7 +151,7 @@
   left: 1px;
   position: relative;
   margin-right: 8px;
-  background-image: url('/assets/img/2.png');
+  /*background-image: url('/assets/img/2.png');*/
 }
 
 .account-text {

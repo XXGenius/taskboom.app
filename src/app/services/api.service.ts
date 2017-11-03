@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Http} from '@angular/http';
 import {Observable} from 'rxjs';
 import 'rxjs/add/operator/map';
+import {Subject} from 'rxjs/Subject';
 
 @Injectable()
 export class ApiService {
@@ -22,6 +23,20 @@ export class ApiService {
 
   /********************************  GET  ****************************/
 
+  registration(email: string, password: string, user_role_id: number ) {
+    return this.http.get('http://boomapi.acesspades.com/api/v1/register' + '?' + this.tokenParam, {
+      params: { email: email, password: password, user_role_id: user_role_id }})
+        .map((res) => res.json())
+        .catch((error: any) => Observable.throw(error || 'Server error'));
+  }
+
+  getCurrentUser(uid) {
+    return this.http.get('http://boomapi.acesspades.com/api/v1/getcurrentuser' , {
+      params: { uid: uid }})
+        .map((res) => res.json())
+        .catch((error: Subject<{}>) => Subject.throw(error || 'Server error'));
+  }
+
   login(email, password) {
     return this.http.get('http://boomapi.acesspades.com/api/v1/login' + '?' + this.tokenParam, {
       params: { email: email, password: password }})
@@ -29,8 +44,8 @@ export class ApiService {
         .catch((error: any) => Observable.throw(error || 'Server error'));
   }
 
-  getDay(date: string) {
-    return this.http.get('http://boomapi.acesspades.com/api/v1/day/date/' + date + '?' + this.tokenParam)
+  getDay(date: string, user_id) {
+    return this.http.get('http://boomapi.acesspades.com/api/v1/day/date/' + date + '?' + this.tokenParam + '&&' + 'user_id=' + user_id )
         .map((res) => res.json())
         .catch((error: any) => Observable.throw(error || 'Server error'));
   }
@@ -77,12 +92,18 @@ export class ApiService {
       .catch((error: any) => Observable.throw(error || 'Server error'));
   }
 
+  loginAuth(token) {
+    return this.http.post('http://boomapi.acesspades.com/api/v1/oauth',
+        { token: token }, this.headers)
+        .map((res) => res.json())
+        .catch((error: any) => Observable.throw(error || 'Server error'));
+  }
 
   /********************************* Create ****************************/
-  createTask(text: string, date, project_id: number ) {
-    console.log(JSON.stringify({ text: text, date: date, project_id: project_id }));
+  createTask(text: string, date, project_id: number, user_id ) {
+    console.log(JSON.stringify({ text: text, date: date, project_id: project_id, user_id: user_id }));
     return this.http.post('http://boomapi.acesspades.com/api/v1/task?' + this.tokenParam,
-        {token: this.token, text: text, date: date, project_id: project_id  }, this.headers)
+        {token: this.token, text: text, date: date, project_id: project_id, user_id: user_id }, this.headers)
         .map((res) => res.json())
         .catch((error: any) => Observable.throw(error || 'Server error'));
   }

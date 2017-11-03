@@ -8,6 +8,8 @@ import {RoleComponent} from './admin/role/role.component';
 import {UserComponent} from './admin/user/user.component';
 import {LevelComponent} from './admin/level/level.component';
 import {UserGroupComponent} from './admin/user-group/user-group.component';
+import {SignupComponent} from './auth/signup/signup.component';
+import {SigninComponent} from './auth/signin/signin.component';
 
 
 
@@ -22,6 +24,8 @@ const appRoutes: Routes = [
   { path: 'users', component: UserComponent},
   { path: 'levels', component: LevelComponent},
   { path: 'usergroups', component: UserGroupComponent},
+  { path: 'signup' , component: SignupComponent},
+  { path: 'signin' , component: SigninComponent}
 
 
 ];
