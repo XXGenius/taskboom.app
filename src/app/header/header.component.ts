@@ -8,7 +8,7 @@ import {AuthService} from '../services/auth.service';
 })
 export class HeaderComponent implements OnInit {
   admin = false;
-  isAuthorized = false;
+  isAuthorized;
   currentUser;
   constructor(private authService: AuthService, private ref: ChangeDetectorRef) {
     this.authService.setAuthHook();

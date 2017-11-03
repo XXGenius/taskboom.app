@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 import {Subject} from 'rxjs/Subject';
 import {ApiService} from './api.service';
 import {Router} from '@angular/router';
+import {ISubscription} from 'rxjs/Subscription';
 
 @Injectable()
 export class AuthService {
@@ -11,11 +12,16 @@ export class AuthService {
     private authHook = new Subject();
     isAuthorized: Subject<boolean> = new Subject();
     currentUser = new Subject();
+    currentUserSubscribe: ISubscription;
     constructor(private apiservice: ApiService, private router: Router) {
         window['authHook']  = this.authHook;
-        const user = localStorage.getItem('user');
-        if (user) {
+        const uid = localStorage.getItem('uid');
+        if (uid) {
             this.isAuthorized.next(true);
+            this.currentUserSubscribe = this.apiservice.getCurrentUser(uid)
+                .subscribe(user => {
+                this.currentUser = user['0'];
+            });
             router.navigate(['/']);
         } else {
             this.isAuthorized.next(false);
@@ -27,7 +33,7 @@ export class AuthService {
         this.authHook
             .switchMap(authToken => this.apiservice.loginAuth(authToken))
             .subscribe(user => {
-                localStorage.setItem('user', user);
+                localStorage.setItem('uid', user['0'].uid);
                 this.currentUser = user['0'];
                 this.isAuthorized.next(true);
                 this.router.navigate(['/']);
@@ -39,7 +45,7 @@ export class AuthService {
     }
 
     clear () {
-        localStorage.setItem('user', '');
+        localStorage.setItem('uid', '');
         this.currentUser = null;
         this.isAuthorized.next(false);
         this.router.navigate(['/signin/']);

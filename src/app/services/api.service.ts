@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Http} from '@angular/http';
 import {Observable} from 'rxjs';
 import 'rxjs/add/operator/map';
+import {Subject} from 'rxjs/Subject';
 
 @Injectable()
 export class ApiService {
@@ -27,6 +28,13 @@ export class ApiService {
       params: { email: email, password: password, user_role_id: user_role_id }})
         .map((res) => res.json())
         .catch((error: any) => Observable.throw(error || 'Server error'));
+  }
+
+  getCurrentUser(uid) {
+    return this.http.get('http://boomapi.acesspades.com/api/v1/getcurrentuser' , {
+      params: { uid: uid }})
+        .map((res) => res.json())
+        .catch((error: Subject<{}>) => Subject.throw(error || 'Server error'));
   }
 
   login(email, password) {
