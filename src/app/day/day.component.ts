@@ -24,7 +24,7 @@ export class DayComponent implements OnInit, OnDestroy {
 
   constructor(private authService: AuthService, private apiService: ApiService,
               private route: ActivatedRoute, ) {
-    this.currentUser = this.authService.getCurrenUser();
+    this.currentUser = this.authService.currentUser;
     console.log(this.currentUser);
     this.routeSubscription = this.route.params.subscribe(params => {
       this.date = params['date']; // (+) converts string 'id' to a number
