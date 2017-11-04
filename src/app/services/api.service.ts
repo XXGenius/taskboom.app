@@ -166,6 +166,14 @@ export class ApiService {
         .catch((error: any) => Observable.throw(error || 'Server error'));
   }
 
+  updateExp(exp: number, user_id: number) {
+    console.log(JSON.stringify({ exp: exp, user_id: user_id  }));
+    return this.http.put('http://boomapi.acesspades.com/api/v1/updateexp/?' + this.tokenParam,
+        { exp: exp, user_id: user_id }, this.headers)
+        .map((res) => res.json())
+        .catch((error: any) => Observable.throw(error || 'Server error'));
+  }
+
   updateUserGroup(id: number, title: string) {
     return this.http.put('http://boomapi.acesspades.com/api/v1/usergroup/' + id + '?' + this.tokenParam,
         {title: title }, this.headers)
