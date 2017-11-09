@@ -5,7 +5,7 @@
       <div *ngIf="isAuthorized" class="logo">
         <a routerLink="/">Boom!</a>
         <div  class="btn-group dropdown-btns"  appDropdown>
-          <button *ngIf="isAuthorized" type="button" class="btn btn-default dropdown-toggle"><i class="fa fa-cog fa-2x"></i><span class="fa fa-caret-down"></span></button>
+          <button *ngIf="admin" type="button" class="btn btn-default dropdown-toggle"><i class="fa fa-cog fa-2x"></i><span class="fa fa-caret-down"></span></button>
           <ul class="dropdown-menu" >
             <li><a routerLink="/roles" style="cursor: pointer;">User roles</a></li>
             <li><a routerLink="/users" style="cursor: pointer;">Users</a></li>
@@ -21,7 +21,7 @@
       </div>
       <div class="pr-percent" *ngIf="isAuthorized">
         <span class="pr-percent-img"></span>
-        <span class="pr-percent-text">{{ currentUser.level}} lvl      {{ exp }} EXP</span>
+        <span class="pr-percent-text">{{ currentUser.level}} lvl      {{ currentUser.exp }} EXP</span>
       </div>
       <div class="pr-complete" *ngIf="isAuthorized">
 

@@ -21,7 +21,6 @@ export class AuthService {
             this.currentUserSubscribe = this.apiservice.getCurrentUser(uid)
                 .subscribe(user => {
                 this.currentUser = user['0'];
-                this.exp = user['0'].exp;
                     this.isAuthorized.next(true);
                     console.log(this.isAuthorized);
                 });
@@ -39,18 +38,27 @@ export class AuthService {
                 localStorage.setItem('uid', user['0'].uid);
                 this.currentUser = user['0'];
                 this.isAuthorized.next(true);
-                console.log(this.isAuthorized)
+                console.log(this.isAuthorized);
                 this.router.navigate(['/']);
             });
+    }
+
+    login(email, password) {
+        this.apiservice.login(email, password)
+            .subscribe(user => {
+                localStorage.setItem('uid', user['0'].uid);
+                this.currentUser = user['0'];
+                this.isAuthorized.next(true);
+                console.log(this.isAuthorized);
+                this.router.navigate(['/']);
+        });
     }
 
     getCurrenUser () {
         return this.currentUser;
     }
 
-    getExpCurrentUser () {
-        return this.exp;
-    }
+
 
     clear () {
         localStorage.setItem('uid', '');

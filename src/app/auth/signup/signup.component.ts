@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {ApiService} from '../../services/api.service';
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-signup',
@@ -9,19 +10,23 @@ import {ApiService} from '../../services/api.service';
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private authService: AuthService) { }
 
   ngOnInit() {
   }
 
   onSignup(form: NgForm) {
-    const role = 6;
+    const role = 13;
     const email = form.value.email;
+    const first_name = form.value.first_name;
+    const last_name = form.value.last_name;
     const password = form.value.password;
-    this.apiService.registration(email, password, role).subscribe(
-        (lvl) => {
-          console.log(lvl);
+    this.apiService.registration(email, password, first_name, last_name, role).subscribe(
+        (user) => {
+          console.log(user);
+          this.authService.login(email, password);
   });
 
 }
 }
+
