@@ -24,12 +24,11 @@ export class DayComponent implements OnInit, OnDestroy {
 
   constructor(private authService: AuthService, private apiService: ApiService,
               private route: ActivatedRoute, private ref: ChangeDetectorRef ) {
-    this.currentUser = this.authService.currentUser;
-    this.auth = this.authService.isAuthorized;
-    console.log(this.currentUser);
-    this.routeSubscription = this.route.params.subscribe(params => {
+      this.auth = this.authService.isAuthorized;
+      this.routeSubscription = this.route.params.subscribe(params => {
       this.date = params['date']; // (+) converts string 'id' to a number
-      this.daySubscription = apiService.getDay(this.date, this.currentUser.id).subscribe(
+        const id = localStorage.getItem('id');
+        this.daySubscription = apiService.getDay(this.date, id).subscribe(
         (tasks) => {
           console.log(tasks);
           this.tasks = tasks;
@@ -48,7 +47,8 @@ export class DayComponent implements OnInit, OnDestroy {
 
   addTask(text: string) {
     let project = 8;
-    this.apiService.createTask(text, this.date, project, this.currentUser.id).subscribe(
+      const id = localStorage.getItem('id');
+      this.apiService.createTask(text, this.date, project, id).subscribe(
         (task) => {
           console.log(task);
           this.tasks.push({id: task.id, text: task.text, date: task.date});

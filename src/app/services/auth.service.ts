@@ -36,6 +36,7 @@ export class AuthService {
             .switchMap(authToken => this.apiservice.loginAuth(authToken))
             .subscribe(user => {
                 localStorage.setItem('uid', user['0'].uid);
+                localStorage.setItem('id', user['0'].id);
                 this.currentUser = user['0'];
                 this.isAuthorized.next(true);
                 console.log(this.isAuthorized);
@@ -46,7 +47,9 @@ export class AuthService {
     login(email, password) {
         this.apiservice.login(email, password)
             .subscribe(user => {
+                console.log(user);
                 localStorage.setItem('uid', user['0'].uid);
+                localStorage.setItem('id', user['0'].id);
                 this.currentUser = user['0'];
                 this.isAuthorized.next(true);
                 console.log(this.isAuthorized);
@@ -62,6 +65,7 @@ export class AuthService {
 
     clear () {
         localStorage.setItem('uid', '');
+        localStorage.setItem('id', '');
         this.currentUser = null;
         this.isAuthorized.next(false);
         this.router.navigate(['/signin/']);
