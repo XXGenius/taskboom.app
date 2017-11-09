@@ -25,6 +25,7 @@ export class DayComponent implements OnInit, OnDestroy {
   constructor(private authService: AuthService, private apiService: ApiService,
               private route: ActivatedRoute, private ref: ChangeDetectorRef ) {
     this.currentUser = this.authService.currentUser;
+    this.auth = this.authService.isAuthorized;
     console.log(this.currentUser);
     this.routeSubscription = this.route.params.subscribe(params => {
       this.date = params['date']; // (+) converts string 'id' to a number
@@ -58,6 +59,7 @@ export class DayComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.daySubscription.unsubscribe();
+    this.auth = null;
     this.routeSubscription.unsubscribe();
   }
 }

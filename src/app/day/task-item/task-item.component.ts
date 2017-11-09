@@ -27,9 +27,15 @@ export class TaskItemComponent implements OnInit {
         (task) => {
           console.log(task);
           this.active = task.checked;
-          this.currentUser = this.authService.currentUser;
-          const test = this.apiService.updateExp(15, this.currentUser.id);
-          console.log(test);
+          if (this.active === true) {
+              this.currentUser = this.authService.currentUser;
+              this.apiService.updateExp(16, this.currentUser.id).subscribe((user) =>
+                  console.log(user));
+          } else if (this.active === false) {
+              this.currentUser = this.authService.currentUser;
+              this.apiService.updateExp(-16, this.currentUser.id).subscribe((user) =>
+                  console.log(user));
+          }
           this.checkSubscribe.unsubscribe();
           this.ref.detectChanges();
         }

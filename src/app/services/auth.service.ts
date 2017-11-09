@@ -12,6 +12,7 @@ export class AuthService {
     private authHook = new Subject();
     isAuthorized: Subject<boolean> = new Subject();
     currentUser = new Subject();
+    exp;
     currentUserSubscribe: ISubscription;
     constructor(private apiservice: ApiService, private router: Router) {
         window['authHook']  = this.authHook;
@@ -20,6 +21,7 @@ export class AuthService {
             this.currentUserSubscribe = this.apiservice.getCurrentUser(uid)
                 .subscribe(user => {
                 this.currentUser = user['0'];
+                this.exp = user['0'].exp;
                     this.isAuthorized.next(true);
                     console.log(this.isAuthorized);
                 });
@@ -44,6 +46,10 @@ export class AuthService {
 
     getCurrenUser () {
         return this.currentUser;
+    }
+
+    getExpCurrentUser () {
+        return this.exp;
     }
 
     clear () {

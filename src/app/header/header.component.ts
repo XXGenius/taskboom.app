@@ -10,12 +10,14 @@ export class HeaderComponent implements OnInit {
   admin = false;
   isAuthorized;
   currentUser;
+  exp;
   constructor(private authService: AuthService, private ref: ChangeDetectorRef) {
     this.authService.setAuthHook();
     this.authService.isAuthorized.subscribe(isAutorized => {
       this.isAuthorized = isAutorized;
       this.currentUser = this.authService.getCurrenUser();
       if (this.currentUser) {
+          this.exp = this.authService.getExpCurrentUser();
         if  ( this.currentUser['user_role_id'] === 2)  {
           this.admin = true;
         } else {

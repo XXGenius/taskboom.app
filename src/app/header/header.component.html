@@ -2,10 +2,10 @@
 <div class="container-fluid">
   <div class="row" >
     <div class="header">
-      <div class="logo">
+      <div *ngIf="isAuthorized" class="logo">
         <a routerLink="/">Boom!</a>
         <div  class="btn-group dropdown-btns"  appDropdown>
-          <button  type="button" class="btn btn-default dropdown-toggle"><i class="fa fa-cog fa-2x"></i><span class="fa fa-caret-down"></span></button>
+          <button *ngIf="isAuthorized" type="button" class="btn btn-default dropdown-toggle"><i class="fa fa-cog fa-2x"></i><span class="fa fa-caret-down"></span></button>
           <ul class="dropdown-menu" >
             <li><a routerLink="/roles" style="cursor: pointer;">User roles</a></li>
             <li><a routerLink="/users" style="cursor: pointer;">Users</a></li>
@@ -21,10 +21,10 @@
       </div>
       <div class="pr-percent" *ngIf="isAuthorized">
         <span class="pr-percent-img"></span>
-        <span class="pr-percent-text">{{ currentUser.level}} lvlы</span>
+        <span class="pr-percent-text">{{ currentUser.level}} lvl      {{ exp }} EXP</span>
       </div>
       <div class="pr-complete" *ngIf="isAuthorized">
-        Complete now!
+
       </div>
       <div class="account" *ngIf="isAuthorized">
         <span class="account-img"></span>
