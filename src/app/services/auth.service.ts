@@ -8,7 +8,7 @@ import {ISubscription} from 'rxjs/Subscription';
 
 @Injectable()
 export class AuthService {
-
+    error: any;
     private authHook = new Subject();
     isAuthorized: Subject<boolean> = new Subject();
     currentUser = new Subject();
@@ -48,13 +48,23 @@ export class AuthService {
         this.apiservice.login(email, password)
             .subscribe(user => {
                 console.log(user);
-                localStorage.setItem('uid', user['0'].uid);
-                localStorage.setItem('id', user['0'].id);
-                this.currentUser = user['0'];
-                this.isAuthorized.next(true);
-                console.log(this.isAuthorized);
-                this.router.navigate(['/']);
-        });
+                if (user.length === 0 ) {
+                    this.error = 'error';
+                    return this.error;
+                } else {
+                    this.error = '';
+                    localStorage.setItem('uid', user['0'].uid);
+                    localStorage.setItem('id', user['0'].id);
+                    this.currentUser = user['0'];
+                    this.isAuthorized.next(true);
+                    console.log(this.isAuthorized);
+                    this.router.navigate(['/']);
+                }
+                } ,
+                (error) => { this.error = error;
+                    console.log(this.error);
+                }
+        );
     }
 
     getCurrenUser () {

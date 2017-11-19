@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import {NgForm} from '@angular/forms';
 import {ApiService} from '../../services/api.service';
@@ -10,8 +10,8 @@ import {ApiService} from '../../services/api.service';
   styleUrls: ['./signin.component.css']
 })
 export class SigninComponent implements OnInit {
-
-  constructor(private authService: AuthService, private apiService: ApiService) {
+  error: any;
+  constructor(private authService: AuthService, private apiService: ApiService, private ref: ChangeDetectorRef) {
     this.authService.setAuthHook();
   }
 
@@ -20,5 +20,7 @@ export class SigninComponent implements OnInit {
 
   login(form: NgForm) {
       this.authService.login(form.value.email, form.value.password);
+      this.error =  this.authService.error;
+      this.ref.detectChanges();
   }
 }
