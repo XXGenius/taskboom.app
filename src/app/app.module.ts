@@ -28,6 +28,7 @@ import {UserGroupComponent} from './admin/user-group/user-group.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import {AuthService} from './services/auth.service';
+import { TaskTapeComponent } from './task-tape/task-tape.component';
 
 
 
@@ -54,6 +55,7 @@ import {AuthService} from './services/auth.service';
     TaskItemComponent,
     SignupComponent,
     SigninComponent,
+    TaskTapeComponent,
 
   ],
   imports: [

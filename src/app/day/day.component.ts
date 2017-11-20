@@ -1,14 +1,39 @@
 import {ChangeDetectorRef, Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {ApiService} from '../services/api.service';
 import {ISubscription} from 'rxjs/Subscription';
-import {ActivatedRoute} from "@angular/router";
-import {HeaderComponent} from '../header/header.component';
+import {ActivatedRoute} from '@angular/router';
 import {AuthService} from '../services/auth.service';
+
+
+
+
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
 
 @Component({
   selector: 'app-day',
-  templateUrl: './day.component.html'
+  templateUrl: './day.component.html',
+    animations: [
+        trigger('list', [
+            state('in', style({
+                opacity: 1,
+                transform: 'translateX(0)'
+            })),
+            transition('void => *', [
+                style({
+                    opacity: 0,
+                    transform: 'translateX(-100px)'
+                }),
+                animate(300)
+            ]),
+            transition('* => void', [
+                animate(300, style({
+                    opacity: 0,
+                    transform: 'translateX(100px)'
+                }))
+            ]),
+        ])
+    ]
 })
 export class DayComponent implements OnInit, OnDestroy {
   @Input() taskGroup;
@@ -46,7 +71,7 @@ export class DayComponent implements OnInit, OnDestroy {
   }
 
   addTask(text: string) {
-    let project = 8;
+    const project = 8;
       const id = localStorage.getItem('id');
       this.apiService.createTask(text, this.date, project, id).subscribe(
         (task) => {

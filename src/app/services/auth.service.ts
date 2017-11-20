@@ -12,7 +12,7 @@ export class AuthService {
     private authHook = new Subject();
     isAuthorized: Subject<boolean> = new Subject();
     currentUser = new Subject();
-    exp;
+
     currentUserSubscribe: ISubscription;
     constructor(private apiservice: ApiService, private router: Router) {
         window['authHook']  = this.authHook;
@@ -39,7 +39,6 @@ export class AuthService {
                 localStorage.setItem('id', user['0'].id);
                 this.currentUser = user['0'];
                 this.isAuthorized.next(true);
-                console.log(this.isAuthorized);
                 this.router.navigate(['/']);
             });
     }
@@ -70,6 +69,7 @@ export class AuthService {
     getCurrenUser () {
         return this.currentUser;
     }
+
 
 
 

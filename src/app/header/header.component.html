@@ -4,6 +4,7 @@
     <div class="header">
       <div *ngIf="isAuthorized" class="logo">
         <a routerLink="/" >Boom!</a>
+
         <div  class="btn-group dropdown-btns"  appDropdown>
           <button *ngIf="admin" type="button" class="btn btn-default dropdown-toggle"><i class="fa fa-cog fa-2x"></i><span class="fa fa-caret-down"></span></button>
           <ul class="dropdown-menu" >
@@ -15,6 +16,7 @@
             <li><a routerLink="/levels" style="cursor: pointer;">Level/Exp</a></li>
           </ul>
         </div>
+        <a routerLink="/tape" style="cursor: pointer;">New Tasks</a>
       </div>
       <div class="pr-bar" *ngIf="isAuthorized">
         <div class="done-bar"></div>

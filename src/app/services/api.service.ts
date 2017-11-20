@@ -50,8 +50,8 @@ export class ApiService {
         .catch((error: any) => Observable.throw(error || 'Server error'));
   }
 
-  getTasks() {
-    return this.http.get('http://boomapi.acesspades.com/api/v1/mytasks?' + this.tokenParam + '&taskgroup_id=1' )
+  getTasks(id) {
+    return this.http.get('http://boomapi.acesspades.com/api/v1/tasks/' + id + '?' + this.tokenParam  )
       .map((res) => res.json())
       .catch((error: any) => Observable.throw(error || 'Server error'));
   }
