@@ -50,7 +50,14 @@ export class ApiService {
         .catch((error: any) => Observable.throw(error || 'Server error'));
   }
 
-  getTasks(id) {
+    getChildTasks(parent_id) {
+        return this.http.get('http://boomapi.acesspades.com/api/v1/childtasks?' + this.tokenParam + '&&' + 'parent_id=' + parent_id )
+            .map((res) => res.json())
+            .catch((error: any) => Observable.throw(error || 'Server error'));
+    }
+
+
+    getTasks(id) {
     return this.http.get('http://boomapi.acesspades.com/api/v1/tasks/' + id + '?' + this.tokenParam  )
       .map((res) => res.json())
       .catch((error: any) => Observable.throw(error || 'Server error'));
@@ -107,6 +114,14 @@ export class ApiService {
         .map((res) => res.json())
         .catch((error: any) => Observable.throw(error || 'Server error'));
   }
+
+    createChildTask(text: string, project_id: number, parent_id , user_id) {
+        console.log(JSON.stringify({ text: text, project_id: project_id, parent_id: parent_id }));
+        return this.http.post('http://boomapi.acesspades.com/api/v1/childtask?' + this.tokenParam,
+            {token: this.token, text: text, project_id: project_id, parent_id: parent_id, user_id: user_id}, this.headers)
+            .map((res) => res.json())
+            .catch((error: any) => Observable.throw(error || 'Server error'));
+    }
 
   createLevel(level: number, exp: number ) {
     console.log(JSON.stringify({ level: level, exp: exp  }));

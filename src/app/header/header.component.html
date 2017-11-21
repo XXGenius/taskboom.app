@@ -17,6 +17,9 @@
           </ul>
         </div>
         <a routerLink="/tape" style="cursor: pointer;">New Tasks</a>
+        <iframe width="25%" height="20" scrolling="no" frameborder="yes"
+                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/297&amp;{ ADD YOUR PARAMETERS HERE }">
+        </iframe>
       </div>
       <div class="pr-bar" *ngIf="isAuthorized">
         <div class="done-bar"></div>
@@ -43,4 +46,10 @@
     </div>
   </div>
 </div>
-
+<script>
+    var iframeElement   = document.querySelector('iframe');
+    var iframeElementID = iframeElement.id;
+    var widget1         = SC.Widget(iframeElement);
+    var widget2         = SC.Widget(iframeElementID);
+    // widget1 === widget2
+</script>

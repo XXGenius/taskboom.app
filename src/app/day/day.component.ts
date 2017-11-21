@@ -65,7 +65,7 @@ export class DayComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-
+      console.log('day init');
     // this.tasks = this.taskGroupService.currentTaskGroup.tasks;
 
   }
@@ -86,5 +86,6 @@ export class DayComponent implements OnInit, OnDestroy {
     this.daySubscription.unsubscribe();
     this.auth = null;
     this.routeSubscription.unsubscribe();
+    console.log('day die');
   }
 }
