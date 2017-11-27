@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {ChangeDetectorRef, NgModule} from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { DayComponent } from './day/day.component';
@@ -7,9 +7,9 @@ import { TaskItemComponent } from './day/task-item/task-item.component';
 import {FormsModule} from '@angular/forms';
 
 import { HeaderComponent } from './header/header.component';
-import { LayoutComponent } from './layout/layout.component';
+
 import {Angular2FontawesomeModule} from 'angular2-fontawesome';
-import { TimelineComponent } from './layout/timeline/timeline.component';
+
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpModule} from '@angular/http';
 import { ReversePipe } from './pipes/reverse.pipe';
@@ -25,7 +25,12 @@ import {RoleComponent} from './admin/role/role.component';
 import {UserComponent} from './admin/user/user.component';
 import {LevelComponent} from './admin/level/level.component';
 import {UserGroupComponent} from './admin/user-group/user-group.component';
-import {AuthComponent} from './auth/auth.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { SigninComponent } from './auth/signin/signin.component';
+import {AuthService} from './services/auth.service';
+import { TaskTapeComponent } from './task-tape/task-tape.component';
+
+
 
 @NgModule({
   declarations: [
@@ -33,22 +38,23 @@ import {AuthComponent} from './auth/auth.component';
     DayComponent,
     TaskItemComponent,
     HeaderComponent,
-    LayoutComponent,
-    AdminComponent,
+      AdminComponent,
     ProjectComponent,
     RoleComponent,
     UserComponent,
     StatusComponent,
     LevelComponent,
     UserGroupComponent,
-    TimelineComponent,
-    ReversePipe,
+      ReversePipe,
     IndexComponent,
     OneDayComponent,
     StatusComponent,
     DropdownDirective,
-      AuthComponent,
-      TaskItemComponent
+    TaskItemComponent,
+    SignupComponent,
+    SigninComponent,
+    TaskTapeComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -59,7 +65,7 @@ import {AuthComponent} from './auth/auth.component';
     BrowserAnimationsModule
   ],
   providers: [
-    ApiService,
+    ApiService, SigninComponent, AuthService, HeaderComponent
   ],
   bootstrap: [AppComponent]
 })
