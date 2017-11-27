@@ -341,7 +341,12 @@
 html, body {
   max-width: 100%;
   /*overflow-x: hidden;*/
-
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+  /* background-color: #fff; */
+  background: linear-gradient(#87a2f9,#866bee) no-repeat center top;
 }
 
 ul {
