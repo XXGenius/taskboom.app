@@ -7,16 +7,14 @@ import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-task-item',
-  templateUrl: './task-item.component.html'
+  templateUrl: './task-item.component.html',
+    styleUrls: ['./task-item.component.css']
 })
 export class TaskItemComponent implements OnInit {
   @Input() task;
   active = false;
   exp;
   currentUser;
-  add = false;
-  child = false;
-  childTasks = [];
   private checkSubscribe: ISubscription;
 
   constructor(private apiService: ApiService, private ref: ChangeDetectorRef, private authService: AuthService) { }
@@ -48,40 +46,10 @@ export class TaskItemComponent implements OnInit {
     );
   }
 
-  metodadd () {
-      if (this.add === false) {
-          this.add = true;
-          this.child = false;
-      } else  {
-          this.add = false;
-      }
-  }
 
-  showChildTasks (parent_id) {
-      if (this.child === false) {
-          this.apiService.getChildTasks(parent_id)
-              .subscribe((task) => {
-              console.log(task);
-              this.child = true;
-              this.add = false;
-          });
-      } else  {
-          this.child = false;
-      }
-  }
 
-  createChildTask (form: NgForm, id) {
-      const project = 8;
-      const parent_id = id;
-      const user_id = localStorage.getItem('id');
-      const text = form.value.text;
-      this.apiService.createChildTask(text, project, parent_id, user_id).subscribe(
-          (task) => {
-              console.log(task);
-              this.childTasks.push({id: task.id, text: task.text, date: task.date});
-              this.ref.detectChanges();
-          });
-  }
+
+
 
   getexp () {
       return this.exp;

@@ -13,6 +13,7 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 @Component({
   selector: 'app-day',
   templateUrl: './day.component.html',
+    styleUrls: ['./day.component.css'],
     animations: [
         trigger('list', [
             state('in', style({
@@ -39,6 +40,7 @@ export class DayComponent implements OnInit, OnDestroy {
   @Input() taskGroup;
   auth;
   tasks = [];
+  edit = false;
   maxTaskNumber = 4;
 
   date;

@@ -1,47 +1,15 @@
-<div class="tab">
-  <span class="tab-img" [class.active]="active" (click)="onCheck()"></span>
-  <span class="tab-text">{{ task?.text }}</span>
-  <span class="tab-text2">+15 exp.<br>~1.5 hrs<br>concretic level</span>
-  <span class="tab-text3"><span class="tabs-text-perc">73%</span>
-    <br>increase up to<br>
-    <button type="button" class="btn btn-danger"  (click)="metodadd()">Add subtask</button>
-    <button type="button" class= "btn btn-primary btn-sm"  (click)="showChildTasks(task.id)">show subtask</button></span>
+<!--<div class="tab">-->
+  <!--<span class="tab-img" [class.active]="active" (click)="onCheck()"></span>-->
+  <!--<span class="tab-text">{{ task?.text }}</span>-->
+  <!--<span class="tab-text2">+15 exp.<br>~1.5 hrs<br>concretic level</span>-->
+  <!--<span class="tab-text3"><span class="tabs-text-perc">73%</span>-->
+    <!--<br>increase up to<br></span>-->
+<!--</div>-->
+<div class="tabs-all-white-1">
+  <div class="tabs-all-white-1-text-1">{{task.text}}</div>
+  <div class="tabs-all-white-1-text-2">was always somebody who felt quite sorry for myself, what I had..</div>
+  <img src="img/dot.png" class="dot">
+  <img src="img/share.png" class="share">
+  <div class="exp-middle">+768 exp</div>
+  <div class="percent-middle-red">3%</div>
 </div>
-<div *ngIf="child">
-  <div *ngFor="let childtask of childTasks">
-    <div *ngIf="child" class="tab" style="width: 35%; height: 100px; margin-left: 350px;">
-    <span class="tab-text">{{ childtask.text }}</span>
-    <span class="tab-text2">+15 exp.<br>~1.5 hrs<br>concretic level</span>
-    <span class="tab-text3"><span class="tabs-text-perc">73%</span>
-    <br>increase up to<br></span>
-  </div>
-</div>
-
-<div *ngIf="add"><form  #myForm="ngForm" novalidate (ngSubmit)="createChildTask(myForm, task.id)">
-  <input  id="myinput" class="form-control inputmuform" placeholder="Enter to Title" name="text" ngModel required>
-  <button class="btn btn-small btn-primary" [disabled]="myForm.invalid"><i class="fa fa-plus"></i></button>
-</form></div>
-
-
-<!--<div *ngIf="child" class="tab" style="width: 35%; height: 100px; margin-left: 350px;">-->
-<!--<span class="tab-text">Дочерний таск 1</span>-->
-<!--<span class="tab-text2">+15 exp.<br>~1.5 hrs<br>concretic level</span>-->
-<!--<span class="tab-text3"><span class="tabs-text-perc">73%</span>-->
-<!--<br>increase up to<br></span>-->
-
-<!--</div>-->
-<!--<div *ngIf="child" class="tab" style="width: 45%; height: 100px; margin-left: 350px;">-->
-<!--<span class="tab-text">Дочерний таск 2</span>-->
-<!--<span class="tab-text2">+15 exp.<br>~1.5 hrs<br>concretic level</span>-->
-<!--<span class="tab-text3"><span class="tabs-text-perc">73%</span>-->
-<!--<br>increase up to<br></span>-->
-
-<!--</div>-->
-<!--<div *ngIf="child" class="tab" style="width: 55%; height: 100px; margin-left: 350px;">-->
-<!--<span class="tab-text">Дочерний таск 3</span>-->
-<!--<span class="tab-text2">+15 exp.<br>~1.5 hrs<br>concretic level</span>-->
-<!--<span class="tab-text3"><span class="tabs-text-perc">73%</span>-->
-<!--<br>increase up to<br></span>-->
-
-
-<!--</div>-->
