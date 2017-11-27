@@ -5,11 +5,71 @@
   <!--<span class="tab-text3"><span class="tabs-text-perc">73%</span>-->
     <!--<br>increase up to<br></span>-->
 <!--</div>-->
-<div class="tabs-all-white-1">
-  <div class="tabs-all-white-1-text-1">{{task.text}}</div>
-  <div class="tabs-all-white-1-text-2">was always somebody who felt quite sorry for myself, what I had..</div>
-  <img src="img/dot.png" class="dot">
-  <img src="img/share.png" class="share">
+<div class="tabs-all-white-1" >
+  <div class="tabs-all-white-1-text-1" (click)="showMethod()" >{{task.title}}</div>
+  <div class="tabs-all-white-1-text-2" (click)="showMethod()">{{task.text}}</div>
+  <img src="img/dot.png" class="dot" (click)="editMethod()">
+  <img src="img/share.png" class="share" >
   <div class="exp-middle">+768 exp</div>
   <div class="percent-middle-red">3%</div>
 </div>
+<div *ngIf="show" class="tabs-active">
+  <div class="tabs-active-desc">
+    <div class="tabs-active-desc-title">
+      Описание задачи
+    </div>
+    <div class="tabs-active-desc-content">
+      <p>{{task.text}}</p>
+    </div>
+    <div class="tabs-active-desc-result">
+      Результаты
+    </div>
+    <div class="img-group">
+      <div class="img-add"><img src="img/add-my.png" class="add-rec"/></div>
+    </div>
+    <div class="verify-but">
+      Верифицировать
+    </div>
+  </div>
+</div>
+<div *ngIf="edit" > <div class="tabs-all">
+  <div class="text-head">Что нужно сделать?</div>
+  <div class="tab-white-new">
+    <input type="text" class="tab-white-new" value="{{task.title}}" #title>
+  </div>
+</div>
+  <div class="tabs-all">
+    <div class="text-head">Описание задачи</div>
+    <div class="tab-white-new">
+      <input class="tabs-text" value="{{task.text}}" #text>
+    </div>
+  </div>
+  <div class="tabs-all">
+    <div class="text-head">Категория</div>
+    <div class="tab-white-new-drop">
+      <div class="tab-white-dropdown1">
+        <span class="tabs-text-drop"></span>
+        <img src="img/drop.png" class="drop">
+      </div>
+      <div class="tab-white-dropdown2">
+        <span class="tabs-text-drop"></span>
+        <img src="img/drop.png" class="drop">
+      </div>
+      <div class="tab-white-dropdown3">
+        <span class="tabs-text-drop"></span>
+        <img src="img/drop.png" class="drop">
+      </div>
+    </div>
+  </div>
+  <div class="tabs-all" style="margin-bottom:23px">
+    <div class="add-prop">
+      <img src="img/add-mini.png" class="add-mini">
+      <span>Добавить свойство</span>
+    </div>
+    <div class="save-but">
+      <span (click)="updateTask(text.value, title.value, task.id)">Сохранить</span>
+    </div>
+    <div class="save-text">
+      Предварительный процент выполнения задач - $%
+    </div>
+  </div></div>

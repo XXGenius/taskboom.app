@@ -15,8 +15,10 @@ export class TaskItemComponent implements OnInit {
   active = false;
   exp;
   currentUser;
+  edit = false;
+  show = false;
   private checkSubscribe: ISubscription;
-
+  private updateSubscribe: ISubscription;
   constructor(private apiService: ApiService, private ref: ChangeDetectorRef, private authService: AuthService) { }
 
   ngOnInit() {
@@ -46,6 +48,33 @@ export class TaskItemComponent implements OnInit {
     );
   }
 
+  editMethod() {
+      if (this.edit === false) {
+          this.edit = true;
+          this.show = false;
+      }else {
+          this.edit = false;
+      }
+  }
+
+  updateTask(text, title, id) {
+      this.apiService.updateTask(text, title, id).subscribe((task) => {
+          this.task.title = task.title;
+          this.task.text = task.text;
+          this.edit = false;
+          console.log(task);
+      });
+
+  }
+
+  showMethod () {
+      if (this.show === false) {
+          this.show = true;
+          this.edit = false;
+      }else {
+          this.show = false;
+      }
+  }
 
 
 

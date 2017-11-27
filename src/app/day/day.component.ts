@@ -72,13 +72,13 @@ export class DayComponent implements OnInit, OnDestroy {
 
   }
 
-  addTask(text: string) {
+  addTask(title: string) {
     const project = 8;
       const id = localStorage.getItem('id');
-      this.apiService.createTask(text, this.date, project, id).subscribe(
+      this.apiService.createTask(title, this.date, project, id).subscribe(
         (task) => {
           console.log(task);
-          this.tasks.push({id: task.id, text: task.text, date: task.date});
+          this.tasks.push({id: task.id, title: task.title, date: task.date});
           this.ref.detectChanges();
         }
     );

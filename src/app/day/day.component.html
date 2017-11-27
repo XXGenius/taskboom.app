@@ -95,79 +95,23 @@
 
 <div class="container-fluid1">
   <div class="form-group">
-    <input type="text" class="form_kirill" id="search" placeholder="&nbsp;Найти задачу">
+    <input type="text" class="form_kirill" id="search" placeholder="&nbsp;Найти или создать задачу"  #myinput>
+    <div class="save-but">
+      <span (click)="addTask(myinput.value)">Add</span>
+    </div>
     <div class="red-form">
       <img src="img/cancel.png" class="star">
-      <span>Отмена</span>
+      <span >find</span>
     </div>
   </div>
-  <div class="form-group-1"><div *ngIf="edit">    <div class="tabs-all">
-    <div class="text-head">Что нужно сделать?</div>
-    <div class="tab-white-new">
-      <div class="tabs-text"></div>
-    </div>
-  </div>
-    <div class="tabs-all">
-      <div class="text-head">Описание задачи</div>
-      <div class="tab-white-new">
-        <div class="tabs-text"></div>
-      </div>
-    </div>
-    <div class="tabs-all">
-      <div class="text-head">Категория</div>
-      <div class="tab-white-new-drop">
-        <div class="tab-white-dropdown1">
-          <span class="tabs-text-drop"></span>
-          <img src="img/drop.png" class="drop">
-        </div>
-        <div class="tab-white-dropdown2">
-          <span class="tabs-text-drop"></span>
-          <img src="img/drop.png" class="drop">
-        </div>
-        <div class="tab-white-dropdown3">
-          <span class="tabs-text-drop"></span>
-          <img src="img/drop.png" class="drop">
-        </div>
-      </div>
-    </div>
-    <div class="tabs-all" style="margin-bottom:23px">
-      <div class="add-prop">
-        <img src="img/add-mini.png" class="add-mini">
-        <span>Добавить свойство</span>
-      </div>
-      <div class="save-but">
-        <span>Сохранить</span>
-      </div>
-      <div class="save-text">
-        Предварительный процент выполнения задач - $%
-      </div>
-    </div></div>
+  <div class="form-group-1">
 
     <div class="tabs-all-gray-title">
       <div class="tabs-all-gray-1-text">Предстоящие дела</div>
       <img src="img/up.png" class="up">
     </div>
     <app-task-item *ngFor="let taskItem of tasks" [task]="taskItem"></app-task-item>
-    <div class="tabs-active">
-      <div class="tabs-active-desc">
-        <div class="tabs-active-desc-title">
-          Описание задачи
-        </div>
-        <div class="tabs-active-desc-content">
-          <p>The Emerald Buddha is a figurine of a sitting Budha, that is the is the palladium of the Kingdom of Thailand. The Buddha is made of green jade, suprisingly not of emerald, clothed in gold is approximately 45 cm tall. The Buddha is kept in the Chapel of the Emerald Buddha, which is located on the grounds of the Grand Palace in Bangkok.</p>
-          <p>Legend tells that that the Emerald Buddha was created in Pataliputra, India, which is now the city of Patna in 43 BCE by Nagasena. Other great historians beleive that it belongs to the Chiang Saen Style of the 15th century.</p>
-        </div>
-        <div class="tabs-active-desc-result">
-          Результаты
-        </div>
-        <div class="img-group">
-          <div class="img-add"><img src="img/add-my.png" class="add-rec"/></div>
-        </div>
-        <div class="verify-but">
-          Верифицировать
-        </div>
-      </div>
-    </div>
+
     <div class="separator"></div>
   </div>
 </div>
