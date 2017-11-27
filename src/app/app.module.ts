@@ -7,9 +7,9 @@ import { TaskItemComponent } from './day/task-item/task-item.component';
 import {FormsModule} from '@angular/forms';
 
 import { HeaderComponent } from './header/header.component';
-import { LayoutComponent } from './layout/layout.component';
+
 import {Angular2FontawesomeModule} from 'angular2-fontawesome';
-import { TimelineComponent } from './layout/timeline/timeline.component';
+
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpModule} from '@angular/http';
 import { ReversePipe } from './pipes/reverse.pipe';
@@ -28,6 +28,7 @@ import {UserGroupComponent} from './admin/user-group/user-group.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import {AuthService} from './services/auth.service';
+import { TaskTapeComponent } from './task-tape/task-tape.component';
 
 
 
@@ -37,16 +38,14 @@ import {AuthService} from './services/auth.service';
     DayComponent,
     TaskItemComponent,
     HeaderComponent,
-    LayoutComponent,
-    AdminComponent,
+      AdminComponent,
     ProjectComponent,
     RoleComponent,
     UserComponent,
     StatusComponent,
     LevelComponent,
     UserGroupComponent,
-    TimelineComponent,
-    ReversePipe,
+      ReversePipe,
     IndexComponent,
     OneDayComponent,
     StatusComponent,
@@ -54,6 +53,7 @@ import {AuthService} from './services/auth.service';
     TaskItemComponent,
     SignupComponent,
     SigninComponent,
+    TaskTapeComponent,
 
   ],
   imports: [

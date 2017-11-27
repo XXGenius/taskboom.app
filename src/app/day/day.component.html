@@ -1,22 +1,180 @@
-<app-layout></app-layout>
-<div class="row">
-  <div class="col-md-12 main">
-    <div class="tab-header">
-      <span>{{ date }}</span>
+
+<!--<div *ngIf="auth" class="row">-->
+  <!--<div class="col-md-12 main">-->
+    <!--<div class="tab-header">-->
+      <!--<span>{{ date }}</span>-->
+    <!--</div>-->
+    <!--<app-task-item *ngFor="let taskItem of tasks" [task]="taskItem"></app-task-item>-->
+    <!--<div class="mui-panel" style="width: 80%;">-->
+      <!--<div class="mui-textfield mui-textfield&#45;&#45;float-label">-->
+        <!--<input type="text" id="myinput" class="" placeholder="Add your today's goals" #myinput>-->
+      <!--</div>-->
+      <!--<ul class="mui-list&#45;&#45;inline pull-right">-->
+          <!--<li>-->
+            <!--<div class="mui&#45;&#45;text-subhead ">+9% appro</div>-->
+          <!--</li>-->
+          <!--<li>-->
+            <!--<div class="mui&#45;&#45;text-caption">783 exp</div>-->
+          <!--</li>-->
+          <!--<li>-->
+            <!--<a  class="mui-btn mui-btn&#45;&#45;primary" (click)="addTask(myinput.value)">Add</a>-->
+          <!--</li>-->
+        <!--</ul>-->
+    <!--</div>-->
+    <!--<div class="col-md-12">-->
+      <!--<div class="row">-->
+        <!--<div class="mui-panel col-md-6">-->
+          <!--<form>-->
+            <!--<div class="mui-checkbox">-->
+              <!--<label>-->
+                <!--<input type="checkbox" value="">-->
+                <!--Will u do it?-->
+              <!--</label>-->
+            <!--</div>-->
+            <!--<div class="mui-chekbox">-->
+              <!--<label>-->
+                <!--<input type="checkbox" value="">-->
+                <!--Make public?-->
+              <!--</label>-->
+            <!--</div>-->
+            <!--<div class="mui-chekbox">-->
+              <!--<label>-->
+                <!--<input type="checkbox" value="">-->
+                <!--Test field-->
+              <!--</label>-->
+            <!--</div>-->
+          <!--</form>-->
+        <!--</div>-->
+        <!--<div class="mui-panel col-md-6">-->
+
+
+          <!--<form class="mui-form&#45;&#45;inline">-->
+            <!--<div class="mui-checkbox">-->
+              <!--<label>-->
+                <!--<input type="time" id="myTime" value="01:00">-->
+                <!--Will u do it?-->
+              <!--</label>-->
+            <!--</div>-->
+            <!--<div class="mui-chekbox">-->
+              <!--<label>-->
+                <!--<div class="quantity">-->
+                  <!--<input type="number" min="1" max="100" step="1" value="50">%-->
+                <!--</div>-->
+                <!--&lt;!&ndash; todo Сделаем вот так https://toster.ru/q/350012 не хватает стилей и нужно мне понять, как js и css подключать к компонентам. А еще лучше, где будем складывать сами компоненты, вроде такого инпута? Надо нам стилизовать уникально кнопку. Где будем хранить верстку, стиль и джс кнопки? &ndash;&gt;-->
+                <!--&lt;!&ndash;<div class="counter">&ndash;&gt;-->
+                <!--&lt;!&ndash;<button type="button" class="but counterBut dec">-</button>&ndash;&gt;-->
+                <!--&lt;!&ndash;<input type="text" class="field fieldCount" value="1" data-min="1" data-max="20">&ndash;&gt;-->
+                <!--&lt;!&ndash;<button type="button" class="but counterBut inc">+</button>&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--Make public?-->
+              <!--</label>-->
+            <!--</div>-->
+            <!--<div class="mui-chekbox">-->
+              <!--<label>-->
+                <!--<input type="checkbox" value="">-->
+                <!--Test field-->
+              <!--</label>-->
+            <!--</div>-->
+          <!--</form>-->
+
+
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+
+
+<!--<ng-template #maxTask>-->
+  <!--<div class="row text-center">-->
+    <!--<div class="col-lg-offset-3 col-lg-6">-->
+      <!--You can only add four tasks per day!-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</ng-template>-->
+
+<div class="container-fluid1">
+  <div class="form-group">
+    <input type="text" class="form_kirill" id="search" placeholder="&nbsp;Найти задачу">
+    <div class="red-form">
+      <img src="img/cancel.png" class="star">
+      <span>Отмена</span>
+    </div>
+  </div>
+  <div class="form-group-1"><div *ngIf="edit">    <div class="tabs-all">
+    <div class="text-head">Что нужно сделать?</div>
+    <div class="tab-white-new">
+      <div class="tabs-text"></div>
+    </div>
+  </div>
+    <div class="tabs-all">
+      <div class="text-head">Описание задачи</div>
+      <div class="tab-white-new">
+        <div class="tabs-text"></div>
+      </div>
+    </div>
+    <div class="tabs-all">
+      <div class="text-head">Категория</div>
+      <div class="tab-white-new-drop">
+        <div class="tab-white-dropdown1">
+          <span class="tabs-text-drop"></span>
+          <img src="img/drop.png" class="drop">
+        </div>
+        <div class="tab-white-dropdown2">
+          <span class="tabs-text-drop"></span>
+          <img src="img/drop.png" class="drop">
+        </div>
+        <div class="tab-white-dropdown3">
+          <span class="tabs-text-drop"></span>
+          <img src="img/drop.png" class="drop">
+        </div>
+      </div>
+    </div>
+    <div class="tabs-all" style="margin-bottom:23px">
+      <div class="add-prop">
+        <img src="img/add-mini.png" class="add-mini">
+        <span>Добавить свойство</span>
+      </div>
+      <div class="save-but">
+        <span>Сохранить</span>
+      </div>
+      <div class="save-text">
+        Предварительный процент выполнения задач - $%
+      </div>
+    </div></div>
+
+    <div class="tabs-all-gray-title">
+      <div class="tabs-all-gray-1-text">Предстоящие дела</div>
+      <img src="img/up.png" class="up">
     </div>
     <app-task-item *ngFor="let taskItem of tasks" [task]="taskItem"></app-task-item>
-    <div class="tab-white">
-      <input type="text" id="myinput" class="" placeholder="Add your today's Goals" #myinput>
-      <a  class="btn  btn-small btn-info" (click)="addTask(myinput.value)">Add</a>
+    <div class="tabs-active">
+      <div class="tabs-active-desc">
+        <div class="tabs-active-desc-title">
+          Описание задачи
+        </div>
+        <div class="tabs-active-desc-content">
+          <p>The Emerald Buddha is a figurine of a sitting Budha, that is the is the palladium of the Kingdom of Thailand. The Buddha is made of green jade, suprisingly not of emerald, clothed in gold is approximately 45 cm tall. The Buddha is kept in the Chapel of the Emerald Buddha, which is located on the grounds of the Grand Palace in Bangkok.</p>
+          <p>Legend tells that that the Emerald Buddha was created in Pataliputra, India, which is now the city of Patna in 43 BCE by Nagasena. Other great historians beleive that it belongs to the Chiang Saen Style of the 15th century.</p>
+        </div>
+        <div class="tabs-active-desc-result">
+          Результаты
+        </div>
+        <div class="img-group">
+          <div class="img-add"><img src="img/add-my.png" class="add-rec"/></div>
+        </div>
+        <div class="verify-but">
+          Верифицировать
+        </div>
+      </div>
     </div>
+    <div class="separator"></div>
   </div>
 </div>
-
-<ng-template #maxTask>
-  <div class="row text-center">
-    <div class="col-lg-offset-3 col-lg-6">
-      You can only add four tasks per day!
-    </div>
-  </div>
-</ng-template>
+<div class="container-footer">
+  Copyright &copy 2017-2018 Boom! All Rights Reserved.
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/scripts.js"></script>
 

@@ -1,6 +1,7 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 
 import {AuthService} from '../services/auth.service';
+import {TaskItemComponent} from "../day/task-item/task-item.component";
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -10,12 +11,14 @@ export class HeaderComponent implements OnInit {
   admin = false;
   isAuthorized;
   currentUser;
+  exp;
+
   constructor(private authService: AuthService, private ref: ChangeDetectorRef) {
     this.authService.setAuthHook();
     this.authService.isAuthorized.subscribe(isAutorized => {
       this.isAuthorized = isAutorized;
       this.currentUser = this.authService.getCurrenUser();
-      if (this.currentUser) {
+        if (this.currentUser) {
         if  ( this.currentUser['user_role_id'] === 2)  {
           this.admin = true;
         } else {
@@ -31,5 +34,6 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+      console.log('header init');
   }
 }

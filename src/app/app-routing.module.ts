@@ -10,6 +10,7 @@ import {LevelComponent} from './admin/level/level.component';
 import {UserGroupComponent} from './admin/user-group/user-group.component';
 import {SignupComponent} from './auth/signup/signup.component';
 import {SigninComponent} from './auth/signin/signin.component';
+import {TaskTapeComponent} from "./task-tape/task-tape.component";
 
 
 
@@ -25,7 +26,8 @@ const appRoutes: Routes = [
   { path: 'levels', component: LevelComponent},
   { path: 'usergroups', component: UserGroupComponent},
   { path: 'signup' , component: SignupComponent},
-  { path: 'signin' , component: SigninComponent}
+  { path: 'signin' , component: SigninComponent},
+    { path: 'tape' , component: TaskTapeComponent}
 
 
 ];
