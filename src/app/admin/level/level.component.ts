@@ -31,6 +31,7 @@ import {NgForm} from '@angular/forms';
         ])
     ]
 })
+
 export class LevelComponent implements OnInit {
     @ViewChild('inputCreate') inputCreate;
     @ViewChild('inputCreate') inputCreateExp;
