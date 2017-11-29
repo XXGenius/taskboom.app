@@ -63,7 +63,6 @@ export class LevelComponent implements OnInit {
             this.levels = this.levels.filter( level => level.id !== id);
         }
     }
-
     showUpdate(i) {
         this.levels[i].edit = true;
     }
