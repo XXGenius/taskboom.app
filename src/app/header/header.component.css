@@ -119,7 +119,7 @@
 }
 
 .photo-text-2 {
-    display: inline-block;
+
     font-size: 13px;
     line-height: 43px;
     position: relative;
@@ -144,20 +144,21 @@
     .pr-button {
         background-color: #7779FB;
         border-radius: 25px;
-        text-align: center;
-        height: 40px;
+        /* text-align: center; */
+        height: 34px;
         font-family: 'Roboto', sans-serif;
         font-size: 13px;
         font-weight: 500;
         letter-spacing: 1px;
-        line-height: 32px;
-        padding: 5px 15px 5px 15px;
+        line-height: 25px;
+        padding: 5px 0px 5px 0px;
         transition: all .25s ease-in-out;
         color: #FFF;
         cursor: pointer;
         display: inline-block;
-        width: 200px;
-        margin-left: 70px;
+        width: 94px;
+        margin-left: 300px;
+
         box-shadow: rgba(119, 121, 251, 0.4) 0 3px 12px;
     }
     .pr-button:hover {
@@ -171,26 +172,52 @@
     .pr-button-1 {
         background-color: rgba(234, 233, 255, 0.7);
         border-radius: 25px;
-        text-align: center;
-        height: 40px;
+        /*text-align: center;*/
+        height: 34px;
         font-family: 'Roboto', sans-serif;
         font-size: 13px;
         font-weight: 500;
         letter-spacing: 1px;
-        line-height: 32px;
-        padding: 5px 15px 5px 15px;
+        line-height: 22px;
+        padding: 5px 0px 5px 0px;
         transition: all .25s ease-in-out;
         color: #7779FB;
         cursor: pointer;
         display: inline-block;
-        width: 150px;
-        margin-left: 20px;
+        width: 94px;
+        margin-left: 10px;
         box-shadow: rgba(119, 121, 251, 0.4) 0 4px 10px;
     }
     .pr-button-1:hover {
         background-color: rgba(234, 233, 255, 1);
     }
+
+
+    .pr-button-5 {
+        background-color: rgba(234, 233, 255, 0.7);
+        border-radius: 25px;
+        text-align: center;
+        height: 34px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: 1px;
+        line-height: 22px;
+        padding: 5px 0px 5px 0px;
+        transition: all .25s ease-in-out;
+        color: #7779FB;
+        cursor: pointer;
+        display: inline-block;
+        width: 94px;
+        margin-left: 10px;
+        box-shadow: rgba(119, 121, 251, 0.4) 0 4px 10px;
+    }
+    .pr-button-5:hover {
+        background-color: rgba(234, 233, 255, 1);
+    }
 }
+
+
 
 @media (max-width:1015px) {
     .pr-button {
@@ -262,6 +289,9 @@
     left: 1px;
     position: relative;
     margin-right: 8px;
+    border-radius: 100px; /* Радиус скругления */
+    border: 3px solid green; /* Параметры рамки */
+    box-shadow: 0 0 7px #666; /* Параметры тени */
     /*background-image: url('img/2.png');*/
 }
 

@@ -63,6 +63,12 @@ export class ApiService {
       .catch((error: any) => Observable.throw(error || 'Server error'));
   }
 
+    getCategory() {
+        return this.http.get('http://boomapi.acesspades.com/api/v1/category?' + this.tokenParam  )
+            .map((res) => res.json())
+            .catch((error: any) => Observable.throw(error || 'Server error'));
+    }
+
   getLevels() {
     return this.http.get('http://boomapi.acesspades.com/api/v1/lvls?' + this.tokenParam  )
         .map((res) => res.json())
@@ -107,10 +113,9 @@ export class ApiService {
   }
 
   /********************************* Create ****************************/
-  createTask(text: string, date, project_id: number, user_id ) {
-    console.log(JSON.stringify({ text: text, date: date, project_id: project_id, user_id: user_id }));
-    return this.http.post('http://boomapi.acesspades.com/api/v1/task?' + this.tokenParam,
-        {token: this.token, text: text, date: date, project_id: project_id, user_id: user_id }, this.headers)
+  createTask(title: string, date, project_id: number, user_id ) {
+      return this.http.post('http://boomapi.acesspades.com/api/v1/task?' + this.tokenParam,
+        {token: this.token, title: title, date: date, project_id: project_id, user_id: user_id }, this.headers)
         .map((res) => res.json())
         .catch((error: any) => Observable.throw(error || 'Server error'));
   }
@@ -232,6 +237,15 @@ export class ApiService {
       this.headers)
         .map((res) => res.json())
         .catch((error: any) => Observable.throw(error || 'Server error'));
+  }
+
+  updateTask (text, title, id) {
+      console.log(text);
+      return this.http.put('http://boomapi.acesspades.com/api/v1/task/' + id + '?' + this.tokenParam,
+          { text: text, title: title },
+          this.headers)
+          .map((res) => res.json())
+          .catch((error: any) => Observable.throw(error || 'Server error'));
   }
 
   /********************************** DELETE ****************************/
