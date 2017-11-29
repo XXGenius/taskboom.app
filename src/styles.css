@@ -308,20 +308,7 @@
 
 
 
-.tab-white input {
-  width: calc(100% - 116px);
-  border: none;
-  height: 50px;
-  display: block;
-  float: left;
-  top: 3px;
-  /*left: 17px;*/
-  position: relative;
-  font-family: 'HelveticaNeue', sans-serif;
-  color: #95989A;
-  font-size: 20px;
-  margin-left: 8px;
-}
+
 
 .tab-white-push {
   width: 116px;
@@ -402,7 +389,3 @@ ul.menu > li:hover > ul.submenu {
   display: block;
 }
 
-input.crud-text{
-  width: 100%;
-  height: 100%;
-}
