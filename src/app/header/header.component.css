@@ -41,10 +41,10 @@
 }
 
 @media (min-width:620px) {
-    .logo {
+    .logo1 {
         display: inline-flex;
         align-items: center;
-        margin-right: 70px;
+        margin-right: 100px;
         width: 108px;
         height: 55px;
         background: url('img/logo.png') no-repeat center center;
@@ -53,7 +53,7 @@
 }
 
 @media (max-width:620px) {
-    .logo {
+    .logo1 {
         display: none;
     }
 }
@@ -119,15 +119,13 @@
 }
 
 .photo-text-2 {
-
-    font-size: 13px;
-    line-height: 43px;
-    position: relative;
-    /* color: #8683CF; */
-    color: #999;
-    bottom: 50px;
-    left: 119px;
     font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    line-height: 91px;
+    position: relative;
+    color: #999;
+    bottom: 53px;
+    left: 38px;
 }
 
 .photo::after {
@@ -157,7 +155,7 @@
         cursor: pointer;
         display: inline-block;
         width: 94px;
-        margin-left: 300px;
+        margin-left: 50px;
 
         box-shadow: rgba(119, 121, 251, 0.4) 0 3px 12px;
     }
@@ -443,8 +441,10 @@
 }
 
 .container-fluid {
-    padding-right: 15px;
-    padding-left: 15px;
+    /*padding-right: 15px;
+    padding-left: 15px;*/
+    padding-right: 0px;
+    padding-left: 0px;
     margin-right: auto;
     margin-left: auto;
     z-index: 1000;
