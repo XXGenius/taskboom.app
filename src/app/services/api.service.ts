@@ -63,6 +63,12 @@ export class ApiService {
       .catch((error: any) => Observable.throw(error || 'Server error'));
   }
 
+    getCategory() {
+        return this.http.get('http://boomapi.acesspades.com/api/v1/category?' + this.tokenParam  )
+            .map((res) => res.json())
+            .catch((error: any) => Observable.throw(error || 'Server error'));
+    }
+
   getLevels() {
     return this.http.get('http://boomapi.acesspades.com/api/v1/lvls?' + this.tokenParam  )
         .map((res) => res.json())

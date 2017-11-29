@@ -32,6 +32,7 @@
     </div>
   </div>
 </div>
+<form >
 <div *ngIf="edit" > <div class="tabs-all">
   <div class="text-head">Что нужно сделать?</div>
   <div class="tab-white-new">
@@ -40,17 +41,24 @@
 </div>
   <div class="tabs-all">
     <div class="text-head">Описание задачи</div>
-    <div class="tab-white-new">
+    <div class="tab-white-new" style="width: 100%;
+    min-height: 50px;
+    background: #FFF;
+    display: inline-block;
+    position: relative;
+    border-radius: 3px;
+    border: 1px solid #EFEFEF;
+    box-shadow: rgba(0, 0, 0, 0.09804) 0 4px 23px;">
       <input class="tabs-text" value="{{task.text}}" #text>
     </div>
   </div>
   <div class="tabs-all">
     <div class="text-head">Категория</div>
-    <div class="tab-white-new-drop">
-      <div class="tab-white-dropdown1">
-        <span class="tabs-text-drop"></span>
+    <div class="tab-white-new">
+      <select class="tab-white-dropdown1" >
+        <option class="tabs-text-drop" *ngFor="let category of categories" value="{{category.id}}" #cat>{{category.title}}</option>
         <img src="img/drop.png" class="drop">
-      </div>
+      </select>
       <div class="tab-white-dropdown2">
         <span class="tabs-text-drop"></span>
         <img src="img/drop.png" class="drop">
@@ -67,9 +75,9 @@
       <span>Добавить свойство</span>
     </div>
     <div class="save-but">
-      <span (click)="updateTask(text.value, title.value, task.id)">Сохранить</span>
+      <span (click)="updateTask(text.value, title.value, cat, task.id)">Сохранить</span>
     </div>
     <div class="save-text">
       Предварительный процент выполнения задач - $%
     </div>
-  </div></div>
+  </div></div></form>

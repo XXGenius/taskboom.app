@@ -694,6 +694,7 @@ body {
 }
 
 input #search {
+
     background-image: url('img/search.png');
     background-repeat: no-repeat;
     background-position-y: 31px;
@@ -960,18 +961,18 @@ img.add-mini {
     background-color: rgba(119, 121, 251, 1);
     background-color: #7779FB;
     border-radius: 25px;
-    height: 42px;
+    height: 27px;
     font-family: 'Roboto', sans-serif;
     font-size: 13px;
     font-weight: 400;
     letter-spacing: 1px;
-    line-height: 36px;
-    padding: 3px 15px 5px 15px;
+    line-height: 27px;
+    /*padding: 3px 15px 5px 15px;*/
     transition: all .25s ease-in-out;
     color: #FFF;
     cursor: pointer;
     display: inline-block;
-    width: 150px;
+    width: 72px;
     margin-left: 0px;
     text-align: -webkit-center;
     margin-top: 10px;

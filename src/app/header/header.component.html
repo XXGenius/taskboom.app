@@ -50,27 +50,36 @@
       <a routerLink="/"><div *ngIf="isAuthorized" class="logo">&nbsp;<a routerLink="/"></a></div></a>
       <div *ngIf="isAuthorized" class="pr-bar">
         <div class="pr-photo">
-          <div class="photo"><img class="account-img" src="{{ currentUser.photo}}" alt=""></div>
+          <div ><img class="account-img" style="width: 70px; height: 70px; top: 0px; left: 0px;
+           margin-right: 8px;
+    border-radius: 200px; /* Радиус скругления */
+    border: 3px solid violet; /* Параметры рамки */
+    box-shadow: 0 0 7px #666; " src="{{ currentUser.photo}}" alt=""></div>
           <div class="photo-text">{{ currentUser.level}}</div>
           <div class="photo-text-1">level</div>
-          <div class="photo-text-2">До следуюющего 568 exp</div>
+          <div class="photo-text-2" style="
+    font-size: 13px;
+    line-height: 91px;
+    position: relative;
+    color: #999;
+    bottom: 50px;
+    left: 38px;">До следующего уровня 568 exp</div>
         </div>
       </div>
       <div *ngIf="isAuthorized" class="pr-button">
         <img src="img/star.png" class="star">
         <span>Up level</span>
       </div>
-      <div *ngIf="isAuthorized" class="pr-button-1">
-        <img src="img/settings.png" class="star">
-        <span>Настройки</span>
-      </div>
       <div *ngIf="isAuthorized" >
+        <button  class="pr-button-1" ><img src="img/settings.png" class="star">Settings</button>
+      </div>
+      <div *ngIf="isAuthorized">
         <button  class="pr-button-1" (click)="exit()">Exit</button>
       </div>
-      <div *ngIf="!isAuthorized" class="pr-button-1">
+      <div *ngIf="!isAuthorized" class="pr-button-5">
         <a routerLink="/signup">Sign up</a>
       </div>
-      <div *ngIf="!isAuthorized" class="pr-button-1">
+      <div *ngIf="!isAuthorized" class="pr-button-5">
         <a routerLink="/signin">Sign in</a>
       </div>
     </div>
