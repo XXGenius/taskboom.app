@@ -61,12 +61,12 @@
 .pr-bar {
     width: 355px;
     height: 73px;
-    display: inline-flex;
+    display: inline-block;
     justify-content: left;
     align-items: center;
     flex-direction: row;
     text-align: center;
-    position: relative;
+    position: inherit;
     border-radius: 35px;
     border: 1px solid #EFEFEF;
     box-shadow: rgba(0, 0, 0, 0.09804) 0 2px 4px;
@@ -138,9 +138,9 @@
     z-index: -1;
 }
 
-@media (min-width:1015px) {
+@media (min-width:1190px) {
     .pr-button {
-        background-color: #7779FB;
+        background-color: rgba(119, 121, 251, 1);
         border-radius: 25px;
         /* text-align: center; */
         height: 34px;
@@ -149,12 +149,12 @@
         font-weight: 500;
         letter-spacing: 1px;
         line-height: 25px;
-        padding: 5px 0px 5px 0px;
+        padding: 5px 0px 5px 10px;
         transition: all .25s ease-in-out;
         color: #FFF;
         cursor: pointer;
         display: inline-block;
-        width: 94px;
+        width: 110px;
         margin-left: 50px;
 
         box-shadow: rgba(119, 121, 251, 0.4) 0 3px 12px;
@@ -165,7 +165,12 @@
     img.star {
         position: relative;
         bottom: 2px;
-        margin-right: 1px;
+        margin-right: 0px;
+    }
+    img.settings {
+        position: relative;
+        bottom: 2px;
+        margin-right: 4px;
     }
     .pr-button-1 {
         background-color: rgba(234, 233, 255, 0.7);
@@ -182,8 +187,9 @@
         color: #7779FB;
         cursor: pointer;
         display: inline-block;
-        width: 94px;
-        margin-left: 10px;
+        width: 110px;
+        margin-left: 23px;
+        border: none;
         box-shadow: rgba(119, 121, 251, 0.4) 0 4px 10px;
     }
     .pr-button-1:hover {
@@ -217,7 +223,7 @@
 
 
 
-@media (max-width:1015px) {
+@media (max-width:1190px) {
     .pr-button {
         display: none;
     }
@@ -279,18 +285,19 @@
 }
 
 .account-img {
-    width: 33px;
-    height: 33px;
+
     display: block;
     float: left;
-    top: 2px;
-    left: 1px;
     position: relative;
+    width: 70px;
+    height: 70px;
+    top: 2px;
+    left: 0px;
     margin-right: 8px;
-    border-radius: 100px; /* Радиус скругления */
-    border: 3px solid green; /* Параметры рамки */
-    box-shadow: 0 0 7px #666; /* Параметры тени */
-    /*background-image: url('img/2.png');*/
+    border-radius: 200px; /* Радиус скругления */
+    border: 3px solid violet; /* Параметры рамки */
+    box-shadow: 0 0 7px #666;
+
 }
 
 .account-text {
@@ -298,7 +305,7 @@
     height: 33px;
     display: block;
     float: right;
-    top: 3px;
+    top: 1px;
     right: 7px;
     position: relative;
     font-family: 'HelveticaNeue', sans-serif;
