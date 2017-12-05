@@ -422,8 +422,12 @@ body {
     max-width: 980px;
     width: 90%;
     min-height: 500px;
-    margin-top: 180px;
     margin-bottom: 123px;
+}
+
+.space {
+    height: 180px;
+    width: 100%;
 }
 
 .container-footer {
@@ -514,6 +518,7 @@ body {
         font-family: 'Roboto', sans-serif;
         color: #7F7F7F;
         top: 3px;
+        outline: none;
         /* border: 1px solid red; */
     }
 }
@@ -557,6 +562,7 @@ body {
         font-family: 'Roboto', sans-serif;
         color: #7F7F7F;
         top: 3px;
+        outline: none;
         /* border: 1px solid red; */
     }
 }
@@ -578,6 +584,7 @@ body {
         font-family: 'Roboto', sans-serif;
         color: #7F7F7F;
         top: 3px;
+        outline: none;
         /* border: 1px solid red; */
     }
     .red-form {
@@ -621,6 +628,7 @@ body {
         font-family: 'Roboto', sans-serif;
         color: #7F7F7F;
         top: 3px;
+        outline: none;
         /* border: 1px solid red; */
     }
     .red-form {
@@ -693,7 +701,7 @@ body {
     position: relative;
 }
 
-input #search {
+input #search1 {
 
     background-image: url('img/search.png');
     background-repeat: no-repeat;
@@ -703,7 +711,7 @@ input #search {
     outline: none;
 }
 
-input #search:focus {
+input #search1:focus {
     background-image: none;
     text-indent: 0px;
 }
@@ -959,7 +967,6 @@ img.add-mini {
 
 .save-but {
     background-color: rgba(119, 121, 251, 1);
-    background-color: #7779FB;
     border-radius: 25px;
     height: 27px;
     font-family: 'Roboto', sans-serif;
@@ -971,16 +978,15 @@ img.add-mini {
     transition: all .25s ease-in-out;
     color: #FFF;
     cursor: pointer;
-    display: inline-block;
     width: 72px;
     margin-left: 0px;
     text-align: -webkit-center;
-    margin-top: 10px;
-    bottom: 3px;
     box-shadow: rgba(119, 121, 251, 0.4) 0 3px 12px;
-    margin-top: 20px;
     display: inline-block;
-    margin-bottom: 15px;
+    float: right;
+    margin-right: 15px;
+    top: 27px;
+    position: relative;
 }
 
 .save-but:hover {
@@ -1065,7 +1071,7 @@ img.up1 {
     font-size: 14px;
     margin-left: 10px;
     position: relative;
-    top: 15px;
+    top: 23px;
     color: #7F7F7F;
     font-weight: 500;
     padding-left: 35px;

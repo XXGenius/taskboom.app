@@ -33,7 +33,7 @@
   </div>
 </div>
 <form >
-<div *ngIf="edit" > <div class="tabs-all">
+<div *ngIf="edit" class="padding-top1" > <div class="tabs-all">
   <div class="text-head">Что нужно сделать?</div>
   <div class="tab-white-new">
     <input type="text" class="tab-white-new" value="{{task.title}}" #title>
@@ -54,19 +54,19 @@
   </div>
   <div class="tabs-all">
     <div class="text-head">Категория</div>
-    <div class="tab-white-new">
+    <div class="tab-white-new-drop">
       <select class="tab-white-dropdown1" >
         <option class="tabs-text-drop" *ngFor="let category of categories" value="{{category.id}}" #cat>{{category.title}}</option>
-        <img src="img/drop.png" class="drop">
       </select>
-      <div class="tab-white-dropdown2">
-        <span class="tabs-text-drop"></span>
-        <img src="img/drop.png" class="drop">
-      </div>
-      <div class="tab-white-dropdown3">
-        <span class="tabs-text-drop"></span>
-        <img src="img/drop.png" class="drop">
-      </div>
+
+      <select class="tab-white-dropdown2" >
+          <option class="tabs-text-drop" *ngFor="let category of categories" value="{{category.id}}" #cat>{{category.title}}</option>
+      </select>
+
+      <select class="tab-white-dropdown3" >
+        <option class="tabs-text-drop" *ngFor="let category of categories" value="{{category.id}}" #cat>{{category.title}}</option>
+      </select>
+
     </div>
   </div>
   <div class="tabs-all" style="margin-bottom:23px">
