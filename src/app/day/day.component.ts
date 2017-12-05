@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, Inject, Input, OnDestroy, OnInit} from '@angular/core';
 import {ApiService} from '../services/api.service';
 import {ISubscription} from 'rxjs/Subscription';
 import {ActivatedRoute} from '@angular/router';
@@ -8,6 +8,7 @@ import {AuthService} from '../services/auth.service';
 
 
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import {DOCUMENT} from "@angular/common";
 
 
 @Component({
@@ -50,7 +51,7 @@ export class DayComponent implements OnInit, OnDestroy {
   private daySubscription: ISubscription;
 
   constructor(private authService: AuthService, private apiService: ApiService,
-              private route: ActivatedRoute, private ref: ChangeDetectorRef ) {
+              private route: ActivatedRoute, private ref: ChangeDetectorRef, @Inject(DOCUMENT) private doc: Document) {
       this.auth = this.authService.isAuthorized;
       this.routeSubscription = this.route.params.subscribe(params => {
       this.date = params['date']; // (+) converts string 'id' to a number
@@ -80,6 +81,7 @@ export class DayComponent implements OnInit, OnDestroy {
           console.log(task);
           this.tasks.push({id: task.id, title: task.title, date: task.date});
           this.ref.detectChanges();
+          (<HTMLInputElement>this.doc.getElementById('search1')).value = '';
         }
     );
   }

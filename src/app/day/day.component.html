@@ -95,9 +95,9 @@
 <div class="space"></div>
 <div class="container-fluid1">
   <div class="form-group">
-    <input type="text" class="form_kirill" id="search1" placeholder="&nbsp;Найти или создать задачу" #myinput>
+    <input (keyup.enter)="addTask(myinput.value)" type="text" class="form_kirill" id="search1" placeholder="&nbsp;Найти или создать задачу" #myinput>
     <div class="save-but">
-      <span (click)="addTask(myinput.value)">Add</span>
+      <span  (click)="addTask(myinput.value)">Add</span>
     </div>
     <!--<div class="save-but">
       <!--<img src="img/cancel.png" class="star">
