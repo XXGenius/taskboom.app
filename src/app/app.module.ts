@@ -29,6 +29,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import {AuthService} from './services/auth.service';
 import { TaskTapeComponent } from './task-tape/task-tape.component';
+import {Ng4LoadingSpinnerModule} from "ng4-loading-spinner";
 
 
 
@@ -62,7 +63,8 @@ import { TaskTapeComponent } from './task-tape/task-tape.component';
     HttpModule,
     AppRoutingModule,
     Angular2FontawesomeModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+      Ng4LoadingSpinnerModule.forRoot()
   ],
   providers: [
     ApiService, SigninComponent, AuthService, HeaderComponent
