@@ -43,8 +43,8 @@ export class AuthService {
                 localStorage.setItem('id', user['0'].id);
                 this.currentUser = user['0'];
                 this.isAuthorized.next(true);
-                this.router.navigate(['/']);
-                    this.spinnerService.hide();
+                this.router.navigate(['/day/' + (new Date()).getUTCFullYear() + '-' + ((new Date()).getUTCMonth() + 1) + '-' + (new Date()).getUTCDate()]);
+                this.spinnerService.hide();
             }));
     }
 

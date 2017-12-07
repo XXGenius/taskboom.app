@@ -74,6 +74,10 @@
       <img src="img/add-mini.png" class="add-mini">
       <span>Добавить свойство</span>
     </div>
+    <div class="add-prop">
+      <img src="img/add-mini.png" class="add-mini">
+      <span (click)="deleteTask(task.id)">Удалить</span>
+    </div>
     <div class="save-but">
       <span (click)="updateTask(text.value, title.value, cat, task.id)">Сохранить</span>
     </div>

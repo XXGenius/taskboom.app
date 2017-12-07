@@ -41,6 +41,12 @@ export class ApiService {
         .map((res) => res);
   }
 
+    findTasks(str, user_id) {
+        return this.http.get('http://boomapi.acesspades.com/api/v1/find' + '?' + this.tokenParam, {
+            params: { str: str, user_id: user_id }})
+            .map((res) => res);
+    }
+
   getDay(date: string, user_id) {
     return this.http.get('http://boomapi.acesspades.com/api/v1/day/date/' + date + '?' + this.tokenParam + '&&' + 'user_id=' + user_id )
         .map((res) => res);
@@ -243,6 +249,12 @@ export class ApiService {
   }
 
   /********************************** DELETE ****************************/
+
+  deleteTask(id: number) {
+      return this.http.delete('http://boomapi.acesspades.com/api/v1/task/' + id + '?' + this.tokenParam )
+          .map((res) => res)
+
+  }
 
   deleteLevel(id: number) {
     return this.http.delete('http://boomapi.acesspades.com/api/v1/lvl/' + id + '?' + this.tokenParam )

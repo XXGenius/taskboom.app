@@ -38,9 +38,10 @@ export class DayComponent implements OnInit, OnDestroy {
   @Input() taskGroup;
   auth;
   tasks: any = [];
+  findtasks: any = [];
   edit = false;
   maxTaskNumber = 4;
-
+  find = false;
   date;
   currentUser;
 
@@ -73,6 +74,20 @@ export class DayComponent implements OnInit, OnDestroy {
     // this.tasks = this.taskGroupService.currentTaskGroup.tasks;
 
   }
+
+    findTasks (str) {
+        const word =  (<HTMLInputElement>this.doc.getElementById('search1')).value;
+        if ( word ) {
+            this.find = true;
+            const id = localStorage.getItem('id');
+            this.apiService.findTasks(str, id).subscribe( (task) => {
+                console.log(task);
+                this.findtasks = task;
+            });
+        }else if (word === '') {
+            this.find = false;
+        }
+    }
 
   addTask(title: string) {
       this.spinnerService.show();

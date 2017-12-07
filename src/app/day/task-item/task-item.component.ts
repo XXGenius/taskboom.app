@@ -83,6 +83,12 @@ export class TaskItemComponent implements OnInit {
       }
   }
 
+    deleteTask(id) {
+      this.apiService.deleteTask(id).subscribe((level) => {
+                    console.log(level);
+                }
+            );
+    }
 
 
 
