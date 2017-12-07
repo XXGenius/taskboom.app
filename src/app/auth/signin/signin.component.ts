@@ -26,6 +26,6 @@ export class SigninComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy () {
-      console.log('auth die')
+      console.log('auth die');
   }
 }

@@ -5,7 +5,7 @@ import {Subject} from 'rxjs/Subject';
 import {ApiService} from './api.service';
 import {Router} from '@angular/router';
 import {ISubscription} from 'rxjs/Subscription';
-
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 @Injectable()
 export class AuthService {
     error: any;
@@ -14,7 +14,7 @@ export class AuthService {
     currentUser = new Subject();
 
     currentUserSubscribe: ISubscription;
-    constructor(private apiservice: ApiService, private router: Router) {
+    constructor(private apiservice: ApiService, private router: Router, private spinnerService: Ng4LoadingSpinnerService) {
         window['authHook']  = this.authHook;
         const uid = localStorage.getItem('uid');
         if (uid) {
@@ -33,21 +33,25 @@ export class AuthService {
 
     setAuthHook() {
         this.authHook
-            .switchMap(authToken => this.apiservice.loginAuth(authToken))
-            .subscribe(user => {
+            .subscribe((authToken) => {
+                this.spinnerService.show();
+                this.apiservice.loginAuth(authToken).
+                subscribe(user => {
                 localStorage.setItem('uid', user['0'].uid);
                 localStorage.setItem('id', user['0'].id);
                 this.currentUser = user['0'];
                 this.isAuthorized.next(true);
                 this.router.navigate(['/']);
-            });
+                    this.spinnerService.hide();
+            })});
     }
 
     login(email, password) {
+        this.spinnerService.show();
         this.apiservice.login(email, password)
             .subscribe(user => {
                 console.log(user);
-                if (user.length === 0 ) {
+                if (user === 0 ) {
                     this.error = 'error';
                     return this.error;
                 } else {
@@ -58,6 +62,7 @@ export class AuthService {
                     this.isAuthorized.next(true);
                     console.log(this.isAuthorized);
                     this.router.navigate(['/']);
+                    this.spinnerService.hide();
                 }
                 } ,
                 (error) => { this.error = error;
@@ -74,10 +79,12 @@ export class AuthService {
 
 
     clear () {
+        this.spinnerService.show();
         localStorage.setItem('uid', '');
         localStorage.setItem('id', '');
         this.currentUser = null;
         this.isAuthorized.next(false);
         this.router.navigate(['/signin/']);
+        this.spinnerService.hide();
     }
 }

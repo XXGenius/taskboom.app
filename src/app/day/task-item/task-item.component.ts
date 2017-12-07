@@ -12,12 +12,12 @@ import {NgForm} from '@angular/forms';
 })
 export class TaskItemComponent implements OnInit {
   @Input() task;
-  active = false;
+  active: boolean;
   exp;
   currentUser;
   edit = false;
   show = false;
-  categories = [];
+  categories: any;
   private checkSubscribe: ISubscription;
   private updateSubscribe: ISubscription;
   constructor(private apiService: ApiService, private ref: ChangeDetectorRef, private authService: AuthService) {
@@ -36,7 +36,7 @@ export class TaskItemComponent implements OnInit {
         .subscribe(
         (task) => {
           console.log(task);
-          this.active = task.checked;
+          this.active = task['checked'];
           if (this.active === true) {
               this.currentUser = this.authService.currentUser;
               this.apiService.updateExp(16, this.currentUser.id).subscribe((user) => {
@@ -66,8 +66,8 @@ export class TaskItemComponent implements OnInit {
   updateTask(text, title, category, id) {
       console.log(category);
       this.apiService.updateTask(text, title, id).subscribe((task) => {
-          this.task.title = task.title;
-          this.task.text = task.text;
+          this.task.title = task['title'];
+          this.task.text = task['text'];
           this.edit = false;
           console.log(task);
       });

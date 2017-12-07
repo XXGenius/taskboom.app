@@ -36,7 +36,7 @@ export class StatusComponent implements OnInit {
 
   @ViewChild('inputCreate') inputCreate;
 
-    statuses = [];
+    statuses: any = [];
 
     edit;
 

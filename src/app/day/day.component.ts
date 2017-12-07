@@ -3,12 +3,9 @@ import {ApiService} from '../services/api.service';
 import {ISubscription} from 'rxjs/Subscription';
 import {ActivatedRoute} from '@angular/router';
 import {AuthService} from '../services/auth.service';
-import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
-
-
-
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {DOCUMENT} from '@angular/common';
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 
 
 @Component({
@@ -40,7 +37,7 @@ import {DOCUMENT} from '@angular/common';
 export class DayComponent implements OnInit, OnDestroy {
   @Input() taskGroup;
   auth;
-  tasks = [];
+  tasks: any = [];
   edit = false;
   maxTaskNumber = 4;
 
@@ -51,9 +48,11 @@ export class DayComponent implements OnInit, OnDestroy {
   private daySubscription: ISubscription;
 
   constructor(private authService: AuthService, private apiService: ApiService,
-              private route: ActivatedRoute, private ref: ChangeDetectorRef, @Inject(DOCUMENT) private doc: Document, private spinnerService: Ng4LoadingSpinnerService) {
-      this.auth = this.authService.isAuthorized;
+              private route: ActivatedRoute, private ref: ChangeDetectorRef,
+              @Inject(DOCUMENT) private doc: Document,
+              private spinnerService: Ng4LoadingSpinnerService) {
       this.spinnerService.show();
+      this.auth = this.authService.isAuthorized;
       this.routeSubscription = this.route.params.subscribe(params => {
       this.date = params['date']; // (+) converts string 'id' to a number
         const id = localStorage.getItem('id');
@@ -77,22 +76,23 @@ export class DayComponent implements OnInit, OnDestroy {
 
   addTask(title: string) {
       this.spinnerService.show();
-    const project = 8;
+      const project = 8;
       const id = localStorage.getItem('id');
       this.apiService.createTask(title, this.date, project, id).subscribe(
         (task) => {
-            this.spinnerService.hide();
-          console.log(task);
-          this.tasks.push({id: task.id, title: task.title, date: task.date});
+            console.log(task['id']);
+            console.log(task);
+          this.tasks.push({id: task['id'], title: task['title'], date: task['date']});
           this.ref.detectChanges();
           (<HTMLInputElement>this.doc.getElementById('search1')).value = '';
+            this.spinnerService.hide();
         }
     );
   }
 
   ngOnDestroy() {
-    this.daySubscription.unsubscribe();
-    this.auth = null;
+      this.daySubscription.unsubscribe();
+      this.auth = null;
     this.routeSubscription.unsubscribe();
     console.log('day die');
   }

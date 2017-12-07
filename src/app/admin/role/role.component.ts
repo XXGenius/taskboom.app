@@ -33,7 +33,7 @@ import {NgForm} from '@angular/forms';
 })
 export class RoleComponent implements OnInit {
     @ViewChild('inputCreate') inputCreate;
-    roles = [];
+    roles: any = [];
     edit;
     private rolesSubscription: ISubscription;
 

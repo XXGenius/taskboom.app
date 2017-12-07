@@ -9,7 +9,7 @@ import {EmailValidator} from '@angular/forms';
 })
 export class UserComponent implements OnInit {
     edit;
-    users;
+    users: any;
     private usersSubscription: ISubscription;
     constructor(private apiService: ApiService) {
         this.usersSubscription = this.apiService.getUsers().subscribe(
@@ -40,7 +40,8 @@ export class UserComponent implements OnInit {
         this.apiService.createUser(username, email, password, role).subscribe(
             (user) => {
                 console.log(user);
-                this.users.push({id: user.id, username: user.username, email: user.email, password: user.password, role: user.role});
+                this.users.push({id: user['id'], username: user['username'],
+                    email: user['email'], password: user['password'], role: user['role']});
             }
         );
     }

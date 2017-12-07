@@ -34,7 +34,7 @@ import {NgForm} from '@angular/forms';
 export class LevelComponent implements OnInit {
     @ViewChild('inputCreate') inputCreate;
     @ViewChild('inputCreate') inputCreateExp;
-    levels = [];
+    levels: any = [];
     edit;
     private levelsSubscription: ISubscription;
 

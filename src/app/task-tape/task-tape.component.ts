@@ -39,7 +39,7 @@ export class TaskTapeComponent implements OnInit, OnDestroy {
       this.taskSubscription = apiService.getTasks(id).subscribe(
           (tasks) => {
               console.log(tasks);
-              this.tasks = tasks;
+              this.tasks.push(tasks);
           });
   }
 

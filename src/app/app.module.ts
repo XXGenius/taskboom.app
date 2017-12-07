@@ -29,7 +29,10 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import {AuthService} from './services/auth.service';
 import { TaskTapeComponent } from './task-tape/task-tape.component';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {Ng4LoadingSpinnerModule} from "ng4-loading-spinner";
+// import {Ng4LoadingSpinnerModule} from "ng4-loading-spinner";
+
 
 
 
@@ -60,10 +63,10 @@ import {Ng4LoadingSpinnerModule} from "ng4-loading-spinner";
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
-    AppRoutingModule,
+      AppRoutingModule,
     Angular2FontawesomeModule,
     BrowserAnimationsModule,
+      HttpClientModule,
       Ng4LoadingSpinnerModule.forRoot()
   ],
   providers: [

@@ -33,7 +33,7 @@ import {NgForm} from '@angular/forms';
 })
 export class ProjectComponent implements OnInit {
     @ViewChild('inputCreate') inputCreate;
-    projects = [];
+    projects: any = [];
     edit;
     private projectsSubscription: ISubscription;
 
