@@ -4,7 +4,7 @@ import {ISubscription} from 'rxjs/Subscription';
 import {AuthService} from '../../services/auth.service';
 import {current} from 'codelyzer/util/syntaxKind';
 import {NgForm} from '@angular/forms';
-
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 @Component({
   selector: 'app-task-item',
   templateUrl: './task-item.component.html',
@@ -20,7 +20,8 @@ export class TaskItemComponent implements OnInit {
   categories: any;
   private checkSubscribe: ISubscription;
   private updateSubscribe: ISubscription;
-  constructor(private apiService: ApiService, private ref: ChangeDetectorRef, private authService: AuthService) {
+  constructor(private apiService: ApiService, private ref: ChangeDetectorRef, private authService: AuthService,
+              private spinnerService: Ng4LoadingSpinnerService) {
       this.apiService.getCategory().subscribe((category) => {
       this.categories = category;
       console.log(this.categories);
@@ -64,12 +65,14 @@ export class TaskItemComponent implements OnInit {
   }
 
   updateTask(text, title, category, id) {
+      this.spinnerService.show();
       console.log(category);
       this.apiService.updateTask(text, title, id).subscribe((task) => {
           this.task.title = task.title;
           this.task.text = text.text;
           this.edit = false;
           console.log(task);
+          this.spinnerService.hide();
       });
 
   }
@@ -84,8 +87,10 @@ export class TaskItemComponent implements OnInit {
   }
 
     deleteTask(id) {
+      this.spinnerService.show();
       this.apiService.deleteTask(id).subscribe((level) => {
                     console.log(level);
+              this.spinnerService.hide();
                 }
             );
     }
