@@ -6,7 +6,7 @@ import {Observable} from 'rxjs';
 import { map, catchError, mergeMap } from 'rxjs/operators';
 @Injectable()
 export class ApiService {
-  private _options = new HttpHeaders(
+  private _options: any = new HttpHeaders(
             {'Access-Control-Expose-Headers':
             'Authorization,'
             + 'DNT,User-Agent' +

@@ -75,6 +75,7 @@ export class DayComponent implements OnInit, OnDestroy {
   }
 
   addTask(title: string) {
+      this.spinnerService.show();
       const project = 8;
       const id = localStorage.getItem('id');
       this.apiService.createTask(title, this.date, project, id).subscribe(
@@ -84,6 +85,7 @@ export class DayComponent implements OnInit, OnDestroy {
           this.tasks.push({id: task.id, title: task.title, date: task.date});
           this.ref.detectChanges();
           (<HTMLInputElement>this.doc.getElementById('search1')).value = '';
+            this.spinnerService.hide();
         }
     );
   }
