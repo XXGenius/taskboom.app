@@ -17,6 +17,7 @@ export class AuthService {
     constructor(private apiservice: ApiService, private router: Router, private spinnerService: Ng4LoadingSpinnerService) {
         window['authHook']  = this.authHook;
         const uid = localStorage.getItem('uid');
+        this.spinnerService.show();
         if (uid) {
             this.currentUserSubscribe = this.apiservice.getCurrentUser(uid)
                 .subscribe(user => {
@@ -25,16 +26,17 @@ export class AuthService {
                     console.log(this.isAuthorized);
                 });
             router.navigate(['/']);
+            this.spinnerService.hide();
         } else {
             this.isAuthorized.next(false);
             router.navigate(['/signin/']);
+            this.spinnerService.hide();
         }
     }
 
     setAuthHook() {
         this.authHook
-            .subscribe((authToken) => {
-                this.spinnerService.show();
+            .subscribe((authToken) =>
                 this.apiservice.loginAuth(authToken).
                 subscribe(user => {
                 localStorage.setItem('uid', user['0'].uid);
@@ -43,7 +45,7 @@ export class AuthService {
                 this.isAuthorized.next(true);
                 this.router.navigate(['/']);
                     this.spinnerService.hide();
-            })});
+            }));
     }
 
     login(email, password) {

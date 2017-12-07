@@ -66,8 +66,8 @@ export class TaskItemComponent implements OnInit {
   updateTask(text, title, category, id) {
       console.log(category);
       this.apiService.updateTask(text, title, id).subscribe((task) => {
-          this.task.title = task['title'];
-          this.task.text = task['text'];
+          this.task.title = task.title;
+          this.task.text = text.text;
           this.edit = false;
           console.log(task);
       });

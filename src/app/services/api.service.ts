@@ -1,35 +1,25 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {HttpClient, HttpClientModule, HttpHeaders} from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import {Subject} from 'rxjs/Subject';
 import {Observable} from 'rxjs';
-
+import { map, catchError, mergeMap } from 'rxjs/operators';
 @Injectable()
 export class ApiService {
-  private _options ={ headers : new HttpHeaders({
-        'Access-Control-Expose-Headers':
+  private _options = new HttpHeaders(
+            {'Access-Control-Expose-Headers':
             'Authorization,'
             + 'DNT,User-Agent' +
             ',Keep-Alive,Content-Type' +
             ',accept,origin,X-Requested-With' +
             ',Content-Disposition',
-        'Content-Type': 'application/json;charset=utf-8',
-        'Accept': '*/*',
-        'Cache-Control': 'no-cache',
-      })};
+                'Content-Type': 'application/json;charset=utf-8',
+                'Accept': '*/*',
+                'Cache-Control': 'no-cache'}
+        );
   private token = 'd7f6sd5a7854r85gasa6d5fg67sdg78df5gsf5gsd8';
   private tokenParam: string = 'token=' + this.token;
-  // private headers = new Headers({
-  //   'Access-Control-Expose-Headers':
-  //       'Authorization,'
-  //       + 'DNT,User-Agent' +
-  //       ',Keep-Alive,Content-Type' +
-  //       ',accept,origin,X-Requested-With' +
-  //       ',Content-Disposition',
-  //   'Content-Type': 'application/json;charset=utf-8',
-  //   'Accept': '*/*',
-  //   'Cache-Control': 'no-cache',
-  // });
+
 
   /********************************  GET  ****************************/
 
@@ -48,7 +38,7 @@ export class ApiService {
   login(email, password) {
     return this.http.get('http://boomapi.acesspades.com/api/v1/login' + '?' + this.tokenParam, {
       params: { email: email, password: password }})
-        .map((res) => res)
+        .map((res) => res);
   }
 
   getDay(date: string, user_id) {
@@ -58,49 +48,49 @@ export class ApiService {
 
     getChildTasks(parent_id) {
         return this.http.get('http://boomapi.acesspades.com/api/v1/childtasks?' + this.tokenParam + '&&' + 'parent_id=' + parent_id )
-            .map((res) => res)
+            .map((res) => res);
     }
 
 
     getTasks(id) {
     return this.http.get('http://boomapi.acesspades.com/api/v1/tasks/' + id + '?' + this.tokenParam  )
-      .map((res) => res)
+      .map((res) => res);
 
   }
 
     getCategory() {
         return this.http.get('http://boomapi.acesspades.com/api/v1/category?' + this.tokenParam  )
-            .map((res) => res)
+            .map((res) => res);
     }
 
   getLevels() {
     return this.http.get('http://boomapi.acesspades.com/api/v1/lvls?' + this.tokenParam  )
-        .map((res) => res)
+        .map((res) => res);
   }
 
   getUserGroups() {
     return this.http.get('http://boomapi.acesspades.com/api/v1/usergroups?' + this.tokenParam  )
-      .map((res) => res)
+      .map((res) => res);
   }
 
   getUsers() {
     return this.http.get('http://boomapi.acesspades.com/api/v1/users?' + this.tokenParam  )
-      .map((res) => res)
+      .map((res) => res);
   }
 
   getStatuses() {
     return this.http.get('http://boomapi.acesspades.com/api/v1/statuses?' + this.tokenParam  )
-      .map((res) => res)
+      .map((res) => res);
   }
 
   getProjects() {
     return this.http.get('http://boomapi.acesspades.com/api/v1/projects?' + this.tokenParam  )
-      .map((res) => res)
+      .map((res) => res);
   }
 
   getRoles() {
     return this.http.get('http://boomapi.acesspades.com/api/v1/roles?' + this.tokenParam  )
-      .map((res) => res)
+      .map((res) => res);
   }
 
   loginAuth(token) {
@@ -114,14 +104,19 @@ export class ApiService {
       console.log(this._options);
       return this.http.post('http://boomapi.acesspades.com/api/v1/task?' + this.tokenParam,
         {token: this.token, title: title, date: date, project_id: project_id, user_id: user_id }, this._options)
-          .map((res) => res);
-  }
+          .pipe(
+              map((res: any) => {
+                  console.log(res);
+                  return res;
+              }),
+              catchError(error => Observable.throw(error || 'Server error'))
+  ); }
 
     createChildTask(text: string, project_id: number, parent_id , user_id) {
         console.log(JSON.stringify({ text: text, project_id: project_id, parent_id: parent_id }));
         return this.http.post('http://boomapi.acesspades.com/api/v1/childtask?' + this.tokenParam,
             {token: this.token, text: text, project_id: project_id, parent_id: parent_id, user_id: user_id}, this._options)
-            .map((res) => res)
+            .map((res) => res);
     }
 
   createLevel(level: number, exp: number ) {
@@ -144,7 +139,7 @@ export class ApiService {
     console.log(JSON.stringify({ username: username, email: email, password: password, user_role_id: user_role_id }));
     return this.http.post('http://boomapi.acesspades.com/api/v1/user?' + this.tokenParam,
       {token: this.token, username: username, email: email, password: password, user_role_id: user_role_id }, this._options)
-      .map((res) => res)
+      .map((res) => res);
   }
 
   createStatus(title: string) {
@@ -230,7 +225,7 @@ export class ApiService {
     return this.http.put('http://boomapi.acesspades.com/api/v1/check/' + id + '?' + this.tokenParam,
       { checked: checked },
       this._options)
-        .map((res) => res)
+        .map((res) => res);
   }
 
   updateTask (text, title, id) {
@@ -238,7 +233,13 @@ export class ApiService {
       return this.http.put('http://boomapi.acesspades.com/api/v1/task/' + id + '?' + this.tokenParam,
           { text: text, title: title },
           this._options)
-          .map((res) => res)
+          .pipe(
+          map((res: any) => {
+              console.log(res);
+              return res;
+          }),
+          catchError(error => Observable.throw(error || 'Server error'))
+          )
   }
 
   /********************************** DELETE ****************************/
