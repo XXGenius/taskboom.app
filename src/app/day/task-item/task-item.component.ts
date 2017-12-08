@@ -5,10 +5,33 @@ import {AuthService} from '../../services/auth.service';
 import {current} from 'codelyzer/util/syntaxKind';
 import {NgForm} from '@angular/forms';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+import {animate, state, style, transition, trigger} from "@angular/animations";
+import {DayComponent} from "../day.component";
 @Component({
   selector: 'app-task-item',
   templateUrl: './task-item.component.html',
-    styleUrls: ['./task-item.component.css']
+    styleUrls: ['./task-item.component.css'],
+    animations: [
+        trigger('list', [
+            state('in', style({
+                opacity: 1,
+                transform: 'translateX(0)'
+            })),
+            transition('void => *', [
+                style({
+                    opacity: 0,
+                    transform: 'translateX(-100px)'
+                }),
+                animate(300)
+            ]),
+            transition('* => void', [
+                animate(300, style({
+                    opacity: 0,
+                    transform: 'translateX(100px)'
+                }))
+            ]),
+        ])
+    ]
 })
 export class TaskItemComponent implements OnInit {
   @Input() task;
@@ -20,7 +43,7 @@ export class TaskItemComponent implements OnInit {
   categories: any;
   private checkSubscribe: ISubscription;
   private updateSubscribe: ISubscription;
-  constructor(private apiService: ApiService, private ref: ChangeDetectorRef, private authService: AuthService,
+  constructor(private daycomponent: DayComponent, private apiService: ApiService, private ref: ChangeDetectorRef, private authService: AuthService,
               private spinnerService: Ng4LoadingSpinnerService) {
       this.apiService.getCategory().subscribe((category) => {
       this.categories = category;
@@ -90,6 +113,7 @@ export class TaskItemComponent implements OnInit {
       this.spinnerService.show();
       this.apiService.deleteTask(id).subscribe((level) => {
                     console.log(level);
+                    this.daycomponent.deleteTask(id);
               this.spinnerService.hide();
                 }
             );

@@ -6,6 +6,8 @@ import {AuthService} from '../services/auth.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {DOCUMENT} from '@angular/common';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+import {timeInterval} from "rxjs/operator/timeInterval";
+import {timeout} from "q";
 
 
 @Component({
@@ -40,14 +42,13 @@ export class DayComponent implements OnInit, OnDestroy {
   tasks: any = [];
   findtasks: any = [];
   edit = false;
-  maxTaskNumber = 4;
+  max = false;
   find = false;
   date;
   currentUser;
 
   private routeSubscription: ISubscription;
   private daySubscription: ISubscription;
-
   constructor(private authService: AuthService, private apiService: ApiService,
               private route: ActivatedRoute, private ref: ChangeDetectorRef,
               @Inject(DOCUMENT) private doc: Document,
@@ -90,19 +91,35 @@ export class DayComponent implements OnInit, OnDestroy {
     }
 
   addTask(title: string) {
-      this.spinnerService.show();
-      const project = 8;
-      const id = localStorage.getItem('id');
-      this.apiService.createTask(title, this.date, project, id).subscribe(
-        (task) => {
-            console.log(task.id);
-            console.log(task);
-          this.tasks.push({id: task.id, title: task.title, date: task.date});
-          this.ref.detectChanges();
-          (<HTMLInputElement>this.doc.getElementById('search1')).value = '';
-            this.spinnerService.hide();
-        }
-    );
+      console.log(this.tasks.length);
+      if (this.tasks.length < 4) {
+          this.spinnerService.show();
+          const project = 8;
+          const id = localStorage.getItem('id');
+          this.apiService.createTask(title, this.date, project, id).subscribe(
+              (task) => {
+                  console.log(task.id);
+                  console.log(task);
+                  this.tasks.push({id: task.id, title: task.title, date: task.date});
+                  this.ref.detectChanges();
+                  (<HTMLInputElement>this.doc.getElementById('search1')).value = '';
+                  this.spinnerService.hide();
+              }
+          );
+      }else if (this.tasks.length === 4) {
+          this.max = true;
+          const tim = setTimeout(() => {
+              console.log('hello');
+              this.max = false;
+          }, 5000);
+
+          // clearTimeout(tim);
+      }
+
+  }
+
+  deleteTask (id) {
+      this.tasks = this.tasks.filter( task => task.id !== id);
   }
 
   ngOnDestroy() {
