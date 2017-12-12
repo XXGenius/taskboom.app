@@ -25,7 +25,7 @@ export class AuthService {
                     this.isAuthorized.next(true);
                     console.log(this.isAuthorized);
                 });
-            router.navigate(['/']);
+            router.navigate(['long']);
             this.spinnerService.hide();
         } else {
             this.isAuthorized.next(false);
@@ -41,11 +41,19 @@ export class AuthService {
                 subscribe(user => {
                 localStorage.setItem('uid', user['0'].uid);
                 localStorage.setItem('id', user['0'].id);
-                this.currentUser = user['0'];
-                this.isAuthorized.next(true);
-                this.router.navigate(['/day/' + (new Date()).getUTCFullYear() + '-' + ((new Date()).getUTCMonth() + 1) + '-' + (new Date()).getUTCDate()]);
-                this.spinnerService.hide();
-            }));
+                    const id = localStorage.getItem('id');
+                    this.apiservice.getLongCycle(id).subscribe( (cycle) => {
+                        if (!(cycle['0'])) {
+                            this.router.navigate(['wisdom']);
+                            this.currentUser = user['0'];
+                            this.isAuthorized.next(true);
+                        } else {
+                            this.router.navigate(['long']);
+                            this.currentUser = user['0'];
+                            this.isAuthorized.next(true);
+                        }
+                    });
+                }));
     }
 
     login(email, password) {
@@ -63,7 +71,7 @@ export class AuthService {
                     this.currentUser = user['0'];
                     this.isAuthorized.next(true);
                     console.log(this.isAuthorized);
-                    this.router.navigate(['/']);
+                    this.router.navigate(['wisdom']);
                     this.spinnerService.hide();
                 }
                 } ,

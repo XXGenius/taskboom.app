@@ -35,6 +35,12 @@ export class ApiService {
         .map((res) => res);
   }
 
+    getLongCycle(user_id) {
+        return this.http.get('http://boomapi.acesspades.com/api/v1/long' , {
+            params: { user_id: user_id }})
+            .map((res) => res);
+    }
+
   login(email, password) {
     return this.http.get('http://boomapi.acesspades.com/api/v1/login' + '?' + this.tokenParam, {
       params: { email: email, password: password }})
@@ -106,6 +112,20 @@ export class ApiService {
   }
 
   /********************************* Create ****************************/
+
+  addLongCycle(user_id) {
+      console.log(this._options);
+      return this.http.post('http://boomapi.acesspades.com/api/v1/createcycle?' + this.tokenParam,
+          {token: this.token,  user_id: user_id }, this._options)
+          .pipe(
+              map((res: any) => {
+                  console.log(res);
+                  return res;
+              }),
+              catchError(error => Observable.throw(error || 'Server error'))
+          );
+  }
+
   createTask(title: string, date, project_id: number, user_id ) {
       console.log(this._options);
       return this.http.post('http://boomapi.acesspades.com/api/v1/task?' + this.tokenParam,

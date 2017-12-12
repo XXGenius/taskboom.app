@@ -11,12 +11,16 @@ import {UserGroupComponent} from './admin/user-group/user-group.component';
 import {SignupComponent} from './auth/signup/signup.component';
 import {SigninComponent} from './auth/signin/signin.component';
 import {TaskTapeComponent} from './task-tape/task-tape.component';
+import {WisdomComponent} from "./wisdom/wisdom.component";
+import {LongcycleComponent} from "./longcycle/longcycle.component";
 
 
 
 const appRoutes: Routes = [
   { path: '', pathMatch: 'full', component: IndexComponent },
     { path: 'signin' , component: SigninComponent},
+    { path: 'wisdom', component: WisdomComponent},
+    { path: 'long', component: LongcycleComponent},
   { path: 'day/:date', component: DayComponent },
   { path: 'statuses', component: StatusComponent},
   { path: 'projects', component: ProjectComponent},
