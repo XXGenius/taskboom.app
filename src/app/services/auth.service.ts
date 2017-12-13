@@ -68,11 +68,21 @@ export class AuthService {
                     this.error = '';
                     localStorage.setItem('uid', user['0'].uid);
                     localStorage.setItem('id', user['0'].id);
-                    this.currentUser = user['0'];
-                    this.isAuthorized.next(true);
                     console.log(this.isAuthorized);
-                    this.router.navigate(['wisdom']);
-                    this.spinnerService.hide();
+                    const id = localStorage.getItem('id');
+                    this.apiservice.getLongCycle(id).subscribe( (cycle) => {
+                        if (!(cycle['0'])) {
+                            this.router.navigate(['wisdom']);
+                            this.currentUser = user['0'];
+                            this.isAuthorized.next(true);
+                            this.spinnerService.hide();
+                        } else {
+                            this.router.navigate(['long']);
+                            this.currentUser = user['0'];
+                            this.isAuthorized.next(true);
+                            this.spinnerService.hide();
+                        }
+                    });
                 }
                 } ,
                 (error) => { this.error = error;

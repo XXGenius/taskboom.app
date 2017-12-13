@@ -25,8 +25,14 @@ export class ApiService {
 
   registration(email: string, password: string, first_name: string, last_name: string , user_role_id: number ) {
     return this.http.get('http://boomapi.acesspades.com/api/v1/register' + '?' + this.tokenParam, {
-      params: { }})
-        .map((res) => res);
+      params: { email: email, password: password, first_name: first_name, last_name: last_name }})
+        .pipe(
+            map((res: any) => {
+                console.log(res);
+                return res;
+            }),
+            catchError(error => Observable.throw(error || 'Server error'))
+        );
   }
 
   getCurrentUser(uid) {

@@ -33,6 +33,8 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {Ng4LoadingSpinnerModule} from 'ng4-loading-spinner';
 import { WisdomComponent } from './wisdom/wisdom.component';
 import { LongcycleComponent } from './longcycle/longcycle.component';
+import { WeekcycleComponent } from './weekcycle/weekcycle.component';
+import { NextdayComponent } from './nextday/nextday.component';
 
 
 
@@ -62,6 +64,8 @@ import { LongcycleComponent } from './longcycle/longcycle.component';
     TaskTapeComponent,
     WisdomComponent,
     LongcycleComponent,
+    WeekcycleComponent,
+    NextdayComponent,
 
   ],
   imports: [

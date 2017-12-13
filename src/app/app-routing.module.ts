@@ -13,6 +13,8 @@ import {SigninComponent} from './auth/signin/signin.component';
 import {TaskTapeComponent} from './task-tape/task-tape.component';
 import {WisdomComponent} from "./wisdom/wisdom.component";
 import {LongcycleComponent} from "./longcycle/longcycle.component";
+import {WeekcycleComponent} from "./weekcycle/weekcycle.component";
+import {NextdayComponent} from "./nextday/nextday.component";
 
 
 
@@ -21,7 +23,9 @@ const appRoutes: Routes = [
     { path: 'signin' , component: SigninComponent},
     { path: 'wisdom', component: WisdomComponent},
     { path: 'long', component: LongcycleComponent},
-  { path: 'day/:date', component: DayComponent },
+    { path: 'week', component: WeekcycleComponent},
+    { path: 'day', component: NextdayComponent},
+  // { path: 'day/:date', component: DayComponent },
   { path: 'statuses', component: StatusComponent},
   { path: 'projects', component: ProjectComponent},
   { path: 'roles', component: RoleComponent},

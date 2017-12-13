@@ -3,19 +3,23 @@
     <a routerLink="/">
       <div *ngIf="isAuthorized" class="logo1">&nbsp;</div></a>
     <div *ngIf="isAuthorized" class="pr-bar">
-      <div class="pr-photo">
-        <div ><img class="account-img"  src="{{ currentUser.photo}}" alt=""></div>
-        <div class="photo-text">{{ currentUser.level}}</div>
-        <div class="photo-text-1">level</div>
-        <div class="photo-text-2">До следующего уровня 568 exp</div>
+      <div class="pr-bar">
+        <div class="pr-photo">
+          <div ><img class="account-img"  src="{{ currentUser.photo}}" alt=""></div>
+          <div class="photo-text">6</div>
+          <div class="photo-text-1">day</div>
+          <div class="photo-text-2">1 day left before close a week</div>
+        </div>
       </div>
     </div>
-    <div *ngIf="isAuthorized" class="pr-button">
-      <img src="img/star.png" class="star">
-      <span>Up level</span>
+    <div *ngIf="isAuthorized" >
+      <button  class="pr-button-1" routerLink="/week" ><img src="img/settings.png" class="settings">W</button>
     </div>
     <div *ngIf="isAuthorized" >
-      <button  class="pr-button-1" ><img src="img/settings.png" class="settings">Settings</button>
+      <button  class="pr-button-1" routerLink="/day" ><img src="img/settings.png" class="settings">Day</button>
+    </div>
+    <div *ngIf="isAuthorized" >
+      <button  class="pr-button-1" routerLink="/long" ><img src="img/settings.png" class="settings">12 week</button>
     </div>
     <div *ngIf="isAuthorized">
       <button  class="pr-button-1" (click)="exit()">Exit</button>
