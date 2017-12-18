@@ -12,7 +12,6 @@ export class LongcycleComponent implements OnInit {
   pageTwo = false;
   steps: any = [];
   edit = false;
-  tasks: any = [];
   firsttask = new Subject();
   secondtask = new Subject();
   thirdtask = new Subject();
@@ -28,8 +27,6 @@ export class LongcycleComponent implements OnInit {
           console.log(steps);
         });
         this.apiService.getMyTasks(cycle_id).subscribe((task) => {
-            console.log(task);
-            this.tasks = task;
             this.firsttask = task['0'];
             this.secondtask = task['1'];
             this.thirdtask = task['2'];
@@ -56,6 +53,27 @@ export class LongcycleComponent implements OnInit {
     }
 
     update (form: NgForm, i) {
-    this.steps[i].edit = true;
+        const id = this.steps[i].id;
+        this.apiService.updateStep(id, form.value.text).subscribe(
+            (step) => {
+                this.steps[i].text = step.exp;
+            }
+        );
+    }
+
+    updateFirstTask (form: NgForm, id) {
+        this.apiService.updateTask(form.value.text, id).subscribe(
+            (task) => {
+                this.firsttask['text'] = task.text;
+            }
+        );
+    }
+
+    updateSecondTask (form: NgForm, id) {
+        this.apiService.updateTask(form.value.text, id).subscribe(
+            (task) => {
+                this.secondtask['text'] = task.text;
+            }
+        );
     }
 }

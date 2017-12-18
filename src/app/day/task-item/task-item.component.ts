@@ -87,18 +87,18 @@ export class TaskItemComponent implements OnInit {
       }
   }
 
-  updateTask(text, title, category, id) {
-      this.spinnerService.show();
-      console.log(category);
-      this.apiService.updateTask(text, title, id).subscribe((task) => {
-          this.task.title = task.title;
-          this.task.text = text.text;
-          this.edit = false;
-          console.log(task);
-          this.spinnerService.hide();
-      });
-
-  }
+  // updateTask(text, title, category, id) {
+  //     this.spinnerService.show();
+  //     console.log(category);
+  //     this.apiService.updateTask(text, title, id).subscribe((task) => {
+  //         this.task.title = task.title;
+  //         this.task.text = text.text;
+  //         this.edit = false;
+  //         console.log(task);
+  //         this.spinnerService.hide();
+  //     });
+  //
+  // }
 
   showMethod () {
       if (this.show === false) {

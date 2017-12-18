@@ -24,11 +24,13 @@
           <div class="text-head">Descrive what exactly you want to achieve in next 12 weeks</div>
         </div>
       </div>
+      <form  #myTaskForm="ngForm"  novalidate (keyup.enter)="updateFirstTask(myTaskForm, firsttask['id'])">
       <div class="second-block-large">
         <div class="second-start-input">
-                     <textarea  class="input-big" type="text" placeholder="{{ firsttask['text']}}"></textarea>
+                     <textarea  class="input-big" type="text"  name="text" ngModel required placeholder="{{ firsttask['text']}}">{{ firsttask.text }}</textarea>
         </div>
       </div>
+      </form>
     </div>
     <div class="tabs-all">
       <div class="second-block">
@@ -46,8 +48,8 @@
             <div>
               <div  *ngIf="!step.edit" >
                 <!--<span *ngIf="step.edit ">{{ step.text }}</span>-->
-                <input type="text" class="form-control"
-                       name="text" ngModel required  value="3434234234234234234234234234234234234"/>
+                <input type="text" class="input-1"
+                       name="text" ngModel required  placeholder="{{step.text}}"/>
               </div>
             </div>
           </div>
@@ -114,14 +116,14 @@
           <div class="text-head">Type the second goal of 12 week plan here..</div>
         </div>
       </div>
-      <div class="second-block-large">
-        <div class="second-start-input">
-          <textarea  class="input-big" type="text" placeholder="One of the keys to reaching your goals is to eliminate
-                        any escape routes. It is tempting to retreat to safety and comfort when challenges and difficulties arise.
-                        To avoid turning around and abandoning your goals.."> {{secondtask['text']}}</textarea>
-        </div>
+      <form  #myTaskForm="ngForm"  novalidate (keyup.enter.ctrl)="updateSecondTask(myTaskForm, secondtask['id'])">
+          <div class="second-block-large">
+            <div class="second-start-input">
+              <textarea  class="input-big" type="text"  name="text" ngModel required placeholder="{{ secondtask['text']}}"></textarea>
+            </div>
+          </div>
+        </form>
       </div>
-    </div>
     <div class="tabs-all">
       <div class="second-block">
         <div class="second-start">
@@ -140,7 +142,7 @@
               <div  >
                 <span *ngIf="step.edit ">{{ step.text }}</span>
                 <input *ngIf="!step.edit" class="input-1"
-                       value="{{ step.text }}" placeholder="{{ step.text }}" name="title" ngModel required/>
+                       value="{{ step.text }}" placeholder="{{ step.text }}" name="text" ngModel required/>
               </div>
             </div>
           </div>
@@ -202,8 +204,8 @@
               <!--<span *ngIf="!step.edit">{{ step.text}}</span>-->
               <div  >
                 <span *ngIf="step.edit ">{{ step.text }}</span>
-                <input type="text" value="тест" *ngIf="!step.edit" c
-                         name="title" ngModel required/>
+                <input type="text" value="тест" *ngIf="!step.edit"
+                         name="text" class="input-1" placeholder="{{step.text}}" ngModel required/>
               </div>
             </div>
           </div>

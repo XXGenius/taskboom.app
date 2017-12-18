@@ -212,6 +212,19 @@ export class ApiService {
 
   /********************************* Update ****************************/
 
+  updateStep(id: number, text) {
+      console.log(JSON.stringify({ text: text  }));
+      return this.http.put('http://boomapi.acesspades.com/api/v1/step/' + id + '?' + this.tokenParam,
+          { text: text }, this._options)
+          .pipe(
+              map((res: any) => {
+                  console.log(res);
+                  return res;
+              }),
+              catchError(error => Observable.throw(error || 'Server error'))
+          );
+  }
+
   updateLevel(id: number, level, exp) {
     console.log(JSON.stringify({ level: level, exp: exp  }));
     return this.http.put('http://boomapi.acesspades.com/api/v1/lvl/' + id + '?' + this.tokenParam,
@@ -272,10 +285,10 @@ export class ApiService {
         .map((res) => res);
   }
 
-  updateTask (text, title, id) {
+  updateTask (text, id) {
       console.log(text);
       return this.http.put('http://boomapi.acesspades.com/api/v1/task/' + id + '?' + this.tokenParam,
-          { text: text, title: title },
+          { text: text },
           this._options)
           .pipe(
           map((res: any) => {
@@ -283,15 +296,20 @@ export class ApiService {
               return res;
           }),
           catchError(error => Observable.throw(error || 'Server error'))
-          )
+          );
   }
 
   /********************************** DELETE ****************************/
 
   deleteTask(id: number) {
       return this.http.delete('http://boomapi.acesspades.com/api/v1/task/' + id + '?' + this.tokenParam )
-          .map((res) => res)
-
+          .pipe(
+              map((res: any) => {
+                  console.log(res);
+                  return res;
+              }),
+              catchError(error => Observable.throw(error || 'Server error'))
+          );
   }
 
   deleteLevel(id: number) {
