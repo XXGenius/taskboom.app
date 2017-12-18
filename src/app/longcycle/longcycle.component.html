@@ -1,5 +1,6 @@
 <div class="space">
 </div>
+
 <div *ngIf="!pageTwo" class="container-fluid1">
   <div class="first-block">
     <div class="h1-main">
@@ -15,7 +16,7 @@
 
     </div>
   </div>
-  <div class="form-group-1">
+  <div   class="form-group-1">
     <div class="tabs-all">
       <div class="second-block">
         <div class="second-start">
@@ -25,10 +26,7 @@
       </div>
       <div class="second-block-large">
         <div class="second-start-input">
-                     <textarea class="input-big" type="text" placeholder="One of the keys to reaching your goals is to eliminate
-                        any escape routes. It is tempting to retreat to safety and comfort when challenges and difficulties arise.
-                        To avoid turning around and abandoning your goals, you must make going forward more compelling then going
-                        back.."></textarea>
+                     <textarea  class="input-big" type="text" placeholder="{{ firsttask['text']}}"></textarea>
         </div>
       </div>
     </div>
@@ -39,89 +37,47 @@
           <div class="text-head">You can start from any field, just fill like you feel it</div>
         </div>
       </div>
-
-      <div class="second-block">
-        <div class="under-numeric">2.<span style="color: rgba(255,133,0,0.8);">1</span></div>
-        <div class="second-start-input">
-          <input class="input-1" type="text" placeholder="Put a Wings On Your Dreams" >
+      <form  *ngFor="let step of steps; let i = index"
+            id="tr{{step.id }}"
+            #myForm="ngForm"  novalidate (keyup.enter)="update(myForm, i)" >
+        <div class="second-block" *ngIf="step.task_id === firsttask['id']">
+          <div class="under-numeric">2.<span style="color: rgba(255,133,0,0.8);">{{ i + 1 }}</span> </div>
+          <div class="second-start-input">
+            <div>
+              <div  *ngIf="!step.edit" >
+                <!--<span *ngIf="step.edit ">{{ step.text }}</span>-->
+                <input type="text" class="form-control"
+                       name="text" ngModel required  value="3434234234234234234234234234234234234"/>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="second-block">
-        <div class="under-numeric">2.<span style="color: rgba(255,133,0,0.8);">2</span></div>
-        <div class="second-start-input">
-          <input class="input-1" type="text" placeholder="Start With A Baseline">
+      </form>
+      <div class="tabs-all">
+        <div class="second-block">
+          <div class="second-start">
+            <div class="text-head-uppercase"><span class="steps-in">3</span>How will I reward myself if I reach the above objective?</div>
+            <div class="text-head">You'll get..</div>
+          </div>
         </div>
-      </div>
-      <div class="second-block">
-        <div class="under-numeric">2.<span style="color: rgba(255,133,0,0.8);">3</span></div>
-        <div class="second-start-input">
-          <input class="input-1" type="text" placeholder="Put a Wings On Your Dreams" >
+        <div class="second-block">
+          <div class="second-start-input">
+            <input class="input-1" type="text" placeholder="Put a Wings On Your Dreams" >
+          </div>
         </div>
-      </div>
-      <div class="second-block">
-        <div class="under-numeric">2.<span style="color: rgba(255,133,0,0.8);">4</span></div>
-        <div class="second-start-input">
-          <input class="input-1" type="text" placeholder="Start With A Baseline">
+        <div class="second-block">
+          <div class="second-start-input">
+            <input class="input-1" type="text" placeholder="Put a Wings On Your Dreams" >
+          </div>
         </div>
-      </div><div class="second-block">
-      <div class="under-numeric">2.<span style="color: rgba(255,133,0,0.8);">5</span></div>
-      <div class="second-start-input">
-        <input class="input-1" type="text" placeholder="Put a Wings On Your Dreams" >
-      </div>
-    </div>
-      <div class="second-block">
-        <div class="under-numeric">2.<span style="color: rgba(255,133,0,0.8);">6</span></div>
-        <div class="second-start-input">
-          <input class="input-1" type="text" placeholder="Start With A Baseline">
-        </div>
-      </div><div class="second-block">
-      <div class="under-numeric">2.<span style="color: rgba(255,133,0,0.8);">7</span></div>
-      <div class="second-start-input">
-        <input class="input-1" type="text" placeholder="Put a Wings On Your Dreams" >
-      </div>
-    </div>
-      <div class="second-block">
-        <div class="under-numeric">2.<span style="color: rgba(255,133,0,0.8);">8</span></div>
-        <div class="second-start-input">
-          <input class="input-1" type="text" placeholder="Start With A Baseline">
-        </div>
-      </div><div class="second-block">
-      <div class="under-numeric">2.<span style="color: rgba(255,133,0,0.8);">9</span></div>
-      <div class="second-start-input">
-        <input class="input-1" type="text" placeholder="Put a Wings On Your Dreams" >
-      </div>
-    </div>
-      <div class="second-block">
-        <div class="under-numeric">2.<span style="color: rgba(255,133,0,0.8);">10</span></div>
-        <div class="second-start-input">
-          <input class="input-1" type="text" placeholder="Start With A Baseline">
+        <div class="second-block">
+          <div class="second-start-input">
+            <input class="input-1" type="text" placeholder="Put a Wings On Your Dreams" >
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="tabs-all">
-      <div class="second-block">
-        <div class="second-start">
-          <div class="text-head-uppercase"><span class="steps-in">3</span>How will I reward myself if I reach the above objective?</div>
-          <div class="text-head">You'll get..</div>
-        </div>
-      </div>
-      <div class="second-block">
-        <div class="second-start-input">
-          <input class="input-1" type="text" placeholder="Put a Wings On Your Dreams" >
-        </div>
-      </div>
-      <div class="second-block">
-        <div class="second-start-input">
-          <input class="input-1" type="text" placeholder="Put a Wings On Your Dreams" >
-        </div>
-      </div>
-      <div class="second-block">
-        <div class="second-start-input">
-          <input class="input-1" type="text" placeholder="Put a Wings On Your Dreams" >
-        </div>
-      </div>
-    </div>
 
     <div class="third-block">
       <!-- <p>Great job. Next step is available in <span>(ЗДЕСЬ таймер до конца суток)</span>. </p> -->
@@ -150,7 +106,7 @@
       <!-- <img src="img/today.png" class="today"/> -->
     </div>
   </div>
-  <div class="form-group-1">
+  <div    class="form-group-1">
     <div class="tabs-all">
       <div class="second-block">
         <div class="second-start">
@@ -160,9 +116,9 @@
       </div>
       <div class="second-block-large">
         <div class="second-start-input">
-                     <textarea class="input-big" type="text" placeholder="One of the keys to reaching your goals is to eliminate
+          <textarea  class="input-big" type="text" placeholder="One of the keys to reaching your goals is to eliminate
                         any escape routes. It is tempting to retreat to safety and comfort when challenges and difficulties arise.
-                        To avoid turning around and abandoning your goals.."></textarea>
+                        To avoid turning around and abandoning your goals.."> {{secondtask['text']}}</textarea>
         </div>
       </div>
     </div>
@@ -173,82 +129,91 @@
           <div class="text-head">You can start from any field, just fill like you feel it</div>
         </div>
       </div>
+      <form  *ngFor="let step of steps; let i = index"
+
+             #myForm="ngForm"  novalidate (keyup.enter)="update(myForm, i)" >
+        <div class="second-block" *ngIf="step.task_id === secondtask['id']">
+          <div class="under-numeric">3.<span style="color: rgba(255,133,0,0.8);">{{ i + 1 }}</span> </div>
+          <div class="second-start-input">
+            <div>
+              <!--<span *ngIf="!step.edit">{{ step.text}}</span>-->
+              <div  >
+                <span *ngIf="step.edit ">{{ step.text }}</span>
+                <input *ngIf="!step.edit" class="input-1"
+                       value="{{ step.text }}" placeholder="{{ step.text }}" name="title" ngModel required/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="tabs-all">
       <div class="second-block">
-        <div class="under-numeric">5.<span style="color: rgba(255,133,0,0.8);">1</span></div>
+        <div class="second-start">
+          <div class="text-head-uppercase"><span class="steps-in">6</span>How will I reward myself if I reach the above objective?</div>
+          <div class="text-head">You'll get..</div>
+        </div>
+      </div>
+      <div class="second-block">
         <div class="second-start-input">
           <input class="input-1" type="text" placeholder="Put a Wings On Your Dreams" >
         </div>
       </div>
       <div class="second-block">
-        <div class="under-numeric">5.<span style="color: rgba(255,133,0,0.8);">2</span></div>
-        <div class="second-start-input">
-          <input class="input-1" type="text" placeholder="Start With A Baseline">
-        </div>
-      </div>
-      <div class="second-block">
-        <div class="under-numeric">5.<span style="color: rgba(255,133,0,0.8);">3</span></div>
         <div class="second-start-input">
           <input class="input-1" type="text" placeholder="Put a Wings On Your Dreams" >
         </div>
       </div>
       <div class="second-block">
-        <div class="under-numeric">5.<span style="color: rgba(255,133,0,0.8);">4</span></div>
         <div class="second-start-input">
-          <input class="input-1" type="text" placeholder="Start With A Baseline">
+          <input class="input-1" type="text" placeholder="Put a Wings On Your Dreams" >
         </div>
       </div>
     </div>
     <div class="tabs-all">
       <div class="second-block">
         <div class="second-start">
-          <div class="text-head-uppercase"><span class="steps-in">6</span>Goal #3</div>
+          <div class="text-head-uppercase"><span class="steps-in">7</span>Goal #3</div>
           <div class="text-head">Type the third goal of 12 week plan here..</div>
         </div>
       </div>
       <div class="second-block-large">
         <div class="second-start-input">
-                     <textarea class="input-big" type="text" placeholder="One of the keys to reaching your goals is to eliminate
+          <textarea  class="input-big" type="text" placeholder="One of the keys to reaching your goals is to eliminate
                         any escape routes. It is tempting to retreat to safety and comfort when challenges and difficulties arise.
-                        To avoid turning around and abandoning your goals.."></textarea>
+                        To avoid turning around and abandoning your goals..">{{thirdtask['text']}}</textarea>
         </div>
       </div>
     </div>
     <div class="tabs-all">
       <div class="second-block">
         <div class="second-start">
-          <div class="text-head-uppercase"><span class="steps-in">7</span>4 steps to achieve goal #3</div>
+          <div class="text-head-uppercase"><span class="steps-in">8</span>4 steps to achieve goal #3</div>
           <div class="text-head">You can start from any field, just fill like you feel it</div>
         </div>
       </div>
-      <div class="second-block">
-        <div class="under-numeric">7.<span style="color: rgba(255,133,0,0.8);">1</span></div>
-        <div class="second-start-input">
-          <input class="input-1" type="text" placeholder="Put a Wings On Your Dreams" >
+      <form  *ngFor="let step of steps; let i = index"
+
+             #myForm="ngForm"  novalidate (keyup.enter)="update(myForm, i)" >
+        <div class="second-block" *ngIf="step.task_id === thirdtask['id'] ">
+          <div class="under-numeric">2.<span style="color: rgba(255,133,0,0.8);">{{ i + 1 }}</span> </div>
+          <div class="second-start-input">
+            <div>
+              <!--<span *ngIf="!step.edit">{{ step.text}}</span>-->
+              <div  >
+                <span *ngIf="step.edit ">{{ step.text }}</span>
+                <input type="text" value="тест" *ngIf="!step.edit" c
+                         name="title" ngModel required/>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="second-block">
-        <div class="under-numeric">7.<span style="color: rgba(255,133,0,0.8);">2</span></div>
-        <div class="second-start-input">
-          <input class="input-1" type="text" placeholder="Start With A Baseline">
-        </div>
-      </div>
-      <div class="second-block">
-        <div class="under-numeric">7.<span style="color: rgba(255,133,0,0.8);">3</span></div>
-        <div class="second-start-input">
-          <input class="input-1" type="text" placeholder="Put a Wings On Your Dreams" >
-        </div>
-      </div>
-      <div class="second-block">
-        <div class="under-numeric">7.<span style="color: rgba(255,133,0,0.8);">4</span></div>
-        <div class="second-start-input">
-          <input class="input-1" type="text" placeholder="Start With A Baseline">
-        </div>
-      </div>
+      </form>
     </div>
     <div class="tabs-all">
       <div class="second-block">
         <div class="second-start">
-          <div class="text-head-uppercase"><span class="steps-in">8</span>How will I reward myself if I reach the above objective?</div>
+          <div class="text-head-uppercase"><span class="steps-in">9</span>How will I reward myself if I reach the above objective?</div>
           <div class="text-head">You'll get..</div>
         </div>
       </div>

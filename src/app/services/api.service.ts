@@ -47,6 +47,18 @@ export class ApiService {
             .map((res) => res);
     }
 
+    getMySteps(cycle_id) {
+        return this.http.get('http://boomapi.acesspades.com/api/v1/steps' + '?' + this.tokenParam , {
+            params: { cycle_id: cycle_id }})
+            .map((res) => res);
+    }
+
+    getMyTasks(cycle_id) {
+        return this.http.get('http://boomapi.acesspades.com/api/v1/mytasks' + '?' + this.tokenParam , {
+            params: { cycle_id: cycle_id }})
+            .map((res) => res);
+    }
+
   login(email, password) {
     return this.http.get('http://boomapi.acesspades.com/api/v1/login' + '?' + this.tokenParam, {
       params: { email: email, password: password }})
