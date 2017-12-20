@@ -35,97 +35,98 @@ import {timeout} from "q";
             ]),
         ])
     ]
+
 })
 export class DayComponent implements OnInit, OnDestroy {
-  @Input() taskGroup;
-  auth;
-  tasks: any = [];
-  findtasks: any = [];
-  edit = false;
-  max = false;
-  find = false;
-  date;
-  currentUser;
-
-  private routeSubscription: ISubscription;
-  private daySubscription: ISubscription;
-  constructor(private authService: AuthService, private apiService: ApiService,
-              private route: ActivatedRoute, private ref: ChangeDetectorRef,
-              @Inject(DOCUMENT) private doc: Document,
-              private spinnerService: Ng4LoadingSpinnerService) {
-      this.spinnerService.show();
-      this.auth = this.authService.isAuthorized;
-      this.routeSubscription = this.route.params.subscribe(params => {
-      this.date = params['date']; // (+) converts string 'id' to a number
-        const id = localStorage.getItem('id');
-        this.daySubscription = apiService.getDay(this.date, id).subscribe(
-        (tasks) => {
-          console.log(tasks);
-          this.tasks = tasks;
-          this.ref.detectChanges();
-            this.spinnerService.hide();
-        }
-      );
-
-    });
-  }
-
+  // @Input() taskGroup;
+  // auth;
+  // tasks: any = [];
+  // findtasks: any = [];
+  // edit = false;
+  // max = false;
+  // find = false;
+  // date;
+  // currentUser;
+  //
+  // private routeSubscription: ISubscription;
+  // private daySubscription: ISubscription;
+  // constructor(private authService: AuthService, private apiService: ApiService,
+  //             private route: ActivatedRoute, private ref: ChangeDetectorRef,
+  //             @Inject(DOCUMENT) private doc: Document,
+  //             private spinnerService: Ng4LoadingSpinnerService) {
+  //     this.spinnerService.show();
+  //     this.auth = this.authService.isAuthorized;
+  //     this.routeSubscription = this.route.params.subscribe(params => {
+  //     this.date = params['date']; // (+) converts string 'id' to a number
+  //       const id = localStorage.getItem('id');
+  //       this.daySubscription = apiService.getDay(this.date, id).subscribe(
+  //       (tasks) => {
+  //         console.log(tasks);
+  //         this.tasks = tasks;
+  //         this.ref.detectChanges();
+  //           this.spinnerService.hide();
+  //       }
+  //     );
+  //
+  //   });
+  // }
+  //
   ngOnInit() {
       console.log('day init');
     // this.tasks = this.taskGroupService.currentTaskGroup.tasks;
 
   }
-
-    findTasks (str) {
-        const word =  (<HTMLInputElement>this.doc.getElementById('search1')).value;
-        if ( word ) {
-            this.find = true;
-            const id = localStorage.getItem('id');
-            this.apiService.findTasks(str, id).subscribe( (task) => {
-                console.log(task);
-                this.findtasks = task;
-            });
-        }else if (word === '') {
-            this.find = false;
-        }
-    }
-
-  addTask(title: string) {
-      console.log(this.tasks.length);
-      if (this.tasks.length < 4) {
-          this.spinnerService.show();
-          const project = 8;
-          const id = localStorage.getItem('id');
-          this.apiService.createTask(title, this.date, project, id).subscribe(
-              (task) => {
-                  console.log(task.id);
-                  console.log(task);
-                  this.tasks.push({id: task.id, title: task.title, date: task.date});
-                  this.ref.detectChanges();
-                  (<HTMLInputElement>this.doc.getElementById('search1')).value = '';
-                  this.spinnerService.hide();
-              }
-          );
-      }else if (this.tasks.length === 4) {
-          this.max = true;
-          const tim = setTimeout(() => {
-              console.log('hello');
-              this.max = false;
-          }, 5000);
-
-          // clearTimeout(tim);
-      }
-
-  }
-
-  deleteTask (id) {
-      this.tasks = this.tasks.filter( task => task.id !== id);
-  }
+  //   //
+  //   // findTasks (str) {
+  //   //     const word =  (<HTMLInputElement>this.doc.getElementById('search1')).value;
+  //   //     if ( word ) {
+  //   //         this.find = true;
+  //   //         const id = localStorage.getItem('id');
+  //   //         this.apiService.findTasks(str, id).subscribe( (task) => {
+  //   //             console.log(task);
+  //   //             this.findtasks = task;
+  //   //         });
+  //   //     }else if (word === '') {
+  //   //         this.find = false;
+  //   //     }
+  //   // }
+  //
+  // addTask(title: string) {
+  //     console.log(this.tasks.length);
+  //     if (this.tasks.length < 4) {
+  //         this.spinnerService.show();
+  //         const project = 8;
+  //         const id = localStorage.getItem('id');
+  //         this.apiService.createTask(title, this.date, project, id).subscribe(
+  //             (task) => {
+  //                 console.log(task.id);
+  //                 console.log(task);
+  //                 this.tasks.push({id: task.id, title: task.title, date: task.date});
+  //                 this.ref.detectChanges();
+  //                 (<HTMLInputElement>this.doc.getElementById('search1')).value = '';
+  //                 this.spinnerService.hide();
+  //             }
+  //         );
+  //     }else if (this.tasks.length === 4) {
+  //         this.max = true;
+  //         const tim = setTimeout(() => {
+  //             console.log('hello');
+  //             this.max = false;
+  //         }, 5000);
+  //
+  //         // clearTimeout(tim);
+  //     }
+  //
+  // }
+  //
+  // deleteTask (id) {
+  //     this.tasks = this.tasks.filter( task => task.id !== id);
+  // }
 
   ngOnDestroy() {
-      this.daySubscription.unsubscribe();
-      this.auth = null;
-    this.routeSubscription.unsubscribe();
+    //   this.daySubscription.unsubscribe();
+    //   this.auth = null;
+    // this.routeSubscription.unsubscribe();
     console.log('day die');
   }
 }

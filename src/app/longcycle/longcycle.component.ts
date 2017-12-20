@@ -11,6 +11,7 @@ import {Subject} from "rxjs/Subject";
 export class LongcycleComponent implements OnInit {
   pageTwo = false;
   steps: any = [];
+  rewards: any = [];
   edit = false;
   firsttask = new Subject();
   secondtask = new Subject();
@@ -25,6 +26,9 @@ export class LongcycleComponent implements OnInit {
             .subscribe( (steps) => {
               this.steps = steps;
           console.log(steps);
+        });
+        this.apiService.getMyRewards(cycle_id).subscribe((reward) => {
+           this.rewards = reward;
         });
         this.apiService.getMyTasks(cycle_id).subscribe((task) => {
             this.firsttask = task['0'];
@@ -52,6 +56,14 @@ export class LongcycleComponent implements OnInit {
       window.scroll(0, 0 );
     }
 
+    updateReward (form: NgForm, i) {
+      const id = this.rewards[i].id;
+      this.apiService.updateReward(id, form.value.text)
+          .subscribe((reward) => {
+          console.log(reward);
+          });
+    }
+
     update (form: NgForm, i) {
         const id = this.steps[i].id;
         this.apiService.updateStep(id, form.value.text).subscribe(
@@ -73,6 +85,14 @@ export class LongcycleComponent implements OnInit {
         this.apiService.updateTask(form.value.text, id).subscribe(
             (task) => {
                 this.secondtask['text'] = task.text;
+            }
+        );
+    }
+
+    updateThirdTask (form: NgForm, id) {
+        this.apiService.updateTask(form.value.text, id).subscribe(
+            (task) => {
+                this.thirdtask['text'] = task.text;
             }
         );
     }

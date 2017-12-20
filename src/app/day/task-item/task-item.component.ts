@@ -43,40 +43,40 @@ export class TaskItemComponent implements OnInit {
   categories: any;
   private checkSubscribe: ISubscription;
   private updateSubscribe: ISubscription;
-  constructor(private daycomponent: DayComponent, private apiService: ApiService, private ref: ChangeDetectorRef, private authService: AuthService,
-              private spinnerService: Ng4LoadingSpinnerService) {
-      this.apiService.getCategory().subscribe((category) => {
-      this.categories = category;
-      console.log(this.categories);
-      });
-  }
+  // constructor(private daycomponent: DayComponent, private apiService: ApiService, private ref: ChangeDetectorRef, private authService: AuthService,
+  //             private spinnerService: Ng4LoadingSpinnerService) {
+  //     this.apiService.getCategory().subscribe((category) => {
+  //     this.categories = category;
+  //     console.log(this.categories);
+  //     });
+  // }
 
   ngOnInit() {
     this.active = this.task.checked;
   }
 
-  onCheck() {
-    this.checkSubscribe = this.apiService.checkTask(this.task.id, !this.active)
-        .subscribe(
-        (task) => {
-          console.log(task);
-          this.active = task['checked'];
-          if (this.active === true) {
-              this.currentUser = this.authService.currentUser;
-              this.apiService.updateExp(16, this.currentUser.id).subscribe((user) => {
-                  this.exp = user.exp;
-                  console.log(this.exp);
-              });
-          } else if (this.active === false) {
-              this.currentUser = this.authService.currentUser;
-              this.apiService.updateExp(-16, this.currentUser.id).subscribe((user) =>
-                  console.log(user));
-          }
-          this.checkSubscribe.unsubscribe();
-          this.ref.detectChanges();
-        }
-    );
-  }
+  // onCheck() {
+  //   this.checkSubscribe = this.apiService.checkTask(this.task.id, !this.active)
+  //       .subscribe(
+  //       (task) => {
+  //         console.log(task);
+  //         this.active = task['checked'];
+  //         if (this.active === true) {
+  //             this.currentUser = this.authService.currentUser;
+  //             this.apiService.updateExp(16, this.currentUser.id).subscribe((user) => {
+  //                 this.exp = user.exp;
+  //                 console.log(this.exp);
+  //             });
+  //         } else if (this.active === false) {
+  //             this.currentUser = this.authService.currentUser;
+  //             this.apiService.updateExp(-16, this.currentUser.id).subscribe((user) =>
+  //                 console.log(user));
+  //         }
+  //         this.checkSubscribe.unsubscribe();
+  //         this.ref.detectChanges();
+  //       }
+  //   );
+  // }
 
   editMethod() {
       if (this.edit === false) {
@@ -109,15 +109,15 @@ export class TaskItemComponent implements OnInit {
       }
   }
 
-    deleteTask(id) {
-      this.spinnerService.show();
-      this.apiService.deleteTask(id).subscribe((level) => {
-                    console.log(level);
-                    this.daycomponent.deleteTask(id);
-              this.spinnerService.hide();
-                }
-            );
-    }
+    // deleteTask(id) {
+    //   this.spinnerService.show();
+    //   this.apiService.deleteTask(id).subscribe((level) => {
+    //                 console.log(level);
+    //                 this.daycomponent.deleteTask(id);
+    //           this.spinnerService.hide();
+    //             }
+    //         );
+    // }
 
 
 

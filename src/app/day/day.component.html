@@ -92,42 +92,42 @@
     <!--</div>-->
   <!--</div>-->
 <!--</ng-template>-->
-<div class="space"></div>
-<div class="container-fluid1">
-  <div class="form-group">
-    <input     (keydown)="findTasks(myinput.value)" (keypress)="findTasks(myinput.value)" (keyup.enter)="addTask(myinput.value)" type="text" class="form_kirill" id="search1" placeholder="&nbsp;Найти или создать задачу" #myinput>
-    <div class="save-but">
-      <span  (click)="findTasks(myinput.value)">Add</span>
-    </div>
-  </div>
-  <div class="form-group-1">
-    <div *ngIf="find">
-      <div class="tabs-all-gray-title">
-        <div class="tabs-all-gray-1-text">Найдено {{ findtasks.length}}</div>
-        <img src="img/up.png" class="up">
-      </div>
-      <div  *ngFor="let task of findtasks" [@list] class="tabs-all-white-1" >
-        <div class="tabs-all-white-1-text-1"  >{{task.title}}</div>
-        <div class="tabs-all-white-1-text-2" >{{task.text}}</div>
-        <img src="img/dot.png" class="dot" >
-        <img src="img/share.png" class="share" >
-        <div class="exp-middle">+768 exp</div>
-        <div class="percent-middle-red">3%</div>
-      </div></div>
-    <div class="tabs-all-gray-title">
-      <div class="tabs-all-gray-1-text">Предстоящие дела</div>
-      <img src="img/up.png" class="up">
-    </div>
+<!--<div class="space"></div>-->
+<!--<div class="container-fluid1">-->
+  <!--<div class="form-group">-->
+    <!--<input     (keydown)="findTasks(myinput.value)" (keypress)="findTasks(myinput.value)" (keyup.enter)="addTask(myinput.value)" type="text" class="form_kirill" id="search1" placeholder="&nbsp;Найти или создать задачу" #myinput>-->
+    <!--<div class="save-but">-->
+      <!--<span  (click)="findTasks(myinput.value)">Add</span>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div class="form-group-1">-->
+    <!--<div *ngIf="find">-->
+      <!--<div class="tabs-all-gray-title">-->
+        <!--<div class="tabs-all-gray-1-text">Найдено {{ findtasks.length}}</div>-->
+        <!--<img src="img/up.png" class="up">-->
+      <!--</div>-->
+      <!--<div  *ngFor="let task of findtasks" [@list] class="tabs-all-white-1" >-->
+        <!--<div class="tabs-all-white-1-text-1"  >{{task.title}}</div>-->
+        <!--<div class="tabs-all-white-1-text-2" >{{task.text}}</div>-->
+        <!--<img src="img/dot.png" class="dot" >-->
+        <!--<img src="img/share.png" class="share" >-->
+        <!--<div class="exp-middle">+768 exp</div>-->
+        <!--<div class="percent-middle-red">3%</div>-->
+      <!--</div></div>-->
+    <!--<div class="tabs-all-gray-title">-->
+      <!--<div class="tabs-all-gray-1-text">Предстоящие дела</div>-->
+      <!--<img src="img/up.png" class="up">-->
+    <!--</div>-->
 
-    <app-task-item  *ngFor="let taskItem of tasks" [task]="taskItem" [@list]></app-task-item>
-    <div class="tabs-all-white-1" *ngIf="max">
-      <div class="tabs-all-white-1-text-1">Сожалею, но нам кажется ты не осилишь больше задач!</div></div>
-  </div>
-</div>
-<div class="container-footer">
-  Copyright &copy 2017-2018 Boom! All Rights Reserved.
-</div>
-<!--<script src="js/jquery.min.js"></script>-->
-<!--<script src="js/bootstrap.min.js"></script>-->
-<!--<script src="js/scripts.js"></script>-->
+    <!--<app-task-item  *ngFor="let taskItem of tasks" [task]="taskItem" [@list]></app-task-item>-->
+    <!--<div class="tabs-all-white-1" *ngIf="max">-->
+      <!--<div class="tabs-all-white-1-text-1">Сожалею, но нам кажется ты не осилишь больше задач!</div></div>-->
+  <!--</div>-->
+<!--</div>-->
+<!--<div class="container-footer">-->
+  <!--Copyright &copy 2017-2018 Boom! All Rights Reserved.-->
+<!--</div>-->
+<!--&lt;!&ndash;<script src="js/jquery.min.js"></script>&ndash;&gt;-->
+<!--&lt;!&ndash;<script src="js/bootstrap.min.js"></script>&ndash;&gt;-->
+<!--&lt;!&ndash;<script src="js/scripts.js"></script>&ndash;&gt;-->
 

@@ -62,21 +62,20 @@
             <div class="text-head">You'll get..</div>
           </div>
         </div>
-        <div class="second-block">
-          <div class="second-start-input">
-            <input class="input-1" type="text" placeholder="Put a Wings On Your Dreams" >
+        <form  *ngFor="let reward of rewards; let i = index"
+               #myForm="ngForm"  novalidate (keyup.enter)="updateReward(myForm, i)" >
+          <div class="second-block" *ngIf="reward.task_id === firsttask['id'] ">
+            <div class="second-start-input">
+              <div>
+                <div  >
+                  <span *ngIf="reward.edit ">{{ reward.text }}</span>
+                  <input type="text" value="тест" *ngIf="!reward.edit"
+                         name="text" class="input-1" placeholder="{{reward.text}}" ngModel required/>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="second-block">
-          <div class="second-start-input">
-            <input class="input-1" type="text" placeholder="Put a Wings On Your Dreams" >
-          </div>
-        </div>
-        <div class="second-block">
-          <div class="second-start-input">
-            <input class="input-1" type="text" placeholder="Put a Wings On Your Dreams" >
-          </div>
-        </div>
+        </form>
       </div>
     </div>
 
@@ -156,21 +155,20 @@
           <div class="text-head">You'll get..</div>
         </div>
       </div>
-      <div class="second-block">
-        <div class="second-start-input">
-          <input class="input-1" type="text" placeholder="Put a Wings On Your Dreams" >
+      <form  *ngFor="let reward of rewards; let i = index"
+             #myForm="ngForm"  novalidate (keyup.enter)="updateReward(myForm, i)" >
+        <div class="second-block" *ngIf="reward.task_id === secondtask['id'] ">
+          <div class="second-start-input">
+            <div>
+              <div  >
+                <span *ngIf="reward.edit ">{{ reward.text }}</span>
+                <input type="text" value="тест" *ngIf="!reward.edit"
+                       name="text" class="input-1" placeholder="{{reward.text}}" ngModel required/>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="second-block">
-        <div class="second-start-input">
-          <input class="input-1" type="text" placeholder="Put a Wings On Your Dreams" >
-        </div>
-      </div>
-      <div class="second-block">
-        <div class="second-start-input">
-          <input class="input-1" type="text" placeholder="Put a Wings On Your Dreams" >
-        </div>
-      </div>
+      </form>
     </div>
     <div class="tabs-all">
       <div class="second-block">
@@ -179,21 +177,15 @@
           <div class="text-head">Type the third goal of 12 week plan here..</div>
         </div>
       </div>
-      <div class="second-block-large">
-        <div class="second-start-input">
-          <textarea  class="input-big" type="text" placeholder="One of the keys to reaching your goals is to eliminate
-                        any escape routes. It is tempting to retreat to safety and comfort when challenges and difficulties arise.
-                        To avoid turning around and abandoning your goals..">{{thirdtask['text']}}</textarea>
-        </div>
-      </div>
     </div>
     <div class="tabs-all">
-      <div class="second-block">
-        <div class="second-start">
-          <div class="text-head-uppercase"><span class="steps-in">8</span>4 steps to achieve goal #3</div>
-          <div class="text-head">You can start from any field, just fill like you feel it</div>
+      <form  #myTaskForm="ngForm"  novalidate (keyup.enter)="updateThirdTask(myTaskForm, thirdtask['id'])">
+        <div class="second-block-large">
+          <div class="second-start-input">
+            <textarea  class="input-big" type="text"  name="text" ngModel required placeholder="{{ thirdtask['text']}}">{{ thirdtask.text }}</textarea>
+          </div>
         </div>
-      </div>
+      </form>
       <form  *ngFor="let step of steps; let i = index"
 
              #myForm="ngForm"  novalidate (keyup.enter)="update(myForm, i)" >
@@ -219,21 +211,20 @@
           <div class="text-head">You'll get..</div>
         </div>
       </div>
-      <div class="second-block">
-        <div class="second-start-input">
-          <input class="input-1" type="text" placeholder="Put a Wings On Your Dreams" >
+      <form  *ngFor="let reward of rewards; let i = index"
+             #myForm="ngForm"  novalidate (keyup.enter)="updateReward(myForm, i)" >
+        <div class="second-block" *ngIf="reward.task_id === thirdtask['id'] ">
+          <div class="second-start-input">
+            <div>
+              <div  >
+                <span *ngIf="reward.edit ">{{ reward.text }}</span>
+                <input type="text" value="тест" *ngIf="!reward.edit"
+                       name="text" class="input-1" placeholder="{{reward.text}}" ngModel required/>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="second-block">
-        <div class="second-start-input">
-          <input class="input-1" type="text" placeholder="Put a Wings On Your Dreams" >
-        </div>
-      </div>
-      <div class="second-block">
-        <div class="second-start-input">
-          <input class="input-1" type="text" placeholder="Put a Wings On Your Dreams" >
-        </div>
-      </div>
+      </form>
     </div>
     <div class="third-block">
       <a (click)="back()">
