@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {IndexComponent} from './views/index/index.component';
-import {DayComponent} from './day/day.component';
 import {StatusComponent} from './admin/status/status.component';
 import {ProjectComponent} from './admin/project/project.component';
 import {RoleComponent} from './admin/role/role.component';
@@ -25,7 +24,6 @@ const appRoutes: Routes = [
     { path: 'long', component: LongcycleComponent},
     { path: 'week', component: WeekcycleComponent},
     { path: 'day', component: NextdayComponent},
-  // { path: 'day/:date', component: DayComponent },
   { path: 'statuses', component: StatusComponent},
   { path: 'projects', component: ProjectComponent},
   { path: 'roles', component: RoleComponent},

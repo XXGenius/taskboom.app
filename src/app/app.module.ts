@@ -2,8 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import {ChangeDetectorRef, NgModule} from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { DayComponent } from './day/day.component';
-import { TaskItemComponent } from './day/task-item/task-item.component';
 import {FormsModule} from '@angular/forms';
 
 import { HeaderComponent } from './header/header.component';
@@ -43,8 +41,6 @@ import { NextdayComponent } from './nextday/nextday.component';
 @NgModule({
   declarations: [
     AppComponent,
-    DayComponent,
-    TaskItemComponent,
     HeaderComponent,
       AdminComponent,
     ProjectComponent,
@@ -58,7 +54,6 @@ import { NextdayComponent } from './nextday/nextday.component';
     OneDayComponent,
     StatusComponent,
     DropdownDirective,
-    TaskItemComponent,
     SignupComponent,
     SigninComponent,
     TaskTapeComponent,
