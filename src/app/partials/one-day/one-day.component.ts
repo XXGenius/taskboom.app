@@ -9,6 +9,7 @@ export class OneDayComponent implements OnInit {
 
   day: string;
 
+  
   constructor() { }
 
   ngOnInit() {
