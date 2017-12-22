@@ -1,0 +1,242 @@
+<div class="space">
+</div>
+
+<div *ngIf="!pageTwo" class="container-fluid1">
+  <div class="first-block">
+    <div class="h1-main">
+      <div class="steps">1</div>
+      <div class="steps-line"></div>
+      <div class="steps">2</div>
+      <div class="steps-line"></div>
+      <div class="steps steps-last">3</div>
+      Your 12 weeks goal.
+    </div>
+    <div class="calendar">
+      <!-- <img src="img/today.png" class="today"/> -->
+
+    </div>
+  </div>
+  <div   class="form-group-1">
+    <div class="tabs-all">
+      <div class="second-block">
+        <div class="second-start">
+          <div class="text-head-uppercase"><span class="steps-in">1</span>The main goal for 12 weeks</div>
+          <div class="text-head">Descrive what exactly you want to achieve in next 12 weeks</div>
+        </div>
+      </div>
+      <form  #myTaskForm="ngForm"  novalidate (keyup.enter)="updateFirstTask(myTaskForm, firsttask['id'])">
+      <div class="second-block-large">
+        <div class="second-start-input">
+                     <textarea  class="input-big" type="text"  name="text" ngModel required placeholder="{{ firsttask['text']}}">{{ firsttask.text }}</textarea>
+        </div>
+      </div>
+      </form>
+    </div>
+    <div class="tabs-all">
+      <div class="second-block">
+        <div class="second-start">
+          <div class="text-head-uppercase"><span class="steps-in">2</span>10 steps to achieve goals above</div>
+          <div class="text-head">You can start from any field, just fill like you feel it</div>
+        </div>
+      </div>
+      <form  *ngFor="let step of steps; let i = index"
+            id="tr{{step.id }}"
+            #myForm="ngForm"  novalidate (keyup.enter)="update(myForm, i)" >
+        <div class="second-block" *ngIf="step.task_id === firsttask['id']">
+          <div class="under-numeric">2.<span style="color: rgba(255,133,0,0.8);">{{ i + 1 }}</span> </div>
+          <div class="second-start-input">
+            <div>
+              <div  *ngIf="!step.edit" >
+                <!--<span *ngIf="step.edit ">{{ step.text }}</span>-->
+                <input type="text" class="input-1"
+                       name="text" ngModel required  placeholder="{{step.text}}"/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="tabs-all">
+        <div class="second-block">
+          <div class="second-start">
+            <div class="text-head-uppercase"><span class="steps-in">3</span>How will I reward myself if I reach the above objective?</div>
+            <div class="text-head">You'll get..</div>
+          </div>
+        </div>
+        <form  *ngFor="let reward of rewards; let i = index"
+               #myForm="ngForm"  novalidate (keyup.enter)="updateReward(myForm, i)" >
+          <div class="second-block" *ngIf="reward.task_id === firsttask['id'] ">
+            <div class="second-start-input">
+              <div>
+                <div  >
+                  <span *ngIf="reward.edit ">{{ reward.text }}</span>
+                  <input type="text" value="тест" *ngIf="!reward.edit"
+                         name="text" class="input-1" placeholder="{{reward.text}}" ngModel required/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+
+    <div class="third-block">
+      <!-- <p>Great job. Next step is available in <span>(ЗДЕСЬ таймер до конца суток)</span>. </p> -->
+      <!-- <div class="button-back">
+         Never back
+      </div> -->
+      <a (click)="move()" >
+        <div class="button-next">
+          Move on
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+<div *ngIf="pageTwo" class="container-fluid1">
+  <div class="first-block">
+    <div class="h1-main">
+      <div class="steps">1</div>
+      <div class="steps-line"></div>
+      <div class="steps">2</div>
+      <div class="steps-line"></div>
+      <div class="steps steps-last">3</div>
+      Secondary goals of the 12 weeks plan.
+    </div>
+    <div class="calendar">
+      <!-- <img src="img/today.png" class="today"/> -->
+    </div>
+  </div>
+  <div    class="form-group-1">
+    <div class="tabs-all">
+      <div class="second-block">
+        <div class="second-start">
+          <div class="text-head-uppercase"><span class="steps-in">4</span>Goal #2</div>
+          <div class="text-head">Type the second goal of 12 week plan here..</div>
+        </div>
+      </div>
+      <form  #myTaskForm="ngForm"  novalidate (keyup.enter.ctrl)="updateSecondTask(myTaskForm, secondtask['id'])">
+          <div class="second-block-large">
+            <div class="second-start-input">
+              <textarea  class="input-big" type="text"  name="text" ngModel required placeholder="{{ secondtask['text']}}"></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+    <div class="tabs-all">
+      <div class="second-block">
+        <div class="second-start">
+          <div class="text-head-uppercase"><span class="steps-in">5</span>4 steps to achieve goal #2</div>
+          <div class="text-head">You can start from any field, just fill like you feel it</div>
+        </div>
+      </div>
+      <form  *ngFor="let step of steps; let i = index"
+
+             #myForm="ngForm"  novalidate (keyup.enter)="update(myForm, i)" >
+        <div class="second-block" *ngIf="step.task_id === secondtask['id']">
+          <div class="under-numeric">3.<span style="color: rgba(255,133,0,0.8);">{{ i + 1 }}</span> </div>
+          <div class="second-start-input">
+            <div>
+              <!--<span *ngIf="!step.edit">{{ step.text}}</span>-->
+              <div  >
+                <span *ngIf="step.edit ">{{ step.text }}</span>
+                <input *ngIf="!step.edit" class="input-1"
+                       value="{{ step.text }}" placeholder="{{ step.text }}" name="text" ngModel required/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="tabs-all">
+      <div class="second-block">
+        <div class="second-start">
+          <div class="text-head-uppercase"><span class="steps-in">6</span>How will I reward myself if I reach the above objective?</div>
+          <div class="text-head">You'll get..</div>
+        </div>
+      </div>
+      <form  *ngFor="let reward of rewards; let i = index"
+             #myForm="ngForm"  novalidate (keyup.enter)="updateReward(myForm, i)" >
+        <div class="second-block" *ngIf="reward.task_id === secondtask['id'] ">
+          <div class="second-start-input">
+            <div>
+              <div  >
+                <span *ngIf="reward.edit ">{{ reward.text }}</span>
+                <input type="text" value="тест" *ngIf="!reward.edit"
+                       name="text" class="input-1" placeholder="{{reward.text}}" ngModel required/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="tabs-all">
+      <div class="second-block">
+        <div class="second-start">
+          <div class="text-head-uppercase"><span class="steps-in">7</span>Goal #3</div>
+          <div class="text-head">Type the third goal of 12 week plan here..</div>
+        </div>
+      </div>
+    </div>
+    <div class="tabs-all">
+      <form  #myTaskForm="ngForm"  novalidate (keyup.enter)="updateThirdTask(myTaskForm, thirdtask['id'])">
+        <div class="second-block-large">
+          <div class="second-start-input">
+            <textarea  class="input-big" type="text"  name="text" ngModel required placeholder="{{ thirdtask['text']}}">{{ thirdtask.text }}</textarea>
+          </div>
+        </div>
+      </form>
+      <form  *ngFor="let step of steps; let i = index"
+
+             #myForm="ngForm"  novalidate (keyup.enter)="update(myForm, i)" >
+        <div class="second-block" *ngIf="step.task_id === thirdtask['id'] ">
+          <div class="under-numeric">2.<span style="color: rgba(255,133,0,0.8);">{{ i + 1 }}</span> </div>
+          <div class="second-start-input">
+            <div>
+              <!--<span *ngIf="!step.edit">{{ step.text}}</span>-->
+              <div  >
+                <span *ngIf="step.edit ">{{ step.text }}</span>
+                <input type="text" value="тест" *ngIf="!step.edit"
+                         name="text" class="input-1" placeholder="{{step.text}}" ngModel required/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="tabs-all">
+      <div class="second-block">
+        <div class="second-start">
+          <div class="text-head-uppercase"><span class="steps-in">9</span>How will I reward myself if I reach the above objective?</div>
+          <div class="text-head">You'll get..</div>
+        </div>
+      </div>
+      <form  *ngFor="let reward of rewards; let i = index"
+             #myForm="ngForm"  novalidate (keyup.enter)="updateReward(myForm, i)" >
+        <div class="second-block" *ngIf="reward.task_id === thirdtask['id'] ">
+          <div class="second-start-input">
+            <div>
+              <div  >
+                <span *ngIf="reward.edit ">{{ reward.text }}</span>
+                <input type="text" value="тест" *ngIf="!reward.edit"
+                       name="text" class="input-1" placeholder="{{reward.text}}" ngModel required/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="third-block">
+      <a (click)="back()">
+        <div class="button-back">
+          Back
+        </div>
+      </a>
+      <a routerLink="/week">
+        <div class="button-next">
+          Move on
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

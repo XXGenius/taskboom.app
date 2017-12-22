@@ -1,87 +1,35 @@
-
-<!--<div class="container-fluid">-->
-  <!--<div class="row" >-->
-    <!--<div class="header">-->
-      <!--<div *ngIf="isAuthorized" class="logo">-->
-        <!--<a routerLink="/" >Boom!</a>-->
-
-        <!--<div  class="btn-group dropdown-btns"  appDropdown>-->
-          <!--<button *ngIf="admin" type="button" class="btn btn-default dropdown-toggle"><i class="fa fa-cog fa-2x"></i><span class="fa fa-caret-down"></span></button>-->
-          <!--<ul class="dropdown-menu" >-->
-            <!--<li><a routerLink="/roles" style="cursor: pointer;">User roles</a></li>-->
-            <!--<li><a routerLink="/users" style="cursor: pointer;">Users</a></li>-->
-            <!--<li><a routerLink="/usergroups" style="cursor: pointer;">User Groups</a></li>-->
-            <!--<li><a routerLink="/projects" style="cursor: pointer;">Projects</a></li>-->
-            <!--<li><a routerLink="/statuses" style="cursor: pointer;">Status</a></li>-->
-            <!--<li><a routerLink="/levels" style="cursor: pointer;">Level/Exp</a></li>-->
-          <!--</ul>-->
-        <!--</div>-->
-        <!--<a routerLink="/tape" style="cursor: pointer;">New Tasks</a>-->
-      <!--</div>-->
-      <!--<div class="pr-bar" *ngIf="isAuthorized">-->
-        <!--<div class="done-bar"></div>-->
-      <!--</div>-->
-
-      <!--<div class="pr-percent" *ngIf="isAuthorized">-->
-        <!--<span class="pr-percent-img"></span>-->
-        <!--<span class="pr-percent-text">{{ currentUser.level}} lvl      {{ currentUser.exp }} EXP</span>-->
-      <!--</div>-->
-      <!--<div class="pr-complete" *ngIf="isAuthorized">-->
-
-      <!--</div>-->
-      <!--<div class="account" *ngIf="isAuthorized">-->
-        <!--<span class="account-img"></span>-->
-        <!--<img class="account-img" src="{{ currentUser.photo}}" alt="">-->
-        <!--<span  class="account-text ">{{ currentUser.first_name}}</span>-->
-
-      <!--</div>-->
-      <!--<a  class="account-text " *ngIf="isAuthorized" (click)="exit()">exit</a>-->
-      <!--<div class="account" *ngIf="!isAuthorized">-->
-        <!--<a  class="account-text" routerLink="/signup">Register</a>-->
-        <!--<a class="account-text" routerLink="/signin">Login</a>-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
-<!--</div>-->
-
 <div class="container-fluid">
-  <div class="row">
-    <div class="header">
-      <a routerLink="/"><div *ngIf="isAuthorized" class="logo">&nbsp;<a routerLink="/"></a></div></a>
-      <div *ngIf="isAuthorized" class="pr-bar">
+  <div class="header">
+    <a routerLink="/">
+      <div *ngIf="isAuthorized" class="logo1">&nbsp;</div></a>
+    <div *ngIf="isAuthorized" class="pr-bar">
+      <div class="pr-bar">
         <div class="pr-photo">
-          <div ><img class="account-img" style="width: 70px; height: 70px; top: 0px; left: 0px;
-           margin-right: 8px;
-    border-radius: 200px; /* Радиус скругления */
-    border: 3px solid violet; /* Параметры рамки */
-    box-shadow: 0 0 7px #666; " src="{{ currentUser.photo}}" alt=""></div>
-          <div class="photo-text">{{ currentUser.level}}</div>
-          <div class="photo-text-1">level</div>
-          <div class="photo-text-2" style="
-    font-size: 13px;
-    line-height: 91px;
-    position: relative;
-    color: #999;
-    bottom: 50px;
-    left: 38px;">До следующего уровня 568 exp</div>
+          <div ><img class="account-img"  src="{{ currentUser.photo}}" alt=""></div>
+          <div class="photo-text">6</div>
+          <div class="photo-text-1">day</div>
+          <div class="photo-text-2">1 day left before close a week</div>
         </div>
       </div>
-      <div *ngIf="isAuthorized" class="pr-button">
-        <img src="img/star.png" class="star">
-        <span>Up level</span>
-      </div>
-      <div *ngIf="isAuthorized" >
-        <button  class="pr-button-1" ><img src="img/settings.png" class="star">Settings</button>
-      </div>
-      <div *ngIf="isAuthorized">
-        <button  class="pr-button-1" (click)="exit()">Exit</button>
-      </div>
-      <div *ngIf="!isAuthorized" class="pr-button-5">
-        <a routerLink="/signup">Sign up</a>
-      </div>
-      <div *ngIf="!isAuthorized" class="pr-button-5">
-        <a routerLink="/signin">Sign in</a>
-      </div>
+    </div>
+    <div *ngIf="isAuthorized" >
+      <button  class="pr-button-1" routerLink="/week" ><img src="img/settings.png" class="settings">W</button>
+    </div>
+    <div *ngIf="isAuthorized" >
+      <button  class="pr-button-1" routerLink="/day" ><img src="img/settings.png" class="settings">Day</button>
+    </div>
+    <div *ngIf="isAuthorized" >
+      <button  class="pr-button-1" routerLink="/long" ><img src="img/settings.png" class="settings">12 week</button>
+    </div>
+    <div *ngIf="isAuthorized">
+      <button  class="pr-button-1" (click)="exit()">Exit</button>
+    </div>
+    <div *ngIf="!isAuthorized" class="pr-button-5">
+      <a routerLink="/signup">Sign up</a>
+    </div>
+    <div *ngIf="!isAuthorized" class="pr-button-5">
+      <a routerLink="/signin">Sign in</a>
     </div>
   </div>
+
 </div>

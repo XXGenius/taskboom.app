@@ -1,7 +1,6 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 
 import {AuthService} from '../services/auth.service';
-import {TaskItemComponent} from "../day/task-item/task-item.component";
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
