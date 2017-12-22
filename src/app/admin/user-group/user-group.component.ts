@@ -34,57 +34,57 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 export class UserGroupComponent implements OnInit {
     edit;
     groups;
-    private groupsSubscription: ISubscription;
-    constructor(private apiService: ApiService, @Inject(DOCUMENT) private doc: Document) {
-        this.groupsSubscription = this.apiService.getUserGroups().subscribe(
-            (groups) => {
-                console.log(groups);
-                this.groups = groups;
-            }
-        );
-    }
-
+    // private groupsSubscription: ISubscription;
+    // constructor(private apiService: ApiService, @Inject(DOCUMENT) private doc: Document) {
+    //     this.groupsSubscription = this.apiService.getUserGroups().subscribe(
+    //         (groups) => {
+    //             console.log(groups);
+    //             this.groups = groups;
+    //         }
+    //     );
+    // }
+    //
     ngOnInit() {
     }
-    remove(i: number) {
-        const id = this.groups[i].id;
-        if(confirm('Are you sure to delete: ' + this.groups[i].title)) {
-            this.apiService.deleteUserGroup(id)
-                .subscribe(
-                    (group) => {
-                        console.log(group);
-                    }
-                );
-            this.groups = this.groups.filter( status => status.id !== id);
-        }
-    }
-
-    showUpdate(i) {
-        this.groups[i].edit = true;
-    }
-
-    create(form: NgForm) {
-        this.apiService.createUserGroup(form.value.title).subscribe(
-            (group) => {
-                console.log(group);
-                this.groups.push({id: group.id, title: group.title});
-            }
-        );
-    }
-
-    cancel(i: number) {
-        const id = this.groups[i].id;
-        (<HTMLInputElement>this.doc.getElementById('input-title-' + id)).value = this.groups[i].title;
-        this.groups[i].edit = false;
-    }
-
-    update(form: NgForm, i: number) {
-        const id = this.groups[i].id;
-        this.apiService.updateUserGroup(id, form.value.title).subscribe(
-            (group) => {
-                this.groups[i].title = group.title;
-                this.groups[i].edit = false;
-            }
-        );
-    }
+    // remove(i: number) {
+    //     const id = this.groups[i].id;
+    //     if(confirm('Are you sure to delete: ' + this.groups[i].title)) {
+    //         this.apiService.deleteUserGroup(id)
+    //             .subscribe(
+    //                 (group) => {
+    //                     console.log(group);
+    //                 }
+    //             );
+    //         this.groups = this.groups.filter( status => status.id !== id);
+    //     }
+    // }
+    //
+    // showUpdate(i) {
+    //     this.groups[i].edit = true;
+    // }
+    //
+    // create(form: NgForm) {
+    //     this.apiService.createUserGroup(form.value.title).subscribe(
+    //         (group) => {
+    //             console.log(group);
+    //             this.groups.push({id: group.id, title: group.title});
+    //         }
+    //     );
+    // }
+    //
+    // cancel(i: number) {
+    //     const id = this.groups[i].id;
+    //     (<HTMLInputElement>this.doc.getElementById('input-title-' + id)).value = this.groups[i].title;
+    //     this.groups[i].edit = false;
+    // }
+    //
+    // update(form: NgForm, i: number) {
+    //     const id = this.groups[i].id;
+    //     this.apiService.updateUserGroup(id, form.value.title).subscribe(
+    //         (group) => {
+    //             this.groups[i].title = group.title;
+    //             this.groups[i].edit = false;
+    //         }
+    //     );
+    // }
 }
