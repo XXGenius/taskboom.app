@@ -9,7 +9,6 @@ import {LevelComponent} from './admin/level/level.component';
 import {UserGroupComponent} from './admin/user-group/user-group.component';
 import {SignupComponent} from './auth/signup/signup.component';
 import {SigninComponent} from './auth/signin/signin.component';
-import {TaskTapeComponent} from './task-tape/task-tape.component';
 import {WisdomComponent} from "./wisdom/wisdom.component";
 import {LongcycleComponent} from "./longcycle/longcycle.component";
 import {WeekcycleComponent} from "./weekcycle/weekcycle.component";
@@ -30,8 +29,7 @@ const appRoutes: Routes = [
   { path: 'users', component: UserComponent},
   { path: 'levels', component: LevelComponent},
   { path: 'usergroups', component: UserGroupComponent},
-  { path: 'signup' , component: SignupComponent},
-    { path: 'tape' , component: TaskTapeComponent}
+  { path: 'signup' , component: SignupComponent}
 
 
 ];

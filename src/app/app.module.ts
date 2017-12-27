@@ -26,7 +26,6 @@ import {UserGroupComponent} from './admin/user-group/user-group.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import {AuthService} from './services/auth.service';
-import { TaskTapeComponent } from './task-tape/task-tape.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {Ng4LoadingSpinnerModule} from 'ng4-loading-spinner';
 import { WisdomComponent } from './wisdom/wisdom.component';
@@ -56,7 +55,6 @@ import { NextdayComponent } from './nextday/nextday.component';
     DropdownDirective,
     SignupComponent,
     SigninComponent,
-    TaskTapeComponent,
     WisdomComponent,
     LongcycleComponent,
     WeekcycleComponent,
