@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ApiService} from '../services/api.service';
 
 @Component({
   selector: 'app-nextday',
@@ -7,7 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NextdayComponent implements OnInit {
 
-  constructor() { }
+  constructor(private apiService: ApiService) {
+    const id = localStorage.getItem('id');
+    const date =
+    this.apiService.getDay(date, id)
+      .subscribe( (cycle) => {
+        console.log(cycle);
+        });
+  }
 
   ngOnInit() {
   }

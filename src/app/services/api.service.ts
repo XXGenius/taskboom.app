@@ -47,6 +47,7 @@ export class ApiService {
             .map((res) => res);
     }
 
+
   getWeekCycle(user_id) {
     return this.http.get('http://boomapi.acesspades.com/api/v1/week' , {
       params: { user_id: user_id }})
@@ -81,8 +82,9 @@ export class ApiService {
 
 
   getDay(date: string, user_id) {
-    return this.http.get('http://boomapi.acesspades.com/api/v1/day/date/' + date + '?' + this.tokenParam + '&&' + 'user_id=' + user_id )
-        .map((res) => res);
+    return this.http.get('http://boomapi.acesspades.com/api/v1/day' + '?' + this.tokenParam , {
+      params: { user_id: user_id }})
+      .map((res) => res);
   }
 
     getTasks(id) {
