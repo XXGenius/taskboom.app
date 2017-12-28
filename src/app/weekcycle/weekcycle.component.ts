@@ -3,6 +3,7 @@ import {ApiService} from '../services/api.service';
 import {NgForm} from '@angular/forms';
 import {Subject} from 'rxjs/Subject';
 
+
 @Component({
   selector: 'app-weekcycle',
   templateUrl: './weekcycle.component.html',
