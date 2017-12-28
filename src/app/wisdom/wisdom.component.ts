@@ -18,6 +18,9 @@ export class WisdomComponent implements OnInit {
     const id = localStorage.getItem('id');
     this.apiService.addLongCycle(id).subscribe( (cycle) => {
         console.log(cycle);
+        this.apiService.addWeekCycle(id).subscribe((week) => {
+          console.log(week);
+        });
         this.router.navigate(['/long']);
     });
   }
