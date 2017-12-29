@@ -80,10 +80,10 @@
           <div class="text-head">Relax, have fun and rock-and-roll!</div>
         </div>
       </div>
-        <form  #myForm="ngForm"  novalidate (keyup)="updateReward(reward.id, myForm)">
+        <form  #myForm="ngForm"  novalidate (keyup)="updateReward(reward['text'], myForm)">
       <div class="second-block">
         <input type="text" value="тест"
-               name="text" class="input-1" placeholder="{{reward.text}}" ngModel required/>
+               name="text" class="input-1" placeholder="{{reward['text']}}" ngModel required/>
         </div>
         </form>
       </div>
