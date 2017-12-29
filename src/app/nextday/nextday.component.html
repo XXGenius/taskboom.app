@@ -11,7 +11,7 @@
       Plan for the day.
     </div>
     <div class="calendar">
-      <img src="img/today.png" class="today"/> 2017.06.26
+      <img class="today"/> {{ date}}
     </div>
   </div>
   <div class="form-group-1">
@@ -25,14 +25,16 @@
           Completed all
         </div>
       </div>
-      <div class="second-block">
-        <div class="second-start-input">
-          <input class="input-1" type="text" placeholder="Create a task for the Boom!">
+      <form  *ngFor="let task of tasks; let i = index" id="tr{{task.id }}" #myForm="ngForm"  novalidate (keyup)="update(myForm, i)" >
+        <div *ngIf="task.priority_id === 1" class="second-block" >
+          <div class="second-start-input">
+                <input type="text" class="input-1" name="text" ngModel required   placeholder="{{task.text}}"/>
+          </div>
+          <div class="second-end-checkbox">
+            <input (click)="onCheck(task.id, task.checked, i)" class="styled-checkbox" type="checkbox" value="value1" [checked]="task.checked">
+          </div>
         </div>
-        <div class="second-end-checkbox">
-          <input class="styled-checkbox" id="styled-checkbox-1" type="checkbox" value="value1">
-        </div>
-      </div>
+      </form>
     </div>
     <div class="tabs-all">
       <div class="second-block">
@@ -41,47 +43,18 @@
           <div class="text-head">Proceed after performing the focus of the day..</div>
         </div>
       </div>
-      <div class="second-block">
-        <div class="second-start-input">
-          <input class="input-1" type="text" placeholder="Put a Wings On Your Dreams" >
-        </div>
-        <div class="second-end-checkbox">
-          <input class="styled-checkbox" id="styled-checkbox-1" type="checkbox" value="value1">
-        </div>
-      </div>
-      <div class="second-block">
-        <div class="second-start-input">
-          <input class="input-1" type="text" placeholder="Start With A Baseline">
-        </div>
-        <div class="second-end-checkbox">
-          <input class="styled-checkbox" id="styled-checkbox-1" type="checkbox" value="value1">
-        </div>
-      </div>
-      <div class="second-block">
-        <div class="second-start-input">
-          <input class="input-1" type="text" placeholder="Use Your Reset Button To Change Your Vibration">
-        </div>
-        <div class="second-end-checkbox">
-          <input class="styled-checkbox" id="styled-checkbox-1" type="checkbox" value="value1">
-        </div>
-      </div>
-      <div class="second-block">
-        <div class="second-start-input">
-          <input class="input-1" type="text" placeholder="A Brief History of Creation">
-        </div>
-        <div class="second-end-checkbox">
-          <input class="styled-checkbox" id="styled-checkbox-1" type="checkbox" value="value1">
-        </div>
-      </div>
-      <div class="second-block">
-        <div class="second-start-input">
-          <input class="input-1" type="text" placeholder="The Fact and The Truth">
-        </div>
-        <div class="second-end-checkbox">
-          <input class="styled-checkbox" id="styled-checkbox-1" type="checkbox" value="value1">
-        </div>
-      </div>
-    </div>
+      <form  *ngFor="let task of tasks; let i = index"  #myForm="ngForm"  novalidate (keyup)="update(myForm, i)">
+          <div *ngIf="task.priority_id === 2"  class="second-block" >
+            <div class="second-start-input">
+              <input type="text" class="input-1" name="text" ngModel required   placeholder="{{task.text}}"/>
+            </div>
+            <div class="second-end-checkbox">
+              <input class="styled-checkbox"  type="checkbox" value="value1">
+            </div>
+          </div>
+      </form>
+
+
     <div class="tabs-all">
       <div class="second-block">
         <div class="second-start">
@@ -134,10 +107,10 @@
       Great job.<br> Start planning your next day <br><span style="border-bottom:2px dashed violet">since 18:00 today.</span>
     </div>
     <div class="third-block">
-      <div class="button-back">
+      <div  class="button-back">
         Previous Day
       </div>
-      <a href="./index.html">
+      <a  >
         <div class="button-next">
           Next day
         </div>
