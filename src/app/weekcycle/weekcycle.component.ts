@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ApiService} from '../services/api.service';
 import {NgForm} from '@angular/forms';
 import {Subject} from 'rxjs/Subject';
-
-
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 @Component({
   selector: 'app-weekcycle',
   templateUrl: './weekcycle.component.html',
@@ -12,7 +11,8 @@ import {Subject} from 'rxjs/Subject';
 export class WeekcycleComponent implements OnInit {
   tasks;
   reward = new Subject();
-  constructor(private apiService: ApiService) {
+  constructor(private apiService: ApiService, private spinnerService: Ng4LoadingSpinnerService) {
+    this.spinnerService.show();
     const id = localStorage.getItem('id');
     this.apiService.getWeekCycle(id)
       .subscribe( (cycle) => {
@@ -29,15 +29,18 @@ export class WeekcycleComponent implements OnInit {
             console.log(tasks);
           });
       });
+    this.spinnerService.hide();
   }
 
   onCheck(id, checked, i) {
+    this.spinnerService.show();
     this.apiService.checkTask(id, !checked)
         .subscribe(
         (task) => {
           console.log(task);
           this.tasks.active = task['checked'];
           this.tasks[i].checked = task['checked'];
+          this.spinnerService.hide();
           }
     );
   }

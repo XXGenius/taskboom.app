@@ -47,6 +47,7 @@ export class ApiService {
             .map((res) => res);
     }
 
+
   getWeekCycle(user_id) {
     return this.http.get('http://boomapi.acesspades.com/api/v1/week' , {
       params: { user_id: user_id }})
@@ -71,6 +72,12 @@ export class ApiService {
             .map((res) => res);
     }
 
+  getDayTasks(day_id) {
+    return this.http.get('http://boomapi.acesspades.com/api/v1/daytasks' + '?' + this.tokenParam , {
+      params: { day_id: day_id }})
+      .map((res) => res);
+  }
+
 
 
   login(email, password) {
@@ -80,9 +87,16 @@ export class ApiService {
   }
 
 
-  getDay(date: string, user_id) {
-    return this.http.get('http://boomapi.acesspades.com/api/v1/day/date/' + date + '?' + this.tokenParam + '&&' + 'user_id=' + user_id )
-        .map((res) => res);
+  getDay(date, user_id) {
+    return this.http.get('http://boomapi.acesspades.com/api/v1/day' + '?' + this.tokenParam , {
+      params: { date: date,  user_id: user_id }})
+      .pipe(
+        map((res: any) => {
+          console.log(res);
+          return res;
+        }),
+        catchError(error => Observable.throw(error || 'Server error'))
+      );
   }
 
     getTasks(id) {
@@ -123,6 +137,20 @@ export class ApiService {
               catchError(error => Observable.throw(error || 'Server error'))
           );
   }
+
+  addDay(user_id, date) {
+    console.log(this._options);
+    return this.http.post('http://boomapi.acesspades.com/api/v1/day?' + this.tokenParam,
+      {token: this.token, date: date,  user_id: user_id }, this._options)
+      .pipe(
+        map((res: any) => {
+          console.log(res);
+          return res;
+        }),
+        catchError(error => Observable.throw(error || 'Server error'))
+      );
+  }
+
 
   addWeekCycle(user_id) {
     console.log(this._options);
