@@ -10,7 +10,7 @@ export class IndexComponent implements OnInit {
   constructor( activatedRoute: ActivatedRoute,
               router: Router) {
     if (activatedRoute.children.length === 0) {
-      router.navigate(['/long']);
+      router.navigate(['/day']);
     }
   }
 

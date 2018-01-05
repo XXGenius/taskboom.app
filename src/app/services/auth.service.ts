@@ -25,7 +25,7 @@ export class AuthService {
                     this.isAuthorized.next(true);
                     console.log(this.isAuthorized);
                 });
-            router.navigate(['long']);
+            router.navigate(['day']);
             this.spinnerService.hide();
         } else {
             this.isAuthorized.next(false);
@@ -48,7 +48,7 @@ export class AuthService {
                             this.currentUser = user['0'];
                             this.isAuthorized.next(true);
                         } else {
-                            this.router.navigate(['long']);
+                            this.router.navigate(['day']);
                             this.currentUser = user['0'];
                             this.isAuthorized.next(true);
                         }
@@ -77,7 +77,7 @@ export class AuthService {
                             this.isAuthorized.next(true);
                             this.spinnerService.hide();
                         } else {
-                            this.router.navigate(['long']);
+                            this.router.navigate(['day']);
                             this.currentUser = user['0'];
                             this.isAuthorized.next(true);
                             this.spinnerService.hide();
