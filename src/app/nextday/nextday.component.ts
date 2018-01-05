@@ -21,31 +21,33 @@ export class NextdayComponent implements OnInit {
       .subscribe( (cycle) => {
         console.log(cycle);
         this.day = cycle['0'];
-        this.date = cycle['0']['date'];
-        const day_id = cycle['0']['id'];
-        this.spinnerService.hide();
-        window.scroll(0, 0 );
-        this.apiService.getDayTasks(day_id).subscribe((task) => {
-          console.log(task);
-          this.tasks = task;
+        if (!this.day) {
+          this.apiService.addDay(id, date).subscribe((day) => {
+            console.log(day);
+            this.day = day['0'];
+            this.date = day['0']['date'];
+            this.spinnerService.hide();
+            const day_id = day['0']['id'];
+            this.spinnerService.hide();
+            window.scroll(0, 0 );
+            this.apiService.getDayTasks(day_id).subscribe((task) => {
+              console.log(task);
+              this.tasks = task;
+            });
+            window.scroll(0, 0 );
+          });
+        } else {
+          this.date = cycle['0']['date'];
+          const day_id = cycle['0']['id'];
+          this.spinnerService.hide();
+          window.scroll(0, 0 );
+          this.apiService.getDayTasks(day_id).subscribe((task) => {
+            console.log(task);
+            this.tasks = task;
+          });
+        }
         });
-        });
-    if (!this.day) {
-      this.apiService.addDay(id, date).subscribe((day) => {
-        console.log(day);
-        this.day = day['0'];
-        this.date = day['0']['date'];
-        this.spinnerService.hide();
-        const day_id = day['0']['id'];
-        this.spinnerService.hide();
-        window.scroll(0, 0 );
-        this.apiService.getDayTasks(day_id).subscribe((task) => {
-          console.log(task);
-          this.tasks = task;
-        });
-        window.scroll(0, 0 );
-      });
-    }
+
   }
 
   onCheck(id, checked, i) {
