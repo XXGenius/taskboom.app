@@ -95,9 +95,6 @@ export class AuthService {
         return this.currentUser;
     }
 
-
-
-
     clear () {
         this.spinnerService.show();
         localStorage.setItem('uid', '');
