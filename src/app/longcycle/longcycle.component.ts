@@ -81,13 +81,13 @@ export class LongcycleComponent implements OnInit {
         );
     }
 
-    updateSecondTask (form: NgForm, id) {
-        this.apiService.updateTask(form.value.text, id).subscribe(
-            (task) => {
-                this.secondtask['text'] = task.text;
-            }
-        );
-    }
+  updateSecondTask (form: NgForm, id) {
+    this.apiService.updateTask(form.value.text, id).subscribe(
+      (task) => {
+        this.thirdtask['text'] = task.text;
+      }
+    );
+  }
 
     updateThirdTask (form: NgForm, id) {
         this.apiService.updateTask(form.value.text, id).subscribe(

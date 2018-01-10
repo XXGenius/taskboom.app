@@ -1,7 +1,7 @@
 <div class="space">
 </div>
-
-<div *ngIf="!pageTwo" class="container-fluid1">
+<div *ngIf="!pageTwo">
+<div  class="container-fluid1">
   <div class="first-block">
     <div class="h1-main">
       <div class="steps">1</div>
@@ -93,7 +93,9 @@
     </div>
   </div>
 </div>
-<div *ngIf="pageTwo" class="container-fluid1">
+</div>
+<div  *ngIf="pageTwo">
+<div class="container-fluid1">
   <div class="first-block">
     <div class="h1-main">
       <div class="steps">1</div>
@@ -115,13 +117,13 @@
           <div class="text-head">Type the second goal of 12 week plan here..</div>
         </div>
       </div>
-      <form  #myTaskForm="ngForm"  novalidate (keyup)="updateSecondTask(myTaskForm, secondtask['id'])">
-          <div class="second-block-large">
-            <div class="second-start-input">
-              <textarea  class="input-big" type="text"  name="text" ngModel required placeholder="{{ secondtask['text']}}"></textarea>
-            </div>
+      <form  #mySecTaskForm="ngForm"  novalidate (keyup)="updateSecondTask(mySecTaskForm, secondtask['id'])">
+        <div class="second-block-large">
+          <div class="second-start-input">
+            <textarea  class="input-big" type="text"  name="text" ngModel required placeholder="{{ secondtask.text}}">{{ secondtask.text }}</textarea>
           </div>
-        </form>
+        </div>
+      </form>
       </div>
     <div class="tabs-all">
       <div class="second-block">
@@ -179,10 +181,10 @@
       </div>
     </div>
     <div class="tabs-all">
-      <form  #myTaskForm="ngForm"  novalidate (keyup.enter)="updateThirdTask(myTaskForm, thirdtask['id'])">
+      <form  #myTaskForm="ngForm"  novalidate (keyup)="updateThirdTask(myTaskForm, thirdtask['id'])">
         <div class="second-block-large">
           <div class="second-start-input">
-            <textarea  class="input-big" type="text"  name="text" ngModel required placeholder="{{ thirdtask['text']}}">{{ thirdtask.text }}</textarea>
+            <textarea  class="input-big" type="text"  name="text" ngModel required placeholder="{{ thirdtask.text}}">{{ thirdtask.text }}</textarea>
           </div>
         </div>
       </form>
@@ -239,4 +241,4 @@
       </a>
     </div>
   </div>
-</div>
+</div></div>

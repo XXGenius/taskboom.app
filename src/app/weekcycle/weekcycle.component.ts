@@ -16,19 +16,36 @@ export class WeekcycleComponent implements OnInit {
     const id = localStorage.getItem('id');
     this.apiService.getWeekCycle(id)
       .subscribe( (cycle) => {
-        console.log(cycle['0'].id);
-        const cycle_id = cycle['0'].id;
-        this.apiService.getMyRewards(cycle_id)
-          .subscribe((reward) => {
-          this.reward = reward['0'];
-          console.log(reward);
-        });
-        this.apiService.getMyTasks(cycle_id)
-          .subscribe((tasks) => {
-            this.tasks = tasks;
-            console.log(tasks);
+        console.log(cycle);
+        if (!cycle['id'] ) {
+          this.apiService.addWeekCycle(id).subscribe((week) => {
+            console.log(week);
+            const cycle_id = week['id'];
+            this.apiService.getMyRewards(cycle_id)
+              .subscribe((reward) => {
+                this.reward = reward['0'];
+                console.log(reward);
+              });
+            this.apiService.getMyTasks(cycle_id)
+              .subscribe((tasks) => {
+                this.tasks = tasks;
+                console.log(tasks);
+              });
           });
-      });
+        }else {
+          const cycle_id = cycle['0']['id'];
+          this.apiService.getMyRewards(cycle_id)
+            .subscribe((reward) => {
+              this.reward = reward['0'];
+              console.log(reward);
+            });
+          this.apiService.getMyTasks(cycle_id)
+            .subscribe((tasks) => {
+              this.tasks = tasks;
+              console.log(tasks);
+            });
+          }
+          });
     this.spinnerService.hide();
   }
 
@@ -64,6 +81,4 @@ export class WeekcycleComponent implements OnInit {
         this.reward['text'] = reward.text;
       });
   }
-
-
 }

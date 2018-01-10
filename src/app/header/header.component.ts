@@ -7,23 +7,15 @@ import {AuthService} from '../services/auth.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  admin = false;
+
   isAuthorized;
   currentUser;
-  exp;
 
   constructor(private authService: AuthService, private ref: ChangeDetectorRef) {
     this.authService.setAuthHook();
     this.authService.isAuthorized.subscribe(isAutorized => {
       this.isAuthorized = isAutorized;
       this.currentUser = this.authService.getCurrenUser();
-        if (this.currentUser) {
-        if  ( this.currentUser['user_role_id'] === 2)  {
-          this.admin = true;
-        } else {
-          this.admin = false;
-        }
-      }
       this.ref.detectChanges();
     });
   }
@@ -33,6 +25,5 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-      console.log('header init');
   }
 }

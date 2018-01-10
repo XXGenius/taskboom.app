@@ -64,10 +64,7 @@
       </div>
       <div class="second-block-large">
         <div class="second-start-input">
-                     <textarea class="input-big" type="text" placeholder="When asked, “If you could wish for one thing only,
-                        what would that wish be?” almost everyone; from beauty pagent contestants, to politicians, to religious
-                        leaders, to children, to the average person on the street states, “Peace On Earth” or “An end to all
-                        wars”. Those wishes, while exemplary, are meaningless.."></textarea>
+                     <textarea class="input-big" type="text" placeholder="">{{ gratitude}}</textarea>
         </div>
       </div>
     </div>
@@ -107,11 +104,11 @@
       Great job.<br> Start planning your next day <br><span style="border-bottom:2px dashed violet">since 18:00 today.</span>
     </div>
     <div class="third-block">
-      <div  class="button-back">
+      <div (click)="previousday()"  class="button-back">
         Previous Day
       </div>
       <a  >
-        <div class="button-next">
+        <div (click)="nextday()" class="button-next" [hidden]="time">
           Next day
         </div>
       </a>
