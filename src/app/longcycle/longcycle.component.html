@@ -27,7 +27,7 @@
       <form  #myTaskForm="ngForm"  novalidate (keyup)="updateFirstTask(myTaskForm, firsttask['id'])">
       <div class="second-block-large">
         <div class="second-start-input">
-                     <textarea  class="input-big" type="text"  name="text" ngModel required placeholder="{{ firsttask['text']}}">{{ firsttask.text }}</textarea>
+                     <textarea  class="input-big" type="text"  name="text" ngModel="{{ firsttask['text'] }}" required placeholder="{{ firsttask['text']}}"></textarea>
         </div>
       </div>
       </form>
@@ -49,7 +49,7 @@
               <div  *ngIf="!step.edit" >
                 <!--<span *ngIf="step.edit ">{{ step.text }}</span>-->
                 <input type="text" class="input-1"
-                       name="text" ngModel required  placeholder="{{step.text}}"/>
+                       name="text" ngModel="{{step.text}}" required  placeholder="{{step.text}}"/>
               </div>
             </div>
           </div>
@@ -70,7 +70,7 @@
                 <div  >
                   <span *ngIf="reward.edit ">{{ reward.text }}</span>
                   <input type="text" value="тест" *ngIf="!reward.edit"
-                         name="text" class="input-1" placeholder="{{reward.text}}" ngModel required/>
+                         name="text" class="input-1" placeholder="{{reward.text}}" ngModel="{{reward.text}}" required/>
                 </div>
               </div>
             </div>
@@ -120,7 +120,7 @@
       <form  #mySecTaskForm="ngForm"  novalidate (keyup)="updateSecondTask(mySecTaskForm, secondtask['id'])">
         <div class="second-block-large">
           <div class="second-start-input">
-            <textarea  class="input-big" type="text"  name="text" ngModel required placeholder="{{ secondtask.text}}">{{ secondtask.text }}</textarea>
+            <textarea  class="input-big" type="text"  name="text" ngModel="{{ secondtask['text'] }}" required placeholder="{{ secondtask.text}}"></textarea>
           </div>
         </div>
       </form>
@@ -143,7 +143,7 @@
               <div  >
                 <span *ngIf="step.edit ">{{ step.text }}</span>
                 <input *ngIf="!step.edit" class="input-1"
-                       value="{{ step.text }}" placeholder="{{ step.text }}" name="text" ngModel required/>
+                       value="{{ step.text }}" placeholder="{{ step.text }}" name="text" ngModel="{{ step.text}}" required/>
               </div>
             </div>
           </div>
@@ -165,7 +165,7 @@
               <div  >
                 <span *ngIf="reward.edit ">{{ reward.text }}</span>
                 <input type="text" value="тест" *ngIf="!reward.edit"
-                       name="text" class="input-1" placeholder="{{reward.text}}" ngModel required/>
+                       name="text" class="input-1" placeholder="{{reward.text}}" ngModel="{{reward.text}}" required/>
               </div>
             </div>
           </div>
@@ -184,7 +184,7 @@
       <form  #myTaskForm="ngForm"  novalidate (keyup)="updateThirdTask(myTaskForm, thirdtask['id'])">
         <div class="second-block-large">
           <div class="second-start-input">
-            <textarea  class="input-big" type="text"  name="text" ngModel required placeholder="{{ thirdtask.text}}">{{ thirdtask.text }}</textarea>
+            <textarea  class="input-big" type="text"  name="text" ngModel="{{ thirdtask['text'] }}" required placeholder="{{ thirdtask.text}}"></textarea>
           </div>
         </div>
       </form>
@@ -199,7 +199,7 @@
               <div  >
                 <span *ngIf="step.edit ">{{ step.text }}</span>
                 <input type="text" value="тест" *ngIf="!step.edit"
-                         name="text" class="input-1" placeholder="{{step.text}}" ngModel required/>
+                         name="text" class="input-1" placeholder="{{step.text}}" ngModel="{{ step.text }}" required/>
               </div>
             </div>
           </div>
@@ -221,7 +221,7 @@
               <div  >
                 <span *ngIf="reward.edit ">{{ reward.text }}</span>
                 <input type="text" value="тест" *ngIf="!reward.edit"
-                       name="text" class="input-1" placeholder="{{reward.text}}" ngModel required/>
+                       name="text" class="input-1" placeholder="{{reward.text}}" ngModel="{{reward.text}}" required/>
               </div>
             </div>
           </div>

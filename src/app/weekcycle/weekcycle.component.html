@@ -34,7 +34,7 @@
               <div>
                 <div>
                   <input type="text" class="input-1"
-                         name="text" ngModel required  placeholder="{{task.text}}"/>
+                         name="text" ngModel="{{task.text}}" required  placeholder="{{task.text}}"/>
                 </div>
 
               </div>
@@ -63,7 +63,7 @@
             <div>
               <div>
                 <input type="text" class="input-1"
-                       name="text" ngModel required  placeholder="{{task.text}}"/>
+                       name="text" ngModel="{{task.text}}" required  placeholder="{{task.text}}"/>
               </div>
 
             </div>
@@ -83,7 +83,7 @@
         <form  #myForm="ngForm"  novalidate (keyup)="updateReward(reward['text'], myForm)">
       <div class="second-block">
         <input type="text" value="тест"
-               name="text" class="input-1" placeholder="{{reward['text']}}" ngModel required/>
+               name="text" class="input-1" placeholder="{{reward['text']}}" ngModel="{{reward['text']}}" required/>
         </div>
         </form>
       </div>
