@@ -17,7 +17,7 @@ export class WeekcycleComponent implements OnInit {
     this.apiService.getWeekCycle(id)
       .subscribe( (cycle) => {
         console.log(cycle);
-        if (!cycle['id'] ) {
+        if (!cycle['0']) {
           this.apiService.addWeekCycle(id).subscribe((week) => {
             console.log(week);
             const cycle_id = week['id'];

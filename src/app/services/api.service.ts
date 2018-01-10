@@ -210,6 +210,45 @@ export class ApiService {
           );
   }
 
+  updateProgress(comment_progress, id: number) {
+    console.log(JSON.stringify({ comment_progress: comment_progress  }));
+    return this.http.put('http://boomapi.acesspades.com/api/v1/progress/' + id + '?' + this.tokenParam,
+      { comment_progress: comment_progress  }, this._options)
+      .pipe(
+        map((res: any) => {
+          console.log(res);
+          return res;
+        }),
+        catchError(error => Observable.throw(error || 'Server error'))
+      );
+  }
+
+  updateGratitude(gratitude_day, id: number) {
+    console.log(JSON.stringify({ gratitude_day: gratitude_day }));
+    return this.http.put('http://boomapi.acesspades.com/api/v1/gratitude/' + id + '?' + this.tokenParam,
+      { gratitude_day: gratitude_day }, this._options)
+      .pipe(
+        map((res: any) => {
+          console.log(res);
+          return res;
+        }),
+        catchError(error => Observable.throw(error || 'Server error'))
+      );
+  }
+
+  updateComment(comment_task, id: number) {
+    console.log(JSON.stringify({ comment_task: comment_task }));
+    return this.http.put('http://boomapi.acesspades.com/api/v1/comment/' + id + '?' + this.tokenParam,
+      { comment_task: comment_task}, this._options)
+      .pipe(
+        map((res: any) => {
+          console.log(res);
+          return res;
+        }),
+        catchError(error => Observable.throw(error || 'Server error'))
+      );
+  }
+
     updateReward(id: number, text) {
         console.log(JSON.stringify({ text: text  }));
         return this.http.put('http://boomapi.acesspades.com/api/v1/reward/' + id + '?' + this.tokenParam,

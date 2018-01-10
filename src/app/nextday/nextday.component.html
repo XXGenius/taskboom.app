@@ -1,5 +1,6 @@
 <div class="space">
 </div>
+
 <div class="container-fluid1">
   <div class="first-block">
     <div class="h1-main">
@@ -35,6 +36,7 @@
           </div>
         </div>
       </form>
+      <div *ngIf="save">Save...</div>
     </div>
     <div class="tabs-all">
       <div class="second-block">
@@ -45,17 +47,17 @@
       </div>
       <form  *ngFor="let task of tasks; let i = index"  #myForm="ngForm"  novalidate (keyup)="update(myForm, i)">
           <div *ngIf="task.priority_id === 2"  class="second-block" >
+
             <div class="second-start-input">
-              <input type="text" class="input-1" name="text" ngModel required   placeholder="{{task.text}}"/>
+              <input type="text" class="input-1" name="text" ngModel required   placeholder="{{task.text}} "/>
             </div>
             <div class="second-end-checkbox">
               <input (click)="onCheck(task.id, task.checked, i)" class="styled-checkbox" type="checkbox" value="value1" [checked]="task.checked">
             </div>
           </div>
       </form>
-
-
-    <div class="tabs-all">
+      <div *ngIf="save">Save...</div>
+      <div class="tabs-all">
       <div class="second-block">
         <div class="second-start">
           <div class="text-head-uppercase"><span class="steps-in">3</span>Location for thoughts</div>
@@ -64,7 +66,13 @@
       </div>
       <div class="second-block-large">
         <div class="second-start-input">
-                     <textarea class="input-big" type="text" placeholder="">{{ gratitude}}</textarea>
+          <form  #myTaskForm="ngForm"  novalidate (keyup)="updateComment(myTaskForm, day.id)">
+            <div class="second-block-large">
+              <div class="second-start-input">
+                <textarea  class="input-big" type="text"  name="text" ngModel required placeholder="{{comment}}">{{comment}}</textarea>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -77,10 +85,13 @@
       </div>
       <div class="second-block-large">
         <div class="second-start-input">
-                     <textarea class="input-big" type="text" placeholder="One of the keys to reaching your goals is to eliminate
-                        any escape routes. It is tempting to retreat to safety and comfort when challenges and difficulties arise.
-                        To avoid turning around and abandoning your goals, you must make going forward more compelling then going
-                        back.."></textarea>
+          <form  #myGraForm="ngForm"  novalidate (keyup)="updateGratitude(myGraForm, day.id)">
+            <div class="second-block-large">
+              <div class="second-start-input">
+                <textarea  class="input-big" type="text"  name="text" ngModel required placeholder="{{ gratitude}}">{{ gratitude }}</textarea>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -93,18 +104,21 @@
       </div>
       <div class="second-block-large">
         <div class="second-start-input">
-                     <textarea class="input-big" type="text" placeholder="The most beautiful experience we can have is the
-                        mysterious. It is the fundamental emotion that stands at the cradle of true art and true science.”
-                        Albert Einstein, The World as I See It, 1931 The debate between realism and anti-realism is, at least,
-                        a century old.."></textarea>
+          <form  #myProgForm="ngForm"  novalidate (keyup)="updateProgress(myProgForm, day.id)">
+            <div class="second-block-large">
+              <div class="second-start-input">
+                <textarea  class="input-big" type="text"  name="text" ngModel required placeholder="{{ progress}}">{{ progress }}</textarea>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
-    <div class="great-job">
+    <div [hidden]="!time" class="great-job">
       Great job.<br> Start planning your next day <br><span style="border-bottom:2px dashed violet">since 18:00 today.</span>
     </div>
     <div class="third-block">
-      <div (click)="previousday()"  class="button-back">
+      <div (click)="previousday()"  class="button-back" [hidden]="previus">
         Previous Day
       </div>
       <a  >
