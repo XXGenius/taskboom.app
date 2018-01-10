@@ -29,7 +29,7 @@
       <form  *ngFor="let task of tasks; let i = index" id="tr{{task.id }}" #myForm="ngForm"  novalidate (keyup)="update(myForm, i)" >
         <div *ngIf="task.priority_id === 1" class="second-block" >
           <div class="second-start-input">
-                <input type="text" class="input-1" name="text" ngModel="{{task.text}}" required   placeholder="{{task.text}}"/>
+                <input type="text" class="input-1" name="text" ngModel="{{task.text}}" required   placeholder="Fill the goal here"/>
           </div>
           <div class="second-end-checkbox">
             <input (click)="onCheck(task.id, task.checked, i)" class="styled-checkbox" type="checkbox" value="value1" [checked]="task.checked">
@@ -49,7 +49,7 @@
           <div *ngIf="task.priority_id === 2"  class="second-block" >
 
             <div class="second-start-input">
-              <input type="text" class="input-1" name="text" ngModel="{{task.text}}" required   placeholder="{{task.text}} "/>
+              <input type="text" class="input-1" name="text" ngModel="{{task.text}}" required   placeholder="Fill the goal here"/>
             </div>
             <div class="second-end-checkbox">
               <input (click)="onCheck(task.id, task.checked, i)" class="styled-checkbox" type="checkbox" value="value1" [checked]="task.checked">
@@ -69,7 +69,10 @@
           <form  #myTaskForm="ngForm"  novalidate (keyup)="updateComment(myTaskForm, day.id)">
             <div class="second-block-large">
               <div class="second-start-input">
-                <textarea  class="input-big" type="text"  name="text" ngModel="{{comment}}" required placeholder="{{comment}}">{{comment}}</textarea>
+                <textarea  class="input-big" type="text"  name="text" ngModel="{{comment}}" required placeholder="When asked, “If you could wish for one thing only,
+                        what would that wish be?” almost everyone; from beauty pagent contestants, to politicians, to religious
+                        leaders, to children, to the average person on the street states, “Peace On Earth” or “An end to all
+                        wars”. Those wishes, while exemplary, are meaningless.."></textarea>
               </div>
             </div>
           </form>
@@ -88,7 +91,10 @@
           <form  #myGraForm="ngForm"  novalidate (keyup)="updateGratitude(myGraForm, day.id)">
             <div class="second-block-large">
               <div class="second-start-input">
-                <textarea  class="input-big" type="text"  name="text" ngModel="{{gratitude}}" required placeholder="{{ gratitude}}">{{ gratitude }}</textarea>
+                <textarea  class="input-big" type="text"  name="text" ngModel="{{gratitude}}" required placeholder="One of the keys to reaching your goals is to eliminate
+                        any escape routes. It is tempting to retreat to safety and comfort when challenges and difficulties arise.
+                        To avoid turning around and abandoning your goals, you must make going forward more compelling then going
+                        back.."></textarea>
               </div>
             </div>
           </form>
@@ -107,7 +113,10 @@
           <form  #myProgForm="ngForm"  novalidate (keyup)="updateProgress(myProgForm, day.id)">
             <div class="second-block-large">
               <div class="second-start-input">
-                <textarea  class="input-big"   name="text" ngModel="{{progress}}" placeholder="{{ progress}}">{{ progress }}</textarea>
+                <textarea  class="input-big"   name="text" ngModel="{{progress}}" placeholder="The most beautiful experience we can have is the
+                        mysterious. It is the fundamental emotion that stands at the cradle of true art and true science.”
+                        Albert Einstein, The World as I See It, 1931 The debate between realism and anti-realism is, at least,
+                        a century old.."></textarea>
               </div>
             </div>
           </form>

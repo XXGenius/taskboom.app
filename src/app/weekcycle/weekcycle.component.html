@@ -34,7 +34,7 @@
               <div>
                 <div>
                   <input type="text" class="input-1"
-                         name="text" ngModel="{{task.text}}" required  placeholder="{{task.text}}"/>
+                         name="text" ngModel="{{task.text}}" required  placeholder="Create a task for the Boom!"/>
                 </div>
 
               </div>
@@ -63,7 +63,7 @@
             <div>
               <div>
                 <input type="text" class="input-1"
-                       name="text" ngModel="{{task.text}}" required  placeholder="{{task.text}}"/>
+                       name="text" ngModel="{{task.text}}" required  placeholder="Create a task for the Boom!"/>
               </div>
 
             </div>
@@ -83,7 +83,8 @@
         <form  #myForm="ngForm"  novalidate (keyup)="updateReward(reward['text'], myForm)">
       <div class="second-block">
         <input type="text" value="тест"
-               name="text" class="input-1" placeholder="{{reward['text']}}" ngModel="{{reward['text']}}" required/>
+               name="text" class="input-1" placeholder="When asked, “If you could wish for one thing only,
+                        what would that wish be?” almost everyone.." ngModel="{{reward['text']}}" required/>
         </div>
         </form>
       </div>
