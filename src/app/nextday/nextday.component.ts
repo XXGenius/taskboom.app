@@ -58,7 +58,7 @@ export class NextdayComponent implements OnInit {
               console.log(task);
               this.tasks = task;
             });
-            window.scroll(0, 0 );
+             window.scroll(0, 0 );
           });
         } else {
           const time = (new Date()).getUTCHours() + 3;
