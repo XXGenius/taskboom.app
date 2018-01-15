@@ -12,11 +12,33 @@ export class AuthService {
     private authHook = new Subject();
     isAuthorized: Subject<boolean> = new Subject();
     currentUser = new Subject();
-
+    email;
+    url;
     currentUserSubscribe: ISubscription;
     constructor(private apiservice: ApiService, private router: Router, private spinnerService: Ng4LoadingSpinnerService) {
         window['authHook']  = this.authHook;
+        const email = localStorage.getItem('email').replace( '%40', '@');
+        const tr =  email.replace( '%40', '@');
+        this.email = tr;
+        console.log(tr);
         const uid = localStorage.getItem('uid');
+        this.url = localStorage.getItem('url');
+        if (this.email === 'false') {
+          this.email = '';
+        }
+          if (this.url === 'false') {
+            this.url = 'signin';
+          }
+        this.apiservice.getUserByEmail(this.email)
+          .subscribe((user) => {
+          console.log(user.length);
+            if (user.length = 0) {
+              this.url = 'signup';
+            } else  {
+              this.url = 'signin';
+            }
+          });
+        console.log(this.url);
         this.spinnerService.show();
         if (uid) {
             this.currentUserSubscribe = this.apiservice.getCurrentUser(uid)
@@ -29,7 +51,7 @@ export class AuthService {
             this.spinnerService.hide();
         } else {
             this.isAuthorized.next(false);
-            router.navigate(['/signin/']);
+            router.navigate([this.url]);
             this.spinnerService.hide();
         }
     }

@@ -41,7 +41,20 @@ export class ApiService {
         .map((res) => res);
   }
 
-    getLongCycle(user_id) {
+  getUserByEmail(email) {
+    return this.http.get('http://boomapi.acesspades.com/api/v1/user' + '?' + this.tokenParam , {
+      params: { email: email }})
+      .pipe(
+        map((res: any) => {
+          console.log(res);
+          return res;
+        }),
+        catchError(error => Observable.throw(error || 'Server error'))
+      );
+  }
+
+
+  getLongCycle(user_id) {
         return this.http.get('http://boomapi.acesspades.com/api/v1/long' , {
             params: { user_id: user_id }})
             .map((res) => res);

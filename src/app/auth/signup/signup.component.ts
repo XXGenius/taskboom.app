@@ -10,7 +10,10 @@ import {AuthService} from '../../services/auth.service';
 })
 export class SignupComponent implements OnInit {
   error: any;
-  constructor(private apiService: ApiService, private authService: AuthService) { }
+  email;
+  constructor(private apiService: ApiService, private authService: AuthService) {
+    this.email = this.authService.email;
+  }
 
   ngOnInit() {
   }
