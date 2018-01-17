@@ -29,15 +29,15 @@ export class AuthService {
           if (this.url === 'false') {
             this.url = 'signin';
           }
-        this.apiservice.getUserByEmail(this.email)
-          .subscribe((user) => {
-          console.log(user.length);
-            if (user.length = 0) {
-              this.url = 'signup';
-            } else  {
-              this.url = 'signin';
-            }
-          });
+        // this.apiservice.getUserByEmail(this.email)
+        //   .subscribe((user) => {
+        //   console.log(user.length);
+        //     if (user.length = 0) {
+        //       this.url = 'signup';
+        //     } else  {
+        //       this.url = 'signin';
+        //     }
+        //   });
         console.log(this.url);
         this.spinnerService.show();
         if (uid) {
