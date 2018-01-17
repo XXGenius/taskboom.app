@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {ChangeDetectorRef, NgModule} from '@angular/core';
-
+// import { SocialLoginModule, AuthServiceConfig } from 'angular4-oauth-login';
+// import { GoogleLoginProvider, FacebookLoginProvider } from '';
 import { AppComponent } from './app.component';
 import {FormsModule} from '@angular/forms';
 
@@ -37,6 +38,8 @@ import { NextdayComponent } from './nextday/nextday.component';
 
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,11 +65,11 @@ import { NextdayComponent } from './nextday/nextday.component';
 
   ],
   imports: [
-    BrowserModule,
-    FormsModule,
+      BrowserModule,
+      FormsModule,
       AppRoutingModule,
-    Angular2FontawesomeModule,
-    BrowserAnimationsModule,
+      Angular2FontawesomeModule,
+      BrowserAnimationsModule,
       HttpClientModule,
       Ng4LoadingSpinnerModule.forRoot()
   ],

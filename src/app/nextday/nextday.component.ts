@@ -22,8 +22,10 @@ export class NextdayComponent implements OnInit {
   constructor(private apiService: ApiService, private spinnerService: Ng4LoadingSpinnerService) {
     this.spinnerService.show();
     const id = localStorage.getItem('id');
-    const date = (new Date()).getUTCFullYear() + '-' + ((new Date()).getUTCMonth() + 1) + '-' + (new Date()).getUTCDate();
+    const localTime = -(new Date().getTimezoneOffset()) * 60000;
+    const date = (new Date()).getUTCFullYear() + '-' + ((new Date()).getUTCMonth() + 1) + '-' + ((new Date()).getUTCDate() );
     const last_date = (new Date()).getUTCFullYear() + '-' + ((new Date()).getUTCMonth() + 1) + '-' + ((new Date()).getUTCDate() - 1);
+    console.log(localTime);
     this.apiService.getDay(last_date, id).subscribe((day) => {
       console.log(day);
       if (!day['0']) {
@@ -133,6 +135,7 @@ export class NextdayComponent implements OnInit {
               console.log(task);
             });
             this.date = date;
+            this.time = true;
             this.spinnerService.hide();
             window.scroll(0, 0 );
             });
@@ -141,8 +144,7 @@ export class NextdayComponent implements OnInit {
           this.comment = cycle['0']['comment_task'];
           this.progress = cycle['0']['comment_progress'];
           this.date = date;
-          this.spinnerService.hide();
-          window.scroll(0, 0 );
+          this.time = true;
           this.id = cycle['0']['id'];
           const day_id = this.id;
           this.spinnerService.hide();
@@ -151,6 +153,8 @@ export class NextdayComponent implements OnInit {
             console.log(task);
             this.tasks = task;
           });
+          this.spinnerService.hide();
+          window.scroll(0, 0 );
         }
         });
     }
@@ -170,13 +174,14 @@ export class NextdayComponent implements OnInit {
         this.comment = cycle['0']['comment_task'];
         this.progress = cycle['0']['comment_progress'];
         this.date = date;
-        this.spinnerService.hide();
-        window.scroll(0, 0 );
         const day_id = cycle['0']['id'];
         this.apiService.getDayTasks(day_id).subscribe((task) => {
           console.log(task);
           this.tasks = task;
           });
+        this.previus = true;
+        this.spinnerService.hide();
+        window.scroll(0, 0 );
           });
   }
 

@@ -24,7 +24,7 @@
           <div class="text-head">Descrive what exactly you want to achieve in next 12 weeks</div>
         </div>
       </div>
-      <form  #myTaskForm="ngForm"  novalidate (keyup)="updateFirstTask(myTaskForm, firsttask['id'])">
+      <form  #myTaskForm="ngForm"  novalidate (focusout)="updateFirstTask(myTaskForm, firsttask['id'])">
       <div class="second-block-large">
         <div class="second-start-input">
                      <textarea  class="input-big" type="text"  name="text" ngModel="{{ firsttask['text'] }}"  required placeholder="One of the keys to reaching your goals is to eliminate
@@ -44,7 +44,7 @@
       </div>
       <form  *ngFor="let step of steps; let i = index"
             id="tr{{step.id }}"
-            #myForm="ngForm"  novalidate (keyup)="update(myForm, i)" >
+            #myForm="ngForm"  novalidate (focusout)="update(myForm, i)" >
         <div class="second-block" *ngIf="step.task_id === firsttask['id']">
           <div class="under-numeric">2.<span style="color: rgba(255,133,0,0.8);">{{ i + 1 }}</span> </div>
           <div class="second-start-input">
@@ -66,7 +66,7 @@
           </div>
         </div>
         <form  *ngFor="let reward of rewards; let i = index"
-               #myForm="ngForm"  novalidate (keyup)="updateReward(myForm, i)" >
+               #myForm="ngForm"  novalidate (focusout)="updateReward(myForm, i)" >
           <div class="second-block" *ngIf="reward.task_id === firsttask['id'] ">
             <div class="second-start-input">
               <div>
@@ -120,7 +120,7 @@
           <div class="text-head">Type the second goal of 12 week plan here..</div>
         </div>
       </div>
-      <form  #mySecTaskForm="ngForm"  novalidate (keyup)="updateSecondTask(mySecTaskForm, secondtask['id'])">
+      <form  #mySecTaskForm="ngForm"  novalidate (focusout)="updateSecondTask(mySecTaskForm, secondtask['id'])">
         <div class="second-block-large">
           <div class="second-start-input">
             <textarea  class="input-big" type="text"  name="text" ngModel="{{ secondtask['text'] }}" required placeholder="One of the keys to reaching your goals is to eliminate
@@ -139,7 +139,7 @@
       </div>
       <form  *ngFor="let step of steps; let i = index"
 
-             #myForm="ngForm"  novalidate (keyup)="update(myForm, i)" >
+             #myForm="ngForm"  novalidate (focusout)="update(myForm, i)" >
         <div class="second-block" *ngIf="step.task_id === secondtask['id']">
           <div class="under-numeric">3.<span style="color: rgba(255,133,0,0.8);">{{ i + 1 }}</span> </div>
           <div class="second-start-input">
@@ -163,7 +163,7 @@
         </div>
       </div>
       <form  *ngFor="let reward of rewards; let i = index"
-             #myForm="ngForm"  novalidate (keyup)="updateReward(myForm, i)" >
+             #myForm="ngForm"  novalidate (focusout)="updateReward(myForm, i)" >
         <div class="second-block" *ngIf="reward.task_id === secondtask['id'] ">
           <div class="second-start-input">
             <div>
@@ -186,7 +186,7 @@
       </div>
     </div>
     <div class="tabs-all">
-      <form  #myTaskForm="ngForm"  novalidate (keyup)="updateThirdTask(myTaskForm, thirdtask['id'])">
+      <form  #myTaskForm="ngForm"  novalidate (focusout)="updateThirdTask(myTaskForm, thirdtask['id'])">
         <div class="second-block-large">
           <div class="second-start-input">
             <textarea  class="input-big" type="text"  name="text" ngModel="{{ thirdtask['text'] }}" required placeholder="One of the keys to reaching your goals is to eliminate
@@ -197,7 +197,7 @@
       </form>
       <form  *ngFor="let step of steps; let i = index"
 
-             #myForm="ngForm"  novalidate (keyup)="update(myForm, i)" >
+             #myForm="ngForm"  novalidate (focusout)="update(myForm, i)" >
         <div class="second-block" *ngIf="step.task_id === thirdtask['id'] ">
           <div class="under-numeric">2.<span style="color: rgba(255,133,0,0.8);">{{ i + 1 }}</span> </div>
           <div class="second-start-input">
@@ -221,7 +221,7 @@
         </div>
       </div>
       <form  *ngFor="let reward of rewards; let i = index"
-             #myForm="ngForm"  novalidate (keyup)="updateReward(myForm, i)" >
+             #myForm="ngForm"  novalidate (focusout)="updateReward(myForm, i)" >
         <div class="second-block" *ngIf="reward.task_id === thirdtask['id'] ">
           <div class="second-start-input">
             <div>
