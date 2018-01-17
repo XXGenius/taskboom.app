@@ -20,6 +20,22 @@
 <script>
     function getToken (authToken) {
         window.authHook.next(authToken);
-    } </script>
+    }
+
+    // function $url() {
+    //   var s = window.location.search;
+    //   s = s.match(new RegExp('([^&=]?)'));
+    //   return s ? s[1] : false;
+    // }
+
+    function $_GET(key) {
+      var s = window.location.search;
+      s = s.match(new RegExp(key + '=([^&=]+)'));
+      return s ? s[1] : false;
+    }
+    localStorage.setItem('url', $_GET('url'));
+    localStorage.setItem('email', $_GET('email' ));
+    // <!--alert( $_GET('email') );
+</script>-->
 </body>
 </html>

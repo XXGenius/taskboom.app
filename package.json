@@ -26,6 +26,7 @@
     "angular-mocks": "^1.5.11",
     "angular-resource": "^1.5.11",
     "angular2-fontawesome": "^0.9.3",
+    "angular4-oauth-login": "0.0.4",
     "awesome-bootstrap-checkbox": "^1.0.0",
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",

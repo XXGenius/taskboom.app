@@ -11,8 +11,10 @@ import {ApiService} from '../../services/api.service';
 })
 export class SigninComponent implements OnInit, OnDestroy {
   error: any;
+  email;
   constructor(private authService: AuthService, private apiService: ApiService, private ref: ChangeDetectorRef) {
     this.authService.setAuthHook();
+    this.email =  this.authService.email;
   }
 
   ngOnInit() {
