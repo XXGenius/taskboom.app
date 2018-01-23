@@ -1,5 +1,6 @@
 <div class="space">
 </div>
+
 <div class="container-fluid1">
   <div class="first-block">
     <div class="h1-main">
@@ -11,7 +12,7 @@
       Plan for the day.
     </div>
     <div class="calendar">
-      <img src="img/today.png" class="today"/> 2017.06.26
+      <img class="today"/> {{ date}}
     </div>
   </div>
   <div class="form-group-1">
@@ -25,14 +26,17 @@
           Completed all
         </div>
       </div>
-      <div class="second-block">
-        <div class="second-start-input">
-          <input class="input-1" type="text" placeholder="Create a task for the Boom!">
+      <form  *ngFor="let task of tasks; let i = index" id="tr{{task.id }}" #myForm="ngForm"  novalidate (focusout)="update(myForm, i)" >
+        <div *ngIf="task.priority_id === 1" class="second-block" >
+          <div class="second-start-input">
+                <input type="text" class="input-1" name="text" ngModel="{{task.text}}" required   placeholder="Fill the goal here"/>
+          </div>
+          <div class="second-end-checkbox">
+            <input (click)="onCheck(task.id, task.checked, i)" class="styled-checkbox" type="checkbox" value="value1" [checked]="task.checked">
+          </div>
         </div>
-        <div class="second-end-checkbox">
-          <input class="styled-checkbox" id="styled-checkbox-1" type="checkbox" value="value1">
-        </div>
-      </div>
+      </form>
+      <div *ngIf="save">Save...</div>
     </div>
     <div class="tabs-all">
       <div class="second-block">
@@ -41,48 +45,19 @@
           <div class="text-head">Proceed after performing the focus of the day..</div>
         </div>
       </div>
-      <div class="second-block">
-        <div class="second-start-input">
-          <input class="input-1" type="text" placeholder="Put a Wings On Your Dreams" >
-        </div>
-        <div class="second-end-checkbox">
-          <input class="styled-checkbox" id="styled-checkbox-1" type="checkbox" value="value1">
-        </div>
-      </div>
-      <div class="second-block">
-        <div class="second-start-input">
-          <input class="input-1" type="text" placeholder="Start With A Baseline">
-        </div>
-        <div class="second-end-checkbox">
-          <input class="styled-checkbox" id="styled-checkbox-1" type="checkbox" value="value1">
-        </div>
-      </div>
-      <div class="second-block">
-        <div class="second-start-input">
-          <input class="input-1" type="text" placeholder="Use Your Reset Button To Change Your Vibration">
-        </div>
-        <div class="second-end-checkbox">
-          <input class="styled-checkbox" id="styled-checkbox-1" type="checkbox" value="value1">
-        </div>
-      </div>
-      <div class="second-block">
-        <div class="second-start-input">
-          <input class="input-1" type="text" placeholder="A Brief History of Creation">
-        </div>
-        <div class="second-end-checkbox">
-          <input class="styled-checkbox" id="styled-checkbox-1" type="checkbox" value="value1">
-        </div>
-      </div>
-      <div class="second-block">
-        <div class="second-start-input">
-          <input class="input-1" type="text" placeholder="The Fact and The Truth">
-        </div>
-        <div class="second-end-checkbox">
-          <input class="styled-checkbox" id="styled-checkbox-1" type="checkbox" value="value1">
-        </div>
-      </div>
-    </div>
-    <div class="tabs-all">
+      <form  *ngFor="let task of tasks; let i = index"  #myForm="ngForm"  novalidate (focusout)="update(myForm, i)">
+          <div *ngIf="task.priority_id === 2"  class="second-block" >
+
+            <div class="second-start-input">
+              <input type="text" class="input-1" name="text" ngModel="{{task.text}}" required   placeholder="Fill the goal here"/>
+            </div>
+            <div class="second-end-checkbox">
+              <input (click)="onCheck(task.id, task.checked, i)" class="styled-checkbox" type="checkbox" value="value1" [checked]="task.checked">
+            </div>
+          </div>
+      </form>
+      <div *ngIf="save">Save...</div>
+      <div class="tabs-all">
       <div class="second-block">
         <div class="second-start">
           <div class="text-head-uppercase"><span class="steps-in">3</span>Location for thoughts</div>
@@ -91,10 +66,16 @@
       </div>
       <div class="second-block-large">
         <div class="second-start-input">
-                     <textarea class="input-big" type="text" placeholder="When asked, “If you could wish for one thing only,
+          <form  #myTaskForm="ngForm"  novalidate (focusout)="updateComment(myTaskForm, day.id)">
+            <div class="second-block-large">
+              <div class="second-start-input">
+                <textarea  class="input-big" type="text"  name="text" ngModel="{{comment}}" required placeholder="When asked, “If you could wish for one thing only,
                         what would that wish be?” almost everyone; from beauty pagent contestants, to politicians, to religious
                         leaders, to children, to the average person on the street states, “Peace On Earth” or “An end to all
                         wars”. Those wishes, while exemplary, are meaningless.."></textarea>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -107,10 +88,16 @@
       </div>
       <div class="second-block-large">
         <div class="second-start-input">
-                     <textarea class="input-big" type="text" placeholder="One of the keys to reaching your goals is to eliminate
+          <form  #myGraForm="ngForm"  novalidate (focusout)="updateGratitude(myGraForm, day.id)">
+            <div class="second-block-large">
+              <div class="second-start-input">
+                <textarea  class="input-big" type="text"  name="text" ngModel="{{gratitude}}" required placeholder="One of the keys to reaching your goals is to eliminate
                         any escape routes. It is tempting to retreat to safety and comfort when challenges and difficulties arise.
                         To avoid turning around and abandoning your goals, you must make going forward more compelling then going
                         back.."></textarea>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -123,25 +110,61 @@
       </div>
       <div class="second-block-large">
         <div class="second-start-input">
-                     <textarea class="input-big" type="text" placeholder="The most beautiful experience we can have is the
+          <form  #myProgForm="ngForm"  novalidate (focusout)="updateProgress(myProgForm, day.id)">
+            <div class="second-block-large">
+              <div class="second-start-input">
+                <textarea  class="input-big"   name="text" ngModel="{{progress}}" placeholder="The most beautiful experience we can have is the
                         mysterious. It is the fundamental emotion that stands at the cradle of true art and true science.”
                         Albert Einstein, The World as I See It, 1931 The debate between realism and anti-realism is, at least,
                         a century old.."></textarea>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
-    <div class="great-job">
+    <div [hidden]="!time" class="great-job">
       Great job.<br> Start planning your next day <br><span style="border-bottom:2px dashed violet">since 18:00 today.</span>
     </div>
     <div class="third-block">
-      <div class="button-back">
+      <div (click)="previousday()"  class="button-back" [hidden]="previus">
         Previous Day
       </div>
-      <a href="./index.html">
-        <div class="button-next">
+      <a  >
+        <div routerLink="/" class="button-next" [hidden]="!previus">
+          Today
+        </div>
+      </a>
+      <a  >
+        <div (click)="nextday()" class="button-next" [hidden]="time">
           Next day
         </div>
       </a>
     </div>
   </div>
+</div>
+</div>
+<footer>
+  <i class="fa-2x fa-calendar-o icons">
+    <div class="icons-text">Day</div>
+  </i>
+  <i class="fa-2x fa-calendar-check-o icons">
+    <div class="icons-text">Week</div>
+  </i>
+  <i class="fa-2x fa-calendar icons">
+    <div class="icons-text">Month</div>
+  </i>
+  <i class="fa-2x fa-bars icons menu-bar" id="showLeft" ></i>
+  <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+    <h3>Menu</h3>
+    <a href="#">Celery seakale</a>
+    <a href="#">Dulse daikon</a>
+    <a href="#">Zucchini garlic</a>
+    <a href="#">Catsear azuki bean</a>
+    <a href="#">Dandelion bunya</a>
+    <a href="#">Rutabaga</a>
+  </nav>
+</footer>
+<div class="container-footer">
+  Copyright &copy 2017-2018 Boom! All Rights Reserved.
 </div>
