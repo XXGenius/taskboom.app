@@ -24,7 +24,7 @@ export class ApiService {
   /********************************  GET  ****************************/
 
   registration(email: string, password: string, first_name: string, last_name: string , user_role_id: number ) {
-    return this.http.get('http://boomapi.acesspades.com/api/v1/register' + '?' + this.tokenParam, {
+    return this.http.get('https://api.golaso.io/api/v1/register' + '?' + this.tokenParam, {
       params: { email: email, password: password, first_name: first_name, last_name: last_name }})
         .pipe(
             map((res: any) => {
@@ -36,13 +36,13 @@ export class ApiService {
   }
 
   getCurrentUser(uid) {
-    return this.http.get('http://boomapi.acesspades.com/api/v1/getcurrentuser' , {
+    return this.http.get('https://api.golaso.io/api/v1/getcurrentuser' , {
       params: { uid: uid }})
         .map((res) => res);
   }
 
   getUserByEmail(email) {
-    return this.http.get('http://boomapi.acesspades.com/api/v1/user' + '?' + this.tokenParam , {
+    return this.http.get('https://api.golaso.io/api/v1/user' + '?' + this.tokenParam , {
       params: { email: email }})
       .pipe(
         map((res: any) => {
@@ -55,38 +55,38 @@ export class ApiService {
 
 
   getLongCycle(user_id) {
-        return this.http.get('http://boomapi.acesspades.com/api/v1/long' , {
+        return this.http.get('https://api.golaso.io/api/v1/long' , {
             params: { user_id: user_id }})
             .map((res) => res);
     }
 
 
   getWeekCycle(user_id) {
-    return this.http.get('http://boomapi.acesspades.com/api/v1/week' , {
+    return this.http.get('https://api.golaso.io/api/v1/week' , {
       params: { user_id: user_id }})
       .map((res) => res);
   }
 
     getMySteps(cycle_id) {
-        return this.http.get('http://boomapi.acesspades.com/api/v1/steps' + '?' + this.tokenParam , {
+        return this.http.get('https://api.golaso.io/api/v1/steps' + '?' + this.tokenParam , {
             params: { cycle_id: cycle_id }})
             .map((res) => res);
     }
 
     getMyRewards(cycle_id) {
-        return this.http.get('http://boomapi.acesspades.com/api/v1/rewards' + '?' + this.tokenParam , {
+        return this.http.get('https://api.golaso.io/api/v1/rewards' + '?' + this.tokenParam , {
             params: { cycle_id: cycle_id }})
             .map((res) => res);
     }
 
     getMyTasks(cycle_id) {
-        return this.http.get('http://boomapi.acesspades.com/api/v1/mytasks' + '?' + this.tokenParam , {
+        return this.http.get('https://api.golaso.io/api/v1/mytasks' + '?' + this.tokenParam , {
             params: { cycle_id: cycle_id }})
             .map((res) => res);
     }
 
   getDayTasks(day_id) {
-    return this.http.get('http://boomapi.acesspades.com/api/v1/daytasks' + '?' + this.tokenParam , {
+    return this.http.get('https://api.golaso.io/api/v1/daytasks' + '?' + this.tokenParam , {
       params: { day_id: day_id }})
       .map((res) => res);
   }
@@ -94,14 +94,14 @@ export class ApiService {
 
 
   login(email, password) {
-    return this.http.get('http://boomapi.acesspades.com/api/v1/login' + '?' + this.tokenParam, {
+    return this.http.get('https://api.golaso.io/api/v1/login' + '?' + this.tokenParam, {
       params: { email: email, password: password }})
         .map((res) => res);
   }
 
 
   getDay(date, user_id) {
-    return this.http.get('http://boomapi.acesspades.com/api/v1/day' + '?' + this.tokenParam , {
+    return this.http.get('https://api.golaso.io/api/v1/day' + '?' + this.tokenParam , {
       params: { date: date,  user_id: user_id }})
       .pipe(
         map((res: any) => {
@@ -113,25 +113,25 @@ export class ApiService {
   }
 
     getTasks(id) {
-    return this.http.get('http://boomapi.acesspades.com/api/v1/tasks/' + id + '?' + this.tokenParam  )
+    return this.http.get('https://api.golaso.io/api/v1/tasks/' + id + '?' + this.tokenParam  )
       .map((res) => res);
 
   }
 
 
   getUserGroups() {
-    return this.http.get('http://boomapi.acesspades.com/api/v1/usergroups?' + this.tokenParam  )
+    return this.http.get('https://api.golaso.io/api/v1/usergroups?' + this.tokenParam  )
       .map((res) => res);
   }
 
   getUsers() {
-    return this.http.get('http://boomapi.acesspades.com/api/v1/users?' + this.tokenParam  )
+    return this.http.get('https://api.golaso.io/api/v1/users?' + this.tokenParam  )
       .map((res) => res);
   }
 
 
   loginAuth(token) {
-    return this.http.post('http://boomapi.acesspades.com/api/v1/oauth',
+    return this.http.post('https://api.golaso.io/api/v1/oauth',
         { token: token }, this._options)
         .map((res) => res);
   }
@@ -140,7 +140,7 @@ export class ApiService {
 
   addLongCycle(user_id) {
       console.log(this._options);
-      return this.http.post('http://boomapi.acesspades.com/api/v1/createcycle?' + this.tokenParam,
+      return this.http.post('https://api.golaso.io/api/v1/createcycle?' + this.tokenParam,
           {token: this.token,  user_id: user_id }, this._options)
           .pipe(
               map((res: any) => {
@@ -153,7 +153,7 @@ export class ApiService {
 
   addDay(user_id, date) {
     console.log(this._options);
-    return this.http.post('http://boomapi.acesspades.com/api/v1/day?' + this.tokenParam,
+    return this.http.post('https://api.golaso.io/api/v1/day?' + this.tokenParam,
       {token: this.token, date: date,  user_id: user_id }, this._options)
       .pipe(
         map((res: any) => {
@@ -167,7 +167,7 @@ export class ApiService {
 
   addWeekCycle(user_id) {
     console.log(this._options);
-    return this.http.post('http://boomapi.acesspades.com/api/v1/createweek?' + this.tokenParam,
+    return this.http.post('https://api.golaso.io/api/v1/createweek?' + this.tokenParam,
       {token: this.token,  user_id: user_id }, this._options)
       .pipe(
         map((res: any) => {
@@ -180,7 +180,7 @@ export class ApiService {
 
   createTask(title: string, date, project_id: number, user_id ) {
       console.log(this._options);
-      return this.http.post('http://boomapi.acesspades.com/api/v1/task?' + this.tokenParam,
+      return this.http.post('https://api.golaso.io/api/v1/task?' + this.tokenParam,
         {token: this.token, title: title, date: date, project_id: project_id, user_id: user_id }, this._options)
           .pipe(
               map((res: any) => {
@@ -193,7 +193,7 @@ export class ApiService {
 
   createUserGroup(title: string) {
     console.log(JSON.stringify({ title: title }));
-    return this.http.post('http://boomapi.acesspades.com/api/v1/usergroup?' + this.tokenParam,
+    return this.http.post('https://api.golaso.io/api/v1/usergroup?' + this.tokenParam,
       {token: this.token, title: title }, this._options)
       .map((res) => res)
       .catch((error: any) => Observable.throw(error || 'Server error'));
@@ -201,7 +201,7 @@ export class ApiService {
 
   createUser(username, email, password, user_role_id) {
     console.log(JSON.stringify({ username: username, email: email, password: password, user_role_id: user_role_id }));
-    return this.http.post('http://boomapi.acesspades.com/api/v1/user?' + this.tokenParam,
+    return this.http.post('https://api.golaso.io/api/v1/user?' + this.tokenParam,
       {token: this.token, username: username, email: email, password: password, user_role_id: user_role_id }, this._options)
       .map((res) => res);
   }
@@ -212,7 +212,7 @@ export class ApiService {
 
   updateStep(id: number, text) {
       console.log(JSON.stringify({ text: text  }));
-      return this.http.put('http://boomapi.acesspades.com/api/v1/step/' + id + '?' + this.tokenParam,
+      return this.http.put('https://api.golaso.io/api/v1/step/' + id + '?' + this.tokenParam,
           { text: text }, this._options)
           .pipe(
               map((res: any) => {
@@ -225,7 +225,7 @@ export class ApiService {
 
   updateProgress(comment_progress, id: number) {
     console.log(JSON.stringify({ comment_progress: comment_progress  }));
-    return this.http.put('http://boomapi.acesspades.com/api/v1/progress/' + id + '?' + this.tokenParam,
+    return this.http.put('https://api.golaso.io/api/v1/progress/' + id + '?' + this.tokenParam,
       { comment_progress: comment_progress  }, this._options)
       .pipe(
         map((res: any) => {
@@ -238,7 +238,7 @@ export class ApiService {
 
   updateGratitude(gratitude_day, id: number) {
     console.log(JSON.stringify({ gratitude_day: gratitude_day }));
-    return this.http.put('http://boomapi.acesspades.com/api/v1/gratitude/' + id + '?' + this.tokenParam,
+    return this.http.put('https://api.golaso.io/api/v1/gratitude/' + id + '?' + this.tokenParam,
       { gratitude_day: gratitude_day }, this._options)
       .pipe(
         map((res: any) => {
@@ -251,7 +251,7 @@ export class ApiService {
 
   updateComment(comment_task, id: number) {
     console.log(JSON.stringify({ comment_task: comment_task }));
-    return this.http.put('http://boomapi.acesspades.com/api/v1/comment/' + id + '?' + this.tokenParam,
+    return this.http.put('https://api.golaso.io/api/v1/comment/' + id + '?' + this.tokenParam,
       { comment_task: comment_task}, this._options)
       .pipe(
         map((res: any) => {
@@ -264,7 +264,7 @@ export class ApiService {
 
     updateReward(id: number, text) {
         console.log(JSON.stringify({ text: text  }));
-        return this.http.put('http://boomapi.acesspades.com/api/v1/reward/' + id + '?' + this.tokenParam,
+        return this.http.put('https://api.golaso.io/api/v1/reward/' + id + '?' + this.tokenParam,
             { text: text }, this._options)
             .pipe(
                 map((res: any) => {
@@ -277,7 +277,7 @@ export class ApiService {
 
   updateUser(title: string) {
     console.log(JSON.stringify({ title: title }));
-    return this.http.put('http://boomapi.acesspades.com/api/v1/user?' + this.tokenParam,
+    return this.http.put('https://api.golaso.io/api/v1/user?' + this.tokenParam,
       {token: this.token, title: title }, this._options)
       .map((res) => res)
       .catch((error: any) => Observable.throw(error || 'Server error'));
@@ -285,7 +285,7 @@ export class ApiService {
 
   checkTask(id: number, checked: boolean) {
     console.log(checked);
-    return this.http.put('http://boomapi.acesspades.com/api/v1/check/' + id + '?' + this.tokenParam,
+    return this.http.put('https://api.golaso.io/api/v1/check/' + id + '?' + this.tokenParam,
       { checked: checked },
       this._options)
         .map((res) => res);
@@ -293,7 +293,7 @@ export class ApiService {
 
   updateTask (text, id) {
       console.log(text);
-      return this.http.put('http://boomapi.acesspades.com/api/v1/task/' + id + '?' + this.tokenParam,
+      return this.http.put('https://api.golaso.io/api/v1/task/' + id + '?' + this.tokenParam,
           { text: text },
           this._options)
           .pipe(
@@ -308,7 +308,7 @@ export class ApiService {
   /********************************** DELETE ****************************/
 
   deleteTask(id: number) {
-      return this.http.delete('http://boomapi.acesspades.com/api/v1/task/' + id + '?' + this.tokenParam )
+      return this.http.delete('https://api.golaso.io/api/v1/task/' + id + '?' + this.tokenParam )
           .pipe(
               map((res: any) => {
                   console.log(res);
@@ -319,13 +319,13 @@ export class ApiService {
   }
 
   deleteUserGroup(id: number) {
-    return this.http.delete('http://boomapi.acesspades.com/api/v1/usergroup/' + id + '?' + this.tokenParam )
+    return this.http.delete('https://api.golaso.io/api/v1/usergroup/' + id + '?' + this.tokenParam )
       .map((res) => res)
       .catch((error: any) => Observable.throw(error || 'Server error'));
   }
 
   deleteUser(id: number) {
-    return this.http.delete('http://boomapi.acesspades.com/api/v1/user/' + id + '?' + this.tokenParam )
+    return this.http.delete('https://api.golaso.io/api/v1/user/' + id + '?' + this.tokenParam )
       .map((res) => res)
       .catch((error: any) => Observable.throw(error || 'Server error'));
   }
