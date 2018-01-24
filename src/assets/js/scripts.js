@@ -95,4 +95,3 @@ function disableOther( button ) {
         classie.toggle( showRightPush, 'disabled' );
     }
 }
-
