@@ -1,14 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {ChangeDetectorRef, NgModule} from '@angular/core';
-// import { SocialLoginModule, AuthServiceConfig } from 'angular4-oauth-login';
-// import { GoogleLoginProvider, FacebookLoginProvider } from '';
 import { AppComponent } from './app.component';
 import {FormsModule} from '@angular/forms';
-
 import { HeaderComponent } from './header/header.component';
-
 import {Angular2FontawesomeModule} from 'angular2-fontawesome';
-
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpModule} from '@angular/http';
 import { ReversePipe } from './pipes/reverse.pipe';
