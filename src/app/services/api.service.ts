@@ -126,14 +126,7 @@ export class ApiService {
   login(email, password) {
     return this.http.get('https://api.golaso.io/api/v1/login' + '?' + this.tokenParam, {
       params: { email: email, password: password}})
-      .pipe(
-        map((res: any) => {
-          console.log(res);
-          return res;
-        }),
-        catchError(error => Observable.throw(error || 'Server error'))
-      );
-
+      .map((res) => res);
   }
 
 
