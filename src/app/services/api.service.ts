@@ -15,7 +15,6 @@ export class ApiService {
             ',Content-Disposition',
                 'Content-Type': 'application/json;charset=utf-8',
                 'Accept': '*/*',
-                'Access-Control-Allow-Origin': '*',
                 'Cache-Control': 'no-cache'}
         );
   private token = 'd7f6sd5a7854r85gasa6d5fg67sdg78df5gsf5gsd8';
