@@ -15,6 +15,7 @@ export class ApiService {
             ',Content-Disposition',
                 'Content-Type': 'application/json;charset=utf-8',
                 'Accept': '*/*',
+                'Access-Control-Allow-Origin': '*',
                 'Cache-Control': 'no-cache'}
         );
   private token = 'd7f6sd5a7854r85gasa6d5fg67sdg78df5gsf5gsd8';
@@ -126,7 +127,13 @@ export class ApiService {
   login(email, password) {
     return this.http.get('https://api.golaso.io/api/v1/login' + '?' + this.tokenParam, {
       params: { email: email, password: password}})
-      .map((res) => res);
+      .pipe(
+        map((res: any) => {
+          console.log(res);
+          return res;
+        }),
+        catchError(error => Observable.throw(error || 'Server error'))
+      );
 
   }
 
