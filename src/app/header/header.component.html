@@ -1,35 +1,35 @@
 <div class="container-fluid">
-  <div class="header">
+
+  <header>
     <a routerLink="/">
-      <div *ngIf="isAuthorized" class="logo1">&nbsp;</div></a>
+      <div *ngIf="isAuthorized" class="logo">&nbsp;</div></a>
     <div *ngIf="isAuthorized" class="pr-bar">
-      <div class="pr-bar">
+
         <div class="pr-photo">
           <div ><img class="account-img"  src="{{ currentUser.photo}}" alt=""></div>
           <div class="photo-text">1</div>
           <div class="photo-text-1">week</div>
           <div class="photo-text-2">1 day left before close a week</div>
         </div>
-      </div>
+
     </div>
-    <div *ngIf="isAuthorized" >
-      <button  class="pr-button-1" routerLink="/week" ><img src="img/settings.png" class="settings">Week</button>
-    </div>
-    <div *ngIf="isAuthorized" >
-      <button  class="pr-button-1" routerLink="/day" ><img src="img/settings.png" class="settings">Day</button>
-    </div>
-    <div *ngIf="isAuthorized" >
-      <button  class="pr-button-1" routerLink="/long" ><img src="img/settings.png" class="settings">12 week</button>
-    </div>
-    <div *ngIf="isAuthorized">
-      <button  class="pr-button-1" (click)="exit()">Exit</button>
-    </div>
+    <!--<div *ngIf="isAuthorized" >-->
+      <!--<button  class="pr-button-1" routerLink="/week" ><img src="img/settings.png" class="settings">Week</button>-->
+    <!--</div>-->
+    <!--<div *ngIf="isAuthorized" >-->
+      <!--<button  class="pr-button-1" routerLink="/day" ><img src="img/settings.png" class="settings">Day</button>-->
+    <!--</div>-->
+    <!--<div *ngIf="isAuthorized" >-->
+      <!--<button  class="pr-button-1" routerLink="/long" ><img src="img/settings.png" class="settings">12 week</button>-->
+    <!--</div>-->
+    <div *ngIf="isAuthorized" class="pr-button-1" (click)="exit()">Exit</div>
+
     <div *ngIf="!isAuthorized" class="pr-button-5">
       <a routerLink="/signup">Sign up</a>
     </div>
     <div *ngIf="!isAuthorized" class="pr-button-5">
       <a routerLink="/signin">Sign in</a>
     </div>
-  </div>
+  </header>
 
 </div>
