@@ -4,13 +4,9 @@ import {ChangeDetectorRef, NgModule} from '@angular/core';
 // import { GoogleLoginProvider, FacebookLoginProvider } from '';
 import { AppComponent } from './app.component';
 import {FormsModule} from '@angular/forms';
-
 import { HeaderComponent } from './header/header.component';
-
 import {Angular2FontawesomeModule} from 'angular2-fontawesome';
-
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {HttpModule} from '@angular/http';
 import { ReversePipe } from './pipes/reverse.pipe';
 import {AppRoutingModule} from './app-routing.module';
 import { IndexComponent } from './views/index/index.component';
@@ -33,6 +29,7 @@ import { WisdomComponent } from './wisdom/wisdom.component';
 import { LongcycleComponent } from './longcycle/longcycle.component';
 import { WeekcycleComponent } from './weekcycle/weekcycle.component';
 import { NextdayComponent } from './nextday/nextday.component';
+import { ReviewComponent } from './review/review.component';
 
 
 
@@ -62,6 +59,7 @@ import { NextdayComponent } from './nextday/nextday.component';
     LongcycleComponent,
     WeekcycleComponent,
     NextdayComponent,
+    ReviewComponent,
 
   ],
   imports: [
