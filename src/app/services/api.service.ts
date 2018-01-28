@@ -85,6 +85,31 @@ export class ApiService {
             .map((res) => res);
     }
 
+  getUnrested(review_id) {
+    return this.http.get('https://api.golaso.io/api/v1/unrested' + '?' + this.tokenParam , {
+      params: { review_id: review_id }})
+      .map((res) => res);
+  }
+
+  getVictory(review_id) {
+    return this.http.get('https://api.golaso.io/api/v1/victory' + '?' + this.tokenParam , {
+      params: { review_id: review_id }})
+      .map((res) => res);
+  }
+
+  getLesson(review_id) {
+    return this.http.get('https://api.golaso.io/api/v1/lesson' + '?' + this.tokenParam , {
+      params: { review_id: review_id }})
+      .map((res) => res);
+  }
+
+  getSpecific(review_id) {
+    return this.http.get('https://api.golaso.io/api/v1/specific' + '?' + this.tokenParam , {
+      params: { review_id: review_id }})
+      .map((res) => res);
+  }
+
+
   getDayTasks(day_id) {
     return this.http.get('https://api.golaso.io/api/v1/daytasks' + '?' + this.tokenParam , {
       params: { day_id: day_id }})
@@ -96,9 +121,26 @@ export class ApiService {
   login(email, password) {
     return this.http.get('https://api.golaso.io/api/v1/login' + '?' + this.tokenParam, {
       params: { email: email, password: password }})
-        .map((res) => res);
+      .pipe(
+        map((res: any) => {
+          console.log(res);
+          return res;
+        }),
+        catchError(error => Observable.throw(error || 'Server error'))
+      );
   }
 
+  getReview(cycle_id) {
+    return this.http.get('https://api.golaso.io/api/v1/review' + '?' + this.tokenParam , {
+      params: { cycle_id: cycle_id }})
+      .pipe(
+        map((res: any) => {
+          console.log(res);
+          return res;
+        }),
+        catchError(error => Observable.throw(error || 'Server error'))
+      );
+  }
 
   getDay(date, user_id) {
     return this.http.get('https://api.golaso.io/api/v1/day' + '?' + this.tokenParam , {
@@ -221,6 +263,58 @@ export class ApiService {
               }),
               catchError(error => Observable.throw(error || 'Server error'))
           );
+  }
+
+  updateVictory(text, id: number) {
+    console.log(JSON.stringify({ text: text  }));
+    return this.http.put('https://api.golaso.io/api/v1/victory/' + id + '?' + this.tokenParam,
+      { text: text }, this._options)
+      .pipe(
+        map((res: any) => {
+          console.log(res);
+          return res;
+        }),
+        catchError(error => Observable.throw(error || 'Server error'))
+      );
+  }
+
+  updateSpecific(text, id: number) {
+    console.log(JSON.stringify({ text: text  }));
+    return this.http.put('https://api.golaso.io/api/v1/specific/' + id + '?' + this.tokenParam,
+      { text: text }, this._options)
+      .pipe(
+        map((res: any) => {
+          console.log(res);
+          return res;
+        }),
+        catchError(error => Observable.throw(error || 'Server error'))
+      );
+  }
+
+  updateUnrested(text, id: number) {
+    console.log(JSON.stringify({ text: text  }));
+    return this.http.put('https://api.golaso.io/api/v1/unrested/' + id + '?' + this.tokenParam,
+      { text: text }, this._options)
+      .pipe(
+        map((res: any) => {
+          console.log(res);
+          return res;
+        }),
+        catchError(error => Observable.throw(error || 'Server error'))
+      );
+  }
+
+  updateLesson(text, id: number) {
+    console.log(JSON.stringify({ text: text  }));
+    return this.http.put('https://api.golaso.io/api/v1/lesson/' + id + '?' + this.tokenParam,
+      { text: text }, this._options)
+      .pipe(
+        map((res: any) => {
+          console.log(res);
+          return res;
+        }),
+        catchError(error => Observable.throw(error || 'Server error'))
+      );
   }
 
   updateProgress(comment_progress, id: number) {

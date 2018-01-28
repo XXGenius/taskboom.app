@@ -11,8 +11,14 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 export class WeekcycleComponent implements OnInit {
   tasks;
   reward = new Subject();
+  review = false;
+  victories;
+  unresteds;
+  specific;
+  lessons;
   constructor(private apiService: ApiService, private spinnerService: Ng4LoadingSpinnerService) {
     this.spinnerService.show();
+    window.scroll(0, 0);
     const id = localStorage.getItem('id');
     this.apiService.getWeekCycle(id)
       .subscribe( (cycle) => {
@@ -31,21 +37,58 @@ export class WeekcycleComponent implements OnInit {
                 this.tasks = tasks;
                 console.log(tasks);
               });
+            this.apiService.getReview(cycle_id)
+              .subscribe( (review) => {
+              console.log(review);
+            });
           });
+          window.scrollBy(0, 0);
         }else {
           const cycle_id = cycle['0']['id'];
           this.apiService.getMyRewards(cycle_id)
             .subscribe((reward) => {
               this.reward = reward['0'];
-              console.log(reward);
-            });
+              });
           this.apiService.getMyTasks(cycle_id)
             .subscribe((tasks) => {
               this.tasks = tasks;
               console.log(tasks);
             });
+          this.apiService.getReview(cycle_id)
+            .subscribe( (review) => {
+              console.log(review);
+              if ( review.length === 0) {
+                this.review = false;
+              }else {
+                const review_id = review['0']['id'];
+                console.log(review_id);
+                this.apiService.getLesson(review_id)
+                  .subscribe((lesson) => {
+                  console.log(lesson);
+                  this.lessons = lesson;
+                });
+                this.apiService.getSpecific(review_id)
+                  .subscribe((spec) => {
+                  console.log(spec);
+                  this.specific = spec;
+                });
+                this.apiService.getUnrested(review_id)
+                  .subscribe((unrest) => {
+                  console.log(unrest);
+                  this.unresteds = unrest;
+                });
+                this.apiService.getVictory(review_id)
+                  .subscribe((victory) => {
+                  console.log(victory);
+                  this.victories = victory;
+                });
+                this.review = true;
+              }
+            });
+          window.scrollBy(0, 0);
           }
           });
+
     this.spinnerService.hide();
   }
 
@@ -74,11 +117,51 @@ export class WeekcycleComponent implements OnInit {
     );
   }
 
+  updateVictory (form: NgForm, i) {
+    const id = this.victories[i].id;
+    this.apiService.updateVictory(form.value.text, id).subscribe(
+      (step) => {
+        this.tasks[i].text = step.text;
+      }
+    );
+  }
+
+  updateSpec(form, i)  {
+    const id = this.specific[i].id;
+    this.apiService.updateSpecific(form.value.text, id).subscribe(
+      (step) => {
+        this.tasks[i].text = step.text;
+      }
+    );
+  }
+
+  updateUnrested(form, i)  {
+    const id = this.unresteds[i].id;
+    this.apiService.updateUnrested(form.value.text, id).subscribe(
+      (step) => {
+        this.tasks[i].text = step.text;
+      }
+    );
+  }
+
+  updateLesson(form, i)  {
+    const id = this.lessons[i].id;
+    this.apiService.updateLesson(form.value.text, id).subscribe(
+      (step) => {
+        this.tasks[i].text = step.text;
+      }
+    );
+  }
+
   updateReward (id, form: NgForm) {
     this.apiService.updateReward(id, form.value.text)
       .subscribe((reward) => {
         console.log(reward);
         this.reward['text'] = reward.text;
       });
+  }
+
+  scrollbyid() {
+    window.scrollBy(0, 1770);
   }
 }

@@ -27,10 +27,7 @@
       <form  #myTaskForm="ngForm"  novalidate (focusout)="updateFirstTask(myTaskForm, firsttask['id'])">
       <div class="second-block-large">
         <div class="second-start-input">
-                     <textarea  class="input-big" type="text"  name="text" ngModel="{{ firsttask['text'] }}"  required placeholder="One of the keys to reaching your goals is to eliminate
-                        any escape routes. It is tempting to retreat to safety and comfort when challenges and difficulties arise.
-                        To avoid turning around and abandoning your goals, you must make going forward more compelling then going
-                        back.."></textarea>
+                     <input  class="input-1" type="text"  name="text" ngModel="{{ firsttask['text'] }}"  required placeholder="One of the keys to reaching your goals is to eliminate any escape routes.">
         </div>
       </div>
       </form>
@@ -46,7 +43,7 @@
             id="tr{{step.id }}"
             #myForm="ngForm"  novalidate (focusout)="update(myForm, i)" >
         <div class="second-block" *ngIf="step.task_id === firsttask['id']">
-          <div class="under-numeric">2.<span style="color: rgba(255,133,0,0.8);">{{ i + 1 }}</span> </div>
+          <div class="under-numeric"><span style="color: rgba(255,133,0,0.8);">{{ i + 1 }}</span> </div>
           <div class="second-start-input">
             <div>
               <div  *ngIf="!step.edit" >
@@ -150,9 +147,7 @@
       <form  #mySecTaskForm="ngForm"  novalidate (focusout)="updateSecondTask(mySecTaskForm, secondtask['id'])">
         <div class="second-block-large">
           <div class="second-start-input">
-            <textarea  class="input-big" type="text"  name="text" ngModel="{{ secondtask['text'] }}" required placeholder="One of the keys to reaching your goals is to eliminate
-                        any escape routes. It is tempting to retreat to safety and comfort when challenges and difficulties arise.
-                        To avoid turning around and abandoning your goals.."></textarea>
+            <input  class="input-1" type="text"  name="text" ngModel="{{ secondtask['text'] }}" required placeholder="One of the keys to reaching your goals is to eliminate any escape routes..">
           </div>
         </div>
       </form>
@@ -168,7 +163,7 @@
 
              #myForm="ngForm"  novalidate (focusout)="update(myForm, i)" >
         <div class="second-block" *ngIf="step.task_id === secondtask['id']">
-          <div class="under-numeric">3.<span style="color: rgba(255,133,0,0.8);">{{ i + 1 }}</span> </div>
+          <div class="under-numeric"><span style="color: rgba(255,133,0,0.8);">{{ i + 1 }}</span> </div>
           <div class="second-start-input">
             <div>
               <!--<span *ngIf="!step.edit">{{ step.text}}</span>-->
@@ -216,17 +211,21 @@
       <form  #myTaskForm="ngForm"  novalidate (focusout)="updateThirdTask(myTaskForm, thirdtask['id'])">
         <div class="second-block-large">
           <div class="second-start-input">
-            <textarea  class="input-big" type="text"  name="text" ngModel="{{ thirdtask['text'] }}" required placeholder="One of the keys to reaching your goals is to eliminate
-                        any escape routes. It is tempting to retreat to safety and comfort when challenges and difficulties arise.
-                        To avoid turning around and abandoning your goals.."></textarea>
+            <input  class="input-1" type="text"  name="text" ngModel="{{ thirdtask['text'] }}" required placeholder="One of the keys to reaching your goals is to eliminate any escape routes.">
           </div>
         </div>
       </form>
+      <div class="second-block">
+        <div class="second-start">
+          <div class="text-head-uppercase"><span class="steps-in">8</span>4 steps to achieve goal #3</div>
+          <div class="text-head">You can start from any field, just fill like you feel it</div>
+        </div>
+      </div>
       <form  *ngFor="let step of steps; let i = index"
 
              #myForm="ngForm"  novalidate (focusout)="update(myForm, i)" >
         <div class="second-block" *ngIf="step.task_id === thirdtask['id'] ">
-          <div class="under-numeric">2.<span style="color: rgba(255,133,0,0.8);">{{ i + 1 }}</span> </div>
+          <div class="under-numeric"><span style="color: rgba(255,133,0,0.8);">{{ i + 1 }}</span> </div>
           <div class="second-start-input">
             <div>
               <!--<span *ngIf="!step.edit">{{ step.text}}</span>-->

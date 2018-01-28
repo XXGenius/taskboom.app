@@ -74,10 +74,9 @@ export class AuthService {
         this.apiservice.login(email, password)
             .subscribe(user => {
                 console.log(user);
-                if (user === 0 ) {
+                if (user.length === 0) {
                     this.error = 'error';
-                    return this.error;
-                } else {
+                    } else {
                     this.error = '';
                     localStorage.setItem('uid', user['0'].uid);
                     localStorage.setItem('id', user['0'].id);
@@ -97,6 +96,8 @@ export class AuthService {
                         }
                     });
                 }
+                this.spinnerService.hide();
+                return this.error;
                 } ,
                 (error) => { this.error = error;
                     console.log(this.error);

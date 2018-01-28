@@ -1,5 +1,125 @@
 <div class="space">
 </div>
+<div *ngIf="review" class="container-fluid1">
+  <div class="first-block">
+    <div class="h1-main">
+      <div class="steps">1</div>
+      <div class="steps-line"></div>
+      <div class="steps">2</div>
+      <div class="steps-line"></div>
+      <div class="steps steps-last">3</div>
+      Week review # ..
+    </div>
+    <a  class="calendar" (click)="scrollbyid()">
+      Go on week plan!
+    </a>
+  </div>
+  <div class="form-group-1">
+    <div class="tabs-all">
+      <div class="second-block">
+        <div class="second-start">
+          <div class="text-head-uppercase"><span class="steps-in">1</span>My victories of this week</div>
+          <div class="text-head">What's going on? What works? What achievements (big and small)?</div>
+        </div>
+      </div>
+      <form *ngFor="let victory of victories; let i = index"
+            id="tr{{victory.id + 1}}"
+            #myForm="ngForm"  novalidate (focusout)="updateVictory(myForm, i)" >
+        <div class="second-block" >
+          <div class="second-start-input">
+            <div>
+              <div>
+                <input type="text" class="input-1"
+                       name="text" ngModel="{{victory.text}}" required  placeholder="Windows prepared for new challenges"/>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="tabs-all">
+      <div class="second-block">
+        <div class="second-start">
+          <div class="text-head-uppercase"><span class="steps-in">2</span>Lessons of this week?</div>
+          <div class="text-head">What new things have I learned about this week? What lessons have I learned from the mistakes?</div>
+        </div>
+      </div>
+      <form *ngFor="let lesson of lessons; let i = index"
+            id="tr{{lesson.id + 1}}"
+            #myForm="ngForm"  novalidate (focusout)="updateLesson(myForm, i)" >
+        <div class="second-block" >
+          <div class="second-start-input">
+            <div>
+              <div>
+                <input type="text" class="input-1"
+                       name="text" ngModel="{{lesson.text}}" required  placeholder="Use Your Reset Button To Change Your Vibration"/>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="tabs-all">
+      <div class="second-block">
+        <div class="second-start">
+          <div class="text-head-uppercase"><span class="steps-in">3</span>Unrested tasks of the past week</div>
+          <div class="text-head">What tasks related to the 12-week goals could not be fulfilled, why?</div>
+        </div>
+      </div>
+      <form *ngFor="let unrested of unresteds; let i = index"
+            id="tr{{unrested.id + 1}}"
+            #myForm="ngForm"  novalidate (focusout)="updateUnrested(myForm, i)" >
+        <div class="second-block" >
+          <div class="second-start-input">
+            <div>
+              <div>
+                <input type="text" class="input-1"
+                       name="text" ngModel="{{unrested.text}}" required  placeholder="Use Your Reset "/>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="tabs-all">
+      <div class="second-block">
+        <div class="second-start">
+          <div class="text-head-uppercase"><span class="steps-in">3</span>One specific action, which will make the next week more effective</div>
+          <div class="text-head">As detailed as possible for now</div>
+        </div>
+      </div>
+      <form *ngFor="let spec of specific; let i = index"
+            id="tr{{spec.id + 1}}"
+            #myForm="ngForm"  novalidate (focusout)="updateSpec(myForm, i)" >
+        <div class="second-block" >
+          <div class="second-start-input">
+            <div>
+              <div>
+                <input type="text" class="input-1"
+                       name="text" ngModel="{{spec.text}}" required  placeholder="Use Your Reset Button To Change Your Vibration"/>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="great-job">
+      Great job.<br> Complete filling current plan before 18:00. <br><span style="border-bottom:2px dashed violet">Next step is available in</span>
+    </div>
+    <div class="third-block">
+      <!-- <div class="button-back">
+         Back
+         </div>
+         <div class="button-next">
+         Next
+         </div> -->
+    </div>
+  </div>
+</div>
 <div class="container-fluid1">
   <div class="first-block">
     <div class="h1-main">
@@ -83,8 +203,7 @@
         <form  #myForm="ngForm"  novalidate (focusout)="updateReward(reward['text'], myForm)">
       <div class="second-block">
         <input type="text" value="тест"
-               name="text" class="input-1" placeholder="When asked, “If you could wish for one thing only,
-                        what would that wish be?” almost everyone.." ngModel="{{reward['text']}}" required/>
+               name="text" class="input-1" placeholder="When asked, “If you could wish for one thing only, what would that wish be?” almost everyone.." ngModel="{{reward['text']}}" required/>
         </div>
         </form>
       </div>
