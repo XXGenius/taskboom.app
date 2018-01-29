@@ -44,7 +44,7 @@
       <form  *ngFor="let step of steps; let i = index"
             id="tr{{step.id }}"
             #myForm="ngForm"  novalidate (focusout)="update(myForm, i)" >
-        <div class="second-block" *ngIf="step.task_id === firsttask['id']">
+        <div class="second-block-large-1" *ngIf="step.task_id === firsttask['id']">
           <div class="under-numeric">2.<span style="color: rgba(255,133,0,0.8);">{{ i + 1 }}</span> </div>
           <div class="second-start-input">
             <div>
@@ -57,6 +57,7 @@
           </div>
         </div>
       </form>
+      <div style="height:37px">&nbsp;</div>
       <div class="tabs-all">
         <div class="second-block">
           <div class="second-start">
@@ -66,7 +67,7 @@
         </div>
         <form  *ngFor="let reward of rewards; let i = index"
                #myForm="ngForm"  novalidate (focusout)="updateReward(myForm, i)" >
-          <div class="second-block" *ngIf="reward.task_id === firsttask['id'] ">
+          <div class="second-block-large" *ngIf="reward.task_id === firsttask['id'] ">
             <div class="second-start-input">
               <div>
                 <div  >
@@ -132,7 +133,7 @@
       <div class="steps">2</div>
       <div class="steps-line"></div>
       <div class="steps steps-last">3</div>
-      Secondary goals of the 12 weeks plan.
+      Secondary goals of the 12 weeks plan
     </div>
     <div class="calendar">
       <!-- <img src="img/today.png" class="today"/> -->
@@ -166,8 +167,8 @@
       <form  *ngFor="let step of steps; let i = index"
 
              #myForm="ngForm"  novalidate (focusout)="update(myForm, i)" >
-        <div class="second-block" *ngIf="step.task_id === secondtask['id']">
-          <div class="under-numeric">3.<span style="color: rgba(255,133,0,0.8);">{{ i + 1 }}</span> </div>
+        <div class="second-block-large-1" *ngIf="step.task_id === secondtask['id']">
+          <div class="under-numeric">5.<span style="color: rgba(255,133,0,0.8);">1</span> </div>
           <div class="second-start-input">
             <div>
               <!--<span *ngIf="!step.edit">{{ step.text}}</span>-->
@@ -190,7 +191,7 @@
       </div>
       <form  *ngFor="let reward of rewards; let i = index"
              #myForm="ngForm"  novalidate (focusout)="updateReward(myForm, i)" >
-        <div class="second-block" *ngIf="reward.task_id === secondtask['id'] ">
+        <div class="second-block-large" *ngIf="reward.task_id === secondtask['id'] ">
           <div class="second-start-input">
             <div>
               <div  >
@@ -210,8 +211,7 @@
           <div class="text-head">Type the third goal of 12 week plan here..</div>
         </div>
       </div>
-    </div>
-    <div class="tabs-all">
+
       <form  #myTaskForm="ngForm"  novalidate (focusout)="updateThirdTask(myTaskForm, thirdtask['id'])">
         <div class="second-block-large">
           <div class="second-start-input">
@@ -224,8 +224,8 @@
       <form  *ngFor="let step of steps; let i = index"
 
              #myForm="ngForm"  novalidate (focusout)="update(myForm, i)" >
-        <div class="second-block" *ngIf="step.task_id === thirdtask['id'] ">
-          <div class="under-numeric">2.<span style="color: rgba(255,133,0,0.8);">{{ i + 1 }}</span> </div>
+        <div class="second-block-large-1" *ngIf="step.task_id === thirdtask['id'] ">
+          <div class="under-numeric">7.<span style="color: rgba(255,133,0,0.8);">1</span> </div>
           <div class="second-start-input">
             <div>
               <!--<span *ngIf="!step.edit">{{ step.text}}</span>-->
@@ -242,13 +242,13 @@
     <div class="tabs-all">
       <div class="second-block">
         <div class="second-start">
-          <div class="text-head-uppercase"><span class="steps-in">9</span>How will I reward myself if I reach the above objective?</div>
+          <div class="text-head-uppercase"><span class="steps-in">8</span>How will I reward myself if I reach the above objective?</div>
           <div class="text-head">You'll get..</div>
         </div>
       </div>
       <form  *ngFor="let reward of rewards; let i = index"
              #myForm="ngForm"  novalidate (focusout)="updateReward(myForm, i)" >
-        <div class="second-block" *ngIf="reward.task_id === thirdtask['id'] ">
+        <div class="second-block-large" *ngIf="reward.task_id === thirdtask['id'] ">
           <div class="second-start-input">
             <div>
               <div  >
@@ -274,4 +274,37 @@
       </a>
     </div>
   </div>
-</div></div>
+</div>
+
+
+
+  <footer>
+
+    <i class="fa-2x fa-calendar-o icons" routerLink="/day">
+      <div class="icons-text">Day</div>
+    </i>
+
+    <i class="fa-2x fa-calendar-check-o icons" routerLink="/week">
+      <div class="icons-text">Week</div>
+    </i>
+    <i class="fa-2x fa-calendar icons" routerLink="/long" style="color:#7779FB">
+      <div class="icons-text">Month</div>
+    </i>
+    <!--<i class="fa-2x fa-bars icons menu-bar" id="showLeft" ></i>-->
+    <!--<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">-->
+    <!--<h3>Menu</h3>-->
+    <!--<a href="#">Celery seakale</a>-->
+    <!--<a href="#">Dulse daikon</a>-->
+    <!--<a href="#">Zucchini garlic</a>-->
+    <!--<a href="#">Catsear azuki bean</a>-->
+    <!--<a href="#">Dandelion bunya</a>-->
+    <!--<a href="#">Rutabaga</a>-->
+    <!--</nav>-->
+  </footer>
+
+  <div class="container-footer">
+    Copyright 2017-2018 Boom! All Rights Reserved.
+  </div>
+
+
+</div>
