@@ -50,6 +50,16 @@
         background: url('img/logo.png') no-repeat center center;
         cursor: pointer;
     }
+
+    .pr-bar {
+        top:0px!important;
+
+    }
+
+    .pr-bar-active {
+        top:8px!important;
+
+    }
 }
 
 @media (max-width:620px) {
@@ -76,12 +86,14 @@
     transition: all 0.1s ease;
     -webkit-transition: all 0.1s ease;
     -moz-transition: all 0.1s ease;
+
 }
 .pr-bar-active {
     height: 50px;
     width: auto;
     border: none;
     background: transparent;
+    top:0px;
 }
 
 .pr-photo {
