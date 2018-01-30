@@ -24,9 +24,9 @@
     src: url('fonts/HelveticaNeue.eot');
     /* IE9 Compat Modes */
     src: url('fonts/HelveticaNeue.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-        /* url('fonts/HelveticaNeue.woff') format('woff'), /* Modern Browsers */
+        /* url('fonts/HelveticaNeue.woff') format('woff'), !* Modern Browsers */
 
-        /* url('fonts/HelveticaNeue.ttf') format('truetype'), /* Safari, Android, iOS */
+        /* url('fonts/HelveticaNeue.ttf') format('truetype'), !* Safari, Android, iOS */
      url('fonts/HelveticaNeue.svg#svgFontName') format('svg');
     /* Legacy iOS */
 }
@@ -40,16 +40,7 @@
     align-items: center;
 }
 
-@media (min-width:620px) {
-    .logo1 {
-        display: inline-flex;
-        align-items: center;
-        margin-right: 100px;
-        width: 108px;
-        height: 55px;
-        background: url('img/logo.png') no-repeat center center;
-        cursor: pointer;
-    }
+
 
     .pr-bar {
         top:0px!important;
@@ -60,13 +51,10 @@
         top:8px!important;
 
     }
-}
 
-@media (max-width:620px) {
-    .logo1 {
-        display: none;
-    }
-}
+
+
+
 
 
 
