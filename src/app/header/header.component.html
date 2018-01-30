@@ -22,7 +22,14 @@
     <!--<div *ngIf="isAuthorized" >-->
       <!--<button  class="pr-button-1" routerLink="/long" ><img src="img/settings.png" class="settings">12 week</button>-->
     <!--</div>-->
-    <div *ngIf="isAuthorized" class="pr-button-1" (click)="exit()">Exit</div>
+    <div>
+    <div *ngIf="isAuthorized" class="pr-button-1" (click)="exit()">My Account</div>
+    <div *ngIf="isAuthorized" class="pr-button-1" (click)="exit()">Log Out</div>
+    </div>
+    <div *ngIf="isAuthorized" class="in-out">
+      <div class="ic-head1"><i class="fa-2x fa-user-o icons" title="My Account"></i></div>
+      <div class="ic-head1"><i class="fa-2x fa-sign-out icons" title="Log Out" (click)="exit()"></i></div>
+    </div>
 
     <div *ngIf="!isAuthorized" class="pr-button-5">
       <a routerLink="/signup">Sign up</a>
