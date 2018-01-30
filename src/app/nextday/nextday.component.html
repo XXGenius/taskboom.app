@@ -9,7 +9,7 @@
       <div class="steps">2</div>
       <div class="steps-line"></div>
       <div class="steps steps-last">3</div>
-      Plan for the day.
+      Plan for the day
     </div>
     <div class="calendar">
       <img class="today"/> {{ date}}
@@ -36,7 +36,8 @@
           </div>
         </div>
       </form>
-      <div *ngIf="save">Save...</div>
+      <div [@list] *ngIf="save" class="visible  center">
+        <div  *ngIf="save"  class="save-img1 save-font"   >Save...</div></div>
     </div>
     <div class="tabs-all">
       <div class="second-block">
@@ -45,6 +46,7 @@
           <div class="text-head">Proceed after performing the focus of the day..</div>
         </div>
       </div>
+
       <form  *ngFor="let task of tasks; let i = index"  #myForm="ngForm"  novalidate (focusout)="update(myForm, i)">
           <div *ngIf="task.priority_id === 2"  class="second-block" >
 
@@ -57,51 +59,54 @@
           </div>
       </form>
       <div *ngIf="save">Save...</div>
+      <div style="height:37px">&nbsp;</div>
       <div class="tabs-all">
-      <div class="second-block">
-        <div class="second-start">
-          <div class="text-head-uppercase"><span class="steps-in">3</span>Location for thoughts</div>
-          <div class="text-head">You'gone! Type smth about your task..</div>
+        <div class="second-block">
+          <div class="second-start">
+            <div class="text-head-uppercase"><span class="steps-in">3</span>Location for thoughts</div>
+            <div class="text-head">You'gone! Type smth about your task..</div>
+          </div>
         </div>
-      </div>
-      <div class="second-block-large">
-        <div class="second-start-input">
-          <form  #myTaskForm="ngForm"  novalidate (focusout)="updateComment(myTaskForm, day.id)">
-            <div class="second-block-large">
-              <div class="second-start-input">
-                <textarea  class="input-big" type="text"  name="text" ngModel="{{comment}}" required placeholder="When asked, “If you could wish for one thing only,
+        <div class="second-block-large">
+          <div class="second-start-input">
+            <form #myTaskForm="ngForm" novalidate (focusout)="updateComment(myTaskForm, day.id)">
+              <div class="second-block-large">
+                <div class="second-start-input">
+                <textarea class="input-big" type="text" name="text" ngModel="{{comment}}" required placeholder="When asked, “If you could wish for one thing only,
                         what would that wish be?” almost everyone; from beauty pagent contestants, to politicians, to religious
                         leaders, to children, to the average person on the street states, “Peace On Earth” or “An end to all
                         wars”. Those wishes, while exemplary, are meaningless.."></textarea>
+                </div>
               </div>
+            </form>
+          </div>
+        </div>
+        <div style="height:37px">&nbsp;</div>
+        <div class="second-block">
+          <div class="second-start">
+            <div class="text-head-uppercase"><span class="steps-in">4</span>Things for which I am grateful to the
+              present day
             </div>
-          </form>
+            <div class="text-head">Tell about your best practices..</div>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="tabs-all">
-      <div class="second-block">
-        <div class="second-start">
-          <div class="text-head-uppercase"><span class="steps-in">4</span>Things for which I am grateful to the present day</div>
-          <div class="text-head">Tell about your best practices..</div>
-        </div>
-      </div>
-      <div class="second-block-large">
-        <div class="second-start-input">
-          <form  #myGraForm="ngForm"  novalidate (focusout)="updateGratitude(myGraForm, day.id)">
-            <div class="second-block-large">
-              <div class="second-start-input">
-                <textarea  class="input-big" type="text"  name="text" ngModel="{{gratitude}}" required placeholder="One of the keys to reaching your goals is to eliminate
+        <div class="second-block-large">
+          <div class="second-start-input">
+            <form #myGraForm="ngForm" novalidate (focusout)="updateGratitude(myGraForm, day.id)">
+              <div class="second-block-large">
+                <div class="second-start-input">
+                <textarea class="input-big" type="text" name="text" ngModel="{{gratitude}}" required placeholder="One of the keys to reaching your goals is to eliminate
                         any escape routes. It is tempting to retreat to safety and comfort when challenges and difficulties arise.
                         To avoid turning around and abandoning your goals, you must make going forward more compelling then going
                         back.."></textarea>
+                </div>
               </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="tabs-all">
+
+      <div class="tabs-all">
       <div class="second-block">
         <div class="second-start">
           <div class="text-head-uppercase"><span class="steps-in">5</span>Victory of the day</div>
@@ -142,4 +147,33 @@
       </a>
     </div>
   </div>
+</div>
+</div>
+
+<footer>
+
+  <i class="fa-2x fa-calendar-o icons" routerLink="/day" style="color:#7779FB">
+    <div class="icons-text">Day</div>
+  </i>
+
+  <i class="fa-2x fa-calendar-check-o icons" routerLink="/week">
+    <div class="icons-text">Week</div>
+  </i>
+  <i class="fa-2x fa-calendar icons" routerLink="/long">
+    <div class="icons-text">Month</div>
+  </i>
+  <!--<i class="fa-2x fa-bars icons menu-bar" id="showLeft" ></i>-->
+  <!--<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">-->
+    <!--<h3>Menu</h3>-->
+    <!--<a href="#">Celery seakale</a>-->
+    <!--<a href="#">Dulse daikon</a>-->
+    <!--<a href="#">Zucchini garlic</a>-->
+    <!--<a href="#">Catsear azuki bean</a>-->
+    <!--<a href="#">Dandelion bunya</a>-->
+    <!--<a href="#">Rutabaga</a>-->
+  <!--</nav>-->
+</footer>
+
+<div class="container-footer">
+  Copyright 2017-2018 Boom! All Rights Reserved.
 </div>

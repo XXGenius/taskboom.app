@@ -5,7 +5,6 @@ import {FormsModule} from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import {Angular2FontawesomeModule} from 'angular2-fontawesome';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {HttpModule} from '@angular/http';
 import { ReversePipe } from './pipes/reverse.pipe';
 import {AppRoutingModule} from './app-routing.module';
 import { IndexComponent } from './views/index/index.component';
@@ -22,12 +21,15 @@ import {UserGroupComponent} from './admin/user-group/user-group.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import {AuthService} from './services/auth.service';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import { HttpClientModule} from '@angular/common/http';
 import {Ng4LoadingSpinnerModule} from 'ng4-loading-spinner';
 import { WisdomComponent } from './wisdom/wisdom.component';
 import { LongcycleComponent } from './longcycle/longcycle.component';
 import { WeekcycleComponent } from './weekcycle/weekcycle.component';
 import { NextdayComponent } from './nextday/nextday.component';
+import { ReviewComponent } from './review/review.component';
+
+
 
 
 
@@ -57,6 +59,8 @@ import { NextdayComponent } from './nextday/nextday.component';
     LongcycleComponent,
     WeekcycleComponent,
     NextdayComponent,
+    ReviewComponent,
+
 
   ],
   imports: [
@@ -66,7 +70,8 @@ import { NextdayComponent } from './nextday/nextday.component';
       Angular2FontawesomeModule,
       BrowserAnimationsModule,
       HttpClientModule,
-      Ng4LoadingSpinnerModule.forRoot()
+      Ng4LoadingSpinnerModule.forRoot(),
+
   ],
   providers: [
     ApiService, SigninComponent, AuthService, HeaderComponent

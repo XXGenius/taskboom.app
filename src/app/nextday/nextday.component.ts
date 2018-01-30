@@ -2,11 +2,34 @@ import { Component, OnInit } from '@angular/core';
 import {ApiService} from '../services/api.service';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import {NgForm} from '@angular/forms';
+import {Observable} from 'rxjs/Observable';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-nextday',
   templateUrl: './nextday.component.html',
-  styleUrls: ['./nextday.component.css']
+  styleUrls: ['./nextday.component.css'],
+  animations: [
+    trigger('list', [
+      state('in', style({
+        opacity: 1,
+        left: '10%',
+      })),
+      transition('void => *', [
+        style({
+          opacity: 0,
+          left: '8%',
+        }),
+        animate(1000)
+      ]),
+      transition('* => void', [
+        animate(3000, style({
+          opacity: 0,
+          left: '6%',
+        }))
+      ]),
+    ])
+  ]
 })
 export class NextdayComponent implements OnInit {
   day;
@@ -22,10 +45,11 @@ export class NextdayComponent implements OnInit {
   constructor(private apiService: ApiService, private spinnerService: Ng4LoadingSpinnerService) {
     this.spinnerService.show();
     const id = localStorage.getItem('id');
-    const localTime = -(new Date().getTimezoneOffset()) * 60000;
+    const offset = -(new Date().getTimezoneOffset() / 60) ;
+    const d = new Date().toLocaleDateString('en-US');
     const date = (new Date()).getUTCFullYear() + '-' + ((new Date()).getUTCMonth() + 1) + '-' + ((new Date()).getUTCDate() );
     const last_date = (new Date()).getUTCFullYear() + '-' + ((new Date()).getUTCMonth() + 1) + '-' + ((new Date()).getUTCDate() - 1);
-    console.log(localTime);
+    console.log(d);
     this.apiService.getDay(last_date, id).subscribe((day) => {
       console.log(day);
       if (!day['0']) {
@@ -50,7 +74,7 @@ export class NextdayComponent implements OnInit {
             this.comment = day['comment_task'];
             this.progress = day['comment_progress'];
             this.spinnerService.hide();
-            const time = (new Date()).getUTCHours() + 3;
+            const time = (new Date()).getUTCHours() + offset;
             console.log(time);
             if (time >= 18 && time <= 23) {
               this.time = false;
@@ -63,7 +87,7 @@ export class NextdayComponent implements OnInit {
              window.scroll(0, 0 );
           });
         } else {
-          const time = (new Date()).getUTCHours() + 3;
+          const time = (new Date()).getUTCHours() + offset;
           console.log(time);
           if (time >= 18 && time <= 23) {
             this.time = false;
@@ -98,18 +122,20 @@ export class NextdayComponent implements OnInit {
 
   update (form: NgForm, i) {
     this.save = true;
+    // this.spinnerService.show();
     const id = this.tasks[i].id;
     this.apiService.updateTask(form.value.text, id).subscribe(
       (step) => {
         this.tasks[i].text = step.text;
         this.save = false;
-      }
-    );
-  }
+        });
+    }
 
   ngOnInit() {
 
   }
+
+
 
   nextday () {
     this.day = new Object;
@@ -186,25 +212,31 @@ export class NextdayComponent implements OnInit {
   }
 
   updateProgress (form: NgForm, id) {
+    this.save = true;
     this.apiService.updateProgress(form.value.text, id).subscribe(
       (day) => {
         this.progress = day.comment_progress;
+        this.save = false;
       }
     );
   }
 
   updateGratitude (form: NgForm, id) {
+    this.save = true;
     this.apiService.updateGratitude(form.value.text, id).subscribe(
       (day) => {
         this.gratitude = day.gratitude_day;
+        this.save = false;
       }
     );
   }
 
   updateComment (form: NgForm, id) {
+    this.save = true;
     this.apiService.updateComment(form.value.text, id).subscribe(
       (day) => {
         this.comment = day.comment_task;
+        this.save = false;
       }
     );
   }

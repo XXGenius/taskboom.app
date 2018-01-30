@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpClientModule, HttpHeaders} from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import {Subject} from 'rxjs/Subject';
 import {Observable} from 'rxjs';
@@ -25,7 +25,7 @@ export class ApiService {
 
   registration(email: string, password: string, first_name: string, last_name: string , user_role_id: number ) {
     return this.http.get('https://api.golaso.io/api/v1/register' + '?' + this.tokenParam, {
-      params: { email: email, password: password, first_name: first_name, last_name: last_name }}), this._options
+      params: { email: email, password: password, first_name: first_name, last_name: last_name }})
         .pipe(
             map((res: any) => {
                 console.log(res);
@@ -36,15 +36,9 @@ export class ApiService {
   }
 
   getCurrentUser(uid) {
-    return this.http.get('https://api.golaso.io/api/v1/getcurrentuser', {
+    return this.http.get('https://api.golaso.io/api/v1/getcurrentuser' , {
       params: { uid: uid }})
-      .pipe(
-        map((res: any) => {
-          console.log(res);
-          return res;
-        }),
-        catchError(error => Observable.throw(error || 'Server error'))
-      );
+        .map((res) => res);
   }
 
   getUserByEmail(email) {
@@ -61,115 +55,139 @@ export class ApiService {
 
 
   getLongCycle(user_id) {
-        return this.http.get('https://api.golaso.io/api/v1/long', {
+        return this.http.get('https://api.golaso.io/api/v1/long' , {
             params: { user_id: user_id }})
             .map((res) => res);
     }
 
 
   getWeekCycle(user_id) {
-    return this.http.get('https://api.golaso.io/api/v1/week', {
+    return this.http.get('https://api.golaso.io/api/v1/week' , {
       params: { user_id: user_id }})
       .map((res) => res);
   }
 
     getMySteps(cycle_id) {
-        return this.http.get('https://api.golaso.io/api/v1/steps' + '?' + this.tokenParam, {
+        return this.http.get('https://api.golaso.io/api/v1/steps' + '?' + this.tokenParam , {
             params: { cycle_id: cycle_id }})
-          .pipe(
-            map((res: any) => {
-              console.log(res);
-              return res;
-            }),
-            catchError(error => Observable.throw(error || 'Server error'))
-          );
+            .map((res) => res);
     }
 
     getMyRewards(cycle_id) {
-        return this.http.get('https://api.golaso.io/api/v1/rewards' + '?' + this.tokenParam, {
+        return this.http.get('https://api.golaso.io/api/v1/rewards' + '?' + this.tokenParam , {
             params: { cycle_id: cycle_id }})
-          .pipe(
-            map((res: any) => {
-              console.log(res);
-              return res;
-            }),
-            catchError(error => Observable.throw(error || 'Server error'))
-          );
+            .map((res) => res);
     }
 
     getMyTasks(cycle_id) {
         return this.http.get('https://api.golaso.io/api/v1/mytasks' + '?' + this.tokenParam , {
             params: { cycle_id: cycle_id }})
-          .pipe(
-            map((res: any) => {
-              console.log(res);
-              return res;
-            }),
-            catchError(error => Observable.throw(error || 'Server error'))
-          );
+            .map((res) => res);
     }
 
+  getUnrested(review_id) {
+    return this.http.get('https://api.golaso.io/api/v1/unrested' + '?' + this.tokenParam , {
+      params: { review_id: review_id }})
+      .map((res) => res);
+  }
+
+  getVictory(review_id) {
+    return this.http.get('https://api.golaso.io/api/v1/victory' + '?' + this.tokenParam , {
+      params: { review_id: review_id }})
+      .map((res) => res);
+  }
+
+  getLesson(review_id) {
+    return this.http.get('https://api.golaso.io/api/v1/lesson' + '?' + this.tokenParam , {
+      params: { review_id: review_id }})
+      .map((res) => res);
+  }
+
+  getSpecific(review_id) {
+    return this.http.get('https://api.golaso.io/api/v1/specific' + '?' + this.tokenParam , {
+      params: { review_id: review_id }})
+      .map((res) => res);
+  }
+
+
   getDayTasks(day_id) {
-    return this.http.get('https://api.golaso.io/api/v1/daytasks' + '?' + this.tokenParam, {
+    return this.http.get('https://api.golaso.io/api/v1/daytasks' + '?' + this.tokenParam , {
       params: { day_id: day_id }})
-      .pipe(
-        map((res: any) => {
-          console.log(res);
-          return res;
-        }),
-        catchError(error => Observable.throw(error || 'Server error'))
-      );
+      .map((res) => res);
   }
 
 
 
   login(email, password) {
     return this.http.get('https://api.golaso.io/api/v1/login' + '?' + this.tokenParam, {
-      params: { email: email, password: password}})
-      .map((res) => res);
+      params: { email: email, password: password }})
+      .pipe(
+        map((res: any) => {
+          console.log(res);
+          return res;
+        }),
+        catchError(error => Observable.throw(error || 'Server error'))
+      );
   }
 
+  getReview(cycle_id) {
+    return this.http.get('https://api.golaso.io/api/v1/review' + '?' + this.tokenParam , {
+      params: { cycle_id: cycle_id }})
+      .pipe(
+        map((res: any) => {
+          console.log(res);
+          return res;
+        }),
+        catchError(error => Observable.throw(error || 'Server error'))
+      );
+  }
 
   getDay(date, user_id) {
-    return this.http.get('https://api.golaso.io/api/v1/day' + '?' + this.tokenParam, {
+    return this.http.get('https://api.golaso.io/api/v1/day' + '?' + this.tokenParam , {
       params: { date: date,  user_id: user_id }})
-      .map((res) => res);
+      .pipe(
+        map((res: any) => {
+          console.log(res);
+          return res;
+        }),
+        catchError(error => Observable.throw(error || 'Server error'))
+      );
   }
 
+
+  getDate(user_id) {
+    return this.http.get('https://api.golaso.io/api/v1/date' + '?' + this.tokenParam , {
+      params: { user_id: user_id }})
+      .pipe(
+        map((res: any) => {
+          console.log(res);
+          return res;
+        }),
+        catchError(error => Observable.throw(error || 'Server error'))
+      );
+  }
     getTasks(id) {
-    return this.http.get('https://api.golaso.io/api/v1/tasks/' + id + '?' + this.tokenParam)
+    return this.http.get('https://api.golaso.io/api/v1/tasks/' + id + '?' + this.tokenParam  )
       .map((res) => res);
 
   }
 
 
   getUserGroups() {
-    return this.http.get('https://api.golaso.io/api/v1/usergroups?' + this.tokenParam)
+    return this.http.get('https://api.golaso.io/api/v1/usergroups?' + this.tokenParam  )
       .map((res) => res);
   }
 
   getUsers() {
-    return this.http.get('https://api.golaso.io/api/v1/users?' + this.tokenParam )
-      .pipe(
-        map((res: any) => {
-          console.log(res);
-          return res;
-        }),
-        catchError(error => Observable.throw(error || 'Server error'))
-      );
+    return this.http.get('https://api.golaso.io/api/v1/users?' + this.tokenParam  )
+      .map((res) => res);
   }
 
 
   loginAuth(token) {
-    return this.http.post('https://api.golaso.io/api/v1/oauth' + '/',
+    return this.http.post('https://api.golaso.io/api/v1/oauth',
         { token: token }, this._options)
-      .pipe(
-        map((res: any) => {
-          console.log(res);
-          return res;
-        }),
-        catchError(error => Observable.throw(error || 'Server error'))
-      );
+        .map((res) => res);
   }
 
   /********************************* Create ****************************/
@@ -259,6 +277,58 @@ export class ApiService {
           );
   }
 
+  updateVictory(text, id: number) {
+    console.log(JSON.stringify({ text: text  }));
+    return this.http.put('https://api.golaso.io/api/v1/victory/' + id + '?' + this.tokenParam,
+      { text: text }, this._options)
+      .pipe(
+        map((res: any) => {
+          console.log(res);
+          return res;
+        }),
+        catchError(error => Observable.throw(error || 'Server error'))
+      );
+  }
+
+  updateSpecific(text, id: number) {
+    console.log(JSON.stringify({ text: text  }));
+    return this.http.put('https://api.golaso.io/api/v1/specific/' + id + '?' + this.tokenParam,
+      { text: text }, this._options)
+      .pipe(
+        map((res: any) => {
+          console.log(res);
+          return res;
+        }),
+        catchError(error => Observable.throw(error || 'Server error'))
+      );
+  }
+
+  updateUnrested(text, id: number) {
+    console.log(JSON.stringify({ text: text  }));
+    return this.http.put('https://api.golaso.io/api/v1/unrested/' + id + '?' + this.tokenParam,
+      { text: text }, this._options)
+      .pipe(
+        map((res: any) => {
+          console.log(res);
+          return res;
+        }),
+        catchError(error => Observable.throw(error || 'Server error'))
+      );
+  }
+
+  updateLesson(text, id: number) {
+    console.log(JSON.stringify({ text: text  }));
+    return this.http.put('https://api.golaso.io/api/v1/lesson/' + id + '?' + this.tokenParam,
+      { text: text }, this._options)
+      .pipe(
+        map((res: any) => {
+          console.log(res);
+          return res;
+        }),
+        catchError(error => Observable.throw(error || 'Server error'))
+      );
+  }
+
   updateProgress(comment_progress, id: number) {
     console.log(JSON.stringify({ comment_progress: comment_progress  }));
     return this.http.put('https://api.golaso.io/api/v1/progress/' + id + '?' + this.tokenParam,
@@ -274,7 +344,7 @@ export class ApiService {
 
   updateGratitude(gratitude_day, id: number) {
     console.log(JSON.stringify({ gratitude_day: gratitude_day }));
-    return this.http.put('https://api.golaso.io/api/v1/gratitude/' + id + '?' + this.tokenParam ,
+    return this.http.put('https://api.golaso.io/api/v1/gratitude/' + id + '?' + this.tokenParam,
       { gratitude_day: gratitude_day }, this._options)
       .pipe(
         map((res: any) => {
@@ -287,7 +357,7 @@ export class ApiService {
 
   updateComment(comment_task, id: number) {
     console.log(JSON.stringify({ comment_task: comment_task }));
-    return this.http.put('https://api.golaso.io/api/v1/comment/' + id + '?' + this.tokenParam ,
+    return this.http.put('https://api.golaso.io/api/v1/comment/' + id + '?' + this.tokenParam,
       { comment_task: comment_task}, this._options)
       .pipe(
         map((res: any) => {
@@ -344,7 +414,7 @@ export class ApiService {
   /********************************** DELETE ****************************/
 
   deleteTask(id: number) {
-      return this.http.delete('https://api.golaso.io/api/v1/task/' + id + '?' + this.tokenParam)
+      return this.http.delete('https://api.golaso.io/api/v1/task/' + id + '?' + this.tokenParam )
           .pipe(
               map((res: any) => {
                   console.log(res);
@@ -355,13 +425,13 @@ export class ApiService {
   }
 
   deleteUserGroup(id: number) {
-    return this.http.delete('https://api.golaso.io/api/v1/usergroup/' + id + '?' + this.tokenParam)
+    return this.http.delete('https://api.golaso.io/api/v1/usergroup/' + id + '?' + this.tokenParam )
       .map((res) => res)
       .catch((error: any) => Observable.throw(error || 'Server error'));
   }
 
   deleteUser(id: number) {
-    return this.http.delete('https://api.golaso.io/api/v1/user/' + id + '?' + this.tokenParam)
+    return this.http.delete('https://api.golaso.io/api/v1/user/' + id + '?' + this.tokenParam )
       .map((res) => res)
       .catch((error: any) => Observable.throw(error || 'Server error'));
   }

@@ -14,6 +14,7 @@ export class SigninComponent implements OnInit, OnDestroy {
   email;
   constructor(private authService: AuthService, private apiService: ApiService, private ref: ChangeDetectorRef) {
     this.authService.setAuthHook();
+    this.error =  this.authService.error;
     this.email =  this.authService.email;
   }
 
