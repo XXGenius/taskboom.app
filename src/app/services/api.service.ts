@@ -154,6 +154,18 @@ export class ApiService {
       );
   }
 
+
+  getDate(user_id) {
+    return this.http.get('https://api.golaso.io/api/v1/date' + '?' + this.tokenParam , {
+      params: { user_id: user_id }})
+      .pipe(
+        map((res: any) => {
+          console.log(res);
+          return res;
+        }),
+        catchError(error => Observable.throw(error || 'Server error'))
+      );
+  }
     getTasks(id) {
     return this.http.get('https://api.golaso.io/api/v1/tasks/' + id + '?' + this.tokenParam  )
       .map((res) => res);

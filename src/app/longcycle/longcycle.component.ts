@@ -2,13 +2,36 @@ import { Component, OnInit } from '@angular/core';
 import {ApiService} from '../services/api.service';
 import {NgForm} from "@angular/forms";
 import {Subject} from "rxjs/Subject";
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-longcycle',
   templateUrl: './longcycle.component.html',
-  styleUrls: ['./longcycle.component.css']
+  styleUrls: ['./longcycle.component.css'],
+  animations: [
+    trigger('list', [
+      state('in', style({
+        opacity: 1,
+        left: '10%',
+      })),
+      transition('void => *', [
+        style({
+          opacity: 0,
+          left: '8%',
+        }),
+        animate(1000)
+      ]),
+      transition('* => void', [
+        animate(3000, style({
+          opacity: 0,
+          left: '6%',
+        }))
+      ]),
+    ])
+  ]
 })
 export class LongcycleComponent implements OnInit {
+  save = false;
   pageTwo = false;
   steps: any = [];
   rewards: any = [];
@@ -57,42 +80,52 @@ export class LongcycleComponent implements OnInit {
     }
 
     updateReward (form: NgForm, i) {
+      this.save = true;
       const id = this.rewards[i].id;
       this.apiService.updateReward(id, form.value.text)
           .subscribe((reward) => {
           console.log(reward);
+            this.save = false;
           });
     }
 
     update (form: NgForm, i) {
+      this.save = true;
         const id = this.steps[i].id;
         this.apiService.updateStep(id, form.value.text).subscribe(
             (step) => {
                 this.steps[i].text = step.exp;
+                 this.save = false;
             }
         );
     }
 
     updateFirstTask (form: NgForm, id) {
+      this.save = true;
         this.apiService.updateTask(form.value.text, id).subscribe(
             (task) => {
                 this.firsttask['text'] = task.text;
+              this.save = false;
             }
         );
     }
 
   updateSecondTask (form: NgForm, id) {
+    this.save = true;
     this.apiService.updateTask(form.value.text, id).subscribe(
       (task) => {
         this.thirdtask['text'] = task.text;
+        this.save = false;
       }
     );
   }
 
     updateThirdTask (form: NgForm, id) {
+      this.save = true;
         this.apiService.updateTask(form.value.text, id).subscribe(
             (task) => {
                 this.thirdtask['text'] = task.text;
+              this.save = false;
             }
         );
     }

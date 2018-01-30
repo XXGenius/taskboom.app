@@ -1,4 +1,6 @@
 <div class="space">
+  <div [@list] *ngIf="save" class="visible  center">
+    <div  *ngIf="save"  class="save-img1 save-font"   >Save...</div></div>
 </div>
 <div *ngIf="review" class="container-fluid1">
   <div class="first-block">
@@ -200,7 +202,7 @@
           <div class="text-head">Relax, have fun and rock-and-roll!</div>
         </div>
       </div>
-        <form  #myForm="ngForm"  novalidate (focusout)="updateReward(reward['text'], myForm)">
+        <form  #myForm="ngForm"  novalidate (focusout)="updateReward(reward['id'], myForm)">
       <div class="second-block-s">
         <input type="text" value="тест"
                name="text" class="input-1" placeholder="When asked, “If you could wish for one thing only, what would that wish be?” almost everyone.." ngModel="{{reward['text']}}" required/>
