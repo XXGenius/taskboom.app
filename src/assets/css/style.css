@@ -59,7 +59,7 @@ html, body {
 		user-select: none;
 		cursor: pointer;
 		-webkit-background-clip: text;
-		background-clip: text;
+		/*background-clip: text;*/
 		-webkit-text-fill-color: transparent;
 		-webkit-font-smoothing: antialiased;
 		background-image: linear-gradient(111deg, #ff9482, #ff8c93 10%, #fe84a4 21%, #fd7bb4 31%, #fb72c5 42%, #f869d5 52%, #e46ddd 62%, #cf70e6 71%, #b873ee 81%, #9d75f7 90%, #7d77ff);
