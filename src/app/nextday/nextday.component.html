@@ -36,8 +36,7 @@
           </div>
         </div>
       </form>
-      <div [@list] *ngIf="save" class="visible  center">
-        <div  *ngIf="save"  class="save-img1 save-font"   >Save...</div></div>
+
     </div>
     <div class="tabs-all">
       <div class="second-block">
@@ -47,7 +46,7 @@
         </div>
       </div>
 
-      <form  *ngFor="let task of tasks; let i = index"  #myForm="ngForm"  novalidate (focusout)="update(myForm, i)">
+      <form  *ngFor="let task of tasks; let i = index"  #myForm="ngForm" onchange="Materialize.toast('Save', 3000,'rounded')"  novalidate (focusout)="update(myForm, i)">
           <div *ngIf="task.priority_id === 2"  class="second-block" >
 
             <div class="second-start-input">
@@ -68,7 +67,7 @@
         </div>
         <div class="second-block-large">
           <div class="second-start-input">
-            <form #myTaskForm="ngForm" novalidate (focusout)="updateComment(myTaskForm, day.id)">
+            <form #myTaskForm="ngForm" novalidate onchange="Materialize.toast('Save', 3000,'rounded')" (focusout)="updateComment(myTaskForm, day.id)">
               <div class="second-block-large">
                 <div class="second-start-input">
                 <textarea class="input-big" type="text" name="text" ngModel="{{comment}}" required placeholder="When asked, “If you could wish for one thing only,
@@ -91,7 +90,7 @@
         </div>
         <div class="second-block-large">
           <div class="second-start-input">
-            <form #myGraForm="ngForm" novalidate (focusout)="updateGratitude(myGraForm, day.id)">
+            <form #myGraForm="ngForm" novalidate onchange="Materialize.toast('Save', 3000,'rounded')" (focusout)="updateGratitude(myGraForm, day.id)">
               <div class="second-block-large">
                 <div class="second-start-input">
                 <textarea class="input-big" type="text" name="text" ngModel="{{gratitude}}" required placeholder="One of the keys to reaching your goals is to eliminate
@@ -114,7 +113,7 @@
       </div>
       <div class="second-block-large">
         <div class="second-start-input">
-          <form  #myProgForm="ngForm"  novalidate (focusout)="updateProgress(myProgForm, day.id)">
+          <form  #myProgForm="ngForm"  novalidate onchange="Materialize.toast('Save', 3000,'rounded')" (focusout)="updateProgress(myProgForm, day.id)">
             <div class="second-block-large">
               <div class="second-start-input">
                 <textarea  class="input-big"   name="text" ngModel="{{progress}}" placeholder="The most beautiful experience we can have is the

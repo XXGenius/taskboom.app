@@ -226,6 +226,7 @@ export class NextdayComponent implements OnInit {
   }
 
   updateProgress (form: NgForm, id) {
+    new Audio('/assets/34.wav').play();
     this.save = true;
     this.apiService.updateProgress(form.value.text, id).subscribe(
       (day) => {
@@ -236,6 +237,7 @@ export class NextdayComponent implements OnInit {
   }
 
   updateGratitude (form: NgForm, id) {
+    new Audio('/assets/34.wav').play();
     this.save = true;
     this.apiService.updateGratitude(form.value.text, id).subscribe(
       (day) => {
@@ -246,6 +248,7 @@ export class NextdayComponent implements OnInit {
   }
 
   updateComment (form: NgForm, id) {
+    new Audio('/assets/34.wav').play();
     this.save = true;
     this.apiService.updateComment(form.value.text, id).subscribe(
       (day) => {

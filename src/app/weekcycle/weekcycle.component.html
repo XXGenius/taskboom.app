@@ -149,7 +149,7 @@
       </div>
       <form *ngFor="let task of tasks; let i = index"
                id="tr{{task.id }}"
-               #myForm="ngForm"  novalidate (focusout)="update(myForm, i)" >
+               #myForm="ngForm"  novalidate onchange="Materialize.toast('Save', 3000,'rounded')"  (focusout)="update(myForm, i)" >
           <div class="second-block" *ngIf="task.priority_id === 1">
             <div class="second-start-input">
               <div>
@@ -161,7 +161,7 @@
               </div>
             </div>
             <div  class="second-end-checkbox">
-              <input    (focusout)="onCheck(task.id, task.checked, i)" class="styled-checkbox" type="checkbox" value="value1" [checked]="task.checked">
+              <input   (focusout)="onCheck(task.id, task.checked, i)" class="styled-checkbox" type="checkbox" value="value1" [checked]="task.checked">
             </div>
           </div>
         </form>
@@ -178,7 +178,7 @@
       </div>
       <form *ngFor="let task of tasks; let i = index"
             id="tr{{task.id + 1}}"
-            #myForm="ngForm"  novalidate (focusout)="update(myForm, i)" >
+            #myForm="ngForm"  novalidate onchange="Materialize.toast('Save', 3000,'rounded')"  (focusout)="update(myForm, i)" >
         <div class="second-block" *ngIf="task.priority_id === 2">
           <div class="second-start-input">
             <div>
@@ -202,7 +202,7 @@
           <div class="text-head">Relax, have fun and rock-and-roll!</div>
         </div>
       </div>
-        <form  #myForm="ngForm"  novalidate (focusout)="updateReward(reward['id'], myForm)">
+        <form  #myForm="ngForm" onchange="Materialize.toast('Save', 3000,'rounded')"   novalidate (focusout)="updateReward(reward['id'], myForm)">
       <div class="second-block-s">
         <input type="text" value="тест"
                name="text" class="input-1" placeholder="When asked, “If you could wish for one thing only, what would that wish be?” almost everyone.." ngModel="{{reward['text']}}" required/>
