@@ -118,6 +118,7 @@ export class NextdayComponent implements OnInit {
         });
 
   }
+  
 
   onCheck(id, checked, i) {
     new Audio('/assets/19.wav').play();
