@@ -1,7 +1,7 @@
 <div *ngIf="isAuthorized" class="container-fluid">
 
   <header *ngIf="isAuthorized">
-    <a class="tooltipped" routerLink="/"  data-position="bottom" data-delay="50" data-tooltip="Go to Index">
+    <a  routerLink="/"  ">
       <div *ngIf="isAuthorized"  class="logo ">Golaso!</div></a>
     <div *ngIf="isAuthorized" class="pr-bar">
 
@@ -14,8 +14,8 @@
 
     </div>
     <div>
-    <div *ngIf="isAuthorized" class="pr-button-1 tooltipped" data-position="bottom" data-delay="50" data-tooltip="This button disabled"  >My Account</div>
-    <div *ngIf="isAuthorized" class="pr-button-1 tooltipped" data-position="bottom" data-delay="50" data-tooltip="Exit?" (click)="exit()">Log Out</div>
+    <div *ngIf="isAuthorized" class="pr-button-1 "  >My Account</div>
+    <div *ngIf="isAuthorized" class="pr-button-1 " (click)="exit()">Log Out</div>
     </div>
     <div *ngIf="isAuthorized" class="in-out">
       <div class="ic-head1"><i class="fa-2x fa-user-o icons" title="My Account"></i></div>
@@ -31,9 +31,5 @@
   </header>
 
 </div>
-<script>
-  $(document).ready(function(){
-    $('.tooltipped').tooltip({delay: 50});
-  });
-</script>
+
 
