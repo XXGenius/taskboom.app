@@ -1,43 +1,19 @@
+<div class="space"></div>
+<div class="register-back">
 
-<div id="wrapper">
-  <div class="user-icon"></div>
-  <div class="pass-icon"></div>
-
-  <form  class="login-form" novalidate (ngSubmit)="login(form)" #form="ngForm">
-    <div class="header">
-      <h1>Авторизация</h1>
+  <div class="main-reg">
+    <h1 class="log">Golaso!</h1>
+    <div class="signin-form">
+      <form novalidate (ngSubmit)="login(form)" #form="ngForm">
+        <input type="email" placeholder="User Name" id="email" name="email" ngModel="{{email}}" class="form-control" required >
+        <input type="password" placeholder="Password" id="password" name="password" ngModel class="form-control" required>
+        <input type="submit" name="submit" value="SIGN IN" [disabled]="form.invalid">
+      </form>
+      <div class="or"><span>or</span></div>
+      <button style="z-index: 9999" class="loginBtn loginBtn--facebook"  (click)="socialSignIn('facebook')">Sign in with Facebook</button>-
+      <div routerLink="/signup" class="have-account">Don't have an account?</div>
+      <!--<div class="have-account">Forgot password?</div>-->
     </div>
-    <div class="content">
-      <input  type="email" id="email" name="email" ngModel="{{email}}" class="form-control" required>
-      <input type="password" id="password" name="password" ngModel class="form-control" required>
-    </div>
-
-    <div class="footer">
-      <!--<div id="uLogin857b2f21" data-ulogin="display=panel;fields=first_name,last_name,email,nickname,sex,bdate,photo,photo_big;optional=phone,city,country;providers=facebook;redirect_uri=;callback=getToken"></div>-->
-
-      <!--<button class="btn btn-primary" type="submit">Sign In</button>&ndash;&gt;-->
-      <input type="submit" name="submit" value="ВОЙТИ" class="button" [disabled]="form.invalid" />
-      <a routerLink="/signup" class="register" >Регистрация</a>
-    </div>
-  </form>
-  <div *ngIf="error">Неверный логин или пароль</div>
+  </div>
 </div>
-
-
-  <script type="text/javascript">
-    $(document).ready(function() {
-        $(".username").focus(function() {
-            $(".user-icon").css("left","-48px");
-        });
-        $(".username").blur(function() {
-            $(".user-icon").css("left","0px");
-        });
-
-        $(".password").focus(function() {
-            $(".pass-icon").css("left","-48px");
-        });
-        $(".password").blur(function() {
-            $(".pass-icon").css("left","0px");
-        });
-    });
-</script>
+    <div *ngIf="error">Неверный логин или пароль</div>

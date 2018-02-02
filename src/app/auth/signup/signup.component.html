@@ -1,25 +1,21 @@
 <div class="space"></div>
-<div class="row">
-  <div class="col-xs-12 col-sm-10 col-md-4 col-sm-offset-1 col-md-offset-2">
-    <form (ngSubmit)="onSignup(form)" novalidate #form="ngForm">
-      <div class="form-group">
-        <label for="first_name"></label>
+<div class="register-back">
+  <div class="main-reg">
+    <h1 class="log">Golaso!</h1>
+    <div class="signin-form">
+      <button style="z-index: 9999" class="loginBtn loginBtn--facebook"  (click)="socialSignIn('facebook')">Continue with Facebook</button>-
+      <div class="or"><span>or</span></div>
+      <form (ngSubmit)="onSignup(form)" novalidate #form="ngForm">
         <input type="text" id="first_name" name="first_name" ngModel class="form-control" placeholder="Your name" required>
-      </div>
-      <div class="form-group">
-        <label for="last_name"></label>
         <input type="text" id="last_name" name="last_name" ngModel class="form-control" placeholder="Your last name" required>
-      </div>
-      <div class="form-group">
-        <label for="email"></label>
         <input type="email" id="email" name="email" ngModel="{{ email }}" class="form-control" placeholder="email" required>
-      </div>
-      <div class="form-group">
-        <label for="password"></label>
-        <input type="password" id="password" name="password" ngModel class="form-control" placeholder="password" required>
-      </div>
-      <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Sign Up</button>
-    </form>
-    <div *ngIf="error" class="has-error">Пользователь с таким email уже существует!</div>
+        <input type="password"id="password" name="password" ngModel class="form-control" placeholder="password" required>
+        <input type="submit" value="REGISTER" [disabled]="form.invalid">
+      </form>
+      <div class="have-account" routerLink="/signin" >I already have an account</div>
+    </div>
   </div>
+
 </div>
+<div *ngIf="error" class="has-error">Пользователь с таким email уже существует!</div>
+

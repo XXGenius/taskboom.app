@@ -2882,8 +2882,8 @@ img {
 
 .main-reg {
 	margin: 8em auto 0;
-	/*width: 23%;*/
-	width: 30%;
+	width: 23%;
+	/*width: 30%;*/
 	background-color: #fff;
 	border-radius: 5px;
 	padding: 3em;
@@ -2928,20 +2928,20 @@ h1.log {
 	/*opacity: 0.4;*/
 }
 
-.signin-form input[type="email"] {
-	background: url(../img/1.png)no-repeat 3% center;
-	display: block;
-}
+/*.signin-form input[type="email"] {*/
+	/*background: url(../img/1.png)no-repeat 3% center;*/
+	/*display: block;*/
+/*}*/
 
-.signin-form input[type="text"] {
-	background: url(../img/2.png)no-repeat 3% center;
-	display: block;
-}
+/*.signin-form input[type="text"] {*/
+	/*background: url(../img/2.png)no-repeat 3% center;*/
+	/*display: block;*/
+/*}*/
 
-.signin-form input[type="password"] {
-	background: url(../img/3.png)no-repeat 3% center;
-	display: block;
-}
+/*.signin-form input[type="password"] {*/
+	/*background: url(../img/3.png)no-repeat 3% center;*/
+	/*display: block;*/
+/*}*/
 
 .signin-form input[type="submit"] {
 	font-family: 'Roboto';

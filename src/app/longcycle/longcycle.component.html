@@ -4,7 +4,7 @@
   <div  *ngIf="save"  class="save-img1 save-font"   >Save...</div>
 </div>
 
-<div *ngIf="!pageTwo">
+<div [@day] *ngIf="!pageTwo">
 <div  class="container-fluid1">
   <div class="first-block">
     <div class="h1-main">
@@ -128,7 +128,7 @@
     Copyright 2017-2018 Boom! All Rights Reserved.
   </div>
 </div>
-<div  *ngIf="pageTwo">
+<div [@day] *ngIf="pageTwo">
 <div class="container-fluid1">
   <div class="first-block">
     <div class="h1-main">

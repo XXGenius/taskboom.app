@@ -27,6 +27,17 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
           left: '6%',
         }))
       ]),
+    ]),
+    trigger('day', [
+      state('in', style({
+        opacity: 1,
+      })),
+      transition('void => *', [
+        style({
+          opacity: 0,
+        }),
+        animate(1000)
+      ]),
     ])
   ]
 })

@@ -1,6 +1,6 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 
-import {AuthService} from '../services/auth.service';
+import {MyAuthService} from '../services/myauth.service';
 import {ApiService} from '../services/api.service';
 @Component({
   selector: 'app-header',
@@ -12,8 +12,7 @@ export class HeaderComponent implements OnInit {
   isAuthorized;
   currentUser;
   date;
-  constructor(private authService: AuthService, private ref: ChangeDetectorRef, private apiService: ApiService) {
-    this.authService.setAuthHook();
+  constructor(private authService: MyAuthService, private ref: ChangeDetectorRef, private apiService: ApiService) {
     this.authService.isAuthorized.subscribe(isAutorized => {
       this.isAuthorized = isAutorized;
       this.currentUser = this.authService.getCurrenUser();
