@@ -27,6 +27,17 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
           left: '6%',
         }))
       ]),
+    ]),
+    trigger('day', [
+      state('in', style({
+        opacity: 1,
+      })),
+      transition('void => *', [
+        style({
+          opacity: 0,
+        }),
+        animate(1000)
+      ]),
     ])
   ]
 })
@@ -117,6 +128,7 @@ export class WeekcycleComponent implements OnInit {
   }
 
   onCheck(id, checked, i) {
+    new Audio('/assets/19.wav').play();
     this.spinnerService.show();
     this.apiService.checkTask(id, !checked)
         .subscribe(
@@ -133,6 +145,7 @@ export class WeekcycleComponent implements OnInit {
   }
 
   update (form: NgForm, i) {
+    new Audio('/assets/34.wav').play();
     this.save = true;
     const id = this.tasks[i].id;
     this.apiService.updateTask(form.value.text, id).subscribe(
@@ -144,6 +157,7 @@ export class WeekcycleComponent implements OnInit {
   }
 
   updateVictory (form: NgForm, i) {
+    new Audio('/assets/34.wav').play();
     this.save = true;
     const id = this.victories[i].id;
     this.apiService.updateVictory(form.value.text, id).subscribe(
@@ -155,6 +169,7 @@ export class WeekcycleComponent implements OnInit {
   }
 
   updateSpec(form, i)  {
+    new Audio('/assets/34.wav').play();
     this.save = true;
     const id = this.specific[i].id;
     this.apiService.updateSpecific(form.value.text, id).subscribe(
@@ -166,6 +181,7 @@ export class WeekcycleComponent implements OnInit {
   }
 
   updateUnrested(form, i)  {
+    new Audio('/assets/34.wav').play();
     this.save = true;
     const id = this.unresteds[i].id;
     this.apiService.updateUnrested(form.value.text, id).subscribe(
@@ -177,6 +193,7 @@ export class WeekcycleComponent implements OnInit {
   }
 
   updateLesson(form, i)  {
+    new Audio('/assets/34.wav').play();
     this.save = true;
     const id = this.lessons[i].id;
     this.apiService.updateLesson(form.value.text, id).subscribe(
@@ -188,6 +205,7 @@ export class WeekcycleComponent implements OnInit {
   }
 
   updateReward (id, form: NgForm) {
+    new Audio('/assets/34.wav').play();
     this.save = true;
     this.apiService.updateReward(id, form.value.text)
       .subscribe((reward) => {

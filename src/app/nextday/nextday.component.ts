@@ -28,6 +28,17 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
           left: '6%',
         }))
       ]),
+    ]),
+    trigger('day', [
+      state('in', style({
+        opacity: 1,
+      })),
+      transition('void => *', [
+        style({
+          opacity: 0,
+        }),
+        animate(1000)
+      ]),
     ])
   ]
 })
@@ -109,6 +120,7 @@ export class NextdayComponent implements OnInit {
   }
 
   onCheck(id, checked, i) {
+    new Audio('/assets/19.wav').play();
     this.spinnerService.show();
     this.apiService.checkTask(id, !checked)
       .subscribe(
@@ -122,12 +134,14 @@ export class NextdayComponent implements OnInit {
 
   update (form: NgForm, i) {
     this.save = true;
+    new Audio('/assets/34.wav').play();
     // this.spinnerService.show();
     const id = this.tasks[i].id;
     this.apiService.updateTask(form.value.text, id).subscribe(
       (step) => {
         this.tasks[i].text = step.text;
         this.save = false;
+
         });
     }
 
@@ -212,6 +226,7 @@ export class NextdayComponent implements OnInit {
   }
 
   updateProgress (form: NgForm, id) {
+    new Audio('/assets/34.wav').play();
     this.save = true;
     this.apiService.updateProgress(form.value.text, id).subscribe(
       (day) => {
@@ -222,6 +237,7 @@ export class NextdayComponent implements OnInit {
   }
 
   updateGratitude (form: NgForm, id) {
+    new Audio('/assets/34.wav').play();
     this.save = true;
     this.apiService.updateGratitude(form.value.text, id).subscribe(
       (day) => {
@@ -232,6 +248,7 @@ export class NextdayComponent implements OnInit {
   }
 
   updateComment (form: NgForm, id) {
+    new Audio('/assets/34.wav').play();
     this.save = true;
     this.apiService.updateComment(form.value.text, id).subscribe(
       (day) => {

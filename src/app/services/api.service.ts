@@ -184,10 +184,16 @@ export class ApiService {
   }
 
 
-  loginAuth(token) {
+  loginAuth(name, uid, email, image) {
     return this.http.post('https://api.golaso.io/api/v1/oauth',
-        { token: token }, this._options)
-        .map((res) => res);
+        { name: name, uid: uid, email: email, image: image }, this._options)
+      .pipe(
+        map((res: any) => {
+          console.log(res);
+          return res;
+        }),
+        catchError(error => Observable.throw(error || 'Server error'))
+      );
   }
 
   /********************************* Create ****************************/

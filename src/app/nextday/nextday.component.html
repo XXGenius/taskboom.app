@@ -1,7 +1,7 @@
 <div class="space">
 </div>
 
-<div class="container-fluid1">
+<div [@day] class="container-fluid1">
   <div class="first-block">
     <div class="h1-main">
       <div class="steps">1</div>
@@ -26,18 +26,17 @@
           Completed all
         </div>
       </div>
-      <form  *ngFor="let task of tasks; let i = index" id="tr{{task.id }}" #myForm="ngForm"  novalidate (focusout)="update(myForm, i)" >
+      <form  *ngFor="let task of tasks; let i = index" id="tr{{task.id }}" #myForm="ngForm"  novalidate onchange="Materialize.toast('Save', 3000,'rounded')" (focusout)="update(myForm, i)" >
         <div *ngIf="task.priority_id === 1" class="second-block" >
           <div class="second-start-input">
                 <input type="text" class="input-1" name="text" ngModel="{{task.text}}" required   placeholder="Fill the goal here"/>
           </div>
           <div class="second-end-checkbox">
-            <input (click)="onCheck(task.id, task.checked, i)" class="styled-checkbox" type="checkbox" value="value1" [checked]="task.checked">
+            <input (click)="onCheck(task.id, task.checked, i)"  class="styled-checkbox" type="checkbox" value="value1" [checked]="task.checked">
           </div>
         </div>
       </form>
-      <div [@list] *ngIf="save" class="visible  center">
-        <div  *ngIf="save"  class="save-img1 save-font"   >Save...</div></div>
+
     </div>
     <div class="tabs-all">
       <div class="second-block">
@@ -47,7 +46,7 @@
         </div>
       </div>
 
-      <form  *ngFor="let task of tasks; let i = index"  #myForm="ngForm"  novalidate (focusout)="update(myForm, i)">
+      <form  *ngFor="let task of tasks; let i = index"  #myForm="ngForm" onchange="Materialize.toast('Save', 3000,'rounded')"  novalidate (focusout)="update(myForm, i)">
           <div *ngIf="task.priority_id === 2"  class="second-block" >
 
             <div class="second-start-input">
@@ -58,7 +57,6 @@
             </div>
           </div>
       </form>
-      <div *ngIf="save">Save...</div>
       <div style="height:37px">&nbsp;</div>
       <div class="tabs-all">
         <div class="second-block">
@@ -69,7 +67,7 @@
         </div>
         <div class="second-block-large">
           <div class="second-start-input">
-            <form #myTaskForm="ngForm" novalidate (focusout)="updateComment(myTaskForm, day.id)">
+            <form #myTaskForm="ngForm" novalidate onchange="Materialize.toast('Save', 3000,'rounded')" (focusout)="updateComment(myTaskForm, day.id)">
               <div class="second-block-large">
                 <div class="second-start-input">
                 <textarea class="input-big" type="text" name="text" ngModel="{{comment}}" required placeholder="When asked, “If you could wish for one thing only,
@@ -92,7 +90,7 @@
         </div>
         <div class="second-block-large">
           <div class="second-start-input">
-            <form #myGraForm="ngForm" novalidate (focusout)="updateGratitude(myGraForm, day.id)">
+            <form #myGraForm="ngForm" novalidate onchange="Materialize.toast('Save', 3000,'rounded')" (focusout)="updateGratitude(myGraForm, day.id)">
               <div class="second-block-large">
                 <div class="second-start-input">
                 <textarea class="input-big" type="text" name="text" ngModel="{{gratitude}}" required placeholder="One of the keys to reaching your goals is to eliminate
@@ -115,7 +113,7 @@
       </div>
       <div class="second-block-large">
         <div class="second-start-input">
-          <form  #myProgForm="ngForm"  novalidate (focusout)="updateProgress(myProgForm, day.id)">
+          <form  #myProgForm="ngForm"  novalidate onchange="Materialize.toast('Save', 3000,'rounded')" (focusout)="updateProgress(myProgForm, day.id)">
             <div class="second-block-large">
               <div class="second-start-input">
                 <textarea  class="input-big"   name="text" ngModel="{{progress}}" placeholder="The most beautiful experience we can have is the
@@ -177,3 +175,9 @@
 <div class="container-footer">
   Copyright 2017-2018 Boom! All Rights Reserved.
 </div>
+<script>
+  function test() {
+    Materialize.toast('I am a toast!', 4000)
+  }
+
+</script>

@@ -27,6 +27,17 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
           left: '6%',
         }))
       ]),
+    ]),
+    trigger('day', [
+      state('in', style({
+        opacity: 1,
+      })),
+      transition('void => *', [
+        style({
+          opacity: 0,
+        }),
+        animate(1000)
+      ]),
     ])
   ]
 })
@@ -80,6 +91,7 @@ export class LongcycleComponent implements OnInit {
     }
 
     updateReward (form: NgForm, i) {
+      new Audio('/assets/34.wav').play();
       this.save = true;
       const id = this.rewards[i].id;
       this.apiService.updateReward(id, form.value.text)
@@ -90,6 +102,7 @@ export class LongcycleComponent implements OnInit {
     }
 
     update (form: NgForm, i) {
+      new Audio('/assets/34.wav').play();
       this.save = true;
         const id = this.steps[i].id;
         this.apiService.updateStep(id, form.value.text).subscribe(
@@ -101,6 +114,7 @@ export class LongcycleComponent implements OnInit {
     }
 
     updateFirstTask (form: NgForm, id) {
+      new Audio('/assets/34.wav').play();
       this.save = true;
         this.apiService.updateTask(form.value.text, id).subscribe(
             (task) => {
@@ -111,6 +125,7 @@ export class LongcycleComponent implements OnInit {
     }
 
   updateSecondTask (form: NgForm, id) {
+    new Audio('/assets/34.wav').play();
     this.save = true;
     this.apiService.updateTask(form.value.text, id).subscribe(
       (task) => {
@@ -121,6 +136,7 @@ export class LongcycleComponent implements OnInit {
   }
 
     updateThirdTask (form: NgForm, id) {
+      new Audio('/assets/34.wav').play();
       this.save = true;
         this.apiService.updateTask(form.value.text, id).subscribe(
             (task) => {

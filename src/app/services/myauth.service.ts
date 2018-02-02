@@ -7,7 +7,7 @@ import {Router} from '@angular/router';
 import {ISubscription} from 'rxjs/Subscription';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 @Injectable()
-export class AuthService {
+export class MyAuthService {
     error: any;
     private authHook = new Subject();
     isAuthorized: Subject<boolean> = new Subject();
@@ -47,11 +47,10 @@ export class AuthService {
         }
     }
 
-    setAuthHook() {
-        this.authHook
-            .subscribe((authToken) =>
-                this.apiservice.loginAuth(authToken).
+    setAuthHook(name, uid, email, image) {
+                this.apiservice.loginAuth(name, uid, email, image).
                 subscribe(user => {
+                console.log(user);
                 localStorage.setItem('uid', user['0'].uid);
                 localStorage.setItem('id', user['0'].id);
                     const id = localStorage.getItem('id');
@@ -66,7 +65,7 @@ export class AuthService {
                             this.isAuthorized.next(true);
                         }
                     });
-                }));
+                });
     }
 
     login(email, password) {

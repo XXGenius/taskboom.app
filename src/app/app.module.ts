@@ -20,7 +20,7 @@ import {LevelComponent} from './admin/level/level.component';
 import {UserGroupComponent} from './admin/user-group/user-group.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
-import {AuthService} from './services/auth.service';
+import {MyAuthService} from './services/myauth.service';
 import { HttpClientModule} from '@angular/common/http';
 import {Ng4LoadingSpinnerModule} from 'ng4-loading-spinner';
 import { WisdomComponent } from './wisdom/wisdom.component';
@@ -28,10 +28,30 @@ import { LongcycleComponent } from './longcycle/longcycle.component';
 import { WeekcycleComponent } from './weekcycle/weekcycle.component';
 import { NextdayComponent } from './nextday/nextday.component';
 import { ReviewComponent } from './review/review.component';
+import {
+  SocialLoginModule,
+  AuthServiceConfig,
+  GoogleLoginProvider,
+  FacebookLoginProvider,
+} from 'angular5-social-login';
 
 
 
 
+export function getAuthServiceConfigs() {
+  const config = new AuthServiceConfig(
+    [
+      {
+        id: FacebookLoginProvider.PROVIDER_ID,
+        provider: new FacebookLoginProvider('568316376856465')
+      },
+      // {
+      //   id: GoogleLoginProvider.PROVIDER_ID,
+      //   provider: new GoogleLoginProvider('AIzaSyD8WODFPOBlGC1UXqmiqtyh3ddyVnbKVZc')
+      // },
+    ]);
+  return config;
+}
 
 
 
@@ -59,7 +79,7 @@ import { ReviewComponent } from './review/review.component';
     LongcycleComponent,
     WeekcycleComponent,
     NextdayComponent,
-    ReviewComponent,
+    ReviewComponent
 
 
   ],
@@ -70,11 +90,17 @@ import { ReviewComponent } from './review/review.component';
       Angular2FontawesomeModule,
       BrowserAnimationsModule,
       HttpClientModule,
-      Ng4LoadingSpinnerModule.forRoot(),
+    Ng4LoadingSpinnerModule.forRoot(),
+    SocialLoginModule,
 
   ],
   providers: [
-    ApiService, SigninComponent, AuthService, HeaderComponent
+    ApiService, SigninComponent, MyAuthService, HeaderComponent,
+    {
+      provide: AuthServiceConfig,
+      useFactory: getAuthServiceConfigs
+    }
+
   ],
   bootstrap: [AppComponent]
 })
