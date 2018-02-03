@@ -184,9 +184,10 @@ export class ApiService {
   }
 
 
+
   loginAuth(name, uid, email, image) {
     return this.http.post('https://api.golaso.io/api/v1/oauth',
-        { name: name, uid: uid, email: email, image: image }, this._options)
+      { name: name, uid: uid, email: email, image: image }, this._options)
       .pipe(
         map((res: any) => {
           console.log(res);
