@@ -19,25 +19,25 @@ export class SignupComponent implements OnInit {
   ngOnInit() {
   }
 
-  public socialSignIn(socialPlatform: string) {
-    let socialPlatformProvider;
-    if (socialPlatform === 'facebook') {
-      socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
-    }else if (socialPlatform === 'google') {
-      socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
-    }
-    this.socialAuthService.signIn(socialPlatformProvider)
-      .then(
-        (userData) => {
-          console.log(socialPlatform + ' sign in data: ' , userData);
-          const name = userData['name'];
-          const uid  = userData['id'];
-          const email = userData['email'];
-          const image = userData['image'];
-          this.myauthService.setAuthHook(name, uid, email, image);
-        }
-      );
-  }
+  // public socialSignIn(socialPlatform: string) {
+  //   let socialPlatformProvider;
+  //   if (socialPlatform === 'facebook') {
+  //     socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
+  //   }else if (socialPlatform === 'google') {
+  //     socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
+  //   }
+  //   this.socialAuthService.signIn(socialPlatformProvider)
+  //     .then(
+  //       (userData) => {
+  //         console.log(socialPlatform + ' sign in data: ' , userData);
+  //         const name = userData['name'];
+  //         const uid  = userData['id'];
+  //         const email = userData['email'];
+  //         const image = userData['image'];
+  //         this.myauthService.setAuthHook(name, uid, email, image);
+  //       }
+  //     );
+  // }
 
 
   onSignup(form: NgForm) {
