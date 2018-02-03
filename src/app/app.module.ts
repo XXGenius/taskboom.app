@@ -28,30 +28,31 @@ import { LongcycleComponent } from './longcycle/longcycle.component';
 import { WeekcycleComponent } from './weekcycle/weekcycle.component';
 import { NextdayComponent } from './nextday/nextday.component';
 import { ReviewComponent } from './review/review.component';
-// import {
-//   SocialLoginModule,
-//   AuthServiceConfig,
-//   GoogleLoginProvider,
-//   FacebookLoginProvider,
-// } from 'angular5-social-login';
+import {
+  SocialLoginModule,
+  AuthServiceConfig,
+  GoogleLoginProvider,
+  FacebookLoginProvider,
+} from 'angular5-social-login';
 
 
 
-//
-// export function getAuthServiceConfigs() {
-//   const config = new AuthServiceConfig(
-//     [
-//       {
-//         id: FacebookLoginProvider.PROVIDER_ID,
-//         provider: new FacebookLoginProvider('568316376856465')
-//       },
-//       // {
-//       //   id: GoogleLoginProvider.PROVIDER_ID,
-//       //   provider: new GoogleLoginProvider('AIzaSyD8WODFPOBlGC1UXqmiqtyh3ddyVnbKVZc')
-//       // },
-//     ]);
-//   return config;
-// }
+
+export function getAuthServiceConfigs() {
+  const config = new AuthServiceConfig(
+    [
+      {
+        id: FacebookLoginProvider.PROVIDER_ID,
+        provider: new FacebookLoginProvider('568316376856465')
+      },
+
+      // {
+      //   id: GoogleLoginProvider.PROVIDER_ID,
+      //   provider: new GoogleLoginProvider('AIzaSyD8WODFPOBlGC1UXqmiqtyh3ddyVnbKVZc')
+      // },
+    ]);
+  return config;
+}
 
 
 
@@ -91,15 +92,15 @@ import { ReviewComponent } from './review/review.component';
       BrowserAnimationsModule,
       HttpClientModule,
     Ng4LoadingSpinnerModule.forRoot(),
-    // SocialLoginModule,
+    SocialLoginModule,
 
   ],
   providers: [
     ApiService, SigninComponent, MyAuthService, HeaderComponent,
-    // {
-    //   provide: AuthServiceConfig,
-    //   useFactory: getAuthServiceConfigs
-    // }
+    {
+      provide: AuthServiceConfig,
+      useFactory: getAuthServiceConfigs
+    }
 
   ],
   bootstrap: [AppComponent]
