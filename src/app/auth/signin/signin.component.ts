@@ -2,11 +2,7 @@ import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {MyAuthService} from '../../services/myauth.service';
 import {NgForm} from '@angular/forms';
 import {ApiService} from '../../services/api.service';
-import {
-  AuthService,
-  FacebookLoginProvider,
-  GoogleLoginProvider
-} from 'angular5-social-login';
+
 
 @Component({
   selector: 'app-signin',
@@ -16,7 +12,7 @@ import {
 export class SigninComponent implements OnInit, OnDestroy {
   error: any;
   email;
-  constructor(private socialAuthService: AuthService, private myauthService: MyAuthService,
+  constructor( private myauthService: MyAuthService,
               private apiService: ApiService, private ref: ChangeDetectorRef) {
     this.error =  this.myauthService.error;
     this.email =  this.myauthService.email;

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {ApiService} from '../../services/api.service';
 import {MyAuthService} from '../../services/myauth.service';
-import {AuthService, FacebookLoginProvider, GoogleLoginProvider} from 'angular5-social-login';
+
 
 @Component({
   selector: 'app-signup',
@@ -12,7 +12,7 @@ import {AuthService, FacebookLoginProvider, GoogleLoginProvider} from 'angular5-
 export class SignupComponent implements OnInit {
   error: any;
   email;
-  constructor(private socialAuthService: AuthService, private apiService: ApiService, private myauthService: MyAuthService) {
+  constructor(private apiService: ApiService, private myauthService: MyAuthService) {
     this.email = this.myauthService.email;
   }
 
