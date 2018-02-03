@@ -27,7 +27,7 @@
           <div class="text-head">Describe what exactly you want to achieve in next 12 weeks</div>
         </div>
       </div>
-      <form  #myTaskForm="ngForm"  novalidate  onchange="Materialize.toast('Save', 3000,'rounded')"  (focusout)="updateFirstTask(myTaskForm, firsttask['id'])">
+      <form  #myTaskForm="ngForm"  novalidate   (focusout)="updateFirstTask(myTaskForm, firsttask['id'])">
       <div class="second-block-large">
         <div class="second-start-input">
                      <textarea  class="input-big" type="text"  name="text" ngModel="{{ firsttask['text'] }}"  required placeholder="One of the keys to reaching your goals is to eliminate

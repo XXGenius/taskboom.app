@@ -113,7 +113,7 @@
       </div>
       <div class="second-block-large">
         <div class="second-start-input">
-          <form  #myProgForm="ngForm"  novalidate onchange="Materialize.toast('Save', 3000,'rounded')" (focusout)="updateProgress(myProgForm, day.id)">
+          <form  #myProgForm="ngForm"  novalidate  (focusout)="updateProgress(myProgForm, day.id)">
             <div class="second-block-large">
               <div class="second-start-input">
                 <textarea  class="input-big"   name="text" ngModel="{{progress}}" placeholder="The most beautiful experience we can have is the

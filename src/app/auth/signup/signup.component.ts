@@ -19,6 +19,8 @@ export class SignupComponent implements OnInit {
   ngOnInit() {
   }
 
+
+
   public socialSignIn(socialPlatform: string) {
     let socialPlatformProvider;
     if (socialPlatform === 'facebook') {

@@ -22,6 +22,7 @@ export class SigninComponent implements OnInit, OnDestroy {
     this.email =  this.myauthService.email;
   }
 
+
   public socialSignIn(socialPlatform: string) {
     let socialPlatformProvider;
     if (socialPlatform === 'facebook') {
@@ -31,16 +32,16 @@ export class SigninComponent implements OnInit, OnDestroy {
     }
     this.socialAuthService.signIn(socialPlatformProvider)
       .then(
-      (userData) => {
-        console.log(socialPlatform + ' sign in data: ' , userData);
-        const name = userData['name'];
-        const uid  = userData['id'];
-        localStorage.setItem('uid', uid);
-        const email = userData['email'];
-        const image = userData['image'];
-        this.myauthService.setAuthHook(name, uid, email, image);
-      }
-    );
+        (userData) => {
+          console.log(socialPlatform + ' sign in data: ' , userData);
+          const name = userData['name'];
+          const uid  = userData['id'];
+          localStorage.setItem('uid', uid);
+          const email = userData['email'];
+          const image = userData['image'];
+          this.myauthService.setAuthHook(name, uid, email, image);
+        }
+      );
   }
 
   ngOnInit() {
