@@ -47,28 +47,29 @@ export class MyAuthService {
         }
     }
 
-    // setAuthHook(name, uid, email, image) {
-    //             this.apiservice.loginAuth(name, uid, email, image).
-    //             subscribe(user => {
-    //             console.log(user);
-    //             localStorage.setItem('uid', user['0'].uid);
-    //             localStorage.setItem('id', user['0'].id);
-    //                 const id = localStorage.getItem('id');
-    //                 this.apiservice.getLongCycle(id).subscribe( (cycle) => {
-    //                     if (!(cycle['0'])) {
-    //                         this.router.navigate(['wisdom']);
-    //                         this.currentUser = user['0'];
-    //                         this.isAuthorized.next(true);
-    //                     } else {
-    //                         this.router.navigate(['day']);
-    //                         this.currentUser = user['0'];
-    //                         this.isAuthorized.next(true);
-    //                     }
-    //                 });
-    //             });
-    // }
 
-    login(email, password) {
+  setAuthHook(name, uid, email, image) {
+    this.apiservice.loginAuth(name, uid, email, image).
+    subscribe(user => {
+      console.log(user);
+      localStorage.setItem('uid', user['0'].uid);
+      localStorage.setItem('id', user['0'].id);
+      const id = localStorage.getItem('id');
+      this.apiservice.getLongCycle(id).subscribe( (cycle) => {
+        if (!(cycle['0'])) {
+          this.router.navigate(['wisdom']);
+          this.currentUser = user['0'];
+          this.isAuthorized.next(true);
+        } else {
+          this.router.navigate(['day']);
+          this.currentUser = user['0'];
+          this.isAuthorized.next(true);
+        }
+      });
+    });
+  }
+
+  login(email, password) {
         this.spinnerService.show();
         this.apiservice.login(email, password)
             .subscribe(user => {
