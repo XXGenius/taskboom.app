@@ -38,18 +38,20 @@ import {
 
 
 
+
+
+
+
 export function getAuthServiceConfigs() {
   const config = new AuthServiceConfig(
     [
       {
         id: FacebookLoginProvider.PROVIDER_ID,
         provider: new FacebookLoginProvider('568316376856465')
+      }, {
+        id: GoogleLoginProvider.PROVIDER_ID,
+        provider: new GoogleLoginProvider('833375704151-t8ndgfsmejchv63on8duuksa01r392gt.apps.googleusercontent.com')
       },
-
-      // {
-      //   id: GoogleLoginProvider.PROVIDER_ID,
-      //   provider: new GoogleLoginProvider('AIzaSyD8WODFPOBlGC1UXqmiqtyh3ddyVnbKVZc')
-      // },
     ]);
   return config;
 }
@@ -80,7 +82,9 @@ export function getAuthServiceConfigs() {
     LongcycleComponent,
     WeekcycleComponent,
     NextdayComponent,
-    ReviewComponent
+    ReviewComponent,
+
+
 
 
   ],
@@ -93,6 +97,7 @@ export function getAuthServiceConfigs() {
       HttpClientModule,
     Ng4LoadingSpinnerModule.forRoot(),
     SocialLoginModule,
+
 
   ],
   providers: [

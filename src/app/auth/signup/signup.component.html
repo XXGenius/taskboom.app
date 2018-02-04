@@ -3,7 +3,9 @@
   <div class="main-reg">
     <h1 class="log">Golaso!</h1>
     <div class="signin-form">
-      <button style="z-index: 9999" class="loginBtn loginBtn--facebook"  (click)="socialSignIn('facebook')">Continue with Facebook</button>-
+      <button style="z-index: 9999" class="loginBtn loginBtn--facebook"  (click)="socialSignIn('facebook')">Continue with Facebook</button>
+      <button style="z-index: 9999" class="loginBtn loginBtn--google"  (click)="socialSignIn('google')">Continue with Google</button>
+
       <div class="or"><span>or</span></div>
       <form (ngSubmit)="onSignup(form)" novalidate #form="ngForm">
         <input type="text" id="first_name" name="first_name" ngModel class="form-control" placeholder="Your name" required>

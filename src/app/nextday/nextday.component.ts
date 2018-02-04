@@ -4,6 +4,7 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import {NgForm} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-nextday',
@@ -120,7 +121,7 @@ export class NextdayComponent implements OnInit {
   }
 
   onCheck(id, checked, i) {
-    new Audio('/assets/19.wav').play();
+    // new Audio('/assets/19.wav').play();
     this.spinnerService.show();
     this.apiService.checkTask(id, !checked)
       .subscribe(
@@ -134,7 +135,7 @@ export class NextdayComponent implements OnInit {
 
   update (form: NgForm, i) {
     this.save = true;
-    new Audio('/assets/34.wav').play();
+    // new Audio('/assets/34.wav').play();
     // this.spinnerService.show();
     const id = this.tasks[i].id;
     this.apiService.updateTask(form.value.text, id).subscribe(
@@ -226,7 +227,7 @@ export class NextdayComponent implements OnInit {
   }
 
   updateProgress (form: NgForm, id) {
-    new Audio('/assets/34.wav').play();
+    // new Audio('/assets/34.wav').play();
     this.save = true;
     this.apiService.updateProgress(form.value.text, id).subscribe(
       (day) => {
@@ -237,7 +238,7 @@ export class NextdayComponent implements OnInit {
   }
 
   updateGratitude (form: NgForm, id) {
-    new Audio('/assets/34.wav').play();
+    // new Audio('/assets/34.wav').play();
     this.save = true;
     this.apiService.updateGratitude(form.value.text, id).subscribe(
       (day) => {
@@ -248,7 +249,7 @@ export class NextdayComponent implements OnInit {
   }
 
   updateComment (form: NgForm, id) {
-    new Audio('/assets/34.wav').play();
+    // new Audio('/assets/34.wav').play();
     this.save = true;
     this.apiService.updateComment(form.value.text, id).subscribe(
       (day) => {
