@@ -4,7 +4,7 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import {NgForm} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 import {animate, state, style, transition, trigger} from '@angular/animations';
-import {MatSnackBar} from '@angular/material';
+
 
 @Component({
   selector: 'app-nextday',
