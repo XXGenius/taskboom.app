@@ -14,19 +14,22 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
     trigger('list', [
       state('in', style({
         opacity: 1,
-        left: '10%',
+        transform: 'translateX(0%)',
+        left: '5%'
       })),
       transition('void => *', [
         style({
-          opacity: 0,
-          left: '8%',
+          opacity: 1,
+          // transform: 'translateX(-30%)',
+          left: '5%'
         }),
-        animate(1000)
+        animate(500)
       ]),
       transition('* => void', [
         animate(3000, style({
-          opacity: 0,
-          left: '6%',
+          opacity: 1,
+          transform: 'translateX(-50%)',
+          left: '5%'
         }))
       ]),
     ]),
@@ -49,6 +52,7 @@ export class NextdayComponent implements OnInit {
   time = true;
   tasks: any =  [];
   id;
+
   gratitude;
   comment;
   progress;
