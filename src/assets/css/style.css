@@ -2237,6 +2237,19 @@ img.add-rec {
 		font-weight: 600;
 		transition: 0.5s all ease-in-out;
 	}
+
+
+  @media print {
+    /* здесь будут стили для печати */
+    body {
+      font-size: 48px;
+      background-color: black;
+    }
+    input{
+      background-color: red;
+    }
+  }
+
 	img.today {
 		position: relative;
 		bottom: 1px;
