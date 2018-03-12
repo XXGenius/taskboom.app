@@ -1,22 +1,29 @@
 <div class="space">
 </div>
-<div [@list] *ngIf="save" class="visible center">
-  <div  *ngIf="save"  class="save-img1 save-font"   >Save...</div></div>
-<div [@day] class="container-fluid1">
+<div [@list] *ngIf="save" class="visible  center">
+  <div *ngIf="save" class="save-img1 save-font">Save...</div>
+</div>
+<div  [@day] class="container-fluid1">
   <div class="first-block">
     <div class="h1-main">
       <div class="steps">1</div>
       <div class="steps-line"></div>
       <div class="steps">2</div>
       <div class="steps-line"></div>
+
       <div class="steps steps-last">3</div>
       Plan for the day
+
     </div>
+<div style="display: none">член</div>
+    <a onclick="CallPrint('print-content')" title="Распечатать проект">Распечатать</a>
+
     <div class="calendar">
+
       <img class="today"/> {{ date}}
     </div>
   </div>
-  <div class="form-group-1">
+  <div id="print-content"  class="form-group-1">
     <div class="tabs-all">
       <div class="second-block">
         <div class="second-start">
@@ -27,19 +34,23 @@
           Completed all
         </div>
       </div>
-      <form  *ngFor="let task of tasks; let i = index" id="tr{{task.id }}" #myForm="ngForm"  novalidate onchange="Materialize.toast('Save', 3000,'rounded')" (focusout)="update(myForm, i)" >
-        <div *ngIf="task.priority_id === 1" class="second-block" >
+      <form  *ngFor="let task of tasks; let i = index" id="tr{{task.id }}" #myForm="ngForm" novalidate
+            onchange="Materialize.toast('Save', 3000,'rounded')" (focusout)="update(myForm, i)">
+        <div *ngIf="task.priority_id === 1" class="second-block">
           <div class="second-start-input">
-                <input type="text" class="input-1" name="text" ngModel="{{task.text}}" required   placeholder="Fill the goal here"/>
+            <input type="text" class="input-1" name="text" ngModel="{{task.text}}" required
+                   placeholder="Fill the goal here"/>
           </div>
-          <div class="second-end-checkbox">
-            <input (click)="onCheck(task.id, task.checked, i)"  class="styled-checkbox" type="checkbox" value="value1" [checked]="task.checked">
+          <div   class="second-end-checkbox">
+            <input  (click)="onCheck(task.id, task.checked, i)" class="styled-checkbox" type="checkbox" value="value1"
+                   [checked]="task.checked">
           </div>
         </div>
       </form>
 
     </div>
     <div class="tabs-all">
+
       <div class="second-block">
         <div class="second-start">
           <div class="text-head-uppercase"><span class="steps-in">2</span>Secondary objectives</div>
@@ -47,16 +58,19 @@
         </div>
       </div>
 
-      <form  *ngFor="let task of tasks; let i = index"  #myForm="ngForm" onchange="Materialize.toast('Save', 3000,'rounded')"  novalidate (focusout)="update(myForm, i)">
-          <div *ngIf="task.priority_id === 2"  class="second-block" >
+      <form *ngFor="let task of tasks; let i = index" #myForm="ngForm"
+            onchange="Materialize.toast('Save', 3000,'rounded')" novalidate (focusout)="update(myForm, i)">
+        <div *ngIf="task.priority_id === 2" class="second-block">
 
-            <div class="second-start-input">
-              <input type="text" class="input-1" name="text" ngModel="{{task.text}}" required   placeholder="Fill the goal here"/>
-            </div>
-            <div class="second-end-checkbox">
-              <input (click)="onCheck(task.id, task.checked, i)" class="styled-checkbox" type="checkbox" value="value1" [checked]="task.checked">
-            </div>
+          <div class="second-start-input">
+            <input type="text" class="input-1" name="text" ngModel="{{task.text}}" required
+                   placeholder="Fill the goal here"/>
           </div>
+          <div class="second-end-checkbox">
+            <input (click)="onCheck(task.id, task.checked, i)" class="styled-checkbox" type="checkbox" value="value1"
+                   [checked]="task.checked">
+          </div>
+        </div>
       </form>
       <div style="height:37px">&nbsp;</div>
       <div class="tabs-all">
@@ -68,7 +82,8 @@
         </div>
         <div class="second-block-large">
           <div class="second-start-input">
-            <form #myTaskForm="ngForm" novalidate onchange="Materialize.toast('Save', 3000,'rounded')" (focusout)="updateComment(myTaskForm, day.id)">
+            <form #myTaskForm="ngForm" novalidate onchange="Materialize.toast('Save', 3000,'rounded')"
+                  (focusout)="updateComment(myTaskForm, day.id)">
               <div class="second-block-large">
                 <div class="second-start-input">
                 <textarea class="input-big" type="text" name="text" ngModel="{{comment}}" required placeholder="When asked, “If you could wish for one thing only,
@@ -91,7 +106,8 @@
         </div>
         <div class="second-block-large">
           <div class="second-start-input">
-            <form #myGraForm="ngForm" novalidate onchange="Materialize.toast('Save', 3000,'rounded')" (focusout)="updateGratitude(myGraForm, day.id)">
+            <form #myGraForm="ngForm" novalidate onchange="Materialize.toast('Save', 3000,'rounded')"
+                  (focusout)="updateGratitude(myGraForm, day.id)">
               <div class="second-block-large">
                 <div class="second-start-input">
                 <textarea class="input-big" type="text" name="text" ngModel="{{gratitude}}" required placeholder="One of the keys to reaching your goals is to eliminate
@@ -104,50 +120,50 @@
           </div>
         </div>
       </div>
-
       <div class="tabs-all">
-      <div class="second-block">
-        <div class="second-start">
-          <div class="text-head-uppercase"><span class="steps-in">5</span>Victory of the day</div>
-          <div class="text-head">Wow!! Perfecto! Tell about your special insights and experience..</div>
+        <div class="second-block">
+          <div class="second-start">
+            <div class="text-head-uppercase"><span class="steps-in">5</span>Victory of the day</div>
+            <div class="text-head">Wow!! Perfecto! Tell about your special insights and experience..</div>
+          </div>
         </div>
-      </div>
-      <div class="second-block-large">
-        <div class="second-start-input">
-          <form  #myProgForm="ngForm"  novalidate  (focusout)="updateProgress(myProgForm, day.id)">
-            <div class="second-block-large">
-              <div class="second-start-input">
-                <textarea  class="input-big"   name="text" ngModel="{{progress}}" placeholder="The most beautiful experience we can have is the
+        <div class="second-block-large">
+          <div class="second-start-input">
+            <form #myProgForm="ngForm" novalidate (focusout)="updateProgress(myProgForm, day.id)">
+              <div class="second-block-large">
+                <div class="second-start-input">
+                <textarea class="input-big" name="text" ngModel="{{progress}}" placeholder="The most beautiful experience we can have is the
                         mysterious. It is the fundamental emotion that stands at the cradle of true art and true science.”
                         Albert Einstein, The World as I See It, 1931 The debate between realism and anti-realism is, at least,
                         a century old.."></textarea>
+                </div>
               </div>
-            </div>
-          </form>
-        </div>
+            </form>
+          </div>
 
-      </div>
-    </div>
-    <div [hidden]="!time" class="great-job">
-      Great job.<br> Start planning your next day <br><span style="border-bottom:2px dashed violet">since 18:00 today.</span>
-    </div>
-    <div class="third-block">
-      <div (click)="previousday()"  class="button-back" [hidden]="previus">
-        Previous Day
-      </div>
-      <a >
-        <div routerLink="/" class="button-next" [hidden]="!previus">
-          Today
         </div>
-      </a>
-      <a  >
-        <div (click)="nextday()" class="button-next" [hidden]="time">
-          Next day
+      </div>
+      <div [hidden]="!time" class="great-job">
+        Great job.<br> Start planning your next day <br><span
+        style="border-bottom:2px dashed violet">since 18:00 today.</span>
+      </div>
+      <div class="third-block">
+        <div (click)="previousday()" class="button-back" [hidden]="previus">
+          Previous Day
         </div>
-      </a>
+        <a>
+          <div routerLink="/" class="button-next" [hidden]="!previus">
+            Today
+          </div>
+        </a>
+        <a>
+          <div (click)="nextday()" class="button-next" [hidden]="time">
+            Next day
+          </div>
+        </a>
+      </div>
     </div>
   </div>
-</div>
 </div>
 
 <footer>
@@ -164,23 +180,51 @@
   </i>
   <!--<i class="fa-2x fa-bars icons menu-bar" id="showLeft" ></i>-->
   <!--<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">-->
-    <!--<h3>Menu</h3>-->
-    <!--<a href="#">Celery seakale</a>-->
-    <!--<a href="#">Dulse daikon</a>-->
-    <!--<a href="#">Zucchini garlic</a>-->
-    <!--<a href="#">Catsear azuki bean</a>-->
-    <!--<a href="#">Dandelion bunya</a>-->
-    <!--<a href="#">Rutabaga</a>-->
+  <!--<h3>Menu</h3>-->
+  <!--<a href="#">Celery seakale</a>-->
+  <!--<a href="#">Dulse daikon</a>-->
+  <!--<a href="#">Zucchini garlic</a>-->
+  <!--<a href="#">Catsear azuki bean</a>-->
+  <!--<a href="#">Dandelion bunya</a>-->
+  <!--<a href="#">Rutabaga</a>-->
   <!--</nav>-->
 </footer>
 
 <div class="container-footer">
   Copyright 2017-2018 Boom! All Rights Reserved.
 </div>
+<script language="javascript">
+  function CallPrint(strid) {
+    var prtContent = document.getElementById(strid);
+    var prtCSS = '<link rel="stylesheet" href="/templates/css/template.css" type="text/css" />';
+    var WinPrint = window.open('', '', 'left=50,top=50,width=800,height=640,toolbar=0,scrollbars=1,status=0');
+    WinPrint.document.write('<div id="print" class="contentpane">');
+    WinPrint.document.write(prtCSS);
+    WinPrint.document.write(prtContent.innerHTML);
+    WinPrint.document.write('</div>');
+    WinPrint.document.close();
+    WinPrint.focus();
+    WinPrint.print();
+    WinPrint.close();
+    prtContent.innerHTML = strOldOne;
+  }
+</script>
 <script>
+
+
+  window.ya.speechkit.settings.apikey = 'e785ae5c-0838-42d6-ad48-27cd52e1de4d';
+
+  // Добавление элемента управления "Поле для голосового ввода".
+  var textline = new ya.speechkit.Textline('#my_id', {
+    onInputFinished: function (text) {
+      // Финальный текст.
+      alert(text);
+    }
+  });
+
+
   function test() {
     Materialize.toast('I am a toast!', 4000)
   }
-
 
 </script>

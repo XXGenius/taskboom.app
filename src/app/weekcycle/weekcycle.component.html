@@ -132,8 +132,15 @@
       <div class="steps steps-last">3</div>
       Plan for the week
     </div>
-    <div class="calendar">
-      <img class="today"/>
+    <div class="autofill">Autofill to Day task</div>
+    <div class="calendar" style="right: -40px; top: 27px">
+      <div class="switch">
+        <input type="checkbox" id="switch" class="switch-check"  [checked]=" autofill">
+        <label for="switch" class="switch-label">
+          <span class="switch-slider switch-slider-on" (click)="onAutofill(false)" ></span>
+          <span class="switch-slider switch-slider-off" (click)="onAutofill(true)" ></span>
+        </label>
+      </div>
     </div>
   </div>
   <div class="form-group-1">
@@ -161,7 +168,7 @@
               </div>
             </div>
             <div  class="second-end-checkbox">
-              <input   (focusout)="onCheck(task.id, task.checked, i)" class="styled-checkbox" type="checkbox" value="value1" [checked]="task.checked">
+              <input   (click)="onCheck(task.id, task.checked, i)" class="styled-checkbox" type="checkbox" value="value1" [checked]="task.checked">
             </div>
           </div>
         </form>

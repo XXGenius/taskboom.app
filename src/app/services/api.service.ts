@@ -110,9 +110,9 @@ export class ApiService {
   }
 
 
-  getDayTasks(day_id) {
+  getDayTasks(day_id, week_id) {
     return this.http.get('https://api.golaso.io/api/v1/daytasks' + '?' + this.tokenParam , {
-      params: { day_id: day_id }})
+      params: { day_id: day_id, week_id: week_id }})
       .map((res) => res);
   }
 
@@ -212,10 +212,10 @@ export class ApiService {
           );
   }
 
-  addDay(user_id, date) {
+  addDay(user_id, date, week_id) {
     console.log(this._options);
     return this.http.post('https://api.golaso.io/api/v1/day?' + this.tokenParam,
-      {token: this.token, date: date,  user_id: user_id }, this._options)
+      {token: this.token, date: date,  user_id: user_id , week_id: week_id}, this._options)
       .pipe(
         map((res: any) => {
           console.log(res);
@@ -270,6 +270,19 @@ export class ApiService {
 
 
   /********************************* Update ****************************/
+
+  onAutofill(week_id, bool) {
+    console.log(JSON.stringify({ text: bool  }));
+    return this.http.put('https://api.golaso.io/api/v1/weekautofill/' + week_id + '?' + this.tokenParam,
+      { autofill: bool}, this._options)
+      .pipe(
+        map((res: any) => {
+          console.log(res);
+          return res;
+        }),
+        catchError(error => Observable.throw(error || 'Server error'))
+      );
+  }
 
   updateStep(id: number, text) {
       console.log(JSON.stringify({ text: text  }));
