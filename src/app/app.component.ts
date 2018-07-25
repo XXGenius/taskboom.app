@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +7,9 @@ import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 })
 export class AppComponent implements OnInit {
 
-  constructor( ) { }
+  constructor() {
+  }
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
 }

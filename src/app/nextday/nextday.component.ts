@@ -4,7 +4,7 @@ import {Ng4LoadingSpinnerService} from 'ng4-loading-spinner';
 import {NgForm} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 import {animate, state, style, transition, trigger} from '@angular/animations';
-
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-nextday',
@@ -14,22 +14,19 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
     trigger('list', [
       state('in', style({
         opacity: 1,
-        transform: 'translateX(0%)',
-        left: '5%'
+        left: '10%',
       })),
       transition('void => *', [
         style({
-          opacity: 1,
-          // transform: 'translateX(-30%)',
-          left: '5%'
+          opacity: 0,
+          left: '8%',
         }),
-        animate(500)
+        animate(1000)
       ]),
       transition('* => void', [
         animate(3000, style({
-          opacity: 1,
-          transform: 'translateX(-50%)',
-          left: '5%'
+          opacity: 0,
+          left: '6%',
         }))
       ]),
     ]),
@@ -47,15 +44,14 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
   ]
 })
 export class NextdayComponent implements OnInit {
-  day;
-  date;
+  day: number;
+  date: string;
   time = true;
   tasks: any = [];
-  id;
-
-  gratitude;
-  comment;
-  progress;
+  id: number;
+  gratitude: string;
+  comment: string;
+  progress: string;
   previus = true;
   save = false;
 
@@ -127,7 +123,6 @@ export class NextdayComponent implements OnInit {
 
   }
 
-
   onCheck(id, checked, i) {
     // new Audio('/assets/19.wav').play();
     this.spinnerService.show();
@@ -157,7 +152,6 @@ export class NextdayComponent implements OnInit {
   ngOnInit() {
 
   }
-
 
 
   nextday() {

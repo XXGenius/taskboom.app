@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ApiService} from '../services/api.service';
-import {NgForm} from "@angular/forms";
-import {Subject} from "rxjs/Subject";
+import {NgForm} from '@angular/forms';
+import {Subject} from 'rxjs/Subject';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
@@ -50,81 +50,82 @@ export class LongcycleComponent implements OnInit {
   firsttask = new Subject();
   secondtask = new Subject();
   thirdtask = new Subject();
+
   constructor(private apiService: ApiService) {
     const id = localStorage.getItem('id');
     this.apiService.getLongCycle(id)
-        .subscribe( (cycle) => {
+      .subscribe((cycle) => {
         console.log(cycle['0'].id);
         const cycle_id = cycle['0'].id;
         this.apiService.getMySteps(cycle_id)
-            .subscribe( (steps) => {
-              this.steps = steps;
-          console.log(steps);
-        });
+          .subscribe((steps) => {
+            this.steps = steps;
+            console.log(steps);
+          });
         this.apiService.getMyRewards(cycle_id).subscribe((reward) => {
-           this.rewards = reward;
+          this.rewards = reward;
         });
         this.apiService.getMyTasks(cycle_id).subscribe((task) => {
-            this.firsttask = task['0'];
-            this.secondtask = task['1'];
-            this.thirdtask = task['2'];
-            console.log(this.firsttask);
-            console.log(this.secondtask);
-            console.log(this.thirdtask);
+          this.firsttask = task['0'];
+          this.secondtask = task['1'];
+          this.thirdtask = task['2'];
+          console.log(this.firsttask);
+          console.log(this.secondtask);
+          console.log(this.thirdtask);
         });
-    });
+      });
   }
 
   ngOnInit() {
-      this.pageTwo = false;
-      window.scroll(0, 0 );
+    this.pageTwo = false;
+    window.scroll(0, 0);
   }
 
   move() {
     this.pageTwo = true;
-    window.scroll(0, 0 );
+    window.scroll(0, 0);
   }
 
   back() {
     this.pageTwo = false;
-      window.scroll(0, 0 );
-    }
+    window.scroll(0, 0);
+  }
 
-    updateReward (form: NgForm, i) {
-      // new Audio('/assets/34.wav').play();
-      this.save = true;
-      const id = this.rewards[i].id;
-      this.apiService.updateReward(id, form.value.text)
-          .subscribe((reward) => {
-          console.log(reward);
-            this.save = false;
-          });
-    }
+  updateReward(form: NgForm, i) {
+    // new Audio('/assets/34.wav').play();
+    this.save = true;
+    const id = this.rewards[i].id;
+    this.apiService.updateReward(id, form.value.text)
+      .subscribe((reward) => {
+        console.log(reward);
+        this.save = false;
+      });
+  }
 
-    update (form: NgForm, i) {
-      // new Audio('/assets/34.wav').play();
-      this.save = true;
-        const id = this.steps[i].id;
-        this.apiService.updateStep(id, form.value.text).subscribe(
-            (step) => {
-                this.steps[i].text = step.exp;
-                 this.save = false;
-            }
-        );
-    }
+  update(form: NgForm, i) {
+    // new Audio('/assets/34.wav').play();
+    this.save = true;
+    const id = this.steps[i].id;
+    this.apiService.updateStep(id, form.value.text).subscribe(
+      (step) => {
+        this.steps[i].text = step.exp;
+        this.save = false;
+      }
+    );
+  }
 
-    updateFirstTask (form: NgForm, id) {
-      // new Audio('/assets/34.wav').play();
-      this.save = true;
-        this.apiService.updateTask(form.value.text, id).subscribe(
-            (task) => {
-                this.firsttask['text'] = task.text;
-              this.save = false;
-            }
-        );
-    }
+  updateFirstTask(form: NgForm, id) {
+    // new Audio('/assets/34.wav').play();
+    this.save = true;
+    this.apiService.updateTask(form.value.text, id).subscribe(
+      (task) => {
+        this.firsttask['text'] = task.text;
+        this.save = false;
+      }
+    );
+  }
 
-  updateSecondTask (form: NgForm, id) {
+  updateSecondTask(form: NgForm, id) {
     // new Audio('/assets/34.wav').play();
     this.save = true;
     this.apiService.updateTask(form.value.text, id).subscribe(
@@ -135,14 +136,14 @@ export class LongcycleComponent implements OnInit {
     );
   }
 
-    updateThirdTask (form: NgForm, id) {
-      // new Audio('/assets/34.wav').play();
-      this.save = true;
-        this.apiService.updateTask(form.value.text, id).subscribe(
-            (task) => {
-                this.thirdtask['text'] = task.text;
-              this.save = false;
-            }
-        );
-    }
+  updateThirdTask(form: NgForm, id) {
+    // new Audio('/assets/34.wav').play();
+    this.save = true;
+    this.apiService.updateTask(form.value.text, id).subscribe(
+      (task) => {
+        this.thirdtask['text'] = task.text;
+        this.save = false;
+      }
+    );
+  }
 }

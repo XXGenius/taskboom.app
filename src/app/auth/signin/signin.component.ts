@@ -14,12 +14,13 @@ import {
   styleUrls: ['./signin.component.css']
 })
 export class SigninComponent implements OnInit, OnDestroy {
-  error: any;
-  email;
+  error: string;
+  email: string;
+
   constructor(private socialAuthService: AuthService, private myauthService: MyAuthService,
               private apiService: ApiService, private ref: ChangeDetectorRef) {
-    this.error =  this.myauthService.error;
-    this.email =  this.myauthService.email;
+    this.error = this.myauthService.error;
+    this.email = this.myauthService.email;
   }
 
 
@@ -27,15 +28,15 @@ export class SigninComponent implements OnInit, OnDestroy {
     let socialPlatformProvider;
     if (socialPlatform === 'facebook') {
       socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
-    }else if (socialPlatform === 'google') {
+    } else if (socialPlatform === 'google') {
       socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
     }
     this.socialAuthService.signIn(socialPlatformProvider)
       .then(
         (userData) => {
-          console.log(socialPlatform + ' sign in data: ' , userData);
+          console.log(socialPlatform + ' sign in data: ', userData);
           const name = userData['name'];
-          const uid  = userData['id'];
+          const uid = userData['id'];
           localStorage.setItem('uid', uid);
           const email = userData['email'];
           const image = userData['image'];
@@ -45,16 +46,16 @@ export class SigninComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-      console.log('auth init');
+    console.log('auth init');
   }
 
   login(form: NgForm) {
-      this.myauthService.login(form.value.email, form.value.password);
-      this.error =  this.myauthService.error;
-      this.ref.detectChanges();
+    this.myauthService.login(form.value.email, form.value.password);
+    this.error = this.myauthService.error;
+    this.ref.detectChanges();
   }
 
-  ngOnDestroy () {
-      console.log('auth die');
+  ngOnDestroy() {
+    console.log('auth die');
   }
 }

@@ -1,14 +1,15 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
-    selector: 'app-admin',
-    templateUrl: './admin.component.html'
+  selector: 'app-admin',
+  templateUrl: './admin.component.html'
 })
 export class AdminComponent implements OnInit {
-    @Input() admin;
+  @Input() admin;
 
-    constructor() { }
+  constructor() {
+  }
 
-    ngOnInit() {
-    }
+  ngOnInit() {
+  }
 }

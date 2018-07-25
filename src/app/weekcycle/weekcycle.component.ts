@@ -53,6 +53,7 @@ export class WeekcycleComponent implements OnInit {
   save = false;
   week: any;
   autofill;
+
   constructor(private apiService: ApiService, private spinnerService: Ng4LoadingSpinnerService) {
     this.spinnerService.show();
     window.scroll(0, 0);

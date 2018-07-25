@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {IndexComponent} from './views/index/index.component';
 import {StatusComponent} from './admin/status/status.component';
@@ -15,21 +15,20 @@ import {WeekcycleComponent} from './weekcycle/weekcycle.component';
 import {NextdayComponent} from './nextday/nextday.component';
 
 
-
 const appRoutes: Routes = [
-  { path: '', pathMatch: 'full', component: IndexComponent },
-    { path: 'signin' , component: SigninComponent},
-    { path: 'wisdom', component: WisdomComponent},
-    { path: 'long', component: LongcycleComponent},
-    { path: 'week', component: WeekcycleComponent},
-    { path: 'day', component: NextdayComponent},
-  { path: 'statuses', component: StatusComponent},
-  { path: 'projects', component: ProjectComponent},
-  { path: 'roles', component: RoleComponent},
-  { path: 'users', component: UserComponent},
-  { path: 'levels', component: LevelComponent},
-  { path: 'usergroups', component: UserGroupComponent},
-  { path: 'signup' , component: SignupComponent}
+  {path: '', pathMatch: 'full', component: IndexComponent},
+  {path: 'signin', component: SigninComponent},
+  {path: 'wisdom', component: WisdomComponent},
+  {path: 'long', component: LongcycleComponent},
+  {path: 'week', component: WeekcycleComponent},
+  {path: 'day', component: NextdayComponent},
+  {path: 'statuses', component: StatusComponent},
+  {path: 'projects', component: ProjectComponent},
+  {path: 'roles', component: RoleComponent},
+  {path: 'users', component: UserComponent},
+  {path: 'levels', component: LevelComponent},
+  {path: 'usergroups', component: UserGroupComponent},
+  {path: 'signup', component: SignupComponent}
 
 
 ];
@@ -42,4 +41,5 @@ const appRoutes: Routes = [
     RouterModule
   ]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
